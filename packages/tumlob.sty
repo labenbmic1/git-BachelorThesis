@@ -1,0 +1,60 @@
+\NeedsTeXFormat{LaTeX2e}%                                                           %%
+\ProvidesExplPackage {packages/tumlob} {2020-05-24} {\TUMversion}%                  %%
+	{The list-of-bibliography-part made by Michael Labenbacher}%                    %%
+\ProcessKeysPackageOptions{packages/tumlob}%                                        %%
+\ExplSyntaxOff%                                                                     %%
+%% ------------------------------- biblatex settings ------------------------------ %%
+%% \renewcommand*{\subtitlepunct}{\ifterm{}{\addcolon}\space}%                      %%
+%% ---------------- Divide the bibliography into subbibliographies ---------------- %%
+%% \defbibfilter{books}{type=book or type=inbook or type=ebook or type=inebook}%    %%
+%% example self-made TUMauthoryear.bbx, TUMauthoryear.dbx, references.bib           %%
+\bibliography{references/references}% Path to your References.bib file              %%
+%% ================================== LOB-names =================================== %%
+\makeatletter%                                                                      %%
+\AtBeginDocument{%                                                                  %%
+	\TUM@ifpackageloaded[setting]{babel}{%                                          %%
+		\AfterEndPreamble{%                                                         %%
+			\addto\extrasnaustrian{%                                                %%
+				\renewcommand{\bibname}{%                                           %%
+				Literaturverzeichnis}%                                              %%
+			}%                                                                      %%
+			\addto\extrasngerman{%                                                  %%
+				\renewcommand{\bibname}{%                                           %%
+				Literaturverzeichnis}%                                              %%
+			}%                                                                      %%
+			\addto\extrasamerican{%                                                 %%
+				\renewcommand{\bibname}{%                                           %%
+				Bibliography}%                                                      %%
+			}%                                                                      %%
+			\addto\extrasenglish{%                                                  %%
+				\renewcommand{\bibname}{%                                           %%
+				Bibliography}%                                                      %%
+			}%                                                                      %%
+		}%                                                                          %%
+	}{}%                                                                            %%
+}%                                                                                  %%
+\makeatother%                                                                       %%
+%% ========================== Definition of the TUM-LOB =========================== %%
+\NewDocumentCommand{\TUMlistofbibliographies}{+o+o}%                                %%
+{%                                                                                  %%
+	{%                                                                              %%
+		\newpage%                                                                   %%
+		\pagestyle{scrheadings}%                                                    %%
+		\IfValueTF{#1}{\selectlanguage{#1}}{}%                                      %%
+			\ifkomabibtotoc{%                                                       %%
+				\ifkomabibtotocnumbered{%                                           %%
+					 \printbibliography[heading=bibintoc, heading=bibnumbered,%     %%
+										title={\bibname}]%                          %%
+				}{%                                                                 %%
+					 \printbibliography[heading=bibintoc, title={\bibname}]%        %%
+				}%                                                                  %%
+			}{%                                                                     %%
+					\printbibliography[title={\bibname}]%                           %%
+			}%                                                                      %%
+			%\printbibheading[heading=bibintoc, title={\bibname}]%                  %%
+			%\printbibliography[heading=subbibliography, title={Bücher}, filter=books]
+		\IfValueTF{#2}{\selectlanguage{#2}}{}%                                      %%
+		\newpage%                                                                   %%
+	}%                                                                              %%
+}%                                                                                  %%
+\endinput%                                                                          %%

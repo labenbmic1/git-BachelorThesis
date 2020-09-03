@@ -1,0 +1,82 @@
+\NeedsTeXFormat{LaTeX2e}%                                                           %%
+\ProvidesExplPackage {packages/tummatter} {2020-05-24} {\TUMversion}%               %%
+	{The matter-part made by Michael Labenbacher}%                                  %%
+\ProcessKeysPackageOptions{packages/tummatter}%                                     %%
+\ExplSyntaxOff%                                                                     %%
+%% =========================== (Re)Definition of matters ========================== %%
+%% store the main layout (No, Front, Main, Appendix, Back),%                        %%
+%% e.q.:                                                                            %%
+%\clearpage\newgeometry{top=0pt}% remove top margin,                                %%
+%\includepdf[pages=-,%                                                              %%
+%   addtotoc={1,chapter,1,{title},{label}}]%                                        %%
+%   {../Hilfszettel-A3/main.pdf}%                                                   %%
+%\clearpage\TUMStandardAreaAppendix%                                                %%
+\makeatletter%                                                                      %%
+\def\nomatter{\@nomatter}%                                                          %%
+\def\@nomatter{%                                                                    %%
+	\@mainmatterfalse%                                                              %%
+	\pagestyle{empty}%                                                              %%
+	\pagenumbering{Roman}%                                                          %%
+	\storeareas\TUMStandardAreaNo%                                                  %%
+}%                                                                                  %%
+\let\old@frontmatter\frontmatter%                                                   %%
+\let\old@mainmatter\mainmatter%                                                     %%
+\let\old@backmatter\backmatter%                                                     %%
+\let\old@appendix\appendix%                                                         %%
+\renewcommand*\frontmatter{%                                                        %%
+	\old@frontmatter%                                                               %%
+	%% old:%                                                                        %%
+	% \if@twoside\cleardoubleoddpage\else\clearpage\fi%                             %%
+	% \@mainmatterfalse\pagenumbering{roman}%                                       %%
+	\pagestyle{scrheadings}%                                                        %%
+	\settumheadings%                                                                %%
+	\storeareas\TUMStandardAreaFront%                                               %%
+}%                                                                                  %%
+\renewcommand*\mainmatter{%                                                         %%
+	%% old:%                                                                        %%
+	% \if@twoside\cleardoubleoddpage\else\clearpage\fi%                             %%
+	% \@mainmattertrue%                                                             %%
+	% \pagenumbering{arabic}%                                                       %%
+	\old@mainmatter%                                                                %%
+	\pagestyle{scrheadings}%                                                        %%
+	\settumheadings%                                                                %%
+	\storeareas\TUMStandardAreaMain%                                                %%
+}%                                                                                  %%
+\renewcommand*\backmatter{%                                                         %%
+	\old@backmatter%                                                                %%
+	%% old:%                                                                        %%
+	% \if@openright\cleardoubleoddpage\else\clearpage\fi\@mainmatterfalse%          %%
+	\bookmarksetup{startatroot}% delete bookmark part from appendix                 %%
+	\storeareas\TUMStandardAreaBack%                                                %%
+}%                                                                                  %%
+\AtBeginDocument{%                                                                  %%
+	\TUM@ifpackageloaded[setting]{babel}{%                                          %%
+		\AfterEndPreamble{%                                                         %%
+			\addto\captionsnaustrian{%                                              %%
+				\renewcommand{\appendixname}{%                                      %%
+					Anhang}%                                                        %%
+			}%                                                                      %%
+			\addto\captionsamerican{%                                               %%
+				\renewcommand{\appendixname}{%                                      %%
+					Appendix}%                                                      %%
+			}%                                                                      %%
+		}%                                                                          %%
+	}{}%                                                                            %%
+}%                                                                                  %%
+\def\appendix{%                                                                     %%
+	\newpage%                                                                       %%
+	\if@twoside%                                                                    %%
+		\cleardoubleoddpage%                                                        %%
+		\clearscrheadfoot%                                                          %%
+	\else%                                                                          %%
+		\clearpage%                                                                 %%
+	\fi%                                                                            %%
+	\old@appendix%                                                                  %%
+	\pagestyle{scrheadings}%                                                        %%
+	\settumheadings%                                                                %%
+	\phantomsection%                                                                %%
+	\addcontentsline{toc}{part}{\appendixname}%                                     %%
+	\storeareas\TUMStandardAreaAppendix%                                            %%
+}%                                                                                  %%
+\makeatother%                                                                       %%
+\endinput%                                                                          %%

@@ -1,0 +1,43 @@
+\NeedsTeXFormat{LaTeX2e}%                                                           %%
+\ProvidesExplPackage {packages/tumlol} {2020-05-24} {\TUMversion}%                  %%
+	{The list-of-listings-part made by Michael Labenbacher}%                        %%
+\ProcessKeysPackageOptions{packages/tumlol}%                                        %%
+\ExplSyntaxOff%                                                                     %%
+%% ================================== LOL-names =================================== %%
+\makeatletter%                                                                      %%
+\AtBeginDocument{%                                                                  %%
+	\TUM@ifpackageloaded[setting]{babel}{%                                          %%
+		\AfterEndPreamble{%                                                         %%
+			\addto\extrasnaustrian{%                                                %%
+				\renewcommand{\lstlistlistingname}{%                                %%
+				Listingverzeichnis}%                                                %%
+			}%                                                                      %%
+			\addto\extrasngerman{%                                                  %%
+				\renewcommand{\lstlistlistingname}{%                                %%
+				Listingverzeichnis}%                                                %%
+			}%                                                                      %%
+			\addto\extrasamerican{%                                                 %%
+				\renewcommand{\lstlistlistingname}{%                                %%
+				List of Listings}%                                                  %%
+			}%                                                                      %%
+			\addto\extrasenglish{%                                                  %%
+				\renewcommand{\lstlistlistingname}{%                                %%
+				List of Listings}%                                                  %%
+			}%                                                                      %%
+		}%                                                                          %%
+	}{}%                                                                            %%
+}%                                                                                  %%
+\makeatother%                                                                       %%
+%% ========================== Definition of the TUM-LOL =========================== %%
+\makeatletter%                                                                      %%
+\def\TUMlistoflistings%                                                             %%
+{%                                                                                  %%
+	{%                                                                              %%
+		\newpage%                                                                   %%
+		\pagestyle{scrheadings}%                                                    %%
+		\lstlistoflistings%                                                         %%
+		\newpage%                                                                   %%
+	}%                                                                              %%
+}%                                                                                  %%
+\makeatother%                                                                       %%
+\endinput%                                                                          %%

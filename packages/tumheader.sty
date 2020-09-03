@@ -1,0 +1,47 @@
+\NeedsTeXFormat{LaTeX2e}%                                                           %%
+\ProvidesExplPackage {packages/tumheader} {2020-05-24} {\TUMversion}%               %%
+	{The header-part made by Michael Labenbacher}%                                  %%
+\ProcessKeysPackageOptions{packages/tumheader}%                                     %%
+\ExplSyntaxOff%                                                                     %%
+%% ============================ Defintion of head/foot ============================ %%
+\makeatletter%                                                                      %%
+\def\responsible#1{\gdef\@responsible{\protect{#1}}}%                               %%
+\let\@responsible\relax%                                                            %%
+\def\chapterpagestyle{empty}%                                                       %%
+\KOMAoptions{headsepline=\rulewidth:\textwidth}%                                    %%
+\KOMAoptions{footsepline=\rulewidth:\textwidth}%                                    %%
+\KOMAoptions{footsepline=false}%                                                    %%
+\KOMAoptions{headsepline=false}%                                                    %%
+\KOMAoptions{plainfootsepline=false}%                                               %%
+\KOMAoptions{plainheadsepline=false}%                                               %%
+\def\settumheadings%                                                                %%
+{%                                                                                  %%
+	\if@twoside%                                                                    %%
+		\automark[section]{chapter}%                                                %%
+	\else%                                                                          %%
+		\automark{chapter}%                                                         %%
+	\fi%                                                                            %%
+	\lehead*[]{\color{\TUMcolor{5}}\pagemark}%                                      %%
+	\cehead*[]{}%                                                                   %%
+	\rehead*[]{\color{\TUMcolor{5}}\headmark}%                                      %%
+	\lohead*[]{\color{\TUMcolor{5}}\headmark}%                                      %%
+	\cohead*[]{}%                                                                   %%
+	\rohead*[]{\color{\TUMcolor{5}}\pagemark}%                                      %%
+	\lefoot*[]{}%                                                                   %%
+	\cefoot*[]{}%                                                                   %%
+	\refoot*[]{\color{\TUMcolor{6}}\@responsible}%                                  %%
+	\lofoot*[]{\color{\TUMcolor{6}}\@responsible}%                                  %%
+	\cofoot*[]{}%                                                                   %%
+	\rofoot*[]{}%                                                                   %%
+	\addtokomafont{headsepline}{\color{\TUMcolor{7}}}%                              %%
+	\addtokomafont{footsepline}{\color{\TUMcolor{8}}}%                              %%
+	\addtokomafont{pagenumber}{\color{\TUMcolor{5}}\normalfont\rmfamily}%           %%
+	\addtokomafont{pagehead}{\color{\TUMcolor{5}}\normalfont\rmfamily}%             %%
+	\addtokomafont{pagefoot}{\color{\TUMcolor{6}}\normalfont\rmfamily}%             %%
+	\KOMAoptions{footsepline=false}%                                                %%
+	\KOMAoptions{headsepline=false}%                                                %%
+	\KOMAoptions{plainfootsepline=false}%                                           %%
+	\KOMAoptions{plainheadsepline=false}%                                           %%
+}%                                                                                  %%
+\makeatother%                                                                       %%
+\endinput%                                                                          %%

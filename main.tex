@@ -1,0 +1,130 @@
+\documentclass[%                                                                    %%
+fontsize=11pt,%                                                                     %%
+twoside=false,% false, true%                                                        %%
+open=any,% right, any%                                                              %%
+paper=a4,%                                                                          %%
+paper=portrait,% (landscape)                                                        %%
+titlepage=firstiscover,%                                                            %%
+twocolumn=false,%                                                                   %%
+footinclude=false,%                                                                 %%
+headinclude=false,%                                                                 %%
+mpinclude=false,% (Teil des Randes für Notizen verwendet)                           %%
+headlines=1.25, footlines=1.25,%                                                    %%
+pagesize=auto,% Ausgabetreiber (Standard)                                           %%
+DIV=12, BCOR=0mm,% ev. 15                                                           %%
+toc=listof,% nolistof, listof, listofnumbered                                       %%
+toc=bibliography,% nobibliography, bibliography, bibliographynumbered               %%
+%toc=index,% noindex, index, indexnumbered (see tumidx.sty/KomaOptions)             %%
+listof=indented, toc=indented,% Style der Vereichnisse (Standard)                   %%
+headings=big,% groesse der Ueberschriften, big, normal, small                       %%
+chapterprefix=true, appendixprefix=true,%                                           %%
+parskip=false,% false, full, (half, never)                                          %%
+numbers=autoenddot,% Punkt z.B. 1.1. (Punkt wenn einmal nicht arabisch, (no)enddot) %%
+% leqno (zentriert, Nummer links), fleqn (links, Nummer rechts)% -> amsmath         %%
+captions=figuresignature, captions=tableheading,% --> Position von caption relevant!%%
+]{scrreprt}% KOMAScript                                                             %%
+%% scrbook: openright, towside=true, (part, chapter, section, subsection, etc.)     %%
+%% scrreprt: openany, twoside=false, ((part), chapter, section, subsection, etc.)   %%
+\usepackage[debug=false, todo=true]{tum-physics}%                                    %%
+% [debug, debug=true/false, todo, todo=true/false]                                  %%
+% --> if debug=false, ev. load package {lipsum, etc. }                              %%
+\pdftitle{Detecting Thermal Phase Transitions in a Trapped Ion Quantum Computer}%   %%
+\pdfauthor{Michael Labenbacher}%                                                    %%
+\pdfsubject{Bachelor Thesis}%                                                       %%
+%   BA =    1.  twoside=false, (open=any), DIV=12, BCOR=0mm, 
+%               OR: twoside=true, open=right, DIV=12, BCOR=0mm,
+%           2.  USE: toc=listof, toc=bibliography, (toc=index (see .sty))
+%               NOT: toc=listofnumbered, toc=bibliographynumbered,
+%           3.  USE: listof=indented, toc=indented,
+%TODO: biblatex (ev. ieee (changes names))
+%TODO: theorem (not needed)
+%TODO: makeidx (if multiple, ev. improve pagebreak-algorithmus (splitidx -- xindy))
+%TODO: titelpage + header translate to englisch
+%TODO: listings package (python, Einstellungen betrachten und verwalten)
+%TODO: bookmark package (Einstellungen betrachten und verwalten)
+
+%% !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! %%
+%TODO: "Hack" 
+%% falls man Seitenverhältnis 1-1 statt 1-2 von typearea will, z.B.
+\AfterCalculatingTypearea{%
+	% HOEHE: 1-1 instead of 1-2 (standard typearea)
+	\setlength\textheight{1in+\topmargin+\headheight+\headsep+\textheight}%
+	\setlength\footskip{\headheight+\headsep}%
+	%BREITE: symmetrisch auch bei twoside (but why necessary, use oneside instead...)
+	%   \if@twoside%
+	%       \setlength\oddsidemargin{0.5\paperwidth-1in-\hoffset-0.5\textwidth}%    
+	%       \setlength\evensidemargin{0.5\paperwidth-1in-\hoffset-0.5\textwidth}%
+	%       \setlength\marginparwidth{%
+	%           \paperwidth-1in-\hoffset-\oddsidemargin-\textwidth-2\marginparsep%
+	%       }%
+	%   \else%
+	%   \fi%
+}\recalctypearea%
+%% !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! %%
+
+% 1. Run: initexmf --edit-config-file=pdflatex
+% 2. Write+Save into file: main_memory=100000000
+% 3. Run: initexmf --dump=pdflatex
+% 4. In TeXstudio/Optionen (pdflatex):  
+% 1/2x pdflatex, biber, 2/3x pdlfatex (txs///bibtex --> txs:///biber --validate_datamodel) %%
+
+% Before \AtBeginDocument for keywords:
+\TUMheader[american]{%
+	Technische Universität München\\%
+	Fakultät für Physik\\%
+	(Lehrstuhl, Leiter, Arbeitsgruppe etc.)\todoMissing[caption={Missing header.}, author={Michael L.}]{Please translate this to english.}}%
+\TUMtitle[american][Detecting Thermal Phase Transitions in a Trapped Ion Quantum Computer]{Detecting Thermal Phase Transitions in a Trapped Ion Quantum Computer\thanks{\today, Wir sollten uns nicht empören, dass andere die Wahrheit vorenthalten, wenn wir sie doch selbst so oft verschleiern. (please delete this immediately :P)\todoChange[caption={Change/Delete.}, author={Michael L.}]{Please remove this immediately.}}}%
+\TUMauthor[michael.labenbacher@tum.de][]{Michael Labenbacher}% mail, 03697519, name
+\TUMauthor[john@smith.at]{John Smith}% only for test
+\TUMsupervisor[michael.knap@ph.tum.de]{Prof. Dr. Michael Knap}% mail, name
+\TUMsupervisor[alexander.schuckert@tum.de]{Alexander Schuckert}% more.... 
+\TUMfirstassessor[michael.knap@ph.tum.de]{Prof. Dr. Michael Knap}%
+\TUMsecondassessor{Prof. Dr. David Egger}%
+\TUMtopic[american]{Quantum Many-Body Physics (Theory)}
+\TUMtopic[naustrian]{Quantum Many-Body Physics (Theory)}
+\TUMsubmissiondate{30}{01}{2020}% \formatdate
+%% Single Index: (before \AtEndPreamble)
+\TUMmakeindex{main}{\indexname}%
+\TUMsetindexpreamble{%
+	main={Die unerfahrenen Freunde sind gefährlich. Klugheit ist besser, selbst in einem Feind. Fett hervorgehobene Zahlen geben die Seiten der Erklärung zu einem Stichwort wieder. Normal gedruckte Zahlen verweisen hingegen auf Seiten mit zusätzlichen Informationen zum jeweiligen Stichwort.\par\bigskip}%
+}%
+%% Multiple Indices:
+%\TUMmakeindex{main}{General Index}%
+%\TUMmakeindex{fcp}{Index of Files, Classes and Packages}%
+%\TUMsetindexpreamble{%
+%   index={Der Mensch ist zur Freiheit verdammt. Den gefährlichsten Verräter von allen hat jeder Mensch in sich selbst.},%
+%   main={Die unerfahrenen Freunde sind gefährlich. Klugheit ist besser, selbst in einem Feind.\par\bigskip},%
+%   fcp={Lasst, die Ihr eintretet, alle Hoffnung fahren.\par\bigskip},%
+%}%
+
+\begin{document}%                                                                   %%
+	\selectlanguage{american}%                                                      %%
+	\nomatter%                                                                      %%
+	\responsible{Michael Labenbacher}%\&{}                                          %%
+	\maketitle%                                                                     %%
+	\frontmatter%                                                                   %%
+	\input{chapters/abstract}%                                                      %%
+	\TUMtableofcontents%                                                            %%
+	\mainmatter%                                                                    %%
+	%% ************************* (Start) Input the files ************************** %%
+	%\input{chapters/LaTeX-Einfuehrung}% [debug=true] remove 
+	%\input{chapters/LaTeX-TikZ-Examples}% [debug=true] remove 
+	\input{chapters/introduction}% change the following ...
+	\input{chapters/theoBackground}%
+	\input{chapters/compMethods}%
+	\input{chapters/evaluation}%
+	\input{chapters/conclusionAndPerspective}%
+	\appendix%  activate only if there is an appendix 
+	\chapter{Experimental Setup Details}% (only for the purpose of testing 
+	\chapter{Additional Measurement Data}% (only for the purpose of testing 
+	%% ************************** (End) Input the files *************************** %%
+	\backmatter% not realy implementet in scrreprt, but deactivates appendix...     %%
+	\TUMprintindex%                                                                 %%
+	\TUMlistofbibliographies%[american][naustrian]%                                 %%
+	\TUMlistoffigures%                                                              %%
+	\TUMlistoftables%                                                               %%
+	\TUMlistoflistings%                                                             %%
+	\TUMlistoftodos%                                                                %%
+	\input{chapters/decOfAuthorship}%                                               %%
+	\input{chapters/acknowledgments}%                                               %%
+\end{document}%                                                                     %%

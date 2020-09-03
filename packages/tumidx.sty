@@ -1,0 +1,147 @@
+\NeedsTeXFormat{LaTeX2e}%                                                           %%
+\ProvidesExplPackage {packages/tumidx} {2020-05-24} {\TUMversion}%                  %%
+	{The index-part made by Michael Labenbacher}%                                   %%
+\ProcessKeysPackageOptions{packages/tumidx}%                                        %%
+\ExplSyntaxOff%                                                                     %%
+%% ================================== IDX-names =================================== %%
+\begingroup\makeatletter\renewcommand{\@latex@warning@no@line}[1]{}%                %%
+\begin{filecontents}[overwrite]{index.ist}
+quote '+'
+headings_flag 1
+heading_prefix "{ \\bfseries " heading_suffix "}\\nopagebreak%\n \\indexspace\\nopagebreak%"
+%item_0 "\n \\item \\TUMfont{idxtext} "% change font style of item_0, ...
+delim_0 "\\dotfill "
+delim_1 "\\dotfill "
+delim_2 "\\dotfill "
+delim_r "--"
+\end{filecontents}
+\makeatother\endgroup%
+%% ================================== IDX-names =================================== %%
+\ExplSyntaxOn%
+\int_new:N \l_index_count_int%
+\int_set:Nn \l_index_count_int {0}%
+\clist_new:N \l_index_clist%
+\NewDocumentCommand{\TUMmakeindexExpl}{m}{%
+	\int_incr:N \l_index_count_int%
+	\clist_put_right:Nn \l_index_clist {#1}%
+}%
+\AtEndPreamble{%
+	\int_compare:nNnTF {\int_use:N \l_index_count_int} > {1} {%
+		\indexsetup{level=\section*, toclevel=section, noclearpage}% level, toclevel ignored (see KomaOptions)
+	}{}%
+	\int_compare:nNnTF {\int_use:N \l_index_count_int} = {1} {%
+		\indexsetup{level=\chapter*, toclevel=chapter, noclearpage}% level, toclevel ignored (see KomaOptions) / noclearpage not relevant (chapter)
+	}{}%
+}%
+\makeatletter%                                                                      %%
+\AtBeginDocument{%                                                                  %%
+	\TUM@ifpackageloaded[setting]{babel}{%                                          %%
+		\AfterEndPreamble{%                                                         %%
+			\int_compare:nNnTF {\int_use:N \l_index_count_int} > {1} {%             %%
+				\addto\extrasamerican{%                                             %%
+					\renewcommand{\indexname}{Indices}%                             %%
+				}%                                                                  %%
+				\addto\extrasenglish{%                                              %%
+					\renewcommand{\indexname}{Indices}%                             %%
+				}%                                                                  %%
+				\addto\extrasnaustrian{%                                            %%
+					\renewcommand{\indexname}{Indices}%                             %%
+				}%                                                                  %%
+				\addto\extrasngerman{%                                              %%
+					\renewcommand{\indexname}{Indices}%                             %%
+				}%                                                                  %%
+			}{}%                                                                    %%
+			\int_compare:nNnTF {\int_use:N \l_index_count_int} = {1} {%             %%
+				\addto\extrasamerican{%                                             %%
+					\renewcommand{\indexname}{Index}%                               %%
+				}%                                                                  %%
+				\addto\extrasenglish{%                                              %%
+					\renewcommand{\indexname}{Index}%                               %%
+				}%                                                                  %%
+				\addto\extrasnaustrian{%                                            %%
+					\renewcommand{\indexname}{Index}%                               %%
+				}%                                                                  %%
+				\addto\extrasngerman{%                                              %%
+					\renewcommand{\indexname}{Index}%                               %%
+				}%                                                                  %%
+			}{}%                                                                    %%
+		}%                                                                          %%
+	}{}%                                                                            %%
+}%                                                                                  %%
+\makeatother%                                                                       %%
+\ExplSyntaxOff%                                                                     %%
+%% ========================== Definition of the TUM-IDX =========================== %%
+\let\setindexpreamble\setindexprenote%
+\let\indexprologue\setindexprenote%
+\let\noindexpreamble\noindexprenote%
+%% Options from \makeindex can't be set, while \ExplSyntaxOn
+%% Do it like this:, or set the options in TeXstudio
+\NewDocumentCommand{\TUMmakeindex}{omm}{%
+	\IfValueTF{#1}{%
+		\makeindex[name={#2},title={#3},options={-s index.ist},#1]%
+	}{%
+		\makeindex[name={#2},title={#3},options={-s index.ist}]%
+	}%
+	\TUMmakeindexExpl{#2}%
+}%
+%% \TUMprintindex
+\ExplSyntaxOn%
+\msg_new:nnn {tum-physics} {index/more_preambles} {}%
+\prop_new:N \l_index_preamble_prop
+\int_new:N \l_index_preamble_count_int%
+\int_set:Nn \l_index_preamble_count_int {0}%
+\NewDocumentCommand{\TUMsetindexpreamble}{+m}{%
+	\prop_set_from_keyval:Nn \l_index_preamble_prop {#1}%
+}%
+\NewDocumentCommand{\TUMgetindexpreamble}{m}{%
+	\clist_map_inline:nn {#1}{%
+		\prop_item:Nn \l_index_preamble_prop {##1}%
+	}%
+}%
+\NewDocumentCommand{\TUMprintindex}{}{%
+	%TODO: IF index_count < 1, then do nothing
+	%TODO: IF index_count = 1, then do one index
+	%TODO:                > 1, then multiple
+	\renewcommand*{\indexpagestyle}{\chapterpagestyle}% (= empty)
+	\int_compare:nNnTF {\l_index_count_int} = {1} {%
+		\KOMAoptions{index=standardlevel}%
+		\KOMAoptions{toc=index}%
+		\newpage%
+		%\pagestyle{scrheadings}% overwriten do to indexpagestyle 
+		\int_set:Nn \l_index_preamble_count_int {\prop_count:N \l_index_preamble_prop}%     
+	}{}%
+	\int_compare:nNnTF {\l_index_count_int} > {1} {%
+		\KOMAoptions{index=leveldown}%
+		\KOMAoptions{toc=noindex}%
+		\newpage%
+		\addchap{\indexname}%
+		%\pagestyle{scrheadings}% overwriten do to indexpagestyle 
+		\int_set:Nn \l_index_preamble_count_int {\prop_count:N \l_index_preamble_prop}%
+		\prop_if_in:NnTF \l_index_preamble_prop {index} {%
+			\int_decr:N \l_index_preamble_count_int%
+			\TUMgetindexpreamble{index}%
+		}{}%
+	}{}%
+	\bool_lazy_or:nnTF {%
+		\int_compare_p:nNn {\l_index_count_int} = {1}%
+	}{%
+		\int_compare_p:nNn {\l_index_count_int} > {1}%
+	}{%
+		\int_compare:nNnTF {\l_index_count_int} < {\l_index_preamble_count_int}{%
+			\msg_set:nnnn {tum-physics} {index/more_preambles} {%
+				You~have~set~more~index-preambles~then~indices.%
+			}{}%
+			\msg_warning:nn {tum-physics} {index/more_preambles}%
+		}{}%    
+		\clist_map_inline:Nn \l_index_clist {%
+			\prop_if_in:NnTF \l_index_preamble_prop {##1} {%
+				\setindexpreamble{\TUMgetindexpreamble{##1}}%
+			}{%
+				\noindexpreamble{}%
+			}%
+			\printindex[##1]%
+		}%
+		\newpage%
+	}{}%
+}%
+\endinput%                                                                          %%

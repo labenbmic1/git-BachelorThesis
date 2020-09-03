@@ -1,0 +1,371 @@
+%% begin: LaTeX-TikZ-Examples.tex
+
+
+\tikzset{%
+	circuit declare symbol = ammeter,
+	set ammeter graphic = {%
+		circuit symbol lines, generic circle IEC, info = center:A, circuit symbol size = width	2.5 height 2.5
+	},%
+	circuit declare symbol = voltmeter,
+	set voltmeter graphic = {%
+		circuit symbol lines, generic circle IEC, info = center:V, circuit symbol size = width	2.5 height 2.5
+	},%
+	circuit declare symbol = ac source,%
+	set ac source graphic = ac source IEC graphic,%
+	ac source IEC graphic/.style={%
+		transform shape,
+		circuit symbol lines,
+		circuit symbol size = width 2.5 height 2.5,
+		shape = generic circle IEC,
+		/pgf/generic circle IEC/before background=
+		{
+			\pgfpathmoveto{\pgfpoint{-0.8pt}{0pt}}
+			\pgfpathsine{\pgfpoint{0.4pt}{0.4pt}}
+			\pgfpathcosine{\pgfpoint{0.4pt}{-0.4pt}}
+			\pgfpathsine{\pgfpoint{0.4pt}{-0.4pt}}
+			\pgfpathcosine{\pgfpoint{0.4pt}{0.4pt}}
+			\pgfusepathqstroke
+		}
+	}%
+}%
+
+\tikzset{%
+	%% line width, draw, fill, minimum size, outer sep, inner sep, 
+	%% huge circuit symbols, 
+	%% aren't global here and can be changed after using the command
+	every picture/.style={%
+		w3, huge circuit symbols, circuit logic IEC, circuit ee IEC,%
+		%	
+	},%
+	circ/.style={%
+		w3, draw = black, fill = black, circle, minimum size = 1.5mm, outer sep = 0mm, inner sep = 0mm%
+	},%
+	ocirc/.style={%
+		w3, draw = black, fill = white, circle, minimum size = 1.5mm, outer sep = 0mm,
+		inner sep = 0mm%	
+	}%
+}%
+
+
+
+\tikzset{external/export=true}
+\setchemformula{tikz-external-disable=true}
+
+\chapter{Auswertung von Daten}
+\label{chap:Auswertung von Daten}
+\section{Visualisierung mit TikZ}
+\label{sec:Auswertung:Visualisierung mit TikZ}
+\begin{figure}\centering
+	\tikzsetnextfilename{Figure-1} 
+	\begin{tikzpicture}[x=10mm,y=10mm]
+	\draw[very thin,color=gray] (-0.1,-1.1) grid (9.9,3.9);
+	\draw[->] (-0.2,0) -- (10.2,0) node[right] {$x$}; 
+	\draw[->] (0,-1.2) -- (0,4.2) node[above] {$f(x)$};
+	\draw[color=red]    plot[domain=0:4] (\x,\x)             node[right] {$f(x) =x$}; 
+	\draw[color=blue]   plot[domain=0:9,samples=10] (\x,{sin(\x r)})    node[right] {$f(x) = \sin x$}; 
+	\draw[color=black]   plot[domain=0:10,samples=100] (\x,{cos(\x r)})    node[right] {$f(x) = \cos x$}; 
+	\draw[color=orange] plot[domain=0:4] (\x,{0.05*exp(\x)}) node[right] {$f(x) = \frac{1}{20} \mathrm e^x$};
+	\end{tikzpicture}
+	\caption{Plotting a function with TikZ}
+	\label{fig:Auswertung:Visualisierung:Plotting a function with TikZ}
+\end{figure}
+
+\begin{figure}\centering
+	\newcommand{\extrayticklist}{}%
+	\let\extrayticklist=\empty%
+	\makeatletter
+	\foreach \n  in {0,1,2,3,4,5,6}{
+		\foreach \m in {1,2,3,4}{
+			\pgfmathparse{(exp(\n)-exp(\n-1))/5*\m + exp(\n-1)}%
+			\ifx\empty\extrayticklist{} \protected@xdef\extrayticklist{\pgfmathresult}%
+			\else \protected@xdef\extrayticklist{\extrayticklist,\pgfmathresult}%
+			\fi
+		}
+	}
+	\makeatother
+	\pgfplotsset{lua backend=false}% ymode=log
+	\tikzsetnextfilename{Figure-2} 
+	\begin{tikzpicture}[x=10mm,y=10mm]
+	\pgfmathsetmacro{\expone}{exp(1)}
+	\begin{axis}[%
+	xmode=linear,%
+	ymode=log,%
+	axis x line = bottom,%
+	axis y line = left,%
+	axis on top,%
+	height=0.5\textwidth,
+	width=0.7\textwidth,
+	log basis ticks={y},
+	xtick = {0,5,...,35},
+	minor x tick num=4, 
+	xtick style = {orange},
+	xtick align = outside,
+	grid = major,%
+	major grid style = {solid, green!50!black},
+	log basis y={\expone},
+	log number format basis/.code 2 args={
+		$e^{\pgfmathprintnumber{#2}}$},
+	extra y ticks/.expanded ={\extrayticklist},
+	every extra y tick/.append style = {% 
+		grid = major,%
+		major grid style = {dotted, orange!50!black},
+		tick style = {blue},%
+		tick align = outside% 
+	},
+	extra y tick labels={},%
+	extra x tick style = {% 
+		grid = none,%
+		tick style = {orange},%
+		tick align = outside%
+	},%
+	xlabel={$t$ in $s$},
+	ylabel={$\varphi$ in $^{\circ}$},
+	xmin=0, xmax=36, ymin=1, ymax={exp(5.2)},
+	mark size=1mm,
+	legend pos=outer north east, legend cell align=left,
+	legend style ={% 
+		draw=black, 
+		fill=white,},%
+	]
+	\addplot[domain=0:5, samples=10, dotted, mark=triangle*, mark options={ fill=white}] {exp(x)};
+	\addlegendentry{$f(x)=e^{x}$}
+	\addplot[domain=5:10, samples=10, mark=star, mark options={fill}, dashed, color=blue] {exp(x-5)/2};
+	\addlegendentry{$f(x)=\frac{e^{x-5}}{2}$}
+	\addplot[domain=0:35, densely dashdotted, samples=10, color=red, mark=diamond*, mark options={fill=gray}] {x} node[pos=0.9, anchor=north] {$f(x)=x$};
+	\addlegendentry{$f(x)=x$}
+	\end{axis}
+	\end{tikzpicture}
+	\pgfplotsset{lua backend=false}% ymode=log
+	\caption{Plotting a function with axis-environment}
+	\label{fig:Auswertung:Visualisierung::Plotting a function with axis-environment}
+\end{figure}
+
+\tikzsetnextfilename{Figure-3} 
+\begin{tikzpicture}[x=10mm,y=10mm]
+\begin{axis}[xmode=linear, ymode=linear, axis x line=center, axis y line=center, TUM style 1, xmin=0, xmax=1, ymin=0, ymax=1, grid=both, 
+enlarge x limits={rel=0.05,upper},
+enlarge y limits={rel=0.05,upper},
+xtick distance=0.2, minor x tick num=5,
+ytick distance=0.2, minor y tick num=5, 
+samples=50, domain=0:1]
+\addplot {x};
+\addplot {x/1.2};
+\addplot {x/1.4};
+\addplot {x/1.6};
+\addplot {x/1.8};
+\addplot {x/2};
+\addplot {x/2.5};
+\addplot {x/3};
+\addplot {x/5};
+\addplot {x/10};
+\addplot {x/20};
+\end{axis}
+\end{tikzpicture}
+
+\begin{figure}
+	\tikzsetnextfilename{Figure-4} 
+	\begin{tikzpicture}
+	\begin{axis}[xmode=linear, ymode=linear, axis y line=center,
+	axis x line=center, TUM style 1,
+	width=\textwidth,
+	height=0.3\textwidth, 
+	tick align=center, hide obscured x ticks=true,
+	ymin=-80, ymax=80, xmin=0, xmax=0.045,
+	enlarge y limits={abs=19},
+	enlarge x limits={abs=0.0049,upper},
+	xtick distance=0.005, minor x tick num=4,
+	ytick distance=40, minor y tick num=3, 
+	ymajorgrids, yminorgrids,
+	ylabel={$u(t)$ in $\mathrm{V}$}, xlabel={$t$ in $\mathrm{s}$}, 
+	every axis x label/.style={at={(axis description cs:0.95,0.5)}, anchor=south},%
+	every axis y label/.style={at={(axis description cs:0,1)}, anchor=south},
+	scaled x ticks={base 10:3},
+	x tick label style={/pgf/number format/.cd,fixed,precision=1,/tikz/.cd},%
+	legend cell align=left,
+	legend style ={% 
+		at={(1,1)}, anchor=south east,
+		draw=black, 
+		fill=white,}%
+	]%
+	\addplot [color=RedViolet] table[skip first n=1,x index=2,y index=3, col sep = comma] {files/oszi/help/CH1.csv};
+	\addlegendentry{$u_{1}(t)$}
+	\addplot [color=ForestGreen] table[skip first n=1,x index=2,y index=3, col sep = comma] {files/oszi/help/CH2.csv};
+	\addlegendentry{$u_{2}(t)$}
+	\end{axis}
+	\end{tikzpicture}
+	\caption{Zeitverläufe der Messgrößen bei $ \alpha = 0 \, ^{\mathrm{ \circ}} $ (B2C mit Energiespeicher)}
+	\label{fig:Auswertung:Visualisierung:Zeitverlaeufe der Messgroessen bei alpha=0 (B2C mit Energiespeicher)}
+\end{figure}
+
+\begin{figure}
+\centering
+\tikzsetnextfilename{Figure-5} 
+\begin{tikzpicture}[x=1mm, y=1mm]%
+%% ** 1. \coordinate[⟨options⟩] (⟨name⟩) at (⟨coordinate⟩);
+%% same as \path coordinate 
+%% options ... i. e. [label = left:$A$]
+\coordinate (origin) at (0,0);%
+\def\localDistanceLength{0.9\textwidth}%
+\def\localDistanceHeight{40}%
+\def\globalGroundDistance{3.333}%
+\coordinate (lo) at (-\localDistanceLength/2,\localDistanceHeight/2);%
+\coordinate (ru) at (\localDistanceLength/2,-\localDistanceHeight/2);%
+\coordinate (lu) at (lo |- ru);%
+\coordinate (ro) at (lo -| ru);%
+\coordinate (Ao) at ($(lo)!1/5!(ro)$);%
+\coordinate (Bo) at ($(lo)!2/5!(ro)$);%
+\coordinate (Co) at ($(lo)!3/5!(ro)$);%
+\coordinate (Do) at ($(lo)!4/5!(ro)$);%
+\coordinate (Au) at (Ao |- ru);%
+\coordinate (Bu) at (Bo |- ru);%
+\coordinate (Cu) at (Co |- ru);%
+\coordinate (Du) at (Do |- ru);%
+%
+%% ** 2. \draw, \node, etc.
+\draw (lo) to [resistor = {info' = {$R_{1} = \SI{10}{\ohm}$}}, small circuit symbols] (Ao);%
+\draw (Ao) to [resistor = {info = {$R_{2}$}}] (Bo);%
+\draw (Bo) to [capacitor = {info = {$C_{1}$}}] (Co);%
+\draw (Co) to [inductor = {color = blue}] (Do);%
+\draw (Bu) -- (Au);%
+\draw (Bu) to [ammeter = {color = red}, small circuit symbols, color = blue] (Cu);
+\draw (Cu) to [voltmeter] (Du);
+\draw (lo) to [ac source] (lu);
+
+\node[rectangle, minimum size = 15mm, draw = black, align = center] (rec1) at (0,0) {OSZ\\ X};
+\draw (Bo) |- ([yshift = 2.5mm]rec1.west);
+\draw (Bu) |- ([yshift = -2.5mm]rec1.west);
+
+\draw (Bu) -- ([shift={(0,-\globalGroundDistance)}]Bu) node[ground, point down, anchor=west] (g1) {};
+
+\foreach \x/\y in {oc1/lo,oc2/lu,oc3/ro,oc4/ru}{
+	\node[ocirc] (\x) at (\y) {};
+}
+\foreach \x/\y in {c1/Ao,c2/Au,c3/Bo,c4/Bu,c5/Co,c6/Cu,c7/Do,c8/Du}{
+	\node[circ] (\x) at (\y) {};
+}
+
+%% ** 3. scope for layers
+\begin{scope}[on background layer]
+\node (nothing) {};
+\end{scope}
+\end{tikzpicture}
+\caption{Schaltbild}
+\label{fig:Auswertung:Visualisierung:Schaltbild}
+\end{figure}
+
+\tikzsetnextfilename{Figure-6} 
+\begin{tikzpicture}[baseline]
+\begin{axis}[xmode=linear, ymode=linear, axis y line=left,
+axis x line=bottom, TUM style 1,
+width=0.5\textwidth,
+height=0.5\textwidth, 
+tick align=outside,
+ymin=0, ymax=10, xmin=0, xmax=200,
+enlarge y limits={abs=0.9,upper},
+enlarge x limits={abs=19,upper},
+xtick distance=50, minor x tick num=4,
+ytick distance=2, minor y tick num=1, 
+xlabel={I/mA},
+ylabel={R/$\Omega$}, grid=both]%
+%
+\addplot+[only marks, error bars/.cd, y dir = both, y explicit, x dir = both, x explicit] table[y error = dy, x error = dx] {files/help/test.dat};%
+%
+\end{axis}
+\end{tikzpicture}%
+
+\newlength{\tikZlengthV}
+\newlength{\tikZlengthH}
+
+\begin{figure}
+	\centering
+	\tikzsetnextfilename{Figure-7} 
+	\begin{tikzpicture}[x=1mm,y=1mm]
+	\setlength{\tikZlengthH}{\textwidth-\tikZlengthwiii}
+	\setlength{\tikZlengthV}{0.5\textwidth-\tikZlengthwiii}
+	\coordinate (lo) at (-\tikZlengthH/2,\tikZlengthV/2);
+	\coordinate (ru) at (\tikZlengthH/2,-\tikZlengthV/2);
+	\coordinate (lu) at (lo |- ru);
+	\coordinate (ro) at (lo -| ru);
+	\coordinate (lm) at ($(lo)!0.5!(lu)$);
+	\coordinate (rm) at (ro |- lm);
+	\draw (lo) -- (ru);
+%	
+	\coordinate (spaltlu) at ($(lu)!0.1!(ru)$);
+	\coordinate (spaltlo) at (spaltlu |- lo);
+	\coordinate (spaltru) at ([shift={(2,0)}]spaltlu);
+	\coordinate (spaltro) at (spaltru |- spaltlo);
+	\draw[fill=black] (spaltlo) rectangle (spaltru); 
+%	
+	\coordinate (spaltlm) at ($(spaltlo)!0.5!(spaltlu)$);
+	\coordinate (gitterlm) at (spaltlm);
+	\coordinate (gitterlo) at ($(spaltlm)!0.05!(spaltlo)$);
+	\coordinate (gitterlu) at ($(spaltlm)!0.05!(spaltlu)$);
+	\coordinate (gitterro) at (spaltro |- gitterlo);
+	\coordinate (gitterru) at (spaltro |- gitterlu);
+	\draw[fill=white, draw=black] (gitterlo) rectangle (gitterru);
+	
+	\coordinate (incommingWavel0) at (lm |- spaltlm);
+	\coordinate (incommingWaver0) at (spaltlm);
+	\coordinate (incommingWaver1) at ($(spaltlm)!0.15!(spaltlo)$);
+	\coordinate (incommingWaver2) at ($(spaltlm)!0.15!(spaltlu)$);
+	\coordinate (incommingWavel1) at (incommingWavel0 |- incommingWaver1);
+	\coordinate (incommingWavel2) at (incommingWavel0 |- incommingWaver2);
+	\foreach \x in {0,1,2}{
+		\draw[-latex] (incommingWavel\x) -- (incommingWaver\x);
+	}
+	
+	\end{tikzpicture}
+	\caption{Prinzip der Autokollimationsmethode}
+	\label{fig:Auswertung:Visualisierung:Prinzip der Autokollimationsmethode}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\tikzsetnextfilename{Figure-8} 
+	\begin{tikzpicture}[x=1mm,y=1mm]
+	\setlength{\tikZlengthH}{150mm-\tikZlengthwiii}
+	\setlength{\tikZlengthV}{50mm-\tikZlengthwiii}
+	\coordinate (lo) at (-\tikZlengthH/2,\tikZlengthV/2);
+	\coordinate (ru) at (\tikZlengthH/2,-\tikZlengthV/2);
+	\coordinate (lu) at (lo |- ru);
+	\coordinate (ro) at (lo -| ru);
+	\coordinate (lm) at ($(lo)!0.5!(lu)$);
+	\coordinate (rm) at (ro |- lm);
+	\draw[dashed] (lm) -- (rm);
+%	
+	\coordinate (linse1m) at ([shift={(50,0)}]lm);
+	\coordinate (linse1o) at ([shift={(0,15)}]linse1m);
+	\coordinate (linse1u) at ([shift={(0,-15)}]linse1m);
+	\draw[fill=black!15!white] (linse1o) to [bend right = 10] (linse1u) to [bend right = 10] (linse1o);
+	
+	
+	\coordinate (linse2m) at ([shift={(50,0)}]linse1m);
+	\coordinate (linse2o) at (linse2m |- linse1o);
+	\coordinate (linse2u) at (linse2m |- linse1u);
+	\draw[fill=black!15!white] (linse2o) to [bend right = 12] (linse2u) to [bend right = 12] (linse2o);
+%	
+	\coordinate (f1l) at ([shift={(-10,0)}]linse1m);
+	\coordinate (f1r) at ([shift={(10,0)}]linse1m);
+	\coordinate (f2l) at ([shift={(-12,0)}]linse2m);
+	\coordinate (f2r) at ([shift={(12,0)}]linse2m);
+	\foreach \x/\y/\z in {f1l/{$F_1$}/{45}, f1r/{$F_1^\prime$}/{135}, f2l/{$F_2$}/{45}, f2r/{$F_2^\prime$}/{135}}{
+		\node [circ, label={\z:\y}] at (\x) {};
+	}
+
+	\coordinate (hl) at ([shift={(-30,0)}]linse1m);
+	\coordinate (hr) at ([shift={(30,0)}]linse2m);
+	\foreach \x in {hl, hr}{
+		\node [circ] at (\x) {};
+	}
+	
+	\foreach \x in {linse1m, linse2m}{
+		\draw (\x |- lo) -- (\x |- lu);
+	}
+	\end{tikzpicture}
+	\caption{Linsensystem}
+	\label{fig:Auswertung:Visualisierung:Linsensystem}
+\end{figure}
+
+\tikzset{external/export=false}
+
+%% end: LaTeX-TikZ-Examples.tex
