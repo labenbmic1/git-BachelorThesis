@@ -1433,374 +1433,374 @@ examstyle/.style={%
 	}%
 }}%
 \ExplSyntaxOff%
-%% ================================================================================ %%
-%% ================================ hyphenation *********************************** %%
-%% ******************************************************************************** %%
-%% Hyphenation                                                                      %%
-\hyphenation{normalem uwforbf ulforem}%                                             %%
-%% ================================================================================ %%
-%% ========================== footnotes (Koma-Script) ***************************** %%
-%% ******************************************************************************** %%
-%% Multiple-footnotes enabled                                                       %%
-\KOMAoptions{footnotes=multiple}%                                                   %%
-\renewcommand*{\multfootsep}{,\nobreakspace}% %% \nobreakspace !                    %%
-%% \blfootnote is a footnote without a number and the counter doesn't               %%
-%% increment                                                                        %%
-\makeatletter%                                                                      %%
-\def\blfootnote{\xdef\@thefnmark{}\@footnotetext}%                                  %%
-\makeatother%                                                                       %%
-%% \setfootnoterule[Höhe]{Länge} %% falls die Länge des Strichs verändert           %%
-%% werden soll                                                                      %%
-%% Hinweis: Mehrere Fussnoten zur gleichen Referenz werden mit \footref erzeugt     %%
-\makeatletter%                                                                      %%
-\@ifclassloaded{scrreprt}{%                                                         %%
-	\counterwithout*{footnote}{chapter}%                                            %%
-	%\counterwithin*{footnote}{part}%                                               %%
-}{}%                                                                                %%
-\makeatother%                                                                       %%
-%% ================================================================================ %%
-%% ================================== siunitx ************************************* %%
-%% ******************************************************************************** %%
-\DeclareSIUnit{\dyne}{dyn}%                                                         %%
-\DeclareSIUnit{\franklin}{Fr}%                                                      %%
-\DeclareSIUnit{\statcoulomb}{statC}%                                                %%
-\DeclareSIUnit\clight{\text{\ensuremath{c}}}%                                       %%
-\DeclareSIUnit\year{a}%                                                             %%
-\makeatletter%                                                                      %%
-\AtBeginDocument{%                                                                  %%
-	\TUM@ifpackageloaded[setting]{babel}{%                                          %%
-		\AfterEndPreamble{%                                                         %%
-			\addto\extrasnaustrian{%                                                %%
-				\sisetup{output-decimal-marker = {,}}%                              %%
-			}%                                                                      %%
-			\addto\extrasngerman{%                                                  %%
-				\sisetup{output-decimal-marker = {,}}%                              %%
-			}%                                                                      %%
-			\addto\extrasamerican{%                                                 %%
-				\sisetup{output-decimal-marker = {.}}%                              %%
-			}%                                                                      %%
-			\addto\extrasenglish{%                                                  %%
-				\sisetup{output-decimal-marker = {.}}%                              %%
-			}%                                                                      %%
-			\sisetup{group-minimum-digits=4, group-separator = \, ,                 %%
-			exponent-product=\cdot, output-product=\cdot,%                          %%
-			separate-uncertainty = true,% uncertainty                               %%
-			per-mode = symbol,% fraction-symbol (or: fraction)                      %%
-			inter-unit-product = \,,%                                               %%
-			multi-part-units = single,% (or: brackets (standard))                   %%
-			range-phrase = {~--~} ,% text mode: symbol/text like: (z.B.: 1 to 5)    %%
-			%% if math mode: then range-phrase = {-} ,%                             %%
-			detect-all,% detect-all: weight, family, shape, mode                    %%
-			%% change for each table-row !                                          %%
-			table-number-alignment=center,%                                         %%
-			table-figures-integer=2, table-figures-decimal=2,%                      %%
-			table-column-width=0.1\textwidth-2\tabcolsep%                           %%
-			%table-figures-exponent=1,%                                             %%
-			%table-sign-exponent,%                                                  %%
-			%table-sign-mantissa=true,% etc.                                        %%
-			}%                                                                      %%
-		}%                                                                          %%
-	}{}%                                                                            %%
-}%                                                                                  %%
-\makeatother%                                                                       %%
-%% if one uses sansmath, then correct it with siunitx%                              %%
-\makeatletter%                                                                      %%
-\TUM@ifpackageloaded[setting=false]{sansmath}{%                                     %%
-	\def\unboldmath{%                                                               %%
-	 \@nomath\unboldmath%                                                           %%
-	 \sansmath%                                                                     %%
-   }%                                                                               %%
-}{}%                                                                                %%
-\makeatother%                                                                       %%
-%% locale = UK = US:                                                                %%
-%%  exponent-product = \ensuremath{\times}, inter-unit-product = \, ,               %%
-%%  output-decimal-marker = .                                                       %%
-%% ================================================================================ %%
-%% ============================== babel & csquotes ******************************** %%
-%% ******************************************************************************** %%
-\makeatletter%                                                                      %%
-\TUM@ifpackageloaded[setting]{csquotes}{%                                           %%
-	\newcommand{\quoteb}{\openautoquote}%                                           %%
-	\newcommand{\quotee}{\closeautoquote}%                                          %%
-}{}%                                                                                %%
-\TUM@ifpackageloaded[setting]{babel}{%                                              %%
-	\useshorthands*{"}%                                                             %%
-	\defineshorthand{"`}{\openautoquote}%                                           %%
-	\defineshorthand{"'}{\closeautoquote}%                                          %%
-}{}%                                                                                %%
-%% Switch shorthands from language to language                                      %%
-% \AtBeginDocument{%                                                                %%
-%     \@ifpackageloaded{babel}{%                                                    %%
-%       %\addto\extras...{\languageshorthands{...}}%                                %%
-%     }{}%                                                                          %%
-% }%                                                                                %%
-\makeatother%                                                                       %%
-%% ================================================================================ %%
-%% ============================== graphicx & float ******************************** %%
-%% ******************************************************************************** %%
-\makeatletter%                                                                      %%
-\TUM@ifpackageloaded[setting]{graphicx}{%                                           %%
-	%% graphicspath{{path1}{path2}...{pathn}} adds the paths to \includegraphic[]{} %%
-	\graphicspath{{images/titlepage/}{images/help/}{images/}%                       %%
-	{images/external/images/tikz/}{images/tikz/}{images/appendix/}}%                %%
-}{}%                                                                                %%
-\makeatother%                                                                       %%
-%% Standard floatplacement's                                                        %%
-\makeatletter%                                                                      %%
-\TUM@ifpackageloaded[setting]{float}{%                                              %%
-	\floatplacement{figure}{H}%                                                     %%
-	\floatplacement{table}{H}%                                                      %%
-}{}%                                                                                %%
-\makeatother%                                                                       %%
-\ExplSyntaxOn%                                                                      %%
-%% Messages for \includegraphicshelp                                                %%
-\msg_new:nnn {tum-physics} {includegraphics/missing_graphic} {}%                    %%
-\NewDocumentCommand{\includegraphicshelp}{sO{}}{%                                   %%
-	\int_set:Nn \l_tmpa_int {\msg_line_number:}%                                    %%
-	\int_sub:Nn \l_tmpa_int {1}%                                                    %%
-	\msg_set:nnnn {tum-physics} {includegraphics/missing_graphic} {%                %%
-		Missing~figure~(see~line~\int_use:N \l_tmpa_int).%                          %%
-	}{}%                                                                            %%
-	\msg_warning:nn {tum-physics} {includegraphics/missing_graphic}%                %%
-	\IfBooleanTF{#1}{%                                                              %%
-		\includegraphics*[#2]{help.png}%                                            %%
-	}{%                                                                             %%
-		\includegraphics[#2]{help.png}%                                             %%
-	}%                                                                              %%
-}%                                                                                  %%
-\ExplSyntaxOff%                                                                     %%
-%% ExplSyntaxOff for: \@todonotes@MissingFigureText                                 %%
-\makeatletter%                                                                      %%
-\NewDocumentCommand{\todoincludegraphics}{sO{}m}{}%                                 %%
-\AtBeginDocument{%                                                                  %%
-	\TUM@ifpackageloaded[setting]{todonotes}{%                                      %%
-		\RenewDocumentCommand{\todoincludegraphics}{sO{}m}{%                        %%
-			\if@todonotes@disabled\else%                                            %%
-				\addcontentsline{tdo}{todo}{\@todonotes@MissingFigureText: #3}%     %%
-			\fi%                                                                    %%
-			\IfBooleanTF{#1}{\includegraphicshelp*[#2]}{\includegraphicshelp[#2]}%  %%
-		}%                                                                          %%
-	}{%                                                                             %%
-		\RenewDocumentCommand{\todoincludegraphics}{sO{}m}{%                        %%
-			\IfBooleanTF{#1}{\includegraphicshelp*[#2]}{\includegraphicshelp[#2]}%  %%
-		}%                                                                          %%
-	}%                                                                              %%
-}%                                                                                  %%
-\makeatother%                                                                       %%
-%% ================================================================================ %%
-%% ======================== subfig, caption & subcaption ************************** %%
-%% ******************************************************************************** %%
-%% Set the style of the captionlabel/caption                                        %%
-\setkomafont{captionlabel}{\normalsize\bfseries}%                                   %%
-\setkomafont{caption}{\normalsize}%                                                 %%
-\KOMAoption{captions}{bottombeside}%                                                %%
-\makeatletter%                                                                      %%
-\TUM@ifpackageloaded[setting=false]{subfig}{%                                       %%
-	\renewcommand\p@subfigure{\thefigure.}%                                         %%
-	\renewcommand\p@subtable{\thetable.}%                                           %%
-}{}%                                                                                %%
-\TUM@ifpackageloaded[setting]{caption}{%                                            %%
-	\TUM@ifpackageloaded[setting]{hyperref}{%                                       %%
-		\captionsetup{hypcap=true}%                                                 %%
-	}{}%                                                                            %%
-	%\captionsetup[table]{position=top}% KOMA-option is stronger (automatically)    %%
-	%\captionsetup[figure]{position=bottom}% KOMA-option is stronger (automatically)%%
-	\captionsetup{rule=false}% reset make@caption to KOMA-Script,%                  %%
-	\captionsetup[subtable]{labelformat=simple,labelsep=period,listformat=simple}%  %%
-	\captionsetup[subfigure]{labelformat=simple,labelsep=period,listformat=simple}% %%
-	\captionsetup{format=plain}%                                                    %%
-}{}%                                                                                %%
-\TUM@ifpackageloaded[setting]{subcaption}{%                                         %%
-	\renewcommand\p@subfigure{\thefigure.}%                                         %%
-	\renewcommand\p@subtable{\thetable.}%                                           %%
-}{}%                                                                                %%
-\makeatother%                                                                       %%
-%% ================================================================================ %%
-%% =================================== tables ************************************* %%
-%% ******************************************************************************** %%
-%% Neue Spaltenparameter :D (praktisch)                                             %%
-\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}%                          %%
-\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}%                            %%
-\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}%                           %%
-\newcolumntype{M}[1]{>{\raggedright\arraybackslash}m{#1}}%                          %%
-\newcolumntype{N}[1]{>{\centering\arraybackslash}m{#1}}%                            %%
-\newcolumntype{O}[1]{>{\raggedleft\arraybackslash}m{#1}}%                           %%
-\newcolumntype{Z}[3]{>{#3\arraybackslash}#1{#2}}%                                   %%
-\makeatletter%                                                                      %%
-\TUM@ifpackageloaded[setting]{tabularx}{%                                           %%
-	\newcolumntype{A}{>{\centering\arraybackslash}X}%                               %%
-	\newcolumntype{B}{>{\raggedleft\arraybackslash}X}%                              %%
-}{}%                                                                                %%
-\TUM@ifpackageloaded[setting]{array}{%                                              %%
-	\newcommand\undefcolumntype[1]{%                                                %%
-		\expandafter\let\csname NC@find@#1\endcsname\relax%                         %%
-	}%                                                                              %%
-}{}%                                                                                %%
-\makeatother%                                                                       %%
-%% Damit einzelne Tabellenabschnitte links-, rechtsbuendig / zentriert werden:      %%
-\newcommand{\ltab}{\raggedright\arraybackslash}%                                    %%
-\newcommand{\ctab}{\centering\arraybackslash}%                                      %%
-\newcommand{\rtab}{\raggedleft\arraybackslash}%                                     %%
-%% ================================================================================ %%
-%% ==============  Definition of the header/footer-style and matters ************** %%
-%% ******************************************************************************** %%
-%% ---------------------- Definition of the matters/pagestyle --------------------- %%
-%% If report, then copy matters from book,                                          %%
-\makeatletter%                                                                      %%
-\@ifclassloaded{scrreprt}{%                                                         %%
-	\newif\if@mainmatter\@mainmattertrue%                                           %%
-	\newcommand*\frontmatter{%                                                      %%
-		\if@twoside\cleardoubleoddpage\else\clearpage\fi%                           %%
-		\@mainmatterfalse\pagenumbering{roman}%                                     %%
-	}%                                                                              %%
-	\newcommand*\mainmatter{%                                                       %%
-		\if@twoside\cleardoubleoddpage\else\clearpage\fi%                           %%
-		\@mainmattertrue\pagenumbering{arabic}%                                     %%
-	}%                                                                              %%
-	\newcommand*\backmatter{%                                                       %%
-		\if@openright\cleardoubleoddpage\else\clearpage\fi\@mainmatterfalse%        %%
-	}%                                                                              %%
-}{}%                                                                                %%
-\makeatother%                                                                       %%
-%% -------------------------- Definition of the head/foot ------------------------- %%
-\TUMRequirePackage{packages/tumheader}%                                             %%
-%% ---------------------- Definition of the matters/pagestyle --------------------- %%
-%% after: tumheader                                                                 %%
-\TUMRequirePackage{packages/tummatter}%                                             %%
-%% ================================================================================ %%
-%% =================================== Abstract *********************************** %%
-%% ******************************************************************************** %%
-\renewcaptionname{american}{\abstractname}{Abstract}%                               %%
-\renewcaptionname{naustrian}{\abstractname}{Resümee}%                               %%
-\ifcsmacro{abstract}{%                                                              %%
-	\renewenvironment{abstract}{%                                                   %%
-		\addchap{\abstractname}%                                                    %%
-	}{}%                                                                            %%
-}{%                                                                                 %%
-	\newenvironment{abstract}{%                                                     %%
-		\addchap{\abstractname}%                                                    %%
-	}{}%                                                                            %%
-}%                                                                                  %%
-%% ================================================================================ %%
-%% ========================== Declaration of Authorship *************************** %%
-%% ******************************************************************************** %%
-\makeatletter%                                                                      %%
-\AtBeginDocument{%                                                                  %%
-	\newcommand*{\declarationofauthorshipname}{}%                                   %%
-	\TUM@ifpackageloaded[setting]{babel}{% begin: babel loaded                      %%
-		\AfterEndPreamble{%                                                         %%
-			\addto\extrasnaustrian{%                                                %%
-			\renewcommand*{\declarationofauthorshipname}{Eidesstattliche Erklärung}%%%
-			}%                                                                      %%
-			\addto\extrasngerman{%                                                  %%
-			\renewcommand*{\declarationofauthorshipname}{Eidesstattliche Erklärung}%%%
-			}%                                                                      %%
-			\addto\extrasamerican{%                                                 %%
-			\renewcommand*{\declarationofauthorshipname}{Declaration of Authorship}%%%
-			}%                                                                      %%
-			\addto\extrasenglish{%                                                  %%
-			\renewcommand*{\declarationofauthorshipname}{Declaration of Authorship}%%%
-			}%                                                                      %%
-		}%                                                                          %%
-	}{}%                                                                            %%
-}%                                                                                  %%
-\makeatother%                                                                       %%
-%% ================================================================================ %%
-%% ================================ Acknowledgments ******************************* %%
-%% ******************************************************************************** %%
-\makeatletter%                                                                      %%
-\AtBeginDocument{%                                                                  %%
-	\newcommand*{\acknowledgmentsname}{}%                                           %%
-	\TUM@ifpackageloaded[setting]{babel}{% begin: babel loaded                      %%
-		\AfterEndPreamble{%                                                         %%
-			\addto\extrasnaustrian{%                                                %%
-				\renewcommand*{\acknowledgmentsname}{Danksagung}%                   %%
-			}%                                                                      %%
-			\addto\extrasngerman{%                                                  %%
-				\renewcommand*{\acknowledgmentsname}{Danksagung}%                   %%
-			}%                                                                      %%
-			\addto\extrasamerican{%                                                 %%
-				\renewcommand*{\acknowledgmentsname}{Acknowledgments}%              %%
-			}%                                                                      %%
-			\addto\extrasenglish{%                                                  %%
-				\renewcommand*{\acknowledgmentsname}{Acknowledgments}%              %%
-			}%                                                                      %%
-		}%                                                                          %%
-	}{}%                                                                            %%
-}%                                                                                  %%
-\makeatother%                                                                       %%
-%% ================================================================================ %%
-%% ============================= Seiteneinstellungen ****************************** %%
-%% ******************************************************************************** %%
-%% Set the space between lines with \onehalfspacing or \singlespacing (setspace)    %%
-%% Set the length of \parskip (ver. Einrueckung nach einem Umbruch)                 %%
-%% Set the \parindent to 0 (hor. Einrueckung nach einem Umbruch)                    %%
-%% \singlespacing% (setspace-package option)                                        %%
-\setlength{\parskip}{0pt plus1pt}% ("standard")                                     %%
-%% \setlength{\parindent}{0pt}%                                                     %%
-%% ================================================================================ %%
-%% =================== Definition of the section, sub-... style ******************* %%
-%% ******************************************************************************** %%
-%% ----------------------------- Section-/...-styles ------------------------------ %%
-\addtokomafont{disposition}{\boldmath\bfseries\sffamily}%                           %%
-%% Extra package to change section-style (underline)%                               %%
-%\TUMRequirePackage{packages/Ex-tumsections}%                                       %%
-%% --------------------- dynamische Nummernbreitenberechnung ---------------------- %%
-\makeatletter%                                                                      %%
-\newcommand*\TUM@pagenumberbox[1]{#1}%                                              %%
-\DeclareTOCStyleEntries[%                                                           %%
-dynnumwidth=true,% necessary if e.q. 14.10 in section                               %%
-pagenumberbox=\TUM@pagenumberbox% necessary if pagenumber > 100 (and e.q. bold-font)%%
-]{tocline}{part,chapter,section,subsection,subsubsection,figure,table}%             %%
-\makeatother%                                                                       %%
-%% ================================ Keywords ====================================== %%
-\makeatletter%                                                                      %%
-\ExplSyntaxOn%                                                                      %%
-\clist_new:N \l_TUM@keywords_clist%                                                 %%
-\NewDocumentCommand{\@TUM@keywords}{m}{%                                            %%
-	\clist_put_right:Nn \l_TUM@keywords_clist {#1}%                                 %%
-}%                                                                                  %%
-\clist_set:Nx \l_TUM@keywords_clist {%                                              %%
-	Technische~Universit\"at~M\"unchen,TUM,%                                        %%
-	Fakult\"at~f\"ur~Physik,Physik,Bachelor~Thesis%                                 %%
-}%                                                                                  %%
-\AtBeginDocument{%                                                                  %%
-	\pdfkeywords{\clist_use:Nnnn \l_TUM@keywords_clist {;} {;} {;}}%                %%
-	\hypersetup{%                                                                   %%
-		pdftitle={\@pdftitle},%                                                     %%
-		pdfsubject={\@pdfsubject},%                                                 %%
-		pdfauthor={\@pdfauthor},%                                                   %%
-		pdfkeywords={\@pdfkeywords}%                                                %%
-		% pdfcreator, pdfproducer                                                   %%
-	}%                                                                              %%
-}%                                                                                  %%
-\ExplSyntaxOff%                                                                     %%
-\makeatother%                                                                       %%
-%% ======================== TOC/LOF/LOT/LOB/LOL/titlepage ========================= %%
-\TUMRequirePackage{packages/tumtoc}%                                                %%
-\TUMRequirePackage{packages/tumlof}%                                                %%
-\TUMRequirePackage{packages/tumlot}%                                                %%
-\TUMRequirePackage{packages/tumlob}%                                                %%
-\makeatletter%                                                                      %%
-\TUM@ifpackageloaded[setting]{listings}{%                                           %%
-	\TUMRequirePackage{packages/tumlol}%                                            %%
-}{}%                                                                                %%
-\TUM@ifpackageloaded[setting]{imakeidx}{%                                           %%
-	\TUMRequirePackage{packages/tumidx}%                                            %%
-}{}%                                                                                %%
-\TUM@ifpackageloaded[setting]{todonotes}{%                                          %%
-	\TUMRequirePackage{packages/tumtdo}%                                            %%
-}{}%                                                                                %%
-\makeatother%                                                                       %%
-\TUMRequirePackage{packages/tumtitlepage}%                                          %%
-%% ===================================== TUM ? ==================================== %%
-%\tolerance 1414                                                                    %%
-%\hbadness 1414                                                                     %%
-%\emergencystretch 1.5em                                                            %%
-%\hfuzz 0.3pt                                                                       %%
-\widowpenalty=10000%                                                                %%
-\clubpenalty=10000%                                                                 %%
-\displaywidowpenalty=10000%                                                         %%
-%\vfuzz \hfuzz                                                                      %%
-\raggedbottom%                                                                      %%
-\endinput%                                                                          %%
+%% ================================================================================ 
+%% ================================ hyphenation *********************************** 
+%% ******************************************************************************** 
+%% Hyphenation                                                                      
+\hyphenation{normalem uwforbf ulforem}%                                             
+%% ================================================================================ 
+%% ========================== footnotes (Koma-Script) ***************************** 
+%% ******************************************************************************** 
+%% Multiple-footnotes enabled                                                       
+\KOMAoptions{footnotes=multiple}%                                                   
+\renewcommand*{\multfootsep}{,\nobreakspace}% %% \nobreakspace !                    
+%% \blfootnote is a footnote without a number and the counter doesn't               
+%% increment                                                                        
+\makeatletter%                                                                      
+\def\blfootnote{\xdef\@thefnmark{}\@footnotetext}%                                  
+\makeatother%                                                                       
+%% \setfootnoterule[Höhe]{Länge} %% falls die Länge des Strichs verändert           
+%% werden soll                                                                      
+%% Hinweis: Mehrere Fussnoten zur gleichen Referenz werden mit \footref erzeugt     
+\makeatletter%                                                                      
+\@ifclassloaded{scrreprt}{%                                                         
+	\counterwithout*{footnote}{chapter}%                                            
+	%\counterwithin*{footnote}{part}%                                               
+}{}%                                                                                
+\makeatother%                                                                       
+%% ================================================================================ 
+%% ================================== siunitx ************************************* 
+%% ******************************************************************************** 
+\DeclareSIUnit{\dyne}{dyn}%                                                         
+\DeclareSIUnit{\franklin}{Fr}%                                                      
+\DeclareSIUnit{\statcoulomb}{statC}%                                                
+\DeclareSIUnit\clight{\text{\ensuremath{c}}}%                                       
+\DeclareSIUnit\year{a}%                                                             
+\makeatletter%                                                                      
+\AtBeginDocument{%                                                                  
+	\TUM@ifpackageloaded[setting]{babel}{%                                          
+		\AfterEndPreamble{%                                                         
+			\addto\extrasnaustrian{%                                                
+				\sisetup{output-decimal-marker = {,}}%                              
+			}%                                                                      
+			\addto\extrasngerman{%                                                  
+				\sisetup{output-decimal-marker = {,}}%                              
+			}%                                                                      
+			\addto\extrasamerican{%                                                 
+				\sisetup{output-decimal-marker = {.}}%                              
+			}%                                                                      
+			\addto\extrasenglish{%                                                  
+				\sisetup{output-decimal-marker = {.}}%                              
+			}%                                                                      
+			\sisetup{group-minimum-digits=4, group-separator = \, ,                 
+			exponent-product=\cdot, output-product=\cdot,%                          
+			separate-uncertainty = true,% uncertainty                               
+			per-mode = symbol,% fraction-symbol (or: fraction)                      
+			inter-unit-product = \,,%                                               
+			multi-part-units = single,% (or: brackets (standard))                   
+			range-phrase = {~--~} ,% text mode: symbol/text like: (z.B.: 1 to 5)    
+			%% if math mode: then range-phrase = {-} ,%                             
+			detect-all,% detect-all: weight, family, shape, mode                    
+			%% change for each table-row !                                          
+			table-number-alignment=center,%                                         
+			table-figures-integer=2, table-figures-decimal=2,%                      
+			table-column-width=0.1\textwidth-2\tabcolsep%                           
+			%table-figures-exponent=1,%                                             
+			%table-sign-exponent,%                                                  
+			%table-sign-mantissa=true,% etc.                                        
+			}%                                                                      
+		}%                                                                          
+	}{}%                                                                            
+}%                                                                                  
+\makeatother%                                                                       
+%% if one uses sansmath, then correct it with siunitx%                              
+\makeatletter%                                                                      
+\TUM@ifpackageloaded[setting=false]{sansmath}{%                                     
+	\def\unboldmath{%                                                               
+	 \@nomath\unboldmath%                                                           
+	 \sansmath%                                                                     
+   }%                                                                               
+}{}%                                                                                
+\makeatother%                                                                       
+%% locale = UK = US:                                                                
+%%  exponent-product = \ensuremath{\times}, inter-unit-product = \, ,               
+%%  output-decimal-marker = .                                                       
+%% ================================================================================ 
+%% ============================== babel & csquotes ******************************** 
+%% ******************************************************************************** 
+\makeatletter%                                                                      
+\TUM@ifpackageloaded[setting]{csquotes}{%                                           
+	\newcommand{\quoteb}{\openautoquote}%                                           
+	\newcommand{\quotee}{\closeautoquote}%                                          
+}{}%                                                                                
+\TUM@ifpackageloaded[setting]{babel}{%                                              
+	\useshorthands*{"}%                                                             
+	\defineshorthand{"`}{\openautoquote}%                                           
+	\defineshorthand{"'}{\closeautoquote}%                                          
+}{}%                                                                                
+%% Switch shorthands from language to language                                      
+% \AtBeginDocument{%                                                                
+%     \@ifpackageloaded{babel}{%                                                    
+%       %\addto\extras...{\languageshorthands{...}}%                                
+%     }{}%                                                                          
+% }%                                                                                
+\makeatother%                                                                       
+%% ================================================================================ 
+%% ============================== graphicx & float ******************************** 
+%% ******************************************************************************** 
+\makeatletter%                                                                      
+\TUM@ifpackageloaded[setting]{graphicx}{%                                           
+	%% graphicspath{{path1}{path2}...{pathn}} adds the paths to \includegraphic[]{} 
+	\graphicspath{{images/titlepage/}{images/help/}{images/}%                       
+	{images/external/images/tikz/}{images/tikz/}{images/appendix/}}%                
+}{}%                                                                                
+\makeatother%                                                                       
+%% Standard floatplacement's                                                        
+\makeatletter%                                                                      
+\TUM@ifpackageloaded[setting]{float}{%                                              
+	\floatplacement{figure}{H}%                                                     
+	\floatplacement{table}{H}%                                                      
+}{}%                                                                                
+\makeatother%                                                                       
+\ExplSyntaxOn%                                                                      
+%% Messages for \includegraphicshelp                                                
+\msg_new:nnn {tum-physics} {includegraphics/missing_graphic} {}%                    
+\NewDocumentCommand{\includegraphicshelp}{sO{}}{%                                   
+	\int_set:Nn \l_tmpa_int {\msg_line_number:}%                                    
+	\int_sub:Nn \l_tmpa_int {1}%                                                    
+	\msg_set:nnnn {tum-physics} {includegraphics/missing_graphic} {%                
+		Missing~figure~(see~line~\int_use:N \l_tmpa_int).%                          
+	}{}%                                                                            
+	\msg_warning:nn {tum-physics} {includegraphics/missing_graphic}%                
+	\IfBooleanTF{#1}{%                                                              
+		\includegraphics*[#2]{help.png}%                                            
+	}{%                                                                             
+		\includegraphics[#2]{help.png}%                                             
+	}%                                                                              
+}%                                                                                  
+\ExplSyntaxOff%                                                                     
+%% ExplSyntaxOff for: \@todonotes@MissingFigureText                                 
+\makeatletter%                                                                      
+\NewDocumentCommand{\todoincludegraphics}{sO{}m}{}%                                 
+\AtBeginDocument{%                                                                  
+	\TUM@ifpackageloaded[setting]{todonotes}{%                                      
+		\RenewDocumentCommand{\todoincludegraphics}{sO{}m}{%                        
+			\if@todonotes@disabled\else%                                            
+				\addcontentsline{tdo}{todo}{\@todonotes@MissingFigureText: #3}%     
+			\fi%                                                                    
+			\IfBooleanTF{#1}{\includegraphicshelp*[#2]}{\includegraphicshelp[#2]}%  
+		}%                                                                          
+	}{%                                                                             
+		\RenewDocumentCommand{\todoincludegraphics}{sO{}m}{%                        
+			\IfBooleanTF{#1}{\includegraphicshelp*[#2]}{\includegraphicshelp[#2]}%  
+		}%                                                                          
+	}%                                                                              
+}%                                                                                  
+\makeatother%                                                                       
+%% ================================================================================ 
+%% ======================== subfig, caption & subcaption ************************** 
+%% ******************************************************************************** 
+%% Set the style of the captionlabel/caption                                        
+\setkomafont{captionlabel}{\normalsize\bfseries}%                                   
+\setkomafont{caption}{\normalsize}%                                                 
+\KOMAoption{captions}{bottombeside}%                                                
+\makeatletter%                                                                      
+\TUM@ifpackageloaded[setting=false]{subfig}{%                                       
+	\renewcommand\p@subfigure{\thefigure.}%                                         
+	\renewcommand\p@subtable{\thetable.}%                                           
+}{}%                                                                                
+\TUM@ifpackageloaded[setting]{caption}{%                                            
+	\TUM@ifpackageloaded[setting]{hyperref}{%                                       
+		\captionsetup{hypcap=true}%                                                 
+	}{}%                                                                            
+	%\captionsetup[table]{position=top}% KOMA-option is stronger (automatically)    
+	%\captionsetup[figure]{position=bottom}% KOMA-option is stronger (automatically)
+	\captionsetup{rule=false}% reset make@caption to KOMA-Script,%                  
+	\captionsetup[subtable]{labelformat=simple,labelsep=period,listformat=simple}%  
+	\captionsetup[subfigure]{labelformat=simple,labelsep=period,listformat=simple}% 
+	\captionsetup{format=plain}%                                                    
+}{}%                                                                                
+\TUM@ifpackageloaded[setting]{subcaption}{%                                         
+	\renewcommand\p@subfigure{\thefigure.}%                                         
+	\renewcommand\p@subtable{\thetable.}%                                           
+}{}%                                                                                
+\makeatother%                                                                       
+%% ================================================================================ 
+%% =================================== tables ************************************* 
+%% ******************************************************************************** 
+%% Neue Spaltenparameter :D (praktisch)                                             
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}%                          
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}%                            
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}%                           
+\newcolumntype{M}[1]{>{\raggedright\arraybackslash}m{#1}}%                          
+\newcolumntype{N}[1]{>{\centering\arraybackslash}m{#1}}%                            
+\newcolumntype{O}[1]{>{\raggedleft\arraybackslash}m{#1}}%                           
+\newcolumntype{Z}[3]{>{#3\arraybackslash}#1{#2}}%                                   
+\makeatletter%                                                                      
+\TUM@ifpackageloaded[setting]{tabularx}{%                                           
+	\newcolumntype{A}{>{\centering\arraybackslash}X}%                               
+	\newcolumntype{B}{>{\raggedleft\arraybackslash}X}%                              
+}{}%                                                                                
+\TUM@ifpackageloaded[setting]{array}{%                                              
+	\newcommand\undefcolumntype[1]{%                                                
+		\expandafter\let\csname NC@find@#1\endcsname\relax%                         
+	}%                                                                              
+}{}%                                                                                
+\makeatother%                                                                       
+%% Damit einzelne Tabellenabschnitte links-, rechtsbuendig / zentriert werden:      
+\newcommand{\ltab}{\raggedright\arraybackslash}%                                    
+\newcommand{\ctab}{\centering\arraybackslash}%                                      
+\newcommand{\rtab}{\raggedleft\arraybackslash}%                                     
+%% ================================================================================ 
+%% ==============  Definition of the header/footer-style and matters ************** 
+%% ******************************************************************************** 
+%% ---------------------- Definition of the matters/pagestyle --------------------- 
+%% If report, then copy matters from book,                                          
+\makeatletter%                                                                      
+\@ifclassloaded{scrreprt}{%                                                         
+	\newif\if@mainmatter\@mainmattertrue%                                           
+	\newcommand*\frontmatter{%                                                      
+		\if@twoside\cleardoubleoddpage\else\clearpage\fi%                           
+		\@mainmatterfalse\pagenumbering{roman}%                                     
+	}%                                                                              
+	\newcommand*\mainmatter{%                                                       
+		\if@twoside\cleardoubleoddpage\else\clearpage\fi%                           
+		\@mainmattertrue\pagenumbering{arabic}%                                     
+	}%                                                                              
+	\newcommand*\backmatter{%                                                       
+		\if@openright\cleardoubleoddpage\else\clearpage\fi\@mainmatterfalse%        
+	}%                                                                              
+}{}%                                                                                
+\makeatother%                                                                       
+%% -------------------------- Definition of the head/foot ------------------------- 
+\TUMRequirePackage{packages/tumheader}%                                             
+%% ---------------------- Definition of the matters/pagestyle --------------------- 
+%% after: tumheader                                                                 
+\TUMRequirePackage{packages/tummatter}%                                             
+%% ================================================================================ 
+%% =================================== Abstract *********************************** 
+%% ******************************************************************************** 
+\renewcaptionname{american}{\abstractname}{Abstract}%                               
+\renewcaptionname{naustrian}{\abstractname}{Resümee}%                               
+\ifcsmacro{abstract}{%                                                              
+	\renewenvironment{abstract}{%                                                   
+		\addchap{\abstractname}%                                                    
+	}{}%                                                                            
+}{%                                                                                 
+	\newenvironment{abstract}{%                                                     
+		\addchap{\abstractname}%                                                    
+	}{}%                                                                            
+}%                                                                                  
+%% ================================================================================ 
+%% ========================== Declaration of Authorship *************************** 
+%% ******************************************************************************** 
+\makeatletter%                                                                      
+\AtBeginDocument{%                                                                  
+	\newcommand*{\declarationofauthorshipname}{}%                                   
+	\TUM@ifpackageloaded[setting]{babel}{% begin: babel loaded                      
+		\AfterEndPreamble{%                                                         
+			\addto\extrasnaustrian{%                                                
+			\renewcommand*{\declarationofauthorshipname}{Eidesstattliche Erklärung}%
+			}%                                                                      
+			\addto\extrasngerman{%                                                  
+			\renewcommand*{\declarationofauthorshipname}{Eidesstattliche Erklärung}%
+			}%                                                                      
+			\addto\extrasamerican{%                                                 
+			\renewcommand*{\declarationofauthorshipname}{Declaration of Authorship}%
+			}%                                                                      
+			\addto\extrasenglish{%                                                  
+			\renewcommand*{\declarationofauthorshipname}{Declaration of Authorship}%
+			}%                                                                      
+		}%                                                                          
+	}{}%                                                                            
+}%                                                                                  
+\makeatother%                                                                       
+%% ================================================================================ 
+%% ================================ Acknowledgments ******************************* 
+%% ******************************************************************************** 
+\makeatletter%                                                                      
+\AtBeginDocument{%                                                                  
+	\newcommand*{\acknowledgmentsname}{}%                                           
+	\TUM@ifpackageloaded[setting]{babel}{% begin: babel loaded                      
+		\AfterEndPreamble{%                                                         
+			\addto\extrasnaustrian{%                                                
+				\renewcommand*{\acknowledgmentsname}{Danksagung}%                   
+			}%                                                                      
+			\addto\extrasngerman{%                                                  
+				\renewcommand*{\acknowledgmentsname}{Danksagung}%                   
+			}%                                                                      
+			\addto\extrasamerican{%                                                 
+				\renewcommand*{\acknowledgmentsname}{Acknowledgments}%              
+			}%                                                                      
+			\addto\extrasenglish{%                                                  
+				\renewcommand*{\acknowledgmentsname}{Acknowledgments}%              
+			}%                                                                      
+		}%                                                                          
+	}{}%                                                                            
+}%                                                                                  
+\makeatother%                                                                       
+%% ================================================================================ 
+%% ============================= Seiteneinstellungen ****************************** 
+%% ******************************************************************************** 
+%% Set the space between lines with \onehalfspacing or \singlespacing (setspace)    
+%% Set the length of \parskip (ver. Einrueckung nach einem Umbruch)                 
+%% Set the \parindent to 0 (hor. Einrueckung nach einem Umbruch)                    
+%% \singlespacing% (setspace-package option)                                        
+\setlength{\parskip}{0pt plus1pt}% ("standard")                                     
+%% \setlength{\parindent}{0pt}%                                                     
+%% ================================================================================ 
+%% =================== Definition of the section, sub-... style ******************* 
+%% ******************************************************************************** 
+%% ----------------------------- Section-/...-styles ------------------------------ 
+\addtokomafont{disposition}{\boldmath\bfseries\sffamily}%                           
+%% Extra package to change section-style (underline)%                               
+%\TUMRequirePackage{packages/Ex-tumsections}%                                       
+%% --------------------- dynamische Nummernbreitenberechnung ---------------------- 
+\makeatletter%                                                                      
+\newcommand*\TUM@pagenumberbox[1]{#1}%                                              
+\DeclareTOCStyleEntries[%                                                           
+dynnumwidth=true,% necessary if e.q. 14.10 in section                               
+pagenumberbox=\TUM@pagenumberbox% necessary if pagenumber > 100 (and e.q. bold-font)
+]{tocline}{part,chapter,section,subsection,subsubsection,figure,table}%             
+\makeatother%                                                                       
+%% ================================ Keywords ====================================== 
+\makeatletter%                                                                      
+\ExplSyntaxOn%                                                                      
+\clist_new:N \l_TUM@keywords_clist%                                                 
+\NewDocumentCommand{\@TUM@keywords}{m}{%                                            
+	\clist_put_right:Nn \l_TUM@keywords_clist {#1}%                                 
+}%                                                                                  
+\clist_set:Nx \l_TUM@keywords_clist {%                                              
+	Technische~Universit\"at~M\"unchen,TUM,%                                        
+	Fakult\"at~f\"ur~Physik,Physik,Bachelor~Thesis%                                 
+}%                                                                                  
+\AtBeginDocument{%                                                                  
+	\pdfkeywords{\clist_use:Nnnn \l_TUM@keywords_clist {;} {;} {;}}%                
+	\hypersetup{%                                                                   
+		pdftitle={\@pdftitle},%                                                     
+		pdfsubject={\@pdfsubject},%                                                 
+		pdfauthor={\@pdfauthor},%                                                   
+		pdfkeywords={\@pdfkeywords}%                                                
+		% pdfcreator, pdfproducer                                                   
+	}%                                                                              
+}%                                                                                  
+\ExplSyntaxOff%                                                                     
+\makeatother%                                                                       
+%% ======================== TOC/LOF/LOT/LOB/LOL/titlepage ========================= 
+\TUMRequirePackage{packages/tumtoc}%                                                
+\TUMRequirePackage{packages/tumlof}%                                                
+\TUMRequirePackage{packages/tumlot}%                                                
+\TUMRequirePackage{packages/tumlob}%                                                
+\makeatletter%                                                                      
+\TUM@ifpackageloaded[setting]{listings}{%                                           
+	\TUMRequirePackage{packages/tumlol}%                                            
+}{}%                                                                                
+\TUM@ifpackageloaded[setting]{imakeidx}{%                                           
+	\TUMRequirePackage{packages/tumidx}%                                            
+}{}%                                                                                
+\TUM@ifpackageloaded[setting]{todonotes}{%                                          
+	\TUMRequirePackage{packages/tumtdo}%                                            
+}{}%                                                                                
+\makeatother%                                                                       
+\TUMRequirePackage{packages/tumtitlepage}%                                          
+%% ===================================== TUM ? ==================================== 
+%\tolerance 1414                                                                    
+%\hbadness 1414                                                                     
+%\emergencystretch 1.5em                                                            
+%\hfuzz 0.3pt                                                                       
+\widowpenalty=10000%                                                                
+\clubpenalty=10000%                                                                 
+\displaywidowpenalty=10000%                                                         
+%\vfuzz \hfuzz                                                                      
+\raggedbottom%                                                                      
+\endinput%                                                                          
