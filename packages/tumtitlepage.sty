@@ -1,248 +1,248 @@
-\NeedsTeXFormat{LaTeX2e}%                                                           %%
-\ProvidesExplPackage {packages/tumtitlepage} {2020-05-24} {\TUMversion}%            %%
-	{The titlepage-part made by Michael Labenbacher}%                               %%
-\ProcessKeysPackageOptions{packages/tumtitlepage}%                                  %%
-%% ExplSyntax is ON                                                                 %%
-\NewDocumentCommand{\TUMdefinemacro}{O{text}m}{%                                    %%
-	\str_case_e:nnTF {#1}{%                                                         %%
-	{text} {%                                                                       %%
-		\TUM_define_macro_text_func:ccn {TUM#2} {@TUM@#2} {TUM#2}%                  %%
-		}%                                                                          %%
-	{date} {%                                                                       %%
-		\TUM_define_macro_date_func:ccn {TUM#2} {@TUM@#2} {TUM#2}%                  %%
-		}%                                                                          %%
-	{mail} {%                                                                       %%
-		\TUM_define_macro_mail_func:ccnn {TUM#2} {@TUM@#2} {TUM#2} {#2}%            %%
-		}%                                                                          %%
-	{normal} {%                                                                     %%
-		\TUM_define_macro_normal_func:ccn {TUM#2} {@TUM@#2} {TUM#2}%                %%
-		}%                                                                          %%
-	{header} {%                                                                     %%
-		\TUM_define_macro_header_func:ccn {TUM#2} {@TUM@#2} {TUM#2}%                %%
-		}%                                                                          %%
-	{author} {%                                                                     %%
-		\TUM_define_macro_author_func:ccnn {TUM#2} {@TUM@#2} {TUM#2} {#2}%          %%
-		\TUM_define_macro_author_text_func:ccnn {TUM#2text} {@TUM@#2text}%          %%
-			{TUM#2text} {#2text}%                                                   %%
-		}%                                                                          %%
-	{supervisor} {%                                                                 %%
-		\TUM_define_macro_supervisor_func:ccnn {TUM#2} {@TUM@#2} {TUM#2} {#2}%      %%
-		\TUM_define_macro_assessor_text_func:ccnn {TUM#2text} {@TUM@#2text}%        %%
-			{TUM#2text} {#2text}%                                                   %%
-		}%                                                                          %%
-	{assessor} {%                                                                   %%
-		\TUM_define_macro_assessor_func:ccnn {TUM#2} {@TUM@#2} {TUM#2} {#2}%        %%
-		\TUM_define_macro_assessor_text_func:ccnn {TUM#2text} {@TUM@#2text}%        %%
-			{TUM#2text} {#2text}%                                                   %%
-		}%                                                                          %%
-	{topic} {%                                                                      %%
-		\TUM_define_macro_normal_func:ccn {TUM#2} {@TUM@#2} {TUM#2}%                %%
-		\TUM_define_macro_assessor_text_func:ccnn {TUM#2text} {@TUM@#2text}%        %%
-			{TUM#2text} {#2text}%                                                   %%
-		}%                                                                          %%
-	}{}{}%                                                                          %%
-}%                                                                                  %%
-\cs_new_protected:Npn \TUM_define_macro_normal_func:NNn #1#2#3 {%                   %%
-	\prop_new:c {g_#3_prop}%                                                        %%
-	\NewDocumentCommand{#1}{+O{\languagename}O{}m}{%                                %%
-		\tl_if_blank:nTF {##2}{%                                                    %%
-			\@TUM@keywords{##3}%                                                    %%
-		}{%                                                                         %%
-			\@TUM@keywords{##2}%                                                    %%
-		}%                                                                          %%
-		\prop_gput:cfn {g_#3_prop} {##1} {##3}%                                     %%
-	}%                                                                              %%
-	\NewDocumentCommand{#2}{}{%                                                     %%
-		\prop_item:cV {g_#3_prop} {\languagename}%                                  %%
-	}%                                                                              %%
-}%                                                                                  %%
-\cs_new_protected:Npn \TUM_define_macro_header_func:NNn #1#2#3 {%                   %%
-	\prop_new:c {g_#3_prop}%                                                        %%
-	\NewDocumentCommand{#1}{+O{\languagename}m}{%                                   %%
-		\prop_gput:cfn {g_#3_prop} {##1} {##2}%                                     %%
-	}%                                                                              %%
-	\NewDocumentCommand{#2}{}{%                                                     %%
-		\prop_item:cV {g_#3_prop} {\languagename}%                                  %%
-	}%                                                                              %%
-}%                                                                                  %%
-\cs_new_protected:Npn \TUM_define_macro_text_func:NNn #1#2#3 {%                     %%
-	\prop_new:c {g_#3_prop}%                                                        %%
-	\NewDocumentCommand{#1}{+O{\languagename}m}{%                                   %%
-	   \@TUM@keywords{##2}%                                                         %%
-		\prop_gput:cfn {g_#3_prop} {##1} {##2}%                                     %%
-	}%                                                                              %%
-	\NewDocumentCommand{#2}{}{%                                                     %%
-		\prop_item:cV {g_#3_prop} {\languagename}%                                  %%
-	}%                                                                              %%
-}%                                                                                  %%
-\cs_new_protected:Npn \TUM_define_macro_date_func:NNn #1#2#3 {%                     %%
-	\clist_new:c {g_#3_prop}%                                                       %%
-	\NewDocumentCommand{#1}{mmm}{%                                                  %%
-		\clist_gset:cn {g_#3_prop} {##1,##2,##3} %                                  %%
-	}%                                                                              %%
-	\NewDocumentCommand{#2}{}{%                                                     %%
-		\formatdate{%                                                               %%
-			\clist_item:cn {g_#3_prop} {1}%                                         %%
-		}{%                                                                         %%
-			\clist_item:cn {g_#3_prop} {2}%                                         %%
-		}{%                                                                         %%
-			\clist_item:cn {g_#3_prop} {3}%                                         %%
-		}%                                                                          %%
-	}%                                                                              %%
-}%                                                                                  %%
-\cs_new_protected:Npn \TUM_define_macro_author_func:NNnn #1#2#3#4 {%                %%
-	\clist_new:c {g_#3_clist}%                                                      %%
-	\NewDocumentCommand{#1}{O{}O{}m}{%                                              %%
-	   \@TUM@keywords{##3}%                                                         %%
-		\tl_if_blank:nTF {##2}{%                                                    %%
-			\tl_if_blank:nTF {##1}{%                                                %%
-				\clist_gput_right:cn {g_#3_clist} {%                                %%
-					{\usekomafont{#4}##3}%                                          %%
-				}%                                                                  %%
-			}{%                                                                     %%
-				\clist_gput_right:cn {g_#3_clist} {%                                %%
-					{\usekomafont{#4}\href{mailto:##1}{##3}}%                       %%
-				}%                                                                  %%
-			}%                                                                      %%
-		}{%                                                                         %%
-			\tl_if_blank:nTF {##1}{%                                                %%
-				\clist_gput_right:cn {g_#3_clist} {%                                %%
-					{\usekomafont{#4}##3~(##2)}%                                    %%
-				}%                                                                  %%
-			}{%                                                                     %%
-				\clist_gput_right:cn {g_#3_clist} {%                                %%
-					{\usekomafont{#4}\href{mailto:##1}{##3}~(##2)}%                 %%
-				}%                                                                  %%
-			}%                                                                      %%
-		}%                                                                          %%
-	}%                                                                              %%
-	\NewDocumentCommand{#2}{}{%                                                     %%
-		\clist_use:cn {g_#3_clist} {\\}%                                            %%
-	}%                                                                              %%
-}%                                                                                  %%
-\cs_new_protected:Npn \TUM_define_macro_supervisor_func:NNnn #1#2#3#4 {%            %%
-	\clist_new:c {g_#3_clist}%                                                      %%
-	\NewDocumentCommand{#1}{O{}m}{%                                                 %%
-	   \@TUM@keywords{##2}%                                                         %%
-		\tl_if_blank:nTF {##1}{%                                                    %%
-			\clist_gput_right:cn {g_#3_clist} {%                                    %%
-				{\usekomafont{#4}##2}%                                              %%
-			}%                                                                      %%
-		}{%                                                                         %%
-			\clist_gput_right:cn {g_#3_clist} {%                                    %%
-				{\usekomafont{#4}\href{mailto:##1}{##2}}%                           %%
-			}%                                                                      %%
-		}%                                                                          %%
-	}%                                                                              %%
-	\NewDocumentCommand{#2}{}{%                                                     %%
-		\clist_use:cn {g_#3_clist} {\\}%                                            %%
-	}%                                                                              %%
-}%                                                                                  %%
-\cs_new_protected:Npn \TUM_define_macro_author_text_func:NNnn #1#2#3#4 {%           %%
-	\NewDocumentCommand{#1}{O{\languagename}O{1}m}{%                                %%
-		\prop_gput:cnn {g_#3_##1_prop} {##2} {##3}%                                 %%
-	}%                                                                              %%
-	\NewDocumentCommand{#2}{m}{%                                                    %%
-		\usekomafont{#4}\prop_item:cn {g_#3_\use:c {languagename}_prop} {##1}%      %%
-	}%                                                                              %%
-}%                                                                                  %%
-\cs_new_protected:Npn \TUM_define_macro_assessor_func:NNnn #1#2#3#4 {%              %%
-	\clist_new:c {g_#3_clist}%                                                      %%
-	\NewDocumentCommand{#1}{O{}m}{%                                                 %%
-	   \@TUM@keywords{##2}%                                                         %%
-		\tl_if_blank:nTF {##1}{%                                                    %%
-			\clist_gput_right:cn {g_#3_clist} {%                                    %%
-				{\usekomafont{#4}##2}%                                              %%
-			}%                                                                      %%
-		}{%                                                                         %%
-			\clist_gput_right:cn {g_#3_clist} {%                                    %%
-				{\usekomafont{#4}\href{mailto:##1}{##2}}%                           %%
-			}%                                                                      %%
-		}%                                                                          %%
-	}%                                                                              %%
-	\NewDocumentCommand{#2}{}{%                                                     %%
-		\clist_use:cn {g_#3_clist} {\\}%                                            %%
-	}%                                                                              %%
-}%                                                                                  %%
-\cs_new_protected:Npn \TUM_define_macro_assessor_text_func:NNnn #1#2#3#4 {%         %%
-	\prop_new:c {g_#3_prop}%                                                        %%
-	\NewDocumentCommand{#1}{+O{\languagename}m}{%                                   %%
-		\prop_gput:cfn {g_#3_prop} {##1} {\usekomafont{#4}##2}%                     %%
-	}%                                                                              %%
-	\NewDocumentCommand{#2}{}{%                                                     %%
-		\prop_item:cV {g_#3_prop} {\languagename}%                                  %%
-	}%                                                                              %%
-}%                                                                                  %%
-\cs_generate_variant:Nn \prop_item:Nn {cV}%                                         %%
-\cs_generate_variant:Nn \prop_gput:Nnn {cfn}%                                       %%
-\cs_generate_variant:Nn \TUM_define_macro_text_func:NNn {ccn}%                      %%
-\cs_generate_variant:Nn \TUM_define_macro_date_func:NNn {ccn}%                      %%
-\cs_generate_variant:Nn \TUM_define_macro_normal_func:NNn {ccn}%                    %%
-\cs_generate_variant:Nn \TUM_define_macro_header_func:NNn {ccn}%                    %%
-\cs_generate_variant:Nn \TUM_define_macro_author_func:NNnn {ccnn}%                  %%
-\cs_generate_variant:Nn \TUM_define_macro_author_text_func:NNnn {ccnn}%             %%
-\cs_generate_variant:Nn \TUM_define_macro_supervisor_func:NNnn {ccnn}%              %%
-\cs_generate_variant:Nn \TUM_define_macro_assessor_func:NNnn {ccnn}%                %%
-\cs_generate_variant:Nn \TUM_define_macro_assessor_text_func:NNnn {ccnn}%           %%
-\ExplSyntaxOff%                                                                     %%
-%% header%                                                                          %%
-\newkomafont{header}{\unboldmath\mdseries\upshape\normalsize%                       %%
-	\color{\TUMcolor{21}}}%                                                         %%
-\TUMdefinemacro[header]{header}%                                                    %%
-%% title%                                                                           %%
-\setkomafont{title}{\boldmath\bfseries\upshape\if@twoside\LARGE\else\huge\fi% ?     %%
-	\color{\TUMcolor{22}}}%                                                         %%
-\TUMdefinemacro[normal]{title}%                                                     %%
-%% subtitle%                                                                        %%
-\setkomafont{subtitle}{\boldmath\bfseries\upshape\huge%                             %%
-	\color{\TUMcolor{23}}}%                                                         %%
-\TUMdefinemacro[normal]{subtitle}%                                                  %%
-%% author%                                                                          %%
-\setkomafont{author}{\unboldmath\mdseries\upshape\large%                            %%
-	\color{\TUMcolor{24}}\hypersetup{urlcolor=\TUMcolor{24}}}%                      %%
-\newkomafont{authortext}{\unboldmath\mdseries\upshape\large}%                       %%
-\TUMdefinemacro[author]{author}%                                                    %%
-%% supervisor%                                                                      %%
-\newkomafont{supervisor}{\usekomafont{author}%                                      %%
-	\color{\TUMcolor{25}}\hypersetup{urlcolor=\TUMcolor{25}}}%                      %%
-\newkomafont{supervisortext}{\usekomafont{authortext}}%                             %%
-\TUMdefinemacro[supervisor]{supervisor}%                                            %%
-%% first assessor%                                                                  %%
-\newkomafont{firstassessor}{\usekomafont{author}%                                   %%
-	\color{\TUMcolor{25}}\hypersetup{urlcolor=\TUMcolor{25}}}%                      %%
-\newkomafont{firstassessortext}{\unboldmath\mdseries\upshape\normalsize}%           %%
-\TUMdefinemacro[assessor]{firstassessor}%                                           %%
-%% second assessor%                                                                 %%
-\newkomafont{secondassessor}{\usekomafont{author}%                                  %%
-	\color{\TUMcolor{25}}\hypersetup{urlcolor=\TUMcolor{25}}}%                      %%
-\newkomafont{secondassessortext}{\usekomafont{firstassessortext}}%                  %%
-\TUMdefinemacro[assessor]{secondassessor}%                                          %%
-%% topic%                                                                           %%
-\newkomafont{topic}{\unboldmath\mdseries\upshape\large}%                            %%
-\newkomafont{topictext}{\usekomafont{firstassessortext}}%                           %%
-\TUMdefinemacro[topic]{topic}%                                                      %%
-%% submissiondate%                                                                  %%
-\newkomafont{submissiondate}{\unboldmath\mdseries\upshape\normalsize%               %%
-	\color{\TUMcolor{26}}}%                                                         %%
-\TUMdefinemacro[date]{submissiondate}%                                              %%
-%% ===================================== Text ===================================== %%
-\TUMauthortext[american]{Bachelor Thesis\\by\bigbreak}%                             %%
-\TUMauthortext[american][2]{in fullfillment of the requirements for the degree of\\%%%
-	Bachelor of Science}%                                                           %%
-\TUMauthortext[naustrian][1]{Bachelorarbeit\\von\bigbreak}%                         %%
-\TUMauthortext[naustrian][2]{zur Erlangung des akademischen Grades\\%               %%
-	Bachelor of Science}%                                                           %%
-\TUMfirstassessortext[american]{First assessor}%                                    %%
-\TUMfirstassessortext[naustrian]{Erstgutachter}%                                    %%
-\TUMsecondassessortext[american]{Second assessor}%                                  %%
-\TUMsecondassessortext[naustrian]{Zweitgutachter}%                                  %%
-\TUMtopictext[american]{Topic}%                                                     %%
-\TUMtopictext[naustrian]{Themengebiet}%                                             %%
-\TUMsupervisortext[american]{Supervised by\bigbreak}%                               %%
-\TUMsupervisortext[naustrian]{Angeleitet von\bigbreak}%                             %%
+\NeedsTeXFormat{LaTeX2e}%                                                           
+\ProvidesExplPackage {packages/tumtitlepage} {2020-05-24} {\TUMversion}%            
+	{The titlepage-part made by Michael Labenbacher}%                               
+\ProcessKeysPackageOptions{packages/tumtitlepage}%                                  
+%% ExplSyntax is ON                                                                 
+\NewDocumentCommand{\TUMdefinemacro}{O{text}m}{%                                    
+	\str_case_e:nnTF {#1}{%                                                         
+	{text} {%                                                                       
+		\TUM_define_macro_text_func:ccn {TUM#2} {@TUM@#2} {TUM#2}%                  
+		}%                                                                          
+	{date} {%                                                                       
+		\TUM_define_macro_date_func:ccn {TUM#2} {@TUM@#2} {TUM#2}%                  
+		}%                                                                          
+	{mail} {%                                                                       
+		\TUM_define_macro_mail_func:ccnn {TUM#2} {@TUM@#2} {TUM#2} {#2}%            
+		}%                                                                          
+	{normal} {%                                                                     
+		\TUM_define_macro_normal_func:ccn {TUM#2} {@TUM@#2} {TUM#2}%                
+		}%                                                                          
+	{header} {%                                                                     
+		\TUM_define_macro_header_func:ccn {TUM#2} {@TUM@#2} {TUM#2}%                
+		}%                                                                          
+	{author} {%                                                                     
+		\TUM_define_macro_author_func:ccnn {TUM#2} {@TUM@#2} {TUM#2} {#2}%          
+		\TUM_define_macro_author_text_func:ccnn {TUM#2text} {@TUM@#2text}%          
+			{TUM#2text} {#2text}%                                                   
+		}%                                                                          
+	{supervisor} {%                                                                 
+		\TUM_define_macro_supervisor_func:ccnn {TUM#2} {@TUM@#2} {TUM#2} {#2}%      
+		\TUM_define_macro_assessor_text_func:ccnn {TUM#2text} {@TUM@#2text}%        
+			{TUM#2text} {#2text}%                                                   
+		}%                                                                          
+	{assessor} {%                                                                   
+		\TUM_define_macro_assessor_func:ccnn {TUM#2} {@TUM@#2} {TUM#2} {#2}%        
+		\TUM_define_macro_assessor_text_func:ccnn {TUM#2text} {@TUM@#2text}%        
+			{TUM#2text} {#2text}%                                                   
+		}%                                                                          
+	{topic} {%                                                                      
+		\TUM_define_macro_normal_func:ccn {TUM#2} {@TUM@#2} {TUM#2}%                
+		\TUM_define_macro_assessor_text_func:ccnn {TUM#2text} {@TUM@#2text}%        
+			{TUM#2text} {#2text}%                                                   
+		}%                                                                          
+	}{}{}%                                                                          
+}%                                                                                  
+\cs_new_protected:Npn \TUM_define_macro_normal_func:NNn #1#2#3 {%                   
+	\prop_new:c {g_#3_prop}%                                                        
+	\NewDocumentCommand{#1}{+O{\languagename}O{}m}{%                                
+		\tl_if_blank:nTF {##2}{%                                                    
+			\@TUM@keywords{##3}%                                                    
+		}{%                                                                         
+			\@TUM@keywords{##2}%                                                    
+		}%                                                                          
+		\prop_gput:cfn {g_#3_prop} {##1} {##3}%                                     
+	}%                                                                              
+	\NewDocumentCommand{#2}{}{%                                                     
+		\prop_item:cV {g_#3_prop} {\languagename}%                                  
+	}%                                                                              
+}%                                                                                  
+\cs_new_protected:Npn \TUM_define_macro_header_func:NNn #1#2#3 {%                   
+	\prop_new:c {g_#3_prop}%                                                        
+	\NewDocumentCommand{#1}{+O{\languagename}m}{%                                   
+		\prop_gput:cfn {g_#3_prop} {##1} {##2}%                                     
+	}%                                                                              
+	\NewDocumentCommand{#2}{}{%                                                     
+		\prop_item:cV {g_#3_prop} {\languagename}%                                  
+	}%                                                                              
+}%                                                                                  
+\cs_new_protected:Npn \TUM_define_macro_text_func:NNn #1#2#3 {%                     
+	\prop_new:c {g_#3_prop}%                                                        
+	\NewDocumentCommand{#1}{+O{\languagename}m}{%                                   
+	   \@TUM@keywords{##2}%                                                         
+		\prop_gput:cfn {g_#3_prop} {##1} {##2}%                                     
+	}%                                                                              
+	\NewDocumentCommand{#2}{}{%                                                     
+		\prop_item:cV {g_#3_prop} {\languagename}%                                  
+	}%                                                                              
+}%                                                                                  
+\cs_new_protected:Npn \TUM_define_macro_date_func:NNn #1#2#3 {%                     
+	\clist_new:c {g_#3_prop}%                                                       
+	\NewDocumentCommand{#1}{mmm}{%                                                  
+		\clist_gset:cn {g_#3_prop} {##1,##2,##3} %                                  
+	}%                                                                              
+	\NewDocumentCommand{#2}{}{%                                                     
+		\formatdate{%                                                               
+			\clist_item:cn {g_#3_prop} {1}%                                         
+		}{%                                                                         
+			\clist_item:cn {g_#3_prop} {2}%                                         
+		}{%                                                                         
+			\clist_item:cn {g_#3_prop} {3}%                                         
+		}%                                                                          
+	}%                                                                              
+}%                                                                                  
+\cs_new_protected:Npn \TUM_define_macro_author_func:NNnn #1#2#3#4 {%                
+	\clist_new:c {g_#3_clist}%                                                      
+	\NewDocumentCommand{#1}{O{}O{}m}{%                                              
+	   \@TUM@keywords{##3}%                                                         
+		\tl_if_blank:nTF {##2}{%                                                    
+			\tl_if_blank:nTF {##1}{%                                                
+				\clist_gput_right:cn {g_#3_clist} {%                                
+					{\usekomafont{#4}##3}%                                          
+				}%                                                                  
+			}{%                                                                     
+				\clist_gput_right:cn {g_#3_clist} {%                                
+					{\usekomafont{#4}\href{mailto:##1}{##3}}%                       
+				}%                                                                  
+			}%                                                                      
+		}{%                                                                         
+			\tl_if_blank:nTF {##1}{%                                                
+				\clist_gput_right:cn {g_#3_clist} {%                                
+					{\usekomafont{#4}##3~(##2)}%                                    
+				}%                                                                  
+			}{%                                                                     
+				\clist_gput_right:cn {g_#3_clist} {%                                
+					{\usekomafont{#4}\href{mailto:##1}{##3}~(##2)}%                 
+				}%                                                                  
+			}%                                                                      
+		}%                                                                          
+	}%                                                                              
+	\NewDocumentCommand{#2}{}{%                                                     
+		\clist_use:cn {g_#3_clist} {\\}%                                            
+	}%                                                                              
+}%                                                                                  
+\cs_new_protected:Npn \TUM_define_macro_supervisor_func:NNnn #1#2#3#4 {%            
+	\clist_new:c {g_#3_clist}%                                                      
+	\NewDocumentCommand{#1}{O{}m}{%                                                 
+	   \@TUM@keywords{##2}%                                                         
+		\tl_if_blank:nTF {##1}{%                                                    
+			\clist_gput_right:cn {g_#3_clist} {%                                    
+				{\usekomafont{#4}##2}%                                              
+			}%                                                                      
+		}{%                                                                         
+			\clist_gput_right:cn {g_#3_clist} {%                                    
+				{\usekomafont{#4}\href{mailto:##1}{##2}}%                           
+			}%                                                                      
+		}%                                                                          
+	}%                                                                              
+	\NewDocumentCommand{#2}{}{%                                                     
+		\clist_use:cn {g_#3_clist} {\\}%                                            
+	}%                                                                              
+}%                                                                                  
+\cs_new_protected:Npn \TUM_define_macro_author_text_func:NNnn #1#2#3#4 {%           
+	\NewDocumentCommand{#1}{O{\languagename}O{1}m}{%                                
+		\prop_gput:cnn {g_#3_##1_prop} {##2} {##3}%                                 
+	}%                                                                              
+	\NewDocumentCommand{#2}{m}{%                                                    
+		\usekomafont{#4}\prop_item:cn {g_#3_\use:c {languagename}_prop} {##1}%      
+	}%                                                                              
+}%                                                                                  
+\cs_new_protected:Npn \TUM_define_macro_assessor_func:NNnn #1#2#3#4 {%              
+	\clist_new:c {g_#3_clist}%                                                      
+	\NewDocumentCommand{#1}{O{}m}{%                                                 
+	   \@TUM@keywords{##2}%                                                         
+		\tl_if_blank:nTF {##1}{%                                                    
+			\clist_gput_right:cn {g_#3_clist} {%                                    
+				{\usekomafont{#4}##2}%                                              
+			}%                                                                      
+		}{%                                                                         
+			\clist_gput_right:cn {g_#3_clist} {%                                    
+				{\usekomafont{#4}\href{mailto:##1}{##2}}%                           
+			}%                                                                      
+		}%                                                                          
+	}%                                                                              
+	\NewDocumentCommand{#2}{}{%                                                     
+		\clist_use:cn {g_#3_clist} {\\}%                                            
+	}%                                                                              
+}%                                                                                  
+\cs_new_protected:Npn \TUM_define_macro_assessor_text_func:NNnn #1#2#3#4 {%         
+	\prop_new:c {g_#3_prop}%                                                        
+	\NewDocumentCommand{#1}{+O{\languagename}m}{%                                   
+		\prop_gput:cfn {g_#3_prop} {##1} {\usekomafont{#4}##2}%                     
+	}%                                                                              
+	\NewDocumentCommand{#2}{}{%                                                     
+		\prop_item:cV {g_#3_prop} {\languagename}%                                  
+	}%                                                                              
+}%                                                                                  
+\cs_generate_variant:Nn \prop_item:Nn {cV}%                                         
+\cs_generate_variant:Nn \prop_gput:Nnn {cfn}%                                       
+\cs_generate_variant:Nn \TUM_define_macro_text_func:NNn {ccn}%                      
+\cs_generate_variant:Nn \TUM_define_macro_date_func:NNn {ccn}%                      
+\cs_generate_variant:Nn \TUM_define_macro_normal_func:NNn {ccn}%                    
+\cs_generate_variant:Nn \TUM_define_macro_header_func:NNn {ccn}%                    
+\cs_generate_variant:Nn \TUM_define_macro_author_func:NNnn {ccnn}%                  
+\cs_generate_variant:Nn \TUM_define_macro_author_text_func:NNnn {ccnn}%             
+\cs_generate_variant:Nn \TUM_define_macro_supervisor_func:NNnn {ccnn}%              
+\cs_generate_variant:Nn \TUM_define_macro_assessor_func:NNnn {ccnn}%                
+\cs_generate_variant:Nn \TUM_define_macro_assessor_text_func:NNnn {ccnn}%           
+\ExplSyntaxOff%                                                                     
+%% header%                                                                          
+\newkomafont{header}{\unboldmath\mdseries\upshape\normalsize%                       
+	\color{\TUMcolor{21}}}%                                                         
+\TUMdefinemacro[header]{header}%                                                    
+%% title%                                                                           
+\setkomafont{title}{\boldmath\bfseries\upshape\if@twoside\LARGE\else\huge\fi% ?     
+	\color{\TUMcolor{22}}}%                                                         
+\TUMdefinemacro[normal]{title}%                                                     
+%% subtitle%                                                                        
+\setkomafont{subtitle}{\boldmath\bfseries\upshape\huge%                             
+	\color{\TUMcolor{23}}}%                                                         
+\TUMdefinemacro[normal]{subtitle}%                                                  
+%% author%                                                                          
+\setkomafont{author}{\unboldmath\mdseries\upshape\large%                            
+	\color{\TUMcolor{24}}\hypersetup{urlcolor=\TUMcolor{24}}}%                      
+\newkomafont{authortext}{\unboldmath\mdseries\upshape\large}%                       
+\TUMdefinemacro[author]{author}%                                                    
+%% supervisor%                                                                      
+\newkomafont{supervisor}{\usekomafont{author}%                                      
+	\color{\TUMcolor{25}}\hypersetup{urlcolor=\TUMcolor{25}}}%                      
+\newkomafont{supervisortext}{\usekomafont{authortext}}%                             
+\TUMdefinemacro[supervisor]{supervisor}%                                            
+%% first assessor%                                                                  
+\newkomafont{firstassessor}{\usekomafont{author}%                                   
+	\color{\TUMcolor{25}}\hypersetup{urlcolor=\TUMcolor{25}}}%                      
+\newkomafont{firstassessortext}{\unboldmath\mdseries\upshape\normalsize}%           
+\TUMdefinemacro[assessor]{firstassessor}%                                           
+%% second assessor%                                                                 
+\newkomafont{secondassessor}{\usekomafont{author}%                                  
+	\color{\TUMcolor{25}}\hypersetup{urlcolor=\TUMcolor{25}}}%                      
+\newkomafont{secondassessortext}{\usekomafont{firstassessortext}}%                  
+\TUMdefinemacro[assessor]{secondassessor}%                                          
+%% topic%                                                                           
+\newkomafont{topic}{\unboldmath\mdseries\upshape\large}%                            
+\newkomafont{topictext}{\usekomafont{firstassessortext}}%                           
+\TUMdefinemacro[topic]{topic}%                                                      
+%% submissiondate%                                                                  
+\newkomafont{submissiondate}{\unboldmath\mdseries\upshape\normalsize%               
+	\color{\TUMcolor{26}}}%                                                         
+\TUMdefinemacro[date]{submissiondate}%                                              
+%% ===================================== Text ===================================== 
+\TUMauthortext[american]{Bachelor Thesis\\by\bigbreak}%                             
+\TUMauthortext[american][2]{in fullfillment of the requirements for the degree of\\%
+	Bachelor of Science}%                                                           
+\TUMauthortext[naustrian][1]{Bachelorarbeit\\von\bigbreak}%                         
+\TUMauthortext[naustrian][2]{zur Erlangung des akademischen Grades\\%               
+	Bachelor of Science}%                                                           
+\TUMfirstassessortext[american]{First assessor}%                                    
+\TUMfirstassessortext[naustrian]{Erstgutachter}%                                    
+\TUMsecondassessortext[american]{Second assessor}%                                  
+\TUMsecondassessortext[naustrian]{Zweitgutachter}%                                  
+\TUMtopictext[american]{Topic}%                                                     
+\TUMtopictext[naustrian]{Themengebiet}%                                             
+\TUMsupervisortext[american]{Supervised by\bigbreak}%                               
+\TUMsupervisortext[naustrian]{Angeleitet von\bigbreak}%                             
 
 
-%% =============================== KOMA-Script copy =============================== %%
+%% =============================== KOMA-Script copy =============================== 
 \renewenvironment{titlepage}{%
 	\cleardoublepage
 	\if@twocolumn
@@ -257,11 +257,11 @@
 }{%
 	\if@restonecol\twocolumn \else \newpage \fi
 }%
-%% =============================== KOMA-Script copy =============================== %%
+%% =============================== KOMA-Script copy =============================== 
 \renewcommand*\maketitle[1][1]{%
-%% ================================ Changes - Start =============================== %%
-%% deleted code                                                                     %%
-%% ================================ Changes - End ================================= %%
+%% ================================ Changes - Start =============================== 
+%% deleted code                                                                     
+%% ================================ Changes - End ================================= 
 	\if@titlepage
 		\begin{titlepage}
 			\setcounter{page}{%
@@ -297,9 +297,9 @@
 				\let\titlepage@restore\relax
 			\fi
 			\let\footnotesize\small
-%% ================================ Changes - Start =============================== %%
+%% ================================ Changes - Start =============================== 
 	  %\let\footnoterule\relax% 
-%% ================================ Changes - End ================================= %%
+%% ================================ Changes - End ================================= 
 		\let\footnote\thanks
 		\renewcommand*\thefootnote{\@fnsymbol\c@footnote}%
 		\let\@oldmakefnmark\@makefnmark
@@ -319,7 +319,7 @@
 			\fi
 			\next@tdpage
 		\fi
-%% ================================ Changes - Start =============================== %%
+%% ================================ Changes - Start =============================== 
 			{\begin{flushleft}\includegraphics[height=0.1\textwidth]{PH.pdf}\hfill\includegraphics[height=0.1\textwidth]{TUMlogo2.pdf}\end{flushleft}}%
 			{\begin{flushleft}\usekomafont{header}{\@TUM@header}\end{flushleft}}
 			\begingroup%
@@ -378,7 +378,7 @@
 			\par%
 			\vfill\hfill{\usekomafont{submissiondate}{\@TUM@submissiondate}}\par%
 			\@thanks\let\@thanks\@empty\hfill%
-%% ================================ Changes - End ================================= %%
+%% ================================ Changes - End ================================= 
 		\if@twoside
 			\@tempswatrue
 			\expandafter\ifnum \@nameuse{scr@v@3.12}>\scr@compatibility\relax
@@ -534,4 +534,4 @@
 	\fi
 	\global\let\and\relax
 }%
-\endinput%                                                                          %%
+\endinput%                                                                          
