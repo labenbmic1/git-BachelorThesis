@@ -1,103 +1,103 @@
-%%----------------------------------------------------------------------------------%%
-%%_____           TUM physics package from Michael Labenbacher 2020           ______%%
-%%----------------------------------------------------------------------------------%%
-%% LOAD: LaTeX3-packages: expl3, l3keys2e and xparse,... as "Standard"              %%
-%% expl3 = LaTeX3                                                                   %%
-\RequirePackage{expl3}%                                                             %%
-%% xkeyval = Extension of the keyval package                                        %%
-\RequirePackage{xkeyval}%                                                           %%
-%% ltxcmds = Some LATEX kernel commands for general use                             %%
-\RequirePackage{ltxcmds}%                                                           %%
-%% kvoptions = Key value format for package options                                 %%
-\RequirePackage{kvoptions}%                                                         %%
-%% kvsetkeys = Key value parser with default handler support                        %%
-\RequirePackage{kvsetkeys}%                                                         %%
-%% kvdefinekeys = efine keys for use in the kvsetkeys package                       %%
-\RequirePackage{kvdefinekeys}%                                                      %%
-%% l3keys2e = LaTeX2ε op­tion pro­cess­ing us­ing LaTeX3 keys                           %%
-%% needed from siunitx                                                              %%
-\RequirePackage{l3keys2e}%                                                          %%
-%% etex = An extended version of TeX (NTS-project)                                  %%
-\RequirePackage{etex}%                                                              %%
-%% etexcmds = Avoid name clashes with e-TeX commands                                %%
-\RequirePackage{etexcmds}%                                                          %%
-%% ifxetex = Am I running under XeTeX?                                              %%
-%% needed by authors (pdflscape)                                                    %%
-\RequirePackage{ifxetex}%                                                           %%
-%% ifluatex = Provides the \ifluatex switch                                         %%
-\RequirePackage{ifluatex}%                                                          %%
-%% etoolbox = eTeX-tools for LaTeX                                                  %%
-\RequirePackage{etoolbox}%                                                          %%
-%% xparse = A generic document command parser (LaTeX3)                              %%
-\RequirePackage{xparse}%                                                            %%
-%% xparse = Conditional commands in LaTeX documents                                 %%
-%% needed by authors (pdflscape)                                                    %%
-\RequirePackage{ifthen}%                                                            %%
-%% calc = Simple arithmetic in LaTeX commands                                       %%
-%% needed by authors (pdflscape)                                                    %%
-\RequirePackage{calc}%                                                              %%
-%% silcence = Selective filtering of error messages and warnings                    %%
-%% needed for todonotes                                                             %%
-\usepackage{silence}%                                                               %%
-\WarningsOff[todonotes]%                                                            %%
-%% ================================================================================ %%
-%% ================================================================================ %%
-%% ======================== Package-Options (ExplSyntaxOn)  ======================= %%
-%% ================================================================================ %%
-%% ================================================================================ %%
-%% Declaration of the required TeX-format                                           %%
-%% LaTeX2e ... "newest, stable" LaTeX-release (currently)                           %%
-\NeedsTeXFormat{LaTeX2e}%                                                           %%
-%% Version number                                                                   %%
-\makeatletter%                                                                      %%
-\def\@TUM@version@hook{001}%                                                        %%
-% {scrbook}{\def\@TUM@version@hook{000}}{}%                                         %%
-% {scrreprt}{\def\@TUM@version@hook{001}}{}%                                        %%
-% {scrartcl}{\def\@TUM@version@hook{002}}{}%                                        %%
-% {revtex4-2}{\def\@TUM@version@hook{003}}{}%                                       %%
-% {transcript}{\def\@TUM@version@hook{004}}{}%                                      %%
-% {cheatsheet}{\def\@TUM@version@hook{005}}{}%                                      %%
-\def\TUMversion{1.0.0.nightly.\@TUM@version@hook000000010024}%                      %%
-\makeatother%                                                                       %%
-%% Information of the provided package                                              %%
-%% ProvidesExplPackage{name of package}{YYYY-MM-DD}{version}{more information}      %%
-%% ExplSyntax is ON after this...                                                   %%
-\ProvidesExplPackage {tum-physics} {2020-05-24} {\TUMversion}%                      %%
-	{A (:P) "package" made by Michael Labenbacher, scrbook/scrreprt}%               %%
-%% Output on the command-line in the log-file                                       %%
-\typeout{==========================================================================}%%
-\typeout{Version:~\TUMversion}%                                                     %%
-\typeout{000~for:~--~paper=a4,11/12pt,twoside,open=right -- scrbook}%               %%
-\typeout{001~for:~--~paper=a4,11/12pt,oneside,open=any -- scrreprt}%                %%
-\typeout{002~for:~--~paper=a4,11/12pt,twoside,open=right -- scrartcl}%              %%
-\typeout{003~for:~--~a4paper,11/12pt,oneside -- revtex4-2}%                         %%
-\typeout{004~for:~--~paper=a4,11/12pt,oneside -- scrreprt, (transcript)}%           %%
-\typeout{005~for:~--~paper=a3,11/12pt/tiny,oneside -- scrreprt, (cheatsheet)}%      %%
-\typeout{Author:~Labenbacher~Michael}%                                              %%
-\typeout{==========================================================================}%%
-%% ----------------------------------- Options ------------------------------------ %%
-%% Options: debug (bool), todo (bool)                                               %%
-\bool_new:N \l_debug_key_bool%                                                      %%
-\bool_new:N \l_todo_key_bool%                                                       %%
-\keys_define:nn {tum-physics}{%                                                     %%
-	debug .bool_set:N = \l_debug_key_bool,%                                         %%
-	todo .bool_set:N = \l_todo_key_bool,%                                           %%
-}%                                                                                  %%
-\ProcessKeysPackageOptions{tum-physics}%                                            %%
-%% -------- DocumentCommand: TUMRequirePackage and TUMPassOptionsToPackage -------- %%
-%% Messages for \TUMRequirePackage                                                  %%
-\msg_new:nnn {tum-physics} {require_package/loaded_before_by_you} {}%               %%
-\msg_new:nnn {tum-physics} {require_package/loaded_before_by_other} {}%             %%
-\msg_new:nnn {tum-physics} {require_package/no_package} {}%                         %%
-\msg_new:nnn {tum-physics} {require_package/some_loaded_before} {}%                 %%
-\msg_new:nnn {tum-physics} {require_package/requirements_not_fulfilled} {}%         %%
-\msg_new:nnn {tum-physics} {check_package/do_not_load} {}%                          %%
-\msg_new:nnn {tum-physics} {check_package/requirements_not_fulfilled} {}%           %%
-\msg_new:nnn {tum-physics} {pass_optoins_to_package/requirements_not_fulfilled} {}% %%
-\msg_new:nnn {tum-physics} {pass_optoins_to_package/options_passed_to_late} {}%     %%
-%% Package <...> must be loaded after/before the packages <...>                     %%
-%% (!!) very important: See documentation                                           %%
-%% (!) important: ---                                                               %%
+%%----------------------------------------------------------------------------------
+%%_____           TUM physics package from Michael Labenbacher 2020           ______
+%%----------------------------------------------------------------------------------
+%% LOAD: LaTeX3-packages: expl3, l3keys2e and xparse,... as "Standard"              
+%% expl3 = LaTeX3                                                                   
+\RequirePackage{expl3}%                                                             
+%% xkeyval = Extension of the keyval package                                        
+\RequirePackage{xkeyval}%                                                           
+%% ltxcmds = Some LATEX kernel commands for general use                             
+\RequirePackage{ltxcmds}%                                                           
+%% kvoptions = Key value format for package options                                 
+\RequirePackage{kvoptions}%                                                         
+%% kvsetkeys = Key value parser with default handler support                        
+\RequirePackage{kvsetkeys}%                                                         
+%% kvdefinekeys = efine keys for use in the kvsetkeys package                       
+\RequirePackage{kvdefinekeys}%                                                      
+%% l3keys2e = LaTeX2ε op­tion pro­cess­ing us­ing LaTeX3 keys                           
+%% needed from siunitx                                                              
+\RequirePackage{l3keys2e}%                                                          
+%% etex = An extended version of TeX (NTS-project)                                  
+\RequirePackage{etex}%                                                              
+%% etexcmds = Avoid name clashes with e-TeX commands                                
+\RequirePackage{etexcmds}%                                                          
+%% ifxetex = Am I running under XeTeX?                                              
+%% needed by authors (pdflscape)                                                    
+\RequirePackage{ifxetex}%                                                           
+%% ifluatex = Provides the \ifluatex switch                                         
+\RequirePackage{ifluatex}%                                                          
+%% etoolbox = eTeX-tools for LaTeX                                                  
+\RequirePackage{etoolbox}%                                                          
+%% xparse = A generic document command parser (LaTeX3)                              
+\RequirePackage{xparse}%                                                            
+%% xparse = Conditional commands in LaTeX documents                                 
+%% needed by authors (pdflscape)                                                    
+\RequirePackage{ifthen}%                                                            
+%% calc = Simple arithmetic in LaTeX commands                                       
+%% needed by authors (pdflscape)                                                    
+\RequirePackage{calc}%                                                              
+%% silcence = Selective filtering of error messages and warnings                    
+%% needed for todonotes                                                             
+\usepackage{silence}%                                                               
+\WarningsOff[todonotes]%                                                            
+%% ================================================================================ 
+%% ================================================================================ 
+%% ======================== Package-Options (ExplSyntaxOn)  ======================= 
+%% ================================================================================ 
+%% ================================================================================ 
+%% Declaration of the required TeX-format                                           
+%% LaTeX2e ... "newest, stable" LaTeX-release (currently)                           
+\NeedsTeXFormat{LaTeX2e}%                                                           
+%% Version number                                                                   
+\makeatletter%                                                                      
+\def\@TUM@version@hook{001}%                                                        
+% {scrbook}{\def\@TUM@version@hook{000}}{}%                                         
+% {scrreprt}{\def\@TUM@version@hook{001}}{}%                                        
+% {scrartcl}{\def\@TUM@version@hook{002}}{}%                                        
+% {revtex4-2}{\def\@TUM@version@hook{003}}{}%                                       
+% {transcript}{\def\@TUM@version@hook{004}}{}%                                      
+% {cheatsheet}{\def\@TUM@version@hook{005}}{}%                                      
+\def\TUMversion{1.0.0.nightly.\@TUM@version@hook000000010024}%                      
+\makeatother%                                                                       
+%% Information of the provided package                                              
+%% ProvidesExplPackage{name of package}{YYYY-MM-DD}{version}{more information}      
+%% ExplSyntax is ON after this...                                                   
+\ProvidesExplPackage {tum-physics} {2020-05-24} {\TUMversion}%                      
+	{A (:P) "package" made by Michael Labenbacher, scrbook/scrreprt}%               
+%% Output on the command-line in the log-file                                       
+\typeout{==========================================================================}
+\typeout{Version:~\TUMversion}%                                                     
+\typeout{000~for:~--~paper=a4,11/12pt,twoside,open=right -- scrbook}%               
+\typeout{001~for:~--~paper=a4,11/12pt,oneside,open=any -- scrreprt}%                
+\typeout{002~for:~--~paper=a4,11/12pt,twoside,open=right -- scrartcl}%              
+\typeout{003~for:~--~a4paper,11/12pt,oneside -- revtex4-2}%                         
+\typeout{004~for:~--~paper=a4,11/12pt,oneside -- scrreprt, (transcript)}%           
+\typeout{005~for:~--~paper=a3,11/12pt/tiny,oneside -- scrreprt, (cheatsheet)}%      
+\typeout{Author:~Labenbacher~Michael}%                                              
+\typeout{==========================================================================}
+%% ----------------------------------- Options ------------------------------------ 
+%% Options: debug (bool), todo (bool)                                               
+\bool_new:N \l_debug_key_bool%                                                      
+\bool_new:N \l_todo_key_bool%                                                       
+\keys_define:nn {tum-physics}{%                                                     
+	debug .bool_set:N = \l_debug_key_bool,%                                         
+	todo .bool_set:N = \l_todo_key_bool,%                                           
+}%                                                                                  
+\ProcessKeysPackageOptions{tum-physics}%                                            
+%% -------- DocumentCommand: TUMRequirePackage and TUMPassOptionsToPackage -------- 
+%% Messages for \TUMRequirePackage                                                  
+\msg_new:nnn {tum-physics} {require_package/loaded_before_by_you} {}%               
+\msg_new:nnn {tum-physics} {require_package/loaded_before_by_other} {}%             
+\msg_new:nnn {tum-physics} {require_package/no_package} {}%                         
+\msg_new:nnn {tum-physics} {require_package/some_loaded_before} {}%                 
+\msg_new:nnn {tum-physics} {require_package/requirements_not_fulfilled} {}%         
+\msg_new:nnn {tum-physics} {check_package/do_not_load} {}%                          
+\msg_new:nnn {tum-physics} {check_package/requirements_not_fulfilled} {}%           
+\msg_new:nnn {tum-physics} {pass_optoins_to_package/requirements_not_fulfilled} {}% 
+\msg_new:nnn {tum-physics} {pass_optoins_to_package/options_passed_to_late} {}%     
+%% Package <...> must be loaded after/before the packages <...>                     
+%% (!!) very important: See documentation                                           
+%% (!) important: ---                                                               
 \bool_new:N \l_if_package_after_bool%
 \prop_new:N \l_package_after_prop%
 %% package must be loaded after = {package(s)}
@@ -469,25 +469,25 @@
 	}%
 }%
 \makeatother%
-%% ----------------------------------- Options ------------------------------------ %%
-%% Option (debug):                                                                  %%
-\makeatletter%                                                                      %%
-\bool_if:NTF \l_debug_key_bool {%                                                   %%
-	\AtBeginDocument{%                                                              %%
-		\TUMRequirePackage{lipsum}%                                                 %%
-		\TUMRequirePackage{layout}%                                                 %%
-		\TUMRequirePackage{showframe}%                                              %%
-		\listfiles%                                                                 %%
-		\@ifpackageloaded{array}{%                                                  %%
-			\showcols%                                                              %%
-		}{}%                                                                        %%
-	}%                                                                              %%
-}{}%                                                                                %%
-\makeatother%                                                                       %%
-\bool_if:NTF \l_todo_key_bool {}{%                                                  %%
-	\TUMPassOptionsToPackage{disable}{todonotes}%                                   %%
-}%                                                                                  %%
-%% ----------------------------------- Checks ------------------------------------- %%
+%% ----------------------------------- Options ------------------------------------ 
+%% Option (debug):                                                                  
+\makeatletter%                                                                      
+\bool_if:NTF \l_debug_key_bool {%                                                   
+	\AtBeginDocument{%                                                              
+		\TUMRequirePackage{lipsum}%                                                 
+		\TUMRequirePackage{layout}%                                                 
+		\TUMRequirePackage{showframe}%                                              
+		\listfiles%                                                                 
+		\@ifpackageloaded{array}{%                                                  
+			\showcols%                                                              
+		}{}%                                                                        
+	}%                                                                              
+}{}%                                                                                
+\makeatother%                                                                       
+\bool_if:NTF \l_todo_key_bool {}{%                                                  
+	\TUMPassOptionsToPackage{disable}{todonotes}%                                   
+}%                                                                                  
+%% ----------------------------------- Checks ------------------------------------- 
 %% Check: Packages which must not be loaded 
 \AtEndPreamble{%
 	\prop_map_function:NN \l_do_not_load_prop \check_do_not_load_packages%
@@ -506,866 +506,866 @@
 	\prop_map_function:NN \l_package_end_prop \check_requirements%
 }%
 \makeatother%
-\ExplSyntaxOff%                                                                     %%
-%% ================================================================================ %%
-%% ================================================================================ %%
-%% ======================= Loading Packages (ExplSyntaxOff) ======================= %%
-%% ================================================================================ %%
-%% ================================================================================ %%
-\typeout{Optimierung fehlt: imakeidx, glossaries, biblatex, listings, theorems}%    %%
-\typeout{Problem mit: etex - paracol (gleichzeitige Nutzung nicht moeglich)}%       %%
-%% not loaded:  l3regex, l3docstrips, l3packages, xfp, xtemplate, titlesec,         %%
-%%              marginnote, perpage, hyphenat, extdash, cmap, rotating, dcolumn,    %%
-%%              parskip, alltt, setspace, moreverb, beramono, fullpage, tabulary,   %%
-%%              bold-extra, blindtext, scrextend, tasks, eurosym, marvosym, tabu,   %%
-%%              gensymb, mathtext, numprint, luatexja, luatexja-fontspec, luatextra %%
-%% not necessary: textcomp (in 2020 latex-core distribution, but irrelevant)        %%
-%% not tested througly: microtype, tabularx                                         %%
-%% -------------------------------------------------------------------------------- %%
-%% amssymb, amstext, sansmath = Mathematische Standardpakete                        %%
-%% amsmath [intlimits, sumlimits, reqno] = AMS mathematical facilities for LaTeX    %%
-%% Options:     integral/sum limits above/below                                     %%
-%%              leqno (Nummer links), reqno (Nummer rechts), fleqn,%                %%
-%% amsmath = amstext, amsbsy, amsopn                                                %%
-\TUMRequirePackage[%                                                                %%
-intlimits,%                                                                         %%
-sumlimits,%                                                                         %%
-reqno%                                                                              %%
-]{amsmath}%                                                                         %%
-\TUMRequirePackage{amssymb,amsthm}%                                                 %%
-%% mathtools [showonlyrefs] = Mathematical tools to use with amsmath                %%
-\TUMRequirePackage[%                                                                %%
-showonlyrefs%                                                                       %%
-]{mathtools}%                                                                       %%
-%% nccmath = Erweiterte mathematische Faehigkeiten                                  %%
-\TUMRequirePackage[][hyperref]{nccmath}%                                            %%
-%% mathrsfs = Extended mathematics capabilities                                     %%
-\TUMRequirePackage{mathrsfs}%                                                       %%
-%% aligned-overset = z.B. \overset{...}&{=}                                         %%
-\TUMRequirePackage{aligned-overset}%                                                %%
-%% tensor = Typeset tensors (there is and can't be no conflict with other packages) %%
-\TUMRequirePackage{tensor}%                                                         %%
-%% physics = Erweiterung um physikalische/mathematische Inhalte                     %%
-\TUMRequirePackage{physics}%                                                        %%
+\ExplSyntaxOff%                                                                     
+%% ================================================================================ 
+%% ================================================================================ 
+%% ======================= Loading Packages (ExplSyntaxOff) ======================= 
+%% ================================================================================ 
+%% ================================================================================ 
+\typeout{Optimierung fehlt: imakeidx, glossaries, biblatex, listings, theorems}%    
+\typeout{Problem mit: etex - paracol (gleichzeitige Nutzung nicht moeglich)}%       
+%% not loaded:  l3regex, l3docstrips, l3packages, xfp, xtemplate, titlesec,         
+%%              marginnote, perpage, hyphenat, extdash, cmap, rotating, dcolumn,    
+%%              parskip, alltt, setspace, moreverb, beramono, fullpage, tabulary,   
+%%              bold-extra, blindtext, scrextend, tasks, eurosym, marvosym, tabu,   
+%%              gensymb, mathtext, numprint, luatexja, luatexja-fontspec, luatextra 
+%% not necessary: textcomp (in 2020 latex-core distribution, but irrelevant)        
+%% not tested througly: microtype, tabularx                                         
+%% -------------------------------------------------------------------------------- 
+%% amssymb, amstext, sansmath = Mathematische Standardpakete                        
+%% amsmath [intlimits, sumlimits, reqno] = AMS mathematical facilities for LaTeX    
+%% Options:     integral/sum limits above/below                                     
+%%              leqno (Nummer links), reqno (Nummer rechts), fleqn,%                
+%% amsmath = amstext, amsbsy, amsopn                                                
+\TUMRequirePackage[%                                                                
+intlimits,%                                                                         
+sumlimits,%                                                                         
+reqno%                                                                              
+]{amsmath}%                                                                         
+\TUMRequirePackage{amssymb,amsthm}%                                                 
+%% mathtools [showonlyrefs] = Mathematical tools to use with amsmath                
+\TUMRequirePackage[%                                                                
+showonlyrefs%                                                                       
+]{mathtools}%                                                                       
+%% nccmath = Erweiterte mathematische Faehigkeiten                                  
+\TUMRequirePackage[][hyperref]{nccmath}%                                            
+%% mathrsfs = Extended mathematics capabilities                                     
+\TUMRequirePackage{mathrsfs}%                                                       
+%% aligned-overset = z.B. \overset{...}&{=}                                         
+\TUMRequirePackage{aligned-overset}%                                                
+%% tensor = Typeset tensors (there is and can't be no conflict with other packages) 
+\TUMRequirePackage{tensor}%                                                         
+%% physics = Erweiterung um physikalische/mathematische Inhalte                     
+\TUMRequirePackage{physics}%                                                        
 
-%% babel [naustrian,english] = Multilingual support for Plain TeX or LaTeX          %%
-%%       [..., first language]                                                      %%
-\TUMRequirePackage[%                                                                %%
-naustrian,%                                                                         %%
-main=american%                                                                      %%
-]{babel}%                                                                           %%
-%% inputenc =                                                                       %%
-\TUMRequirePackage[%                                                                %%
-utf8%                                                                               %%
-]{inputenc}%                                                                        %%
-%% ulem = (redefines \@empty, also zur Sicherheit for Koma-Script)                  %%
-\TUMRequirePackage[%                                                                %%
-normalem%                                                                           %%
-]{ulem}%                                                                            %%
+%% babel [naustrian,english] = Multilingual support for Plain TeX or LaTeX          
+%%       [..., first language]                                                      
+\TUMRequirePackage[%                                                                
+naustrian,%                                                                         
+main=american%                                                                      
+]{babel}%                                                                           
+%% inputenc =                                                                       
+\TUMRequirePackage[%                                                                
+utf8%                                                                               
+]{inputenc}%                                                                        
+%% ulem = (redefines \@empty, also zur Sicherheit for Koma-Script)                  
+\TUMRequirePackage[%                                                                
+normalem%                                                                           
+]{ulem}%                                                                            
 
-%% everysel = Provides hooks into \selectfont                                       %%
-\TUMRequirePackage{everysel}%                                                       %%
-%% ragged2e = Alternative versions of “ragged”-type commands                        %%
-\TUMRequirePackage[%                                                                %%
-originalcommands,%                                                                  %%
-newparameters,%                                                                     %%
-]{ragged2e}%                                                                        %%
+%% everysel = Provides hooks into \selectfont                                       
+\TUMRequirePackage{everysel}%                                                       
+%% ragged2e = Alternative versions of “ragged”-type commands                        
+\TUMRequirePackage[%                                                                
+originalcommands,%                                                                  
+newparameters,%                                                                     
+]{ragged2e}%                                                                        
 
-%% =================== Koma-Script-Packages/Layout-Guidelines ===================== %%
-%% scrlayer-scrpage = Define and manage page styles                                 %%
-\TUMRequirePackage[%                                                                %%
-automark,% atuomark statt manualmark (kann nachher noch geaendert werden immer)%    %%
-ilines,% Standard für die Ausrichtung der Trennlinien von Kopf- und Fusszeilen%     %%
-pagestyleset=KOMA-Script,% Standardeinstellung der Kopf- und Fusszeilen%            %%
-autooneside=false% Erlaube auch einseitig \automark[section]{chapter}%              %%
-]{scrlayer-scrpage}%                                                                %%
-\TUMRequirePackage{scrdate}%                                                        %%
-\TUMRequirePackage{scrtime}%                                                        %%
-%% tocbasic = Management of tables/lists of contents (and the like)                 %%
-\makeatletter%                                                                      %%
-\@ifundefined{KOMAClassName}{%                                                      %%
-	\TUMRequirePackage{tocbasic}%                                                   %%
-}{%                                                                                 %%
-	\TUMRequirePackage*{tocbasic}% (should be) already loaded with KomaClass        %%
-}%                                                                                  %%
-\makeatother%                                                                       %%
+%% =================== Koma-Script-Packages/Layout-Guidelines ===================== 
+%% scrlayer-scrpage = Define and manage page styles                                 
+\TUMRequirePackage[%                                                                
+automark,% atuomark statt manualmark (kann nachher noch geaendert werden immer)%    
+ilines,% Standard für die Ausrichtung der Trennlinien von Kopf- und Fusszeilen%     
+pagestyleset=KOMA-Script,% Standardeinstellung der Kopf- und Fusszeilen%            
+autooneside=false% Erlaube auch einseitig \automark[section]{chapter}%              
+]{scrlayer-scrpage}%                                                                
+\TUMRequirePackage{scrdate}%                                                        
+\TUMRequirePackage{scrtime}%                                                        
+%% tocbasic = Management of tables/lists of contents (and the like)                 
+\makeatletter%                                                                      
+\@ifundefined{KOMAClassName}{%                                                      
+	\TUMRequirePackage{tocbasic}%                                                   
+}{%                                                                                 
+	\TUMRequirePackage*{tocbasic}% (should be) already loaded with KomaClass        
+}%                                                                                  
+\makeatother%                                                                       
 
-%% fontenc (Standard - 2020, "not a package anymore")                               %%
-\TUMRequirePackage[%                                                                %%
-T1%                                                                                 %%
-]{fontenc}%                                                                         %%
-%% ================== Definition, etc. of the used font's ========================= %%
-%% --------------------------- Latin Modern font family --------------------------- %%
-%% lmodern = Latin Modern fotns                                                     %%
-\TUMRequirePackage{lmodern}%                                                        %%
-%% LM Roman                                                                         %%
-\renewcommand{\rmdefault}{lmr}%                                                     %%
-%% LM Mono                                                                          %%
-\renewcommand{\ttdefault}{lmtt}%                                                    %%
-%% LM Sans                                                                          %%
-%\renewcommand{\sfdefault}{lmss}%                                                   %%
-%% ------------------------------ Bera font family ------------------------------   %%
-%% bera = Bera fonts                                                                %%
-%\RequirePackage{bera}%                                                             %%
-%% Bera Serif                                                                       %%
-%\RequirePackage{beraserif}% {fve}                                                  %%
-%% Bera Mono                                                                        %%
-%\RequirePackage{beramono}% {fvm}                                                   %%
-%% Bera Sans                                                                        %%
-%\RequirePackage{berasans}% {fvs}                                                   %%
-%% ----------------------------- CmBright font family ----------------------------- %%
-%% cmbright = Computer Modern Bright fonts                                          %%
-%\RequirePackage{cmbright}%                                                         %%
-%% CmBright Mono                                                                    %%
-%\renewcommand{\ttdefault}{cmtl}%                                                   %%
-%% CmBright Sans                                                                    %%
-%\renewcommand{\sfdefault}{cmbr}%                                                   %%
-%% ----------------------------- Further font families ---------------------------- %%
-%% helvet [scaled] = Load Helvetica, scaled                                         %%
-\TUMRequirePackage[%                                                                %%
-scaled%                                                                             %%
-]{helvet}%                                                                          %%
-\renewcommand{\sfdefault}{phv}%                                                     %%
-%\RequirePackage{courier}%                                                          %%
-%\renewcommand{\ttdefault}{pcr}%                                                    %%
-%\RequirePackage{mathptmx}%                                                         %%
-%\renewcommand{\rmdefault}{ptm}%                                                    %%
-%\RequirePackage{mathpazo}%                                                         %%
-%\renewcommand{\rmdefault}{pplx}% or {pplj}                                         %%
-%\RequirePackage{charter}%                                                          %%
-%\renewcommand{\sfdefault}{bch}%                                                    %%
-%\RequirePackage{bookman}%                                                          %%
-%\renewcommand{\sfdefault}{pbk}%                                                    %%
-%% further fonts:   newcent {pnc}, avantgar {pag}, chancery {pzc},                  %%
-%%                  uarial {ua1}, ulgothic {ulg}, luximono {ul9}, fourier {futm}, ..%%
-%% ------------------------- Default fonts of the document ------------------------ %%
-\renewcommand{\familydefault}{\rmdefault}%                                          %%
-%% ---------------------------- Sans font in math mode ---------------------------- %%
-%\RequirePackage{sansmath}%                                                         %%
-%\sansmath%                                                                         %%
-%% ---------------------------- Bbm font in math mode ----------------------------- %%
-%% bbm = \mathbbm{...}, for example 1 (identity matrix)                             %%
-\TUMRequirePackage{bbm}%                                                            %%
-%% ---------------------------- Upright Greek letters ----------------------------- %%
-%% upgreek = upright greek letters (z.B. \upmu)                                     %%
-\TUMRequirePackage{upgreek}%                                                        %%
-%% ------------------------- Typographical perfection(s) -------------------------- %%
-%% microtype = subliminal refinements towards typographical perfection              %%
-%% after: font(s),                                                                  %%
-\TUMRequirePackage[%                                                                %%
-babel=true,%                                                                        %%
-]{microtype}%                                                                       %%
+%% fontenc (Standard - 2020, "not a package anymore")                               
+\TUMRequirePackage[%                                                                
+T1%                                                                                 
+]{fontenc}%                                                                         
+%% ================== Definition, etc. of the used font's ========================= 
+%% --------------------------- Latin Modern font family --------------------------- 
+%% lmodern = Latin Modern fotns                                                     
+\TUMRequirePackage{lmodern}%                                                        
+%% LM Roman                                                                         
+\renewcommand{\rmdefault}{lmr}%                                                     
+%% LM Mono                                                                          
+\renewcommand{\ttdefault}{lmtt}%                                                    
+%% LM Sans                                                                          
+%\renewcommand{\sfdefault}{lmss}%                                                   
+%% ------------------------------ Bera font family ------------------------------   
+%% bera = Bera fonts                                                                
+%\RequirePackage{bera}%                                                             
+%% Bera Serif                                                                       
+%\RequirePackage{beraserif}% {fve}                                                  
+%% Bera Mono                                                                        
+%\RequirePackage{beramono}% {fvm}                                                   
+%% Bera Sans                                                                        
+%\RequirePackage{berasans}% {fvs}                                                   
+%% ----------------------------- CmBright font family ----------------------------- 
+%% cmbright = Computer Modern Bright fonts                                          
+%\RequirePackage{cmbright}%                                                         
+%% CmBright Mono                                                                    
+%\renewcommand{\ttdefault}{cmtl}%                                                   
+%% CmBright Sans                                                                    
+%\renewcommand{\sfdefault}{cmbr}%                                                   
+%% ----------------------------- Further font families ---------------------------- 
+%% helvet [scaled] = Load Helvetica, scaled                                         
+\TUMRequirePackage[%                                                                
+scaled%                                                                             
+]{helvet}%                                                                          
+\renewcommand{\sfdefault}{phv}%                                                     
+%\RequirePackage{courier}%                                                          
+%\renewcommand{\ttdefault}{pcr}%                                                    
+%\RequirePackage{mathptmx}%                                                         
+%\renewcommand{\rmdefault}{ptm}%                                                    
+%\RequirePackage{mathpazo}%                                                         
+%\renewcommand{\rmdefault}{pplx}% or {pplj}                                         
+%\RequirePackage{charter}%                                                          
+%\renewcommand{\sfdefault}{bch}%                                                    
+%\RequirePackage{bookman}%                                                          
+%\renewcommand{\sfdefault}{pbk}%                                                    
+%% further fonts:   newcent {pnc}, avantgar {pag}, chancery {pzc},                  
+%%                  uarial {ua1}, ulgothic {ulg}, luximono {ul9}, fourier {futm}, ..
+%% ------------------------- Default fonts of the document ------------------------ 
+\renewcommand{\familydefault}{\rmdefault}%                                          
+%% ---------------------------- Sans font in math mode ---------------------------- 
+%\RequirePackage{sansmath}%                                                         
+%\sansmath%                                                                         
+%% ---------------------------- Bbm font in math mode ----------------------------- 
+%% bbm = \mathbbm{...}, for example 1 (identity matrix)                             
+\TUMRequirePackage{bbm}%                                                            
+%% ---------------------------- Upright Greek letters ----------------------------- 
+%% upgreek = upright greek letters (z.B. \upmu)                                     
+\TUMRequirePackage{upgreek}%                                                        
+%% ------------------------- Typographical perfection(s) -------------------------- 
+%% microtype = subliminal refinements towards typographical perfection              
+%% after: font(s),                                                                  
+\TUMRequirePackage[%                                                                
+babel=true,%                                                                        
+]{microtype}%                                                                       
 
-%% multicol = Intermix single and multiple columns                                  %%
-\TUMRequirePackage{multicol}%                                                       %%
-%% imakeidx = A package for producing multiple indexes                              %%
-\TUMRequirePackage[%                                                                %%
-splitindex%                                                                         %%
-]{imakeidx}%                                                                        %%
-%% idxlayout = Configurable index layout, responsive to KOMA-Script and memoir      %%
-\TUMRequirePackage[%                                                                %%
-columns=2,%                                                                         %%
-unbalanced,%                                                                        %%
-itemlayout=abshang%                                                                 %%
-]{idxlayout}%                                                                       %%
+%% multicol = Intermix single and multiple columns                                  
+\TUMRequirePackage{multicol}%                                                       
+%% imakeidx = A package for producing multiple indexes                              
+\TUMRequirePackage[%                                                                
+splitindex%                                                                         
+]{imakeidx}%                                                                        
+%% idxlayout = Configurable index layout, responsive to KOMA-Script and memoir      
+\TUMRequirePackage[%                                                                
+columns=2,%                                                                         
+unbalanced,%                                                                        
+itemlayout=abshang%                                                                 
+]{idxlayout}%                                                                       
 
-%% url = Verbatim with URL-sensitive line breaks                                    %%
-\TUMRequirePackage[%                                                                %%
-hyphens,%                                                                           %%
-]{url}%                                                                             %%
-%% biber = with: --validate-control --convert-control %                             %%
-\TUMRequirePackage[%                                                                %%
-%% default backend of biblatex (bibtex, bibtex8)                                    %%
-backend=biber,%                                                                     %%
-%% .cbx-file numeric style in the "Text", when using \cite (numeric, numeric-comp)  %%
-citestyle=numeric,%                                                                 %%
-%% .bbx-file numeric style in the bibliography (numeric, numeric-comp)              %%
-bibstyle=numeric,%                                                                  %%
-%% citation order ([nty ... sort by name, title, year], ...                         %%
-%% or declare a sorting scheme with \DeclareSortingScheme)                          %%
-sorting=none,%                                                                      %%
-%% style loads .cbx,.bbx-file at once (overrides bib/cite), ieee=numeric/unsorted   %%
-%style=ieee,% changes names...                                                      %%
-%% changes are possible here:                                                       %%
-natbib=true,%               aliases for citation commands, like the natbib package  %%
-backref=true,%              reference back from the bibliography                    %%
-backrefstyle=two,%          (e. g. two, three)                                      %%
-language=auto,%             language for the whole bibliograpies,                   %%
-%                           will be set by the otherlanguage-environment:           %%
-autolang=other,%            if you want to change the language                      %%
-alldates=year,%             basicly only the year                                   %%
-dateabbrev=false,%          disable abbreviations                                   %%
-url=true,%                  urls true                                               %%
-doi=true,%                  doi true                                                %%
-urldate=long,%                                                                      %%
-%% refsection=section                                                               %%
-%% datamodel=dbmauthoryear%    .dbx-file (additional definitions)                   %%
-]{biblatex}%                                                                        %%
+%% url = Verbatim with URL-sensitive line breaks                                    
+\TUMRequirePackage[%                                                                
+hyphens,%                                                                           
+]{url}%                                                                             
+%% biber = with: --validate-control --convert-control %                             
+\TUMRequirePackage[%                                                                
+%% default backend of biblatex (bibtex, bibtex8)                                    
+backend=biber,%                                                                     
+%% .cbx-file numeric style in the "Text", when using \cite (numeric, numeric-comp)  
+citestyle=numeric,%                                                                 
+%% .bbx-file numeric style in the bibliography (numeric, numeric-comp)              
+bibstyle=numeric,%                                                                  
+%% citation order ([nty ... sort by name, title, year], ...                         
+%% or declare a sorting scheme with \DeclareSortingScheme)                          
+sorting=none,%                                                                      
+%% style loads .cbx,.bbx-file at once (overrides bib/cite), ieee=numeric/unsorted   
+%style=ieee,% changes names...                                                      
+%% changes are possible here:                                                       
+natbib=true,%               aliases for citation commands, like the natbib package  
+backref=true,%              reference back from the bibliography                    
+backrefstyle=two,%          (e. g. two, three)                                      
+language=auto,%             language for the whole bibliograpies,                   
+%                           will be set by the otherlanguage-environment:           
+autolang=other,%            if you want to change the language                      
+alldates=year,%             basicly only the year                                   
+dateabbrev=false,%          disable abbreviations                                   
+url=true,%                  urls true                                               
+doi=true,%                  doi true                                                
+urldate=long,%                                                                      
+%% refsection=section                                                               
+%% datamodel=dbmauthoryear%    .dbx-file (additional definitions)                   
+]{biblatex}%                                                                        
 
-%% csquotes = Context sensitive quotation facilities                                %%
-%% first language ... main                                                          %%
-%% naustrian alias for: austrian                                                    %%
-%% english: american                                                                %%
-\TUMRequirePackage[%                                                                %%
-autostyle=true,%                                                                    %%
-english=american,%                                                                  %%
-austrian=quotes,%                                                                   %%
-german=quotes,%                                                                     %%
-]{csquotes}%                                                                        %%
+%% csquotes = Context sensitive quotation facilities                                
+%% first language ... main                                                          
+%% naustrian alias for: austrian                                                    
+%% english: american                                                                
+\TUMRequirePackage[%                                                                
+autostyle=true,%                                                                    
+english=american,%                                                                  
+austrian=quotes,%                                                                   
+german=quotes,%                                                                     
+]{csquotes}%                                                                        
  
-%% array = Extending the array and tabular environments                             %%
-%% --> needed by authors (siunitx)                                                  %%
-\TUMRequirePackage{array}%                                                          %%
-%% siunitx = A comprehensive (SI) units package                                     %%
-\TUMRequirePackage{siunitx}%                                                        %%
+%% array = Extending the array and tabular environments                             
+%% --> needed by authors (siunitx)                                                  
+\TUMRequirePackage{array}%                                                          
+%% siunitx = A comprehensive (SI) units package                                     
+\TUMRequirePackage{siunitx}%                                                        
 
-%% setspace = Set space between lines                                               %%
-%% default: \singlespacing (ev. \onehalfspacing, if desired)                        %%
-\TUMRequirePackage[%                                                                %%
-singlespacing%                                                                      %%
-]{setspace}%                                                                        %%
-%% graphics = Standard LaTeX graphics                                               %%
-\TUMRequirePackage{graphics}%                                                       %%
-%% lscape = Place selected parts of a document in landscape                         %%
-\TUMRequirePackage{lscape}%                                                         %%
-%% pdflscape = Make landscape pages display as landscape                            %%
-\TUMRequirePackage{pdflscape}%                                                      %%
+%% setspace = Set space between lines                                               
+%% default: \singlespacing (ev. \onehalfspacing, if desired)                        
+\TUMRequirePackage[%                                                                
+singlespacing%                                                                      
+]{setspace}%                                                                        
+%% graphics = Standard LaTeX graphics                                               
+\TUMRequirePackage{graphics}%                                                       
+%% lscape = Place selected parts of a document in landscape                         
+\TUMRequirePackage{lscape}%                                                         
+%% pdflscape = Make landscape pages display as landscape                            
+\TUMRequirePackage{pdflscape}%                                                      
 
-%% tabularx = Tabulars with adjustable-width columns                                %%
-\TUMRequirePackage{tabularx}%                                                       %%
-\TUMRequirePackage{booktabs}%                                                       %%
-%% longtable =  Allow tables to flow over page boundaries                           %%
-\TUMRequirePackage{longtable}%                                                      %%
-%% multirow = Create tabular cells spanning multiple rows                           %%
-\TUMRequirePackage[%                                                                %%
-longtable%                                                                          %%
-]{multirow}%                                                                        %%
-%% Colors: needs booktabs, must be loaded before hyperref:                          %%
-\TUMRequirePackage{packages/tumcolors}%                                             %%
+%% tabularx = Tabulars with adjustable-width columns                                
+\TUMRequirePackage{tabularx}%                                                       
+\TUMRequirePackage{booktabs}%                                                       
+%% longtable =  Allow tables to flow over page boundaries                           
+\TUMRequirePackage{longtable}%                                                      
+%% multirow = Create tabular cells spanning multiple rows                           
+\TUMRequirePackage[%                                                                
+longtable%                                                                          
+]{multirow}%                                                                        
+%% Colors: needs booktabs, must be loaded before hyperref:                          
+\TUMRequirePackage{packages/tumcolors}%                                             
 
-%% graphicx = Enhanced support for graphics                                         %%
-\TUMRequirePackage{graphicx}%                                                       %%
-%% graphbox = Extension of graphicx (loads graphicx)                                %%
-\TUMRequirePackage{graphbox}%                                                       %%
-%% nicefrac = Typeset in-line fractions in a "nice" way                             %%
-\TUMRequirePackage{nicefrac}%                                                       %%
-%% xfrac =  Split-level fractions in LaTeX2ε*                                       %%
-\TUMRequirePackage{xfrac}%                                                          %%
-%% subfig [lofdepth] = Figures broken into subfigures (not recommended)             %%
-%\RequirePackage[lofdepth,labelformat=simple,listofformat=subsimple,%               %%
-%   subrefformat=subsimple,labelsep=period]{subfig}%                                %%
-%% subfloat [countmax] = Sub-numbering for figures and tables (not recommended)     %%
-%\RequirePackage[countmax]{subfloat}%                                               %%
-%% caption [hypcap=true] = Customising captions in floating environments            %%
-%% --> loads: caption3                                                              %%
-\TUMRequirePackage[%                                                                %%
-hypcap=true%                                                                        %%
-%margin=10pt% margin left and right                                                 %%
-]{caption}%                                                                         %%
-%% subcaption [list=true,hypcap=true] = Support for sub-captions                    %%
-\TUMRequirePackage[%                                                                %%
-list=true,%                                                                         %%
-hypcap=true%                                                                        %%
-]{subcaption}%                                                                      %%
-%% pdfpages = Include PDF documents in LaTeX                                        %%
-\TUMRequirePackage{pdfpages}%                                                       %%
+%% graphicx = Enhanced support for graphics                                         
+\TUMRequirePackage{graphicx}%                                                       
+%% graphbox = Extension of graphicx (loads graphicx)                                
+\TUMRequirePackage{graphbox}%                                                       
+%% nicefrac = Typeset in-line fractions in a "nice" way                             
+\TUMRequirePackage{nicefrac}%                                                       
+%% xfrac =  Split-level fractions in LaTeX2ε*                                       
+\TUMRequirePackage{xfrac}%                                                          
+%% subfig [lofdepth] = Figures broken into subfigures (not recommended)             
+%\RequirePackage[lofdepth,labelformat=simple,listofformat=subsimple,%               
+%   subrefformat=subsimple,labelsep=period]{subfig}%                                
+%% subfloat [countmax] = Sub-numbering for figures and tables (not recommended)     
+%\RequirePackage[countmax]{subfloat}%                                               
+%% caption [hypcap=true] = Customising captions in floating environments            
+%% --> loads: caption3                                                              
+\TUMRequirePackage[%                                                                
+hypcap=true%                                                                        
+%margin=10pt% margin left and right                                                 
+]{caption}%                                                                         
+%% subcaption [list=true,hypcap=true] = Support for sub-captions                    
+\TUMRequirePackage[%                                                                
+list=true,%                                                                         
+hypcap=true%                                                                        
+]{subcaption}%                                                                      
+%% pdfpages = Include PDF documents in LaTeX                                        
+\TUMRequirePackage{pdfpages}%                                                       
 
-%% enumitem = Control layout of itemize, enumerate, description                     %%
-\TUMRequirePackage{enumitem}%                                                       %%
-%% easylist [ampersand] = Lists using a single active character                     %%
-\TUMRequirePackage[%                                                                %%
-ampersand%                                                                          %%
-]{easylist}%                                                                        %%
+%% enumitem = Control layout of itemize, enumerate, description                     
+\TUMRequirePackage{enumitem}%                                                       
+%% easylist [ampersand] = Lists using a single active character                     
+\TUMRequirePackage[%                                                                
+ampersand%                                                                          
+]{easylist}%                                                                        
 
-%% ===================================== TikZ ===================================== %%
-%% tikz,pgf = Create PostScript and PDF graphics in TeX                             %%
-%% (tikz loads pgf)                                                                 %%
-%% (pgfplotstable loads pgfplots, pgf)                                              %%
-%% Most important commands:                                                         %%
-%% \node (name) [object] at (coordinate) {caption};                                 %%
-%% \coordinate (name) at (coordinate);                                              %%
-%% \draw (coordinate) -- (coordinate) to [element] (coordinate);                    %%
-\TUMRequirePackage{tikz}%                                                           %%
-\TUMRequirePackage{pgfplotstable}%                                                  %%
+%% ===================================== TikZ ===================================== 
+%% tikz,pgf = Create PostScript and PDF graphics in TeX                             
+%% (tikz loads pgf)                                                                 
+%% (pgfplotstable loads pgfplots, pgf)                                              
+%% Most important commands:                                                         
+%% \node (name) [object] at (coordinate) {caption};                                 
+%% \coordinate (name) at (coordinate);                                              
+%% \draw (coordinate) -- (coordinate) to [element] (coordinate);                    
+\TUMRequirePackage{tikz}%                                                           
+\TUMRequirePackage{pgfplotstable}%                                                  
 
-%% listings = Typeset source code listings using LaTeX                              %%
-\TUMRequirePackage[%                                                                %%
-procnames%                                                                          %%
-]{listings}%                                                                        %%
+%% listings = Typeset source code listings using LaTeX                              
+\TUMRequirePackage[%                                                                
+procnames%                                                                          
+]{listings}%                                                                        
 
-%% todonotes = Marking things to do in a LaTeX document                             %%
-\TUMRequirePackage[%                                                                %%
-colorinlistoftodos,%                                                                %%
-textsize=tiny%                                                                      %%
-]{todonotes}%                                                                       %%
-%% marginnote = Notes in the margin, even where \marginpar fails                    %%
-%% needed for todonotes (Better would be also to load scrlayer-notecolumn           %%
-%%      if one want to write important stuff into the margin.)                      %%                                  
-\TUMRequirePackage{marginnote}%                                                     %%
-\makeatletter%                                                                      %%
-\TUM@ifpackageloaded[setting]{marginnote}{%                                         %%
-	\renewcommand{\marginpar}{\marginnote}%                                         %%
-	%\reversemarginpar%                                                             %%
-}{}%                                                                                %%
-\makeatother%                                                                       %%
+%% todonotes = Marking things to do in a LaTeX document                             
+\TUMRequirePackage[%                                                                
+colorinlistoftodos,%                                                                
+textsize=tiny%                                                                      
+]{todonotes}%                                                                       
+%% marginnote = Notes in the margin, even where \marginpar fails                    
+%% needed for todonotes (Better would be also to load scrlayer-notecolumn           
+%%      if one want to write important stuff into the margin.)                      
+\TUMRequirePackage{marginnote}%                                                     
+\makeatletter%                                                                      
+\TUM@ifpackageloaded[setting]{marginnote}{%                                         
+	\renewcommand{\marginpar}{\marginnote}%                                         
+	%\reversemarginpar%                                                             
+}{}%                                                                                
+\makeatother%                                                                       
 
-%% tcolorbox = Coloured boxes, for LaTeX examples and theorems, etc.                %%
-\TUMRequirePackage{verbatim}%                                                       %%
-\TUMRequirePackage{trimspaces}%                                                     %%
-\TUMRequirePackage{environ}%                                                        %%
-\TUMRequirePackage{tcolorbox}%                                                      %%
+%% tcolorbox = Coloured boxes, for LaTeX examples and theorems, etc.                
+\TUMRequirePackage{verbatim}%                                                       
+\TUMRequirePackage{trimspaces}%                                                     
+\TUMRequirePackage{environ}%                                                        
+\TUMRequirePackage{tcolorbox}%                                                      
 
-%% mhchem = Typeset chemical formulae/equations and Risk and Safety phrases         %%
-%% --> older version of chemformula                                                 %%
-%% [version=4]                                                                      %%
-%% chemformula = Command for typesetting chemical formulas and reactions            %%
-\TUMRequirePackage{chemformula}%                                                    %%
-%% chemgreek =  Upright Greek letters in chemistry                                  %%
-\TUMRequirePackage{chemgreek}%                                                      %%
-%% chemmacros = A collection of macros to support typesetting chemistry documents   %%
-\TUMRequirePackage{chemmacros}%                                                     %%
-%% nicematrix = Improve the typesetting of mathematical matrices with PGF           %%
-\TUMRequirePackage{nicematrix}%                                                     %%
+%% mhchem = Typeset chemical formulae/equations and Risk and Safety phrases         
+%% --> older version of chemformula                                                 
+%% [version=4]                                                                      
+%% chemformula = Command for typesetting chemical formulas and reactions            
+\TUMRequirePackage{chemformula}%                                                    
+%% chemgreek =  Upright Greek letters in chemistry                                  
+\TUMRequirePackage{chemgreek}%                                                      
+%% chemmacros = A collection of macros to support typesetting chemistry documents   
+\TUMRequirePackage{chemmacros}%                                                     
+%% nicematrix = Improve the typesetting of mathematical matrices with PGF           
+\TUMRequirePackage{nicematrix}%                                                     
 
-%% geometry [pass] = Flexible and complete interface to document dimensions         %%
-%% --> pass: only loading, e.q. for addtotoc (pdf)                                  %%
-\TUMRequirePackage[%                                                                %%
-pass%                                                                               %%
-]{geometry}%                                                                        %%
+%% geometry [pass] = Flexible and complete interface to document dimensions         
+%% --> pass: only loading, e.q. for addtotoc (pdf)                                  
+\TUMRequirePackage[%                                                                
+pass%                                                                               
+]{geometry}%                                                                        
 
-%% datetime = Change format of \today with commands for current time                %%
-%% --> (for e. g. \monthname + scrdate + scrtime)                                   %%
-\TUMRequirePackage{datetime}%                                                       %%
-%% scrhack = Fixes mistakes from important packages                                 %%
-\TUMRequirePackage{scrhack}%                                                        %%
-%% float =  Improved interface for floating objects                                 %%
-\TUMRequirePackage{float}%                                                          %%
-%% hyperref [...] = for hyperlinks                                                  %%
-%% bookmark-commands for hyperref/bookmark                                          %%
-\makeatletter%                                                                      %%
-\newcommand{\pdfauthor}[1]{\gdef\@pdfauthor{#1}}%                                   %%
-\newcommand{\@pdfauthor}{\@latex@warning@no@line{No \noexpand\pdfauthor given}}%    %%
-\newcommand{\pdftitle}[1]{\gdef\@pdftitle{#1}}%                                     %%
-\newcommand{\@pdftitle}{\@latex@warning@no@line{No \noexpand\pdftitle given}}%      %%
-\newcommand{\pdfsubject}[1]{\gdef\@pdfsubject{#1}}%                                 %%
-\newcommand{\@pdfsubject}{\@latex@warning@no@line{No \noexpand\pdfsubject given}}%  %%
-\newcommand{\pdfkeywords}[1]{\gdef\@pdfkeywords{#1}}%                               %%
-\newcommand{\@pdfkeywords}{\@latex@warning@no@line{No \noexpand\pdfkeywords given}}%%%
-\makeatother%                                                                       %%
-\TUMRequirePackage[%                                                                %%
-bookmarks=true,%        %% enable bookmarks                                         %%
-bookmarksopen=true,%    %% display the bookmarks when opening the documnet          %%
-bookmarksopenlevel=0,%  %% display the bookmarks at level when opening the document %%
-bookmarksnumbered=true,%%% number the bookmarks                                     %%
-hyperfootnotes=false,%  %% = false, to ensure that KOMAoptions{footnotes=multiple}  %%
-unicode=true%           %%                                                          %%
-]{hyperref}%                                                                        %%
-\hypersetup{%                                                                       %%
-colorlinks=true,%       %% colored links                                            %%
-linkbordercolor={1 1 1},%% frame color                                              %%
-linkcolor=\TUMcolor{2},%%% link color                                               %%
-urlcolor=\TUMcolor{3},% %% url color                                                %%
-urlbordercolor={1 1 1},%%% url border color                                         %%
-menucolor=\TUMcolor{4},%% menu color                                                %%
-menubordercolor={1 1 1},%%% menu border color                                       %%
-citecolor=\TUMcolor{1},%% cite color                                                %%
-citebordercolor={1 1 1},%%% cite border color                                       %%
-breaklinks=true,%       %% enable breaking links in listof...                       %%
-linktocpage=true,%      %% true = only page numbers in toc are hyperlinks + color   %%
-hypertexnames=true,%    %% because of biblatex-backref                              %%
-plainpages=false%       %% biblatex                                                 %%
-%%                      %% is possible                                              %%
-}%                                                                                  %%
-\makeatletter%                                                                      %%
-\if@twoside%                                                                        %%
-	\hypersetup{pdfpagelayout=TwoPageRight}%                                        %%
-\else%                                                                              %%
-	\hypersetup{pdfpagelayout=OneColumn}%                                           %%
-\fi%                                                                                %%
-%% Ever break the urls:                                                             %%
-\expandafter\def\expandafter\UrlBreaks\expandafter{\UrlBreaks%                      %%
-	\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j%                             %%
-	\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t%                             %%
-	\do\u\do\v\do\w\do\x\do\y\do\z\do\A\do\B\do\C\do\D%                             %%
-	\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N%                             %%
-	\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X%                             %%
-	\do\Y\do\Z\do\_\do\-\do\+\do\-\do\/\do\.\do\1\do\2%                             %%
-	\do\3\do\4\do\5\do\6\do\7\do\8\do\9\do\0\do\,}%                                 %%
-\Urlmuskip = 0mu plus 1mu%                                                          %%
-\TUM@ifpackageloaded[setting]{biblatex}{%                                           %%
-	\setcounter{biburlnumpenalty}{1000}%                                            %%
-	\setcounter{biburlucpenalty}{1000}%                                             %%
-	\setcounter{biburllcpenalty}{1000}%                                             %%
-}{}%                                                                                %%
-%% Ref/Autoref-names for hyperref                                                   %%
-\AtBeginDocument{%                                                                  %%
-	\TUM@ifpackageloaded[setting]{babel}{% begin: babel loaded                      %%
-		\TUM@ifpackageloaded[setting]{hyperref}{% begin: hyperref loaded            %%
-			\TUM@ifpackageloaded[setting]{listings}{% begin: listings loaded        %%
-				\newcommand*{\lstlistingautorefname}{}%                             %%
-			}{}% end: listings not loaded                                           %%
-			\AfterEndPreamble{%                                                     %%
-				\addto\extrasamerican{%                                             %%
-					\renewcommand*{\tableautorefname}{table}%                       %%
-					\renewcommand*{\figureautorefname}{figure}%                     %%
-					\renewcommand*{\partautorefname}{part}%                         %%
-					\renewcommand*{\chapterautorefname}{chapter}%                   %%
-					\renewcommand*{\sectionautorefname}{section}%                   %%
-					\renewcommand*{\subsectionautorefname}{subsection}%             %%
-					\renewcommand*{\subsubsectionautorefname}{subsubsection}%       %%
-					\renewcommand*{\paragraphautorefname}{paragraph}%               %%
-					\renewcommand*{\subparagraphautorefname}{subparagraph}%         %%
-					\renewcommand*{\equationautorefname}{equation}%                 %%
-					\renewcommand*{\appendixautorefname}{appendix}%                 %%
-				}%                                                                  %%
-				\addto\extrasenglish{%                                              %%
-					\renewcommand*{\tableautorefname}{table}%                       %%
-					\renewcommand*{\figureautorefname}{figure}%                     %%
-					\renewcommand*{\partautorefname}{part}%                         %%
-					\renewcommand*{\chapterautorefname}{chapter}%                   %%
-					\renewcommand*{\sectionautorefname}{section}%                   %%
-					\renewcommand*{\subsectionautorefname}{subsection}%             %%
-					\renewcommand*{\subsubsectionautorefname}{subsubsection}%       %%
-					\renewcommand*{\paragraphautorefname}{paragraph}%               %%
-					\renewcommand*{\subparagraphautorefname}{subparagraph}%         %%
-					\renewcommand*{\equationautorefname}{equation}%                 %%
-					\renewcommand*{\appendixautorefname}{appendix}%                 %%
-				}%                                                                  %%
-				\addto\extrasnaustrian{%                                            %%
-					\renewcommand*{\tableautorefname}{Tabelle}%                     %%
-					\renewcommand*{\figureautorefname}{Abbildung}%                  %%
-					\renewcommand*{\partautorefname}{Teil}%                         %%
-					\renewcommand*{\chapterautorefname}{Kapitel}%                   %%
-					\renewcommand*{\sectionautorefname}{Abschnitt}%                 %%
-					\renewcommand*{\subsectionautorefname}{Unterabschnitt}%         %%
-					\renewcommand*{\subsubsectionautorefname}{Unterunterabscnhitt}% %%
-					\renewcommand*{\paragraphautorefname}{Paragraph}%               %%
-					\renewcommand*{\subparagraphautorefname}{Unterparagraph}%       %%
-					\renewcommand*{\equationautorefname}{Gleichung}%                %%
-					\renewcommand*{\appendixautorefname}{Anhang}%                   %%
-				 }%                                                                 %%
-				\addto\extrasngerman{%                                              %%
-					\renewcommand*{\tableautorefname}{Tabelle}%                     %%
-					\renewcommand*{\figureautorefname}{Abbildung}%                  %%
-					\renewcommand*{\partautorefname}{Teil}%                         %%
-					\renewcommand*{\chapterautorefname}{Kapitel}%                   %%
-					\renewcommand*{\sectionautorefname}{Abschnitt}%                 %%
-					\renewcommand*{\subsectionautorefname}{Unterabschnitt}%         %%
-					\renewcommand*{\subsubsectionautorefname}{Unterunterabscnhitt}% %%
-					\renewcommand*{\paragraphautorefname}{Paragraph}%               %%
-					\renewcommand*{\subparagraphautorefname}{Unterparagraph}%       %%
-					\renewcommand*{\equationautorefname}{Gleichung}%                %%
-					\renewcommand*{\appendixautorefname}{Anhang}%                   %%
-				 }%                                                                 %%
-			}%                                                                      %%
-			\TUM@ifpackageloaded[setting]{listings}{% begin: listings loaded        %%
-				\AfterEndPreamble{%                                                 %%
-					\addto\extrasamerican{%                                         %%
-						\renewcommand*{\lstlistingautorefname}{listing}%            %%
-					}%                                                              %%
-					\addto\extrasenglish{%                                          %%
-						\renewcommand*{\lstlistingautorefname}{listing}%            %%
-					}%                                                              %%
-					\addto\extrasnaustrian{%                                        %%
-						\renewcommand*{\lstlistingautorefname}{Listing}%            %%
-					}%                                                              %%
-					\addto\extrasngerman{%                                          %%
-						\renewcommand*{\lstlistingautorefname}{Listing}%            %%
-					}%                                                              %%
-				}%                                                                  %%
-			}{}% end: listings not loaded                                           %%
-			\TUM@ifpackageloaded[setting]{subcaption}{% begin: subcaption loaded    %%
-				\AfterEndPreamble{%                                                 %%
-					\addto\extrasamerican{%                                         %%
-						\renewcommand*{\subfigureautorefname}{figure}%              %%
-						\renewcommand*{\subtableautorefname}{table}%                %%
-					}%                                                              %%
-					\addto\extrasenglish{%                                          %%
-						\renewcommand*{\subfigureautorefname}{figure}%              %%
-						\renewcommand*{\subtableautorefname}{table}%                %%
-					}%                                                              %%
-					\addto\extrasnaustrian{%                                        %%
-						\renewcommand*{\subfigureautorefname}{Abbildung}%           %%
-						\renewcommand*{\subtableautorefname}{Tabelle}%              %%
-					}%                                                              %%
-					\addto\extrasngerman{%                                          %%
-						\renewcommand*{\subfigureautorefname}{Abbildung}%           %%
-						\renewcommand*{\subtableautorefname}{Tabelle}%              %%
-					}%                                                              %%
-				}%                                                                  %%
-			}{}% end: subcaption not loaded                                         %%
-		}{}% end: hyperref not loaded                                               %%
-	}{}% end: babel not loaded                                                      %%
-}% end: AtBeginDocument                                                             %%
-\makeatother%                                                                       %%
-%% bookmark = A new bookmark (outline) organization for hyperref                    %%
-\TUMRequirePackage[][hyperref]{bookmark}%                                           %%
-%% ================================================================================ %%
-%% ================================================================================ %%
-%% ========================== Macros / Definitions / etc. ========================= %%
-%% ================================================================================ %%
-%% ================================================================================ %%
-%% ================================================================================ %%
-%% ============================== line/rule-width's ******************************* %%
-%% ******************************************************************************** %%
-%% Set the width of the rules                                                       %%
-\newlength{\rulewidth}%                                                             %%
-\setlength{\rulewidth}{0.4pt}%                                                      %%
-%% ================================================================================ %%
-%% ===================================== math ************************************* %%
-%% ******************************************************************************** %%
-\DeclareMathOperator{\dAlembert}{\Box}%                                             %%
-\DeclareMathOperator{\Laplace}{\Delta}%                                             %%
-\DeclareMathOperator{\sgn}{sgn}%                                                    %%
-%% Redefine vector                                                                  %%
-\let\oldvec\vec%                                                                    %%
-\renewcommand{\vec}[1]{\boldsymbol{\mathbf{#1}}}%                                   %%
-\newcommand{\evec}[1]{\boldsymbol{\mathbf{\hat{#1}}}}%                              %%
-%\newcommand{\evec}[1]{\hat{#1}}%                                                   %%
-\makeatletter%                                                                      %%
-\TUM@ifpackageloaded[setting]{physics}{%                                            %%
-%\renewcommand\Re[1]{%                                                              %%
-%    \real{#1}%                                                                     %%
-%}%                                                                                 %%
-%\renewcommand\Im[1]{%                                                              %%
-%    \imaginary{#1}%                                                                %%
-%}%                                                                                 %%
-%% Fehler im physics package, vphantom entfernt (steht unnoetig drinnen...),        %%
-\RenewDocumentCommand\bra{sm t\ket sg}{%                                            %%
-	\IfBooleanTF{#3}{% Contraction                                                  %%
-		\IfBooleanTF{#1}{% Bra has a star: no resize                                %%
-			\IfNoValueTF{#5}{%                                                      %%
-				\braket*{#2}{}\IfBooleanTF{#4}{*}{}%                                %%
-			}{%                                                                     %%
-				\braket*{#2}{#5}%                                                   %%
-			}%                                                                      %%
-		}{%                                                                         %%
-			\IfBooleanTF{#4}{% Ket has a star: no resize                            %%
-				\IfNoValueTF{#5}{%                                                  %%
-					\braket{#2}{}*%                                                 %%
-				}{%                                                                 %%
-					\braket*{#2}{#5}%                                               %%
-				}%                                                                  %%
-			}{% Neither term is starred: auto sizing                                %%
-				\braket{#2}{\IfNoValueTF{#5}{}{#5}}%                                %%
-			}%                                                                      %%
-		}%                                                                          %%
-	}%                                                                              %%
-	{% No contraction                                                               %%
-		\IfBooleanTF{#1}{%                                                          %%
-			\left\langle\smash{#2}\right\rvert%                                     %%
-		}{%                                                                         %%
-			\left\langle{#2}\right\rvert%                                           %%
-		}%                                                                          %%
-		\IfBooleanTF{#4}{*}{}%                                                      %%
-		\IfNoValueTF{#5}{}{#5}%                                                     %%
-	}%                                                                              %%
-}%                                                                                  %%
-\RenewDocumentCommand\ket{sm}{%                                                     %%
-	\IfBooleanTF{#1}{% No resize                                                    %%
-\left\lvert\smash{#2}\right\rangle%                                                 %%
-	}{% Auto resize                                                                 %%
-\left\lvert{#2}\right\rangle%                                                       %%
-	}%                                                                              %%
-}%                                                                                  %%
-\RenewDocumentCommand\innerproduct{smg}{%                                           %%
-	\IfBooleanTF{#1}{% No resize                                                    %%
-		\IfNoValueTF{#3}{%                                                          %%
-\left\langle\smash{#2}\middle\vert\smash{#2}\right\rangle%                          %%
-		}{%                                                                         %%
-\left\langle\smash{#2}\middle\vert\smash{#3}\right\rangle%                          %%
-		}%                                                                          %%
-	}{% Auto resize                                                                 %%
-		\IfNoValueTF{#3}{%                                                          %%
-\left\langle{#2}\middle\vert{#2}\right\rangle%                                      %%
-		}{%                                                                         %%
-\left\langle{#2}\middle\vert{#3}\right\rangle%                                      %%
-		}%                                                                          %%
-	}%                                                                              %%
-}%                                                                                  %%
-\RenewDocumentCommand\matrixelement{ssmmm}{%                                        %%
-	\IfBooleanTF{#1}{%                                                              %%
-		\IfBooleanTF{#2}{% Double starred: total resizing,                          %%
-\left\langle{#3}\middle\vert{#4}\middle\vert{#5}\right\rangle%                      %%
-		}{% Starred: no resizing,                                                   %%
-\left\langle\smash{#3}\middle\vert\smash{#4}\middle\vert\smash{#5}\right\rangle%    %%
-		}%                                                                          %%
-	}{% Normal: only resize based on bra/ket arguments,                             %%
-\left\langle{#3}\middle\vert\smash{#4}\middle\vert{#5}\right\rangle%                %%
-	}%                                                                              %%
-}%                                                                                  %%
-\RenewDocumentCommand\outerproduct{smg}{%                                           %%
-	\IfBooleanTF{#1}{% No resize                                                    %%
-		\IfNoValueTF{#3}{%                                                          %%
-\left\lvert\smash{#2}\middle\rangle\!\middle\langle\smash{#2}\right\rvert%          %%
-		}{%                                                                         %%
-\left\lvert\smash{#2}\middle\rangle\!\middle\langle\smash{#3}\right\rvert%          %%
-		}%                                                                          %%
-	}{% Auto resize                                                                 %%
-		\IfNoValueTF{#3}{%                                                          %%
-\left\lvert{#2}\middle\rangle\!\middle\langle{#2}\right\rvert%                      %%
-		}{%                                                                         %%
-\left\lvert{#2}\middle\rangle\!\middle\langle{#3}\right\rvert%                      %%
-		}%                                                                          %%
-	}%                                                                              %%
-}%                                                                                  %%
-\RenewDocumentCommand\expectationvalue{ssmg}{%                                      %%
-	\IfNoValueTF{#4}{%                                                              %%
-		\IfBooleanTF{#1}{% Starred implicit form: no resizing,                      %%
-\left\langle\smash{#3}\right\rangle%                                                %%
-		}{% Normal implicit form: auto sizing,                                      %%
-\left\langle{#3}\right\rangle%                                                      %%
-		}%                                                                          %%
-	}{%                                                                             %%
-		\IfBooleanTF{#1}{%                                                          %%
-			\IfBooleanTF{#2}{% Double starred explicit form: total auto sizing,     %%
-\left\langle{#4}\middle\vert{#3}\middle\vert{#4}\right\rangle}%                     %%
-			{% Starred explicit form: no resizing,                                  %%
-\left\langle\smash{#4}\middle%                                                      %%
-\vert\smash{#3}\middle\vert\smash{#4}\right\rangle%                                 %%
-			}%                                                                      %%
-		}{% Normal explicit form: only resize based on bra/ket arguments,           %%
-\left\langle{#4}\middle\vert\smash{#3}\middle\vert{#4}\right\rangle}%               %%
-	}%                                                                              %%
-}%                                                                                  %%
-}{}%                                                                                %%
-\makeatother%                                                                       %%
-%% ================================================================================ %%
-%% ============================ tikz and pgf-plot's ******************************* %%
-%% ******************************************************************************** %%
-\makeatletter%                                                                      %%
-\TUM@ifpackageloaded[setting]{pgf}{%                                                %%
-	\usepgfplotslibrary{external}%                                                  %%
-}{}%                                                                                %%
-\TUM@ifpackageloaded[setting]{pdfpages}{%                                           %%
-	\tikzexternalize[optimize command away=\includepdf]% activate externalization!  %%
-}{%                                                                                 %%
-	\tikzexternalize%                                                               %%
-}%                                                                                  %%
-\TUM@ifpackageloaded[setting]{pgf}{%                                                %%
-	\tikzsetexternalprefix{images/tikz/}%                                           %%
-	\tikzset{external/export=false}%                                                %%
-}{}%                                                                                %%
-\TUM@ifpackageloaded[setting]{tcolorbox}{%                                          %%
-	\tcbset{shield externalize}%                                                    %%
-}{}%                                                                                %%
-\makeatother%                                                                       %%
-%% \tikzexternaldisable% (global)                                                   %%
-%% \tikzset{external/export=false}% (local)                                         %%
-%% standard, locally enable it, if tikzexternalize = true (external/export=true)    %%
-%\setchemformula{tikz-external-disable=false}%                                      %%
-\makeatletter%                                                                      %%
-\TUM@ifpackageloaded[setting]{pgf}{%                                                %%
-	\usepgfplotslibrary{fillbetween}% fuer z.~B. den Befehl fillbetween             %%
-}{}%                                                                                %%
-\TUM@ifpackageloaded[setting]{tikz}{%                                               %%
-	\usetikzlibrary{positioning}% nodes below/above of ...                          %%
-	\usetikzlibrary{backgrounds}%% \begin{scope}[on background layer]               %%
-	\usetikzlibrary{circuits}%                                                      %%
-	\usetikzlibrary{circuits.ee}%                                                   %%
-	\usetikzlibrary{circuits.ee.IEC}%% loads pgf library: shapes.gates....          %%
-	\usetikzlibrary{circuits.logic}%                                                %%
-	\usetikzlibrary{circuits.logic.US}%% loads pgf library: shapes.gates....        %%
-	\usetikzlibrary{circuits.logic.IEC}%% loads pgf library: shapes.gates....       %%
-	\usetikzlibrary{decorations}% fuer z.B. Pfeilen entlang von Linien              %%
-	\usetikzlibrary{bending}% fuer z.B. gebogene Kurven                             %%
-	\usetikzlibrary{intersections}% fuer z.B. Schnittpunkte                         %%
-	\usetikzlibrary{patterns}% fuer z.B. Schattierungen                             %%
-	\usetikzlibrary{shapes.misc}% fuer z.B. cross node                              %%
-	\usetikzlibrary{shadows}%                                                       %%
-}{}%                                                                                %%
-\TUM@ifpackageloaded[setting]{pgf}{%                                                %%
-	\TUM@ifpackageloaded[setting]{tikz}{%                                           %%
-		\TUMRequirePackage{packages/tumtikz}%                                       %%
-	}{}%                                                                            %%
-}{}%                                                                                %%
-\makeatother%                                                                       %%
-%% ================================================================================ %%
-%% ================================= listings ************************************* %%
-%% ******************************************************************************** %%
-\makeatletter%                                                                      %%
-\TUM@ifpackageloaded[setting]{listings}{%                                           %%
-	\TUMRequirePackage{packages/tumlistings}%                                       %%
-}{}%                                                                                %%
-\makeatother%                                                                       %%
-%% ================================================================================ %%
-%% ================================= tcolorbox ************************************ %%
-%% ******************************************************************************** %%
-\makeatletter%                                                                      %%
-\TUM@ifpackageloaded[setting]{tcolorbox}{%                                          %%
-%% loads: listings                                                                  %%
-\TUM@ifpackageloaded[setting]{listings}{%                                           %%
-	\tcbuselibrary{listings}%                                                       %%
-}{}%                                                                                %%
-%% loads: amsmath                                                                   %%
-\tcbuselibrary{theorems}%                                                           %%
-%% loads: tikz                                                                      %%
-\tcbuselibrary{skins}%                                                              %%
-%% documentation: disables linkcolor, etc. from hyperref (extra macro then, etc.)   %%
-%\tcbuselibrary{documentation}%                                                     %%
-%% breakable: option breakable                                                      %%
-\tcbuselibrary{breakable}%                                                          %%
-%% xparse: to use \DeclareTColorBox                                                 %%
-\tcbuselibrary{xparse}%                                                             %%
-%% equbox ... box for equations \begin{equbox}[title][opt.par.] ... \end{equbox}    %%
-%% Arguments same as "xparse"-package                                               %%
-\DeclareTColorBox[]{equbox}{+oO{}}{%                                                %%
-	title=\IfValueTF{#1}{#1}{},%                                                    %%
-	fonttitle=\bfseries\boldmath,%                                                  %%
-	coltitle=\TUMcolor{16}, coltext=\TUMcolor{17},%                                 %%
-	%% ***** no box:                                                                %%
-	empty, borderline={\rulewidth}{0pt}{\TUMcolor{18}},%                            %%
-	%% *****                                                                        %%
-	%% titlerule=0mm,%                                                              %%
-	%% boxrule=0mm,%                                                                %%
-	%% bottomrule=\rulewidth, toprule=\rulewidth,%                                  %%
-	%% leftrule=\rulewidth, rightrule=\rulewidth,%                                  %%
-	arc=0mm,%                                                                       %%
-	left=0mm,right=0mm,% only boxsep                                                %%
-	#2%                                                                             %%
-}%                                                                                  %%
-%%  1. Definition%                                                                  %%
-%%  2. Bemerkung%                                                                   %%
-%%  3. Theorem (Satz)%                                                              %%
-%%  3. Lemma (Hilfssatz), (Unterscheidung Theorem - Lemma ist subjektiv!)%          %%
-%%      3.1 Korollar (Triviale Folgerung eines Satzes)%                             %%
-%%  (4.) Beweis%                                                                    %%
-%%  5. Beispiel%                                                                    %%
-%% proof exists, if amsthm is loaded%                                               %%
-\ifdefined\proof%                                                                   %%
-	\let\proof\relax\let\endproof\relax%                                            %%
-\else\fi%                                                                           %%
-\ifdefined\qed%                                                                     %%
-	\let\qed\relax%                                                                 %%
-\else\fi%                                                                           %%
-\TUM@ifpackageloaded[setting]{amssymb}{%                                            %%
-	\newcommand*{\qed}{\ensuremath{\square}}%                                       %%
-}{}%                                                                                %%
-%% \newtcbtheorem[use counter from= (z. B.) <(other) name>, <init options>]         %%
-%% {<name>}{<displayed name>}{<options>}{<prefix>}, prefix for nameref              %%
-\tcbset{%                                                                           %%
-defstyle/.style={%                                                                  %%
-	theorem style=plain,%                                                           %%
-	separator sign none,% standard --                                               %%
-	description delimiters parenthesis,% standrad -- ()                             %%
-	terminator sign colon,% standard -- :                                           %%
-	label separator=:,% standard -- :                                               %%
-	%% ***** no box:                                                                %%
-	empty,%                                                                         %%
-	%% *****                                                                        %%
-	%% enhanced,%                                                                   %%
-	%% colframe=\TUMcolor{1},%                                                      %%
-	coltitle=\TUMcolor{19},%                                                        %%
-	description color=\TUMcolor{20},%                                               %%
-	fonttitle=\upshape\bfseries\boldmath,% titlefont (z. B.: Theorem 1.0)           %%
-	description font=\upshape\bfseries\boldmath,% description font (z. B.: "Titel") %%
-	fontupper=\itshape,% textfont                                                   %%
-	%% boxrule=\rulewidth, arc=0mm,%                                                %%
-	width=\linewidth, left skip=0mm, right skip=0mm,%                               %%
-	boxsep=0mm, left*=0mm, right*=0mm, bottom=0mm, top=0mm,%                        %%
-	},%                                                                             %%
-remstyle/.style={%                                                                  %%
-	defstyle,%                                                                      %%
-	breakable%                                                                      %%
-	},%                                                                             %%
-theostyle/.style={%                                                                 %%
-	defstyle%                                                                       %%
-	},%                                                                             %%
-lemstyle/.style={%                                                                  %%
-	defstyle%                                                                       %%
-	},%                                                                             %%
-corstyle/.style={%                                                                  %%
-	defstyle%                                                                       %%
-	},%                                                                             %%
-proofstyle/.style={%                                                                %%
-	defstyle,%                                                                      %%
-	breakable,%                                                                     %%
-	after upper={\hfill\qed}%                                                       %%
-	},%                                                                             %%
-examstyle/.style={%                                                                 %%
-	defstyle,%                                                                      %%
-	breakable%                                                                      %%
-	}%                                                                              %%
-}%                                                                                  %%
-\AtBeginDocument{%                                                                  %%
-	\ifdefined\proofrefname\let\proofrefname\relax\else\fi%                         %%
-	\ifdefined\definitionrefname\let\definitionrefname\relax\else\fi%               %%
-	\ifdefined\remarkrefname\let\remarkrefname\relax\else\fi%                       %%
-	\ifdefined\theoremrefname\let\theoremrefname\relax\else\fi%                     %%
-	\ifdefined\lemmarefname\let\lemmarefname\relax\else\fi%                         %%
-	\ifdefined\corollaryrefname\let\corollaryrefname\relax\else\fi%                 %%
-	\ifdefined\examplerefname\let\examplerefname\relax\else\fi%                     %%
-	\newcommand*{\proofrefname}{}%                                                  %%
-	\newcommand*{\definitionrefname}{}%                                             %%
-	\newcommand*{\remarkrefname}{}%                                                 %%
-	\newcommand*{\theoremrefname}{}%                                                %%
-	\newcommand*{\lemmarefname}{}%                                                  %%
-	\newcommand*{\corollaryrefname}{}%                                              %%
-	\newcommand*{\examplerefname}{}%                                                %%
-	\newcommand*{\postulaterefname}{}%                                              %%
-	\TUM@ifpackageloaded[setting]{babel}{% begin: babel loaded                      %%
-		\AfterEndPreamble{%                                                         %%
-			\addto\extrasamerican{%                                                 %%
-				\renewcommand*{\proofrefname}{proof}%                               %%
-				\renewcommand*{\definitionrefname}{definition}%                     %%
-				\renewcommand*{\remarkrefname}{remark}%                             %%
-				\renewcommand*{\theoremrefname}{theorem}%                           %%
-				\renewcommand*{\lemmarefname}{lemma}%                               %%
-				\renewcommand*{\corollaryrefname}{corollary}%                       %%
-				\renewcommand*{\examplerefname}{example}%                           %%
-			}%                                                                      %%
-			\addto\extrasenglish{%                                                  %%
-				\renewcommand*{\proofrefname}{proof}%                               %%
-				\renewcommand*{\definitionrefname}{definition}%                     %%
-				\renewcommand*{\remarkrefname}{remark}%                             %%
-				\renewcommand*{\theoremrefname}{theorem}%                           %%
-				\renewcommand*{\lemmarefname}{lemma}%                               %%
-				\renewcommand*{\corollaryrefname}{corollary}%                       %%
-				\renewcommand*{\examplerefname}{example}%                           %%
-			}%                                                                      %%
-			\addto\extrasnaustrian{%                                                %%
-				\renewcommand*{\proofrefname}{Beweis}%                              %%
-				\renewcommand*{\definitionrefname}{Definition}%                     %%
-				\renewcommand*{\remarkrefname}{Bemerkung}%                          %%
-				\renewcommand*{\theoremrefname}{Theorem}%                           %%
-				\renewcommand*{\lemmarefname}{Lemma}%                               %%
-				\renewcommand*{\corollaryrefname}{Korollar}%                        %%
-				\renewcommand*{\examplerefname}{Beispiel}%                          %%
-			 }%                                                                     %%
-			\addto\extrasngerman{%                                                  %%
-				\renewcommand*{\proofrefname}{Beweis}%                              %%
-				\renewcommand*{\definitionrefname}{Definition}%                     %%
-				\renewcommand*{\remarkrefname}{Bemerkung}%                          %%
-				\renewcommand*{\theoremrefname}{Theorem}%                           %%
-				\renewcommand*{\lemmarefname}{Lemma}%                               %%
-				\renewcommand*{\corollaryrefname}{Korollar}%                        %%
-				\renewcommand*{\examplerefname}{Beispiel}%                          %%
-			 }%                                                                     %%
-		}%                                                                          %%
-	}{}%                                                                            %%
-}%                                                                                  %%
-\newtcbtheorem[number within=chapter]{definition}{%                                 %%
-	\expandafter\MakeUppercase\definitionrefname}{defstyle}{def}%                   %%
-\newtcbtheorem[number within=chapter]{remark}{%                                     %%
-	\expandafter\MakeUppercase\remarkrefname}{remstyle}{rem}%                       %%
-\newtcbtheorem[number within=chapter]{theorem}{%                                    %%
-	\expandafter\MakeUppercase\theoremrefname}{theostyle}{theo}%                    %%
-\newtcbtheorem[use counter from=theorem]{lemma}{%                                   %%
-	\expandafter\MakeUppercase\lemmarefname}{lemstyle}{lem}%                        %%
-\newtcbtheorem[use counter from=theorem]{corollary}{%                               %%
-	\expandafter\MakeUppercase\corollaryrefname}{corstyle}{cor}%                    %%
-\newtcbtheorem[no counter]{proof}{%                                                 %%
-	\expandafter\MakeUppercase\proofrefname}{proofstyle}{proof}%                    %%
-\newtcbtheorem[number within=chapter]{example}{%                                    %%
-	\expandafter\MakeUppercase\examplerefname}{examstyle}{exam}%                    %%
-%% no autoref supported, if necessary define it with \tcb@cnt@theoremautorefname... %%
-%% , but if use counter from is used, then a new alias must be defined              %%
-%%                                                                                  %%
-}{}% end: ifpackageloaded                                                           %%
-\makeatother%                                                                       %%
-%% ================================================================================ %%
-%% ======================== style-commands (ExplSyntaxOn) ************************* %%
-%% ******************************************************************************** %%
+%% datetime = Change format of \today with commands for current time                
+%% --> (for e. g. \monthname + scrdate + scrtime)                                   
+\TUMRequirePackage{datetime}%                                                       
+%% scrhack = Fixes mistakes from important packages                                 
+\TUMRequirePackage{scrhack}%                                                        
+%% float =  Improved interface for floating objects                                 
+\TUMRequirePackage{float}%                                                          
+%% hyperref [...] = for hyperlinks                                                  
+%% bookmark-commands for hyperref/bookmark                                          
+\makeatletter%                                                                      
+\newcommand{\pdfauthor}[1]{\gdef\@pdfauthor{#1}}%                                   
+\newcommand{\@pdfauthor}{\@latex@warning@no@line{No \noexpand\pdfauthor given}}%    
+\newcommand{\pdftitle}[1]{\gdef\@pdftitle{#1}}%                                     
+\newcommand{\@pdftitle}{\@latex@warning@no@line{No \noexpand\pdftitle given}}%      
+\newcommand{\pdfsubject}[1]{\gdef\@pdfsubject{#1}}%                                 
+\newcommand{\@pdfsubject}{\@latex@warning@no@line{No \noexpand\pdfsubject given}}%  
+\newcommand{\pdfkeywords}[1]{\gdef\@pdfkeywords{#1}}%                               
+\newcommand{\@pdfkeywords}{\@latex@warning@no@line{No \noexpand\pdfkeywords given}}%
+\makeatother%                                                                       
+\TUMRequirePackage[%                                                                
+bookmarks=true,%        %% enable bookmarks                                         
+bookmarksopen=true,%    %% display the bookmarks when opening the documnet          
+bookmarksopenlevel=0,%  %% display the bookmarks at level when opening the document 
+bookmarksnumbered=true,%%% number the bookmarks                                     
+hyperfootnotes=false,%  %% = false, to ensure that KOMAoptions{footnotes=multiple}  
+unicode=true%           %%                                                          
+]{hyperref}%                                                                        
+\hypersetup{%                                                                       
+colorlinks=true,%       %% colored links                                            
+linkbordercolor={1 1 1},%% frame color                                              
+linkcolor=\TUMcolor{2},%%% link color                                               
+urlcolor=\TUMcolor{3},% %% url color                                                
+urlbordercolor={1 1 1},%%% url border color                                         
+menucolor=\TUMcolor{4},%% menu color                                                
+menubordercolor={1 1 1},%%% menu border color                                       
+citecolor=\TUMcolor{1},%% cite color                                                
+citebordercolor={1 1 1},%%% cite border color                                       
+breaklinks=true,%       %% enable breaking links in listof...                       
+linktocpage=true,%      %% true = only page numbers in toc are hyperlinks + color   
+hypertexnames=true,%    %% because of biblatex-backref                              
+plainpages=false%       %% biblatex                                                 
+%%                      %% is possible                                              
+}%                                                                                  
+\makeatletter%                                                                      
+\if@twoside%                                                                        
+	\hypersetup{pdfpagelayout=TwoPageRight}%                                        
+\else%                                                                              
+	\hypersetup{pdfpagelayout=OneColumn}%                                           
+\fi%                                                                                
+%% Ever break the urls:                                                             
+\expandafter\def\expandafter\UrlBreaks\expandafter{\UrlBreaks%                      
+	\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j%                             
+	\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t%                             
+	\do\u\do\v\do\w\do\x\do\y\do\z\do\A\do\B\do\C\do\D%                             
+	\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N%                             
+	\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X%                             
+	\do\Y\do\Z\do\_\do\-\do\+\do\-\do\/\do\.\do\1\do\2%                             
+	\do\3\do\4\do\5\do\6\do\7\do\8\do\9\do\0\do\,}%                                 
+\Urlmuskip = 0mu plus 1mu%                                                          
+\TUM@ifpackageloaded[setting]{biblatex}{%                                           
+	\setcounter{biburlnumpenalty}{1000}%                                            
+	\setcounter{biburlucpenalty}{1000}%                                             
+	\setcounter{biburllcpenalty}{1000}%                                             
+}{}%                                                                                
+%% Ref/Autoref-names for hyperref                                                   
+\AtBeginDocument{%                                                                  
+	\TUM@ifpackageloaded[setting]{babel}{% begin: babel loaded                      
+		\TUM@ifpackageloaded[setting]{hyperref}{% begin: hyperref loaded            
+			\TUM@ifpackageloaded[setting]{listings}{% begin: listings loaded        
+				\newcommand*{\lstlistingautorefname}{}%                             
+			}{}% end: listings not loaded                                           
+			\AfterEndPreamble{%                                                     
+				\addto\extrasamerican{%                                             
+					\renewcommand*{\tableautorefname}{table}%                       
+					\renewcommand*{\figureautorefname}{figure}%                     
+					\renewcommand*{\partautorefname}{part}%                         
+					\renewcommand*{\chapterautorefname}{chapter}%                   
+					\renewcommand*{\sectionautorefname}{section}%                   
+					\renewcommand*{\subsectionautorefname}{subsection}%             
+					\renewcommand*{\subsubsectionautorefname}{subsubsection}%       
+					\renewcommand*{\paragraphautorefname}{paragraph}%               
+					\renewcommand*{\subparagraphautorefname}{subparagraph}%         
+					\renewcommand*{\equationautorefname}{equation}%                 
+					\renewcommand*{\appendixautorefname}{appendix}%                 
+				}%                                                                  
+				\addto\extrasenglish{%                                              
+					\renewcommand*{\tableautorefname}{table}%                       
+					\renewcommand*{\figureautorefname}{figure}%                     
+					\renewcommand*{\partautorefname}{part}%                         
+					\renewcommand*{\chapterautorefname}{chapter}%                   
+					\renewcommand*{\sectionautorefname}{section}%                   
+					\renewcommand*{\subsectionautorefname}{subsection}%             
+					\renewcommand*{\subsubsectionautorefname}{subsubsection}%       
+					\renewcommand*{\paragraphautorefname}{paragraph}%               
+					\renewcommand*{\subparagraphautorefname}{subparagraph}%         
+					\renewcommand*{\equationautorefname}{equation}%                 
+					\renewcommand*{\appendixautorefname}{appendix}%                 
+				}%                                                                  
+				\addto\extrasnaustrian{%                                            
+					\renewcommand*{\tableautorefname}{Tabelle}%                     
+					\renewcommand*{\figureautorefname}{Abbildung}%                  
+					\renewcommand*{\partautorefname}{Teil}%                         
+					\renewcommand*{\chapterautorefname}{Kapitel}%                   
+					\renewcommand*{\sectionautorefname}{Abschnitt}%                 
+					\renewcommand*{\subsectionautorefname}{Unterabschnitt}%         
+					\renewcommand*{\subsubsectionautorefname}{Unterunterabscnhitt}% 
+					\renewcommand*{\paragraphautorefname}{Paragraph}%               
+					\renewcommand*{\subparagraphautorefname}{Unterparagraph}%       
+					\renewcommand*{\equationautorefname}{Gleichung}%                
+					\renewcommand*{\appendixautorefname}{Anhang}%                   
+				 }%                                                                 
+				\addto\extrasngerman{%                                              
+					\renewcommand*{\tableautorefname}{Tabelle}%                     
+					\renewcommand*{\figureautorefname}{Abbildung}%                  
+					\renewcommand*{\partautorefname}{Teil}%                         
+					\renewcommand*{\chapterautorefname}{Kapitel}%                   
+					\renewcommand*{\sectionautorefname}{Abschnitt}%                 
+					\renewcommand*{\subsectionautorefname}{Unterabschnitt}%         
+					\renewcommand*{\subsubsectionautorefname}{Unterunterabscnhitt}% 
+					\renewcommand*{\paragraphautorefname}{Paragraph}%               
+					\renewcommand*{\subparagraphautorefname}{Unterparagraph}%       
+					\renewcommand*{\equationautorefname}{Gleichung}%                
+					\renewcommand*{\appendixautorefname}{Anhang}%                   
+				 }%                                                                 
+			}%                                                                      
+			\TUM@ifpackageloaded[setting]{listings}{% begin: listings loaded        
+				\AfterEndPreamble{%                                                 
+					\addto\extrasamerican{%                                         
+						\renewcommand*{\lstlistingautorefname}{listing}%            
+					}%                                                              
+					\addto\extrasenglish{%                                          
+						\renewcommand*{\lstlistingautorefname}{listing}%            
+					}%                                                              
+					\addto\extrasnaustrian{%                                        
+						\renewcommand*{\lstlistingautorefname}{Listing}%            
+					}%                                                              
+					\addto\extrasngerman{%                                          
+						\renewcommand*{\lstlistingautorefname}{Listing}%            
+					}%                                                              
+				}%                                                                  
+			}{}% end: listings not loaded                                           
+			\TUM@ifpackageloaded[setting]{subcaption}{% begin: subcaption loaded    
+				\AfterEndPreamble{%                                                 
+					\addto\extrasamerican{%                                         
+						\renewcommand*{\subfigureautorefname}{figure}%              
+						\renewcommand*{\subtableautorefname}{table}%                
+					}%                                                              
+					\addto\extrasenglish{%                                          
+						\renewcommand*{\subfigureautorefname}{figure}%              
+						\renewcommand*{\subtableautorefname}{table}%                
+					}%                                                              
+					\addto\extrasnaustrian{%                                        
+						\renewcommand*{\subfigureautorefname}{Abbildung}%           
+						\renewcommand*{\subtableautorefname}{Tabelle}%              
+					}%                                                              
+					\addto\extrasngerman{%                                          
+						\renewcommand*{\subfigureautorefname}{Abbildung}%           
+						\renewcommand*{\subtableautorefname}{Tabelle}%              
+					}%                                                              
+				}%                                                                  
+			}{}% end: subcaption not loaded                                         
+		}{}% end: hyperref not loaded                                               
+	}{}% end: babel not loaded                                                      
+}% end: AtBeginDocument                                                             
+\makeatother%                                                                       
+%% bookmark = A new bookmark (outline) organization for hyperref                    
+\TUMRequirePackage[][hyperref]{bookmark}%                                           
+%% ================================================================================ 
+%% ================================================================================ 
+%% ========================== Macros / Definitions / etc. ========================= 
+%% ================================================================================ 
+%% ================================================================================ 
+%% ================================================================================ 
+%% ============================== line/rule-width's ******************************* 
+%% ******************************************************************************** 
+%% Set the width of the rules                                                       
+\newlength{\rulewidth}%                                                             
+\setlength{\rulewidth}{0.4pt}%                                                      
+%% ================================================================================ 
+%% ===================================== math ************************************* 
+%% ******************************************************************************** 
+\DeclareMathOperator{\dAlembert}{\Box}%                                             
+\DeclareMathOperator{\Laplace}{\Delta}%                                             
+\DeclareMathOperator{\sgn}{sgn}%                                                    
+%% Redefine vector                                                                  
+\let\oldvec\vec%                                                                    
+\renewcommand{\vec}[1]{\boldsymbol{\mathbf{#1}}}%                                   
+\newcommand{\evec}[1]{\boldsymbol{\mathbf{\hat{#1}}}}%                              
+%\newcommand{\evec}[1]{\hat{#1}}%                                                   
+\makeatletter%                                                                      
+\TUM@ifpackageloaded[setting]{physics}{%                                            
+%\renewcommand\Re[1]{%                                                              
+%    \real{#1}%                                                                     
+%}%                                                                                 
+%\renewcommand\Im[1]{%                                                              
+%    \imaginary{#1}%                                                                
+%}%                                                                                 
+%% Fehler im physics package, vphantom entfernt (steht unnoetig drinnen...),        
+\RenewDocumentCommand\bra{sm t\ket sg}{%                                            
+	\IfBooleanTF{#3}{% Contraction                                                  
+		\IfBooleanTF{#1}{% Bra has a star: no resize                                
+			\IfNoValueTF{#5}{%                                                      
+				\braket*{#2}{}\IfBooleanTF{#4}{*}{}%                                
+			}{%                                                                     
+				\braket*{#2}{#5}%                                                   
+			}%                                                                      
+		}{%                                                                         
+			\IfBooleanTF{#4}{% Ket has a star: no resize                            
+				\IfNoValueTF{#5}{%                                                  
+					\braket{#2}{}*%                                                 
+				}{%                                                                 
+					\braket*{#2}{#5}%                                               
+				}%                                                                  
+			}{% Neither term is starred: auto sizing                                
+				\braket{#2}{\IfNoValueTF{#5}{}{#5}}%                                
+			}%                                                                      
+		}%                                                                          
+	}%                                                                              
+	{% No contraction                                                               
+		\IfBooleanTF{#1}{%                                                          
+			\left\langle\smash{#2}\right\rvert%                                     
+		}{%                                                                         
+			\left\langle{#2}\right\rvert%                                           
+		}%                                                                          
+		\IfBooleanTF{#4}{*}{}%                                                      
+		\IfNoValueTF{#5}{}{#5}%                                                     
+	}%                                                                              
+}%                                                                                  
+\RenewDocumentCommand\ket{sm}{%                                                     
+	\IfBooleanTF{#1}{% No resize                                                    
+\left\lvert\smash{#2}\right\rangle%                                                 
+	}{% Auto resize                                                                 
+\left\lvert{#2}\right\rangle%                                                       
+	}%                                                                              
+}%                                                                                  
+\RenewDocumentCommand\innerproduct{smg}{%                                           
+	\IfBooleanTF{#1}{% No resize                                                    
+		\IfNoValueTF{#3}{%                                                          
+\left\langle\smash{#2}\middle\vert\smash{#2}\right\rangle%                          
+		}{%                                                                         
+\left\langle\smash{#2}\middle\vert\smash{#3}\right\rangle%                          
+		}%                                                                          
+	}{% Auto resize                                                                 
+		\IfNoValueTF{#3}{%                                                          
+\left\langle{#2}\middle\vert{#2}\right\rangle%                                      
+		}{%                                                                         
+\left\langle{#2}\middle\vert{#3}\right\rangle%                                      
+		}%                                                                          
+	}%                                                                              
+}%                                                                                  
+\RenewDocumentCommand\matrixelement{ssmmm}{%                                        
+	\IfBooleanTF{#1}{%                                                              
+		\IfBooleanTF{#2}{% Double starred: total resizing,                          
+\left\langle{#3}\middle\vert{#4}\middle\vert{#5}\right\rangle%                      
+		}{% Starred: no resizing,                                                   
+\left\langle\smash{#3}\middle\vert\smash{#4}\middle\vert\smash{#5}\right\rangle%    
+		}%                                                                          
+	}{% Normal: only resize based on bra/ket arguments,                             
+\left\langle{#3}\middle\vert\smash{#4}\middle\vert{#5}\right\rangle%                
+	}%                                                                              
+}%                                                                                  
+\RenewDocumentCommand\outerproduct{smg}{%                                           
+	\IfBooleanTF{#1}{% No resize                                                    
+		\IfNoValueTF{#3}{%                                                          
+\left\lvert\smash{#2}\middle\rangle\!\middle\langle\smash{#2}\right\rvert%          
+		}{%                                                                         
+\left\lvert\smash{#2}\middle\rangle\!\middle\langle\smash{#3}\right\rvert%          
+		}%                                                                          
+	}{% Auto resize                                                                 
+		\IfNoValueTF{#3}{%                                                          
+\left\lvert{#2}\middle\rangle\!\middle\langle{#2}\right\rvert%                      
+		}{%                                                                         
+\left\lvert{#2}\middle\rangle\!\middle\langle{#3}\right\rvert%                      
+		}%                                                                          
+	}%                                                                              
+}%                                                                                  
+\RenewDocumentCommand\expectationvalue{ssmg}{%                                      
+	\IfNoValueTF{#4}{%                                                              
+		\IfBooleanTF{#1}{% Starred implicit form: no resizing,                      
+\left\langle\smash{#3}\right\rangle%                                                
+		}{% Normal implicit form: auto sizing,                                      
+\left\langle{#3}\right\rangle%                                                      
+		}%                                                                          
+	}{%                                                                             
+		\IfBooleanTF{#1}{%                                                          
+			\IfBooleanTF{#2}{% Double starred explicit form: total auto sizing,     
+\left\langle{#4}\middle\vert{#3}\middle\vert{#4}\right\rangle}%                     
+			{% Starred explicit form: no resizing,                                  
+\left\langle\smash{#4}\middle%                                                      
+\vert\smash{#3}\middle\vert\smash{#4}\right\rangle%                                 
+			}%                                                                      
+		}{% Normal explicit form: only resize based on bra/ket arguments,           
+\left\langle{#4}\middle\vert\smash{#3}\middle\vert{#4}\right\rangle}%               
+	}%                                                                              
+}%                                                                                  
+}{}%                                                                                
+\makeatother%                                                                       
+%% ================================================================================ 
+%% ============================ tikz and pgf-plot's ******************************* 
+%% ******************************************************************************** 
+\makeatletter%                                                                      
+\TUM@ifpackageloaded[setting]{pgf}{%                                                
+	\usepgfplotslibrary{external}%                                                  
+}{}%                                                                                
+\TUM@ifpackageloaded[setting]{pdfpages}{%                                           
+	\tikzexternalize[optimize command away=\includepdf]% activate externalization!  
+}{%                                                                                 
+	\tikzexternalize%                                                               
+}%                                                                                  
+\TUM@ifpackageloaded[setting]{pgf}{%                                                
+	\tikzsetexternalprefix{images/tikz/}%                                           
+	\tikzset{external/export=false}%                                                
+}{}%                                                                                
+\TUM@ifpackageloaded[setting]{tcolorbox}{%                                          
+	\tcbset{shield externalize}%                                                    
+}{}%                                                                                
+\makeatother%                                                                       
+%% \tikzexternaldisable% (global)                                                   
+%% \tikzset{external/export=false}% (local)                                         
+%% standard, locally enable it, if tikzexternalize = true (external/export=true)    
+%\setchemformula{tikz-external-disable=false}%                                      
+\makeatletter%                                                                      
+\TUM@ifpackageloaded[setting]{pgf}{%                                                
+	\usepgfplotslibrary{fillbetween}% fuer z.~B. den Befehl fillbetween             
+}{}%                                                                                
+\TUM@ifpackageloaded[setting]{tikz}{%                                               
+	\usetikzlibrary{positioning}% nodes below/above of ...                          
+	\usetikzlibrary{backgrounds}%% \begin{scope}[on background layer]               
+	\usetikzlibrary{circuits}%                                                      
+	\usetikzlibrary{circuits.ee}%                                                   
+	\usetikzlibrary{circuits.ee.IEC}%% loads pgf library: shapes.gates....          
+	\usetikzlibrary{circuits.logic}%                                                
+	\usetikzlibrary{circuits.logic.US}%% loads pgf library: shapes.gates....        
+	\usetikzlibrary{circuits.logic.IEC}%% loads pgf library: shapes.gates....       
+	\usetikzlibrary{decorations}% fuer z.B. Pfeilen entlang von Linien              
+	\usetikzlibrary{bending}% fuer z.B. gebogene Kurven                             
+	\usetikzlibrary{intersections}% fuer z.B. Schnittpunkte                         
+	\usetikzlibrary{patterns}% fuer z.B. Schattierungen                             
+	\usetikzlibrary{shapes.misc}% fuer z.B. cross node                              
+	\usetikzlibrary{shadows}%                                                       
+}{}%                                                                                
+\TUM@ifpackageloaded[setting]{pgf}{%                                                
+	\TUM@ifpackageloaded[setting]{tikz}{%                                           
+		\TUMRequirePackage{packages/tumtikz}%                                       
+	}{}%                                                                            
+}{}%                                                                                
+\makeatother%                                                                       
+%% ================================================================================ 
+%% ================================= listings ************************************* 
+%% ******************************************************************************** 
+\makeatletter%                                                                      
+\TUM@ifpackageloaded[setting]{listings}{%                                           
+	\TUMRequirePackage{packages/tumlistings}%                                       
+}{}%                                                                                
+\makeatother%                                                                       
+%% ================================================================================ 
+%% ================================= tcolorbox ************************************ 
+%% ******************************************************************************** 
+\makeatletter%                                                                      
+\TUM@ifpackageloaded[setting]{tcolorbox}{%                                          
+%% loads: listings                                                                  
+\TUM@ifpackageloaded[setting]{listings}{%                                           
+	\tcbuselibrary{listings}%                                                       
+}{}%                                                                                
+%% loads: amsmath                                                                   
+\tcbuselibrary{theorems}%                                                           
+%% loads: tikz                                                                      
+\tcbuselibrary{skins}%                                                              
+%% documentation: disables linkcolor, etc. from hyperref (extra macro then, etc.)   
+%\tcbuselibrary{documentation}%                                                     
+%% breakable: option breakable                                                      
+\tcbuselibrary{breakable}%                                                          
+%% xparse: to use \DeclareTColorBox                                                 
+\tcbuselibrary{xparse}%                                                             
+%% equbox ... box for equations \begin{equbox}[title][opt.par.] ... \end{equbox}    
+%% Arguments same as "xparse"-package                                               
+\DeclareTColorBox[]{equbox}{+oO{}}{%                                                
+	title=\IfValueTF{#1}{#1}{},%                                                    
+	fonttitle=\bfseries\boldmath,%                                                  
+	coltitle=\TUMcolor{16}, coltext=\TUMcolor{17},%                                 
+	%% ***** no box:                                                                
+	empty, borderline={\rulewidth}{0pt}{\TUMcolor{18}},%                            
+	%% *****                                                                        
+	%% titlerule=0mm,%                                                              
+	%% boxrule=0mm,%                                                                
+	%% bottomrule=\rulewidth, toprule=\rulewidth,%                                  
+	%% leftrule=\rulewidth, rightrule=\rulewidth,%                                  
+	arc=0mm,%                                                                       
+	left=0mm,right=0mm,% only boxsep                                                
+	#2%                                                                             
+}%                                                                                  
+%%  1. Definition%                                                                  
+%%  2. Bemerkung%                                                                   
+%%  3. Theorem (Satz)%                                                              
+%%  3. Lemma (Hilfssatz), (Unterscheidung Theorem - Lemma ist subjektiv!)%          
+%%      3.1 Korollar (Triviale Folgerung eines Satzes)%                             
+%%  (4.) Beweis%                                                                    
+%%  5. Beispiel%                                                                    
+%% proof exists, if amsthm is loaded%                                               
+\ifdefined\proof%                                                                   
+	\let\proof\relax\let\endproof\relax%                                            
+\else\fi%                                                                           
+\ifdefined\qed%                                                                     
+	\let\qed\relax%                                                                 
+\else\fi%                                                                           
+\TUM@ifpackageloaded[setting]{amssymb}{%                                            
+	\newcommand*{\qed}{\ensuremath{\square}}%                                       
+}{}%                                                                                
+%% \newtcbtheorem[use counter from= (z. B.) <(other) name>, <init options>]         
+%% {<name>}{<displayed name>}{<options>}{<prefix>}, prefix for nameref              
+\tcbset{%                                                                           
+defstyle/.style={%                                                                  
+	theorem style=plain,%                                                           
+	separator sign none,% standard --                                               
+	description delimiters parenthesis,% standrad -- ()                             
+	terminator sign colon,% standard -- :                                           
+	label separator=:,% standard -- :                                               
+	%% ***** no box:                                                                
+	empty,%                                                                         
+	%% *****                                                                        
+	%% enhanced,%                                                                   
+	%% colframe=\TUMcolor{1},%                                                      
+	coltitle=\TUMcolor{19},%                                                        
+	description color=\TUMcolor{20},%                                               
+	fonttitle=\upshape\bfseries\boldmath,% titlefont (z. B.: Theorem 1.0)           
+	description font=\upshape\bfseries\boldmath,% description font (z. B.: "Titel") 
+	fontupper=\itshape,% textfont                                                   
+	%% boxrule=\rulewidth, arc=0mm,%                                                
+	width=\linewidth, left skip=0mm, right skip=0mm,%                               
+	boxsep=0mm, left*=0mm, right*=0mm, bottom=0mm, top=0mm,%                        
+	},%                                                                             
+remstyle/.style={%                                                                  
+	defstyle,%                                                                      
+	breakable%                                                                      
+	},%                                                                             
+theostyle/.style={%                                                                 
+	defstyle%                                                                       
+	},%                                                                             
+lemstyle/.style={%                                                                  
+	defstyle%                                                                       
+	},%                                                                             
+corstyle/.style={%                                                                  
+	defstyle%                                                                       
+	},%                                                                             
+proofstyle/.style={%                                                                
+	defstyle,%                                                                      
+	breakable,%                                                                     
+	after upper={\hfill\qed}%                                                       
+	},%                                                                             
+examstyle/.style={%                                                                 
+	defstyle,%                                                                      
+	breakable%                                                                      
+	}%                                                                              
+}%                                                                                  
+\AtBeginDocument{%                                                                  
+	\ifdefined\proofrefname\let\proofrefname\relax\else\fi%                         
+	\ifdefined\definitionrefname\let\definitionrefname\relax\else\fi%               
+	\ifdefined\remarkrefname\let\remarkrefname\relax\else\fi%                       
+	\ifdefined\theoremrefname\let\theoremrefname\relax\else\fi%                     
+	\ifdefined\lemmarefname\let\lemmarefname\relax\else\fi%                         
+	\ifdefined\corollaryrefname\let\corollaryrefname\relax\else\fi%                 
+	\ifdefined\examplerefname\let\examplerefname\relax\else\fi%                     
+	\newcommand*{\proofrefname}{}%                                                  
+	\newcommand*{\definitionrefname}{}%                                             
+	\newcommand*{\remarkrefname}{}%                                                 
+	\newcommand*{\theoremrefname}{}%                                                
+	\newcommand*{\lemmarefname}{}%                                                  
+	\newcommand*{\corollaryrefname}{}%                                              
+	\newcommand*{\examplerefname}{}%                                                
+	\newcommand*{\postulaterefname}{}%                                              
+	\TUM@ifpackageloaded[setting]{babel}{% begin: babel loaded                      
+		\AfterEndPreamble{%                                                         
+			\addto\extrasamerican{%                                                 
+				\renewcommand*{\proofrefname}{proof}%                               
+				\renewcommand*{\definitionrefname}{definition}%                     
+				\renewcommand*{\remarkrefname}{remark}%                             
+				\renewcommand*{\theoremrefname}{theorem}%                           
+				\renewcommand*{\lemmarefname}{lemma}%                               
+				\renewcommand*{\corollaryrefname}{corollary}%                       
+				\renewcommand*{\examplerefname}{example}%                           
+			}%                                                                      
+			\addto\extrasenglish{%                                                  
+				\renewcommand*{\proofrefname}{proof}%                               
+				\renewcommand*{\definitionrefname}{definition}%                     
+				\renewcommand*{\remarkrefname}{remark}%                             
+				\renewcommand*{\theoremrefname}{theorem}%                           
+				\renewcommand*{\lemmarefname}{lemma}%                               
+				\renewcommand*{\corollaryrefname}{corollary}%                       
+				\renewcommand*{\examplerefname}{example}%                           
+			}%                                                                      
+			\addto\extrasnaustrian{%                                                
+				\renewcommand*{\proofrefname}{Beweis}%                              
+				\renewcommand*{\definitionrefname}{Definition}%                     
+				\renewcommand*{\remarkrefname}{Bemerkung}%                          
+				\renewcommand*{\theoremrefname}{Theorem}%                           
+				\renewcommand*{\lemmarefname}{Lemma}%                               
+				\renewcommand*{\corollaryrefname}{Korollar}%                        
+				\renewcommand*{\examplerefname}{Beispiel}%                          
+			 }%                                                                     
+			\addto\extrasngerman{%                                                  
+				\renewcommand*{\proofrefname}{Beweis}%                              
+				\renewcommand*{\definitionrefname}{Definition}%                     
+				\renewcommand*{\remarkrefname}{Bemerkung}%                          
+				\renewcommand*{\theoremrefname}{Theorem}%                           
+				\renewcommand*{\lemmarefname}{Lemma}%                               
+				\renewcommand*{\corollaryrefname}{Korollar}%                        
+				\renewcommand*{\examplerefname}{Beispiel}%                          
+			 }%                                                                     
+		}%                                                                          
+	}{}%                                                                            
+}%                                                                                  
+\newtcbtheorem[number within=chapter]{definition}{%                                 
+	\expandafter\MakeUppercase\definitionrefname}{defstyle}{def}%                   
+\newtcbtheorem[number within=chapter]{remark}{%                                     
+	\expandafter\MakeUppercase\remarkrefname}{remstyle}{rem}%                       
+\newtcbtheorem[number within=chapter]{theorem}{%                                    
+	\expandafter\MakeUppercase\theoremrefname}{theostyle}{theo}%                    
+\newtcbtheorem[use counter from=theorem]{lemma}{%                                   
+	\expandafter\MakeUppercase\lemmarefname}{lemstyle}{lem}%                        
+\newtcbtheorem[use counter from=theorem]{corollary}{%                               
+	\expandafter\MakeUppercase\corollaryrefname}{corstyle}{cor}%                    
+\newtcbtheorem[no counter]{proof}{%                                                 
+	\expandafter\MakeUppercase\proofrefname}{proofstyle}{proof}%                    
+\newtcbtheorem[number within=chapter]{example}{%                                    
+	\expandafter\MakeUppercase\examplerefname}{examstyle}{exam}%                    
+%% no autoref supported, if necessary define it with \tcb@cnt@theoremautorefname... 
+%% , but if use counter from is used, then a new alias must be defined              
+%%                                                                                  
+}{}% end: ifpackageloaded                                                           
+\makeatother%                                                                       
+%% ================================================================================ 
+%% ======================== style-commands (ExplSyntaxOn) ************************* 
+%% ******************************************************************************** 
 \ExplSyntaxOn%
 \msg_new:nnn {tum-physics} {style/key_not_found} {}%
 \msg_new:nnn {tum-physics} {style/style_not_defined} {}%

@@ -1,89 +1,89 @@
-\NeedsTeXFormat{LaTeX2e}%                                                           %%
-\ProvidesExplPackage {packages/tumcolors} {2020-05-24} {\TUMversion}%               %%
-	{The color-part made by Michael Labenbacher}%                                   %%
-\ProcessKeysPackageOptions{packages/tumcolors}%                                     %%
-\ExplSyntaxOff%                                                                     %%
-%% xcolor [dvipsnames,rgb,table,svgnames,hyperref] =                                %%
-%%      Driver-independent color extensions for (pdf)LaTeX                          %%
-%% (table ... loads colortbl)                                                       %%
-%% colortbl = add colour to LaTeX tables                                            %%
-\TUMPassOptionsToPackage[booktabs]{table}{xcolor}%                                  %%
-\TUMRequirePackage[%                                                                %%
-dvipsnames,%                                                                        %%
-rgb,%                                                                               %%
-svgnames,%                                                                          %%
-hyperref,%                                                                          %%
-]{xcolor}%                                                                          %%
-%% Define TUM corporate design colors, taken from:                                  %%
-%% http://portal.myTUM.de/corporatedesign/index_print/vorlagen/index_farben         %%
-%% Primary colors                                                                   %%
-\definecolor{TUMBlack}{HTML}{000000}%                                               %%
-\definecolor{TUMBlue}{HTML}{0065BD}%                                                %%
-\definecolor{TUMWhite}{HTML}{FFFFFF}%                                               %%
-%% Secondary colors                                                                 %%
-\definecolor{TUMSecondaryBlue}{HTML}{005293}%                                       %%
-\definecolor{TUMSecondaryBlue2}{HTML}{003359}%                                      %%
-\definecolor{TUMDarkGray}{HTML}{333333}%                                            %%
-\definecolor{TUMGray}{HTML}{808080}%                                                %%
-\definecolor{TUMLightGray}{HTML}{CCCCC6}%                                           %%
-%% Accent colors                                                                    %%
-\definecolor{TUMAccentGray}{HTML}{DAD7CB}%                                          %%
-\definecolor{TUMAccentOrange}{HTML}{E37222}%                                        %%
-\definecolor{TUMAccentGreen}{HTML}{A2AD00}%                                         %%
-\definecolor{TUMAccentLightBlue}{HTML}{98C6EA}%                                     %%
-\definecolor{TUMAccentBlue}{HTML}{64A0C8}%                                          %%
-%% Further colors                                                                   %%
-%% V-I  I-II    VI-III      II-IV   III-V   IV-VI                                   %%
-\definecolor{TUMcolorI}{RGB}{222, 80, 80}%      Light Red                           %%
-\definecolor{TUMcolorII}{RGB}{200,10,0}%        Dark Red                            %%
-\definecolor{TUMcolorIII}{RGB}{153, 0, 51}%     Darkest Red - Violet                %%
-\definecolor{TUMcolorIV}{RGB}{34,139,34}%       Forest Green                        %%
-\definecolor{TUMcolorV}{RGB}{101, 151, 1}%      Lighter Forest Green                %%
-\definecolor{TUMcolorVI}{RGB}{255, 204, 0}%     Dark-Yellow                         %%
-\definecolor{TUMcolorVII}{RGB}{200, 0, 99}%    Purple                               %%
-%% Storing the colors into commands                                                 %%
-\ExplSyntaxOn%                                                                      %%
-\clist_new:N \l_TUM_color_clist%                                                    %%
-\clist_clear:N \l_TUM_color_clist%                                                  %%
-\clist_put_right:Nn \l_TUM_color_clist {%                                           %%
-TUMcolorIV,%            % cite (hyperref)                                       1   %%
-TUMBlue,%               % link (hyperref)                                       2   %%
-TUMSecondaryBlue,%      % url (hyperref)                                        3   %%
-TUMBlack,%              % menue (hyperref)                                      4   %%
-TUMBlack,%              % head                                                  5   %%
-TUMBlack,%              % foot                                                  6   %%
-TUMBlack,%              % headine                                               7   %%
-TUMBlack,%              % footline                                              8   %%
-TUMBlack,%              % section (sub, etc.)                                   9   %%
-TUMBlue,%               % sectionnumber (sub, etc., and line)                   10  %%
-TUMBlack,%              % chapter (sub, etc.)                                   11  %%
-TUMBlack,%              % chapterprefix (sub, etc., and line)                   12  %%
-TUMBlue,%               % chapternumber (sub, etc., and line)                   13  %%
-TUMBlack,%              % part (sub, etc.)                                      14  %%
-TUMBlue,%               % partnumber (sub, etc., and line)                      15  %%
-TUMBlue,%               % tcolorbox (equation, title)                           16  %%
-TUMBlack,%              % tcolorbox (equation, text)                            17  %%
-TUMBlack,%              % tcolorbox (equation, border)                          18  %%
-TUMBlue,%               % tcolorbox (theorem, prefix)                           19  %%
-TUMBlack,%              % tcolorbox (theorem, title)                            20  %%
-TUMBlue,%               % title page (header)                                   21  %%
-TUMBlack,%              % title page (title)                                    22  %%
-TUMBlack,%              % title page (subtitle)                                 23  %%
-TUMBlack,%              % title page (author)                                   24  %%
-TUMBlack,%              % title page (supervisor)                               25  %%
-TUMBlack,%              % title page (submissiondate)                           26  %%
-TUMBlack,%              % style (text-emph 1)                                   27  %%
-TUMBlue,%               % style (text-emph 2)                                   28  %%
-TUMAccentOrange,%       % style (text-emph 3)                                   29  %%
-TUMcolorII,%            % todo-1                                                30  %%
-TUMBlue,%               % todo-2                                                31  %%
-TUMcolorIV,%            % todo-3                                                32  %%
-TUMcolorVI,%            % todo-4                                                33  %%
-TUMcolorVII,%           % todo-5                                                34  %%
-}%                                                                                  %%
-\DeclareExpandableDocumentCommand{\TUMcolor}{m}%                                    %%
-{%                                                                                  %%
-	\clist_item:Nn {\l_TUM_color_clist}{#1}%                                        %%
-}%                                                                                  %%
-\ExplSyntaxOff%                                                                     %%
-\endinput%                                                                          %%
+\NeedsTeXFormat{LaTeX2e}%                                                           
+\ProvidesExplPackage {packages/tumcolors} {2020-05-24} {\TUMversion}%               
+	{The color-part made by Michael Labenbacher}%                                   
+\ProcessKeysPackageOptions{packages/tumcolors}%                                     
+\ExplSyntaxOff%                                                                     
+%% xcolor [dvipsnames,rgb,table,svgnames,hyperref] =                                
+%%      Driver-independent color extensions for (pdf)LaTeX                          
+%% (table ... loads colortbl)                                                       
+%% colortbl = add colour to LaTeX tables                                            
+\TUMPassOptionsToPackage[booktabs]{table}{xcolor}%                                  
+\TUMRequirePackage[%                                                                
+dvipsnames,%                                                                        
+rgb,%                                                                               
+svgnames,%                                                                          
+hyperref,%                                                                          
+]{xcolor}%                                                                          
+%% Define TUM corporate design colors, taken from:                                  
+%% http://portal.myTUM.de/corporatedesign/index_print/vorlagen/index_farben         
+%% Primary colors                                                                   
+\definecolor{TUMBlack}{HTML}{000000}%                                               
+\definecolor{TUMBlue}{HTML}{0065BD}%                                                
+\definecolor{TUMWhite}{HTML}{FFFFFF}%                                               
+%% Secondary colors                                                                 
+\definecolor{TUMSecondaryBlue}{HTML}{005293}%                                       
+\definecolor{TUMSecondaryBlue2}{HTML}{003359}%                                      
+\definecolor{TUMDarkGray}{HTML}{333333}%                                            
+\definecolor{TUMGray}{HTML}{808080}%                                                
+\definecolor{TUMLightGray}{HTML}{CCCCC6}%                                           
+%% Accent colors                                                                    
+\definecolor{TUMAccentGray}{HTML}{DAD7CB}%                                          
+\definecolor{TUMAccentOrange}{HTML}{E37222}%                                        
+\definecolor{TUMAccentGreen}{HTML}{A2AD00}%                                         
+\definecolor{TUMAccentLightBlue}{HTML}{98C6EA}%                                     
+\definecolor{TUMAccentBlue}{HTML}{64A0C8}%                                          
+%% Further colors                                                                   
+%% V-I  I-II    VI-III      II-IV   III-V   IV-VI                                   
+\definecolor{TUMcolorI}{RGB}{222, 80, 80}%      Light Red                           
+\definecolor{TUMcolorII}{RGB}{200,10,0}%        Dark Red                            
+\definecolor{TUMcolorIII}{RGB}{153, 0, 51}%     Darkest Red - Violet                
+\definecolor{TUMcolorIV}{RGB}{34,139,34}%       Forest Green                        
+\definecolor{TUMcolorV}{RGB}{101, 151, 1}%      Lighter Forest Green                
+\definecolor{TUMcolorVI}{RGB}{255, 204, 0}%     Dark-Yellow                         
+\definecolor{TUMcolorVII}{RGB}{200, 0, 99}%    Purple                               
+%% Storing the colors into commands                                                 
+\ExplSyntaxOn%                                                                      
+\clist_new:N \l_TUM_color_clist%                                                    
+\clist_clear:N \l_TUM_color_clist%                                                  
+\clist_put_right:Nn \l_TUM_color_clist {%                                           
+TUMcolorIV,%            % cite (hyperref)                                       1   
+TUMBlue,%               % link (hyperref)                                       2   
+TUMSecondaryBlue,%      % url (hyperref)                                        3   
+TUMBlack,%              % menue (hyperref)                                      4   
+TUMBlack,%              % head                                                  5   
+TUMBlack,%              % foot                                                  6   
+TUMBlack,%              % headine                                               7   
+TUMBlack,%              % footline                                              8   
+TUMBlack,%              % section (sub, etc.)                                   9   
+TUMBlue,%               % sectionnumber (sub, etc., and line)                   10  
+TUMBlack,%              % chapter (sub, etc.)                                   11  
+TUMBlack,%              % chapterprefix (sub, etc., and line)                   12  
+TUMBlue,%               % chapternumber (sub, etc., and line)                   13  
+TUMBlack,%              % part (sub, etc.)                                      14  
+TUMBlue,%               % partnumber (sub, etc., and line)                      15  
+TUMBlue,%               % tcolorbox (equation, title)                           16  
+TUMBlack,%              % tcolorbox (equation, text)                            17  
+TUMBlack,%              % tcolorbox (equation, border)                          18  
+TUMBlue,%               % tcolorbox (theorem, prefix)                           19  
+TUMBlack,%              % tcolorbox (theorem, title)                            20  
+TUMBlue,%               % title page (header)                                   21  
+TUMBlack,%              % title page (title)                                    22  
+TUMBlack,%              % title page (subtitle)                                 23  
+TUMBlack,%              % title page (author)                                   24  
+TUMBlack,%              % title page (supervisor)                               25  
+TUMBlack,%              % title page (submissiondate)                           26  
+TUMBlack,%              % style (text-emph 1)                                   27  
+TUMBlue,%               % style (text-emph 2)                                   28  
+TUMAccentOrange,%       % style (text-emph 3)                                   29  
+TUMcolorII,%            % todo-1                                                30  
+TUMBlue,%               % todo-2                                                31  
+TUMcolorIV,%            % todo-3                                                32  
+TUMcolorVI,%            % todo-4                                                33  
+TUMcolorVII,%           % todo-5                                                34  
+}%                                                                                  
+\DeclareExpandableDocumentCommand{\TUMcolor}{m}%                                    
+{%                                                                                  
+	\clist_item:Nn {\l_TUM_color_clist}{#1}%                                        
+}%                                                                                  
+\ExplSyntaxOff%                                                                     
+\endinput%                                                                          
