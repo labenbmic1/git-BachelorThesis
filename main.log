@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7 NEXT) (preloaded format=pdflatex 2020.8.28)  4 SEP 2020 00:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7 NEXT) (preloaded format=pdflatex 2020.8.28)  5 SEP 2020 00:18
 entering extended mode
 **./main.tex
 (main.tex
@@ -248,11 +248,11 @@ LaTeX Info: Redefining \GenericWarning on input line 433.
 \sl@BankOfErrors=\toks25
 LaTeX Info: Redefining \GenericError on input line 601.
 )
-Package: tum-physics 2020-05-24 v1.0.0.nightly.001000000010024 A (:P) "package"
+Package: tum-physics 2020-05-24 v1.0.1.nightly.001000000010001 A (:P) "package"
  made by Michael Labenbacher, scrbook/scrreprt
 
 ==========================================================================
-Version: 1.0.0.nightly.001000000010024
+Version: 1.0.1.nightly.001000000010001
 000 for: -- paper=a4,11/12pt,twoside,open=right--scrbook
 001 for: -- paper=a4,11/12pt,oneside,open=any--scrreprt
 002 for: -- paper=a4,11/12pt,twoside,open=right--scrartcl
@@ -262,8 +262,9 @@ Version: 1.0.0.nightly.001000000010024
 Author: Labenbacher Michael
 ==========================================================================
 \l_load_packages_int=\count199
-Optimierung fehlt: imakeidx, glossaries, biblatex, listings, theorems
-Problem mit: etex - paracol (gleichzeitige Nutzung nicht moeglich)
+Missing optimization: imakeidx, glossaries, biblatex, listings, theorems, todon
+otes
+Problem with: etex - paracol (can not be loaded at the same time)
 
 ("C:\Users\micha\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsmath.st
 y"
@@ -1107,7 +1108,7 @@ Normal \dimen register pool exhausted, switching to extended pool.
 \c@LT@chunks=\count462
 \LT@p@ftn=\toks49
 )
-Class scrreprt Info: longtable captions redefined on input line 738.
+Class scrreprt Info: longtable captions redefined on input line 745.
 
 ("C:\Users\micha\AppData\Local\Programs\MiKTeX 2.9\tex/latex/multirow\multirow.
 sty"
@@ -1117,7 +1118,7 @@ Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
 \multirow@dima=\skip129
 \bigstrutjot=\dimen257
 ) (packages/tumcolors.sty
-Package: packages/tumcolors 2020-05-24 v1.0.0.nightly.001000000010024 The color
+Package: packages/tumcolors 2020-05-24 v1.0.1.nightly.001000000010001 The color
 -part made by Michael Labenbacher
 
 ("C:\Users\micha\AppData\Local\Programs\MiKTeX 2.9\tex/latex/xcolor\xcolor.sty"
@@ -2211,7 +2212,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks77
 \@floatcapt=\box155
 )
-Package scrhack Info: loading float hack on input line 842.
+Package scrhack Info: loading float hack on input line 848.
 
 ("C:\Users\micha\AppData\Local\Programs\MiKTeX 2.9\tex/latex/koma-script\float.
 hak"
@@ -2223,7 +2224,7 @@ Package scrhack Info: undefining \float@addtolists on input line 163.
 )
 Package scrhack Info: hyperref hack deactivated because of
 (scrhack)             detection of KOMA-Script class, that doesn't
-(scrhack)             need that hack, on input line 862.
+(scrhack)             need that hack, on input line 868.
 
 ("C:\Users\micha\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\hyperref.
 sty"
@@ -2339,11 +2340,11 @@ ty"
 Package: nccmath 2006/01/20 v1.3 Additional Math Commands (NCC)
 \NCC@fracrulewidth=\dimen426
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 878.
-Package hyperref Info: Option `breaklinks' set `true' on input line 878.
-Package hyperref Info: Option `linktocpage' set `true' on input line 878.
-Package hyperref Info: Option `hypertexnames' set `true' on input line 878.
-Package hyperref Info: Option `plainpages' set `false' on input line 878.
+Package hyperref Info: Option `colorlinks' set `true' on input line 884.
+Package hyperref Info: Option `breaklinks' set `true' on input line 884.
+Package hyperref Info: Option `linktocpage' set `true' on input line 884.
+Package hyperref Info: Option `hypertexnames' set `true' on input line 884.
+Package hyperref Info: Option `plainpages' set `false' on input line 884.
 
 ("C:\Users\micha\AppData\Local\Programs\MiKTeX 2.9\tex/latex/bookmark\bookmark.
 sty"
@@ -2465,7 +2466,7 @@ File: tikzlibraryshapes.misc.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 apes\pgflibraryshapes.misc.code.tex"
 File: pgflibraryshapes.misc.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )) (packages/tumtikz.sty
-Package: packages/tumtikz 2020-05-24 v1.0.0.nightly.001000000010024 The tikz/pg
+Package: packages/tumtikz 2020-05-24 v1.0.1.nightly.001000000010001 The tikz/pg
 f-part made by Michael Labenbacher
 \tikZlengthwi=\skip151
 \tikZlengthwii=\skip152
@@ -2476,7 +2477,7 @@ f-part made by Michael Labenbacher
 \tikZlengthwvii=\skip157
 )
 (packages/tumlistings.sty
-Package: packages/tumlistings 2020-05-24 v1.0.0.nightly.001000000010024 The lis
+Package: packages/tumlistings 2020-05-24 v1.0.1.nightly.001000000010001 The lis
 tings-part made by Michael Labenbacher
 )
 ("C:\Users\micha\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tcolorbox\tcblisti
@@ -2526,30 +2527,30 @@ Library (tcolorbox): 'tcbxparse.code.tex' version '4.31'
 \c@tcb@cnt@theorem=\count594
 \c@tcb@cnt@example=\count595
  (packages/tumheader.sty
-Package: packages/tumheader 2020-05-24 v1.0.0.nightly.001000000010024 The heade
+Package: packages/tumheader 2020-05-24 v1.0.1.nightly.001000000010001 The heade
 r-part made by Michael Labenbacher
 ) (packages/tummatter.sty
-Package: packages/tummatter 2020-05-24 v1.0.0.nightly.001000000010024 The matte
+Package: packages/tummatter 2020-05-24 v1.0.1.nightly.001000000010001 The matte
 r-part made by Michael Labenbacher
 ) (packages/tumtoc.sty
-Package: packages/tumtoc 2020-05-24 v1.0.0.nightly.001000000010024 The table-of
+Package: packages/tumtoc 2020-05-24 v1.0.1.nightly.001000000010001 The table-of
 -contents-part made by Michael Labenbacher
 )
 (packages/tumlof.sty
-Package: packages/tumlof 2020-05-24 v1.0.0.nightly.001000000010024 The list-of-
+Package: packages/tumlof 2020-05-24 v1.0.1.nightly.001000000010001 The list-of-
 figures-part made by Michael Labenbacher
 ) (packages/tumlot.sty
-Package: packages/tumlot 2020-05-24 v1.0.0.nightly.001000000010024 The list-of-
+Package: packages/tumlot 2020-05-24 v1.0.1.nightly.001000000010001 The list-of-
 table-part made by Michael Labenbacher
 ) (packages/tumlob.sty
-Package: packages/tumlob 2020-05-24 v1.0.0.nightly.001000000010024 The list-of-
+Package: packages/tumlob 2020-05-24 v1.0.1.nightly.001000000010001 The list-of-
 bibliography-part made by Michael Labenbacher
 )
 (packages/tumlol.sty
-Package: packages/tumlol 2020-05-24 v1.0.0.nightly.001000000010024 The list-of-
+Package: packages/tumlol 2020-05-24 v1.0.1.nightly.001000000010001 The list-of-
 listings-part made by Michael Labenbacher
 ) (packages/tumidx.sty
-Package: packages/tumidx 2020-05-24 v1.0.0.nightly.001000000010024 The index-pa
+Package: packages/tumidx 2020-05-24 v1.0.1.nightly.001000000010001 The index-pa
 rt made by Michael Labenbacher
 \openout15 = `index.ist'.
 
@@ -2558,10 +2559,10 @@ rt made by Michael Labenbacher
 \l_index_count_int=\count596
 \l_index_preamble_count_int=\count597
 ) (packages/tumtdo.sty
-Package: packages/tumtdo 2020-05-24 v1.0.0.nightly.001000000010024 The todonote
+Package: packages/tumtdo 2020-05-24 v1.0.1.nightly.001000000010001 The todonote
 s-part made by Michael Labenbacher
 ) (packages/tumtitlepage.sty
-Package: packages/tumtitlepage 2020-05-24 v1.0.0.nightly.001000000010024 The ti
+Package: packages/tumtitlepage 2020-05-24 v1.0.1.nightly.001000000010001 The ti
 tlepage-part made by Michael Labenbacher
 ))
 LaTeX Font Info:    Trying to load font information for T1+lmr on input line 62
@@ -2995,10 +2996,10 @@ LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 10.40245pt on input line 1.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 19.70294pt on input line 1.
-Package marginnote Info: Margin note 2.1 is on absolute page 2 on input line 2.
+Package marginnote Info: Margin note 2.1 is on absolute page 2 on input line 4.
 
-Package marginnote Info: right page because not two side mode on input line 2.
-Package marginnote Info: xpos seems to be 344.38115pt on input line 2.
+Package marginnote Info: right page because not two side mode on input line 4.
+Package marginnote Info: xpos seems to be 347.42279pt on input line 4.
 ) [1
 
 
@@ -3118,8 +3119,8 @@ chapter without number
 Package marginnote Info: Margin note 18.1 is on absolute page 18 on input line 
 4.
 Package marginnote Info: right page because not two side mode on input line 4.
-Package marginnote Info: xpos seems to be 117.60643pt on input line 4.
-<images/appendix/signature.png, id=175, 117.13762pt x 19.272pt>
+Package marginnote Info: xpos seems to be 132.20634pt on input line 4.
+<images/appendix/signature.png, id=174, 117.13762pt x 19.272pt>
 File: images/appendix/signature.png Graphic file (type png)
 <use images/appendix/signature.png>
 Package pdftex.def Info: images/appendix/signature.png  used on input line 9.
@@ -3145,13 +3146,13 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 70222 strings out of 481174
- 1652873 string characters out of 2902296
- 102626964 words of memory out of 202384744
- 84386 multiletter control sequences out of 15000+200000
- 668302 words of font info for 176 fonts, out of 3000000 for 9000
+ 70224 strings out of 481174
+ 1652912 string characters out of 2902296
+ 102627144 words of memory out of 202384924
+ 84389 multiletter control sequences out of 15000+200000
+ 665321 words of font info for 175 fonts, out of 3000000 for 9000
  1146 hyphenation exceptions out of 8191
- 101i,17n,168p,10650b,2283s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 101i,16n,168p,10650b,2283s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/micha/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.en
 c}{C:/Users/micha/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc
 }{C:/Users/micha/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ts1.en
@@ -3161,16 +3162,15 @@ mbx12.pfb><C:/Users/micha/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/
 lm/lmcsc10.pfb><C:/Users/micha/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
 blic/lm/lmr10.pfb><C:/Users/micha/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
 /public/lm/lmr12.pfb><C:/Users/micha/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
-pe1/public/lm/lmr5.pfb><C:/Users/micha/AppData/Local/Programs/MiKTeX 2.9/fonts/
-type1/public/lm/lmr6.pfb><C:/Users/micha/AppData/Local/Programs/MiKTeX 2.9/font
-s/type1/public/lm/lmr7.pfb><C:/Users/micha/AppData/Local/Programs/MiKTeX 2.9/fo
-nts/type1/public/lm/lmr8.pfb><C:/Users/micha/AppData/Local/Programs/MiKTeX 2.9/
-fonts/type1/public/lm/lmri10.pfb><C:/Users/micha/AppData/Local/Programs/MiKTeX 
-2.9/fonts/type1/public/lm/lmtt10.pfb><C:/Users/micha/AppData/Local/Programs/MiK
-TeX 2.9/fonts/type1/urw/helvetic/uhvb8a.pfb>
-Output written on main.pdf (18 pages, 303849 bytes).
+pe1/public/lm/lmr6.pfb><C:/Users/micha/AppData/Local/Programs/MiKTeX 2.9/fonts/
+type1/public/lm/lmr7.pfb><C:/Users/micha/AppData/Local/Programs/MiKTeX 2.9/font
+s/type1/public/lm/lmr8.pfb><C:/Users/micha/AppData/Local/Programs/MiKTeX 2.9/fo
+nts/type1/public/lm/lmri10.pfb><C:/Users/micha/AppData/Local/Programs/MiKTeX 2.
+9/fonts/type1/public/lm/lmtt10.pfb><C:/Users/micha/AppData/Local/Programs/MiKTe
+X 2.9/fonts/type1/urw/helvetic/uhvb8a.pfb>
+Output written on main.pdf (18 pages, 284557 bytes).
 PDF statistics:
- 295 PDF objects out of 1000 (max. 8388607)
+ 291 PDF objects out of 1000 (max. 8388607)
  44 named destinations out of 1000 (max. 500000)
- 36108 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 35596 words of extra memory for PDF output out of 35830 (max. 10000000)
 

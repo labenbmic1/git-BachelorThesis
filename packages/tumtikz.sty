@@ -1,79 +1,79 @@
-\NeedsTeXFormat{LaTeX2e}%                                                           
-\ProvidesExplPackage {packages/tumtikz} {2020-05-24} {\TUMversion}%                 
-	{The tikz/pgf-part made by Michael Labenbacher}%                                
-\ProcessKeysPackageOptions{packages/tumtikz}%                                       
-\ExplSyntaxOff%                                                                     
-\newlength{\tikZlengthwi}\setlength{\tikZlengthwi}{0.10mm}%                         
-\newlength{\tikZlengthwii}\setlength{\tikZlengthwi}{0.14mm}%                        
-\newlength{\tikZlengthwiii}\setlength{\tikZlengthwiii}{0.28mm}%                     
-\newlength{\tikZlengthwiv}\setlength{\tikZlengthwiv}{0.56mm}%                       
-\newlength{\tikZlengthwv}\setlength{\tikZlengthwv}{1.12mm}%                         
-\newlength{\tikZlengthwvi}\setlength{\tikZlengthwvi}{2.24mm}%                       
-\newlength{\tikZlengthwvii}\setlength{\tikZlengthwvii}{4.48mm}%                     
-\tikzset{w1/.style={line width=\tikZlengthwi}}                                      
-\tikzset{w2/.style={line width=\tikZlengthwii}}                                     
-\tikzset{w3/.style={line width=\tikZlengthwiii}}                                    
-\tikzset{w4/.style={line width=\tikZlengthwiv}}                                     
-\tikzset{w5/.style={line width=\tikZlengthwv}}                                      
-\tikzset{w6/.style={line width=\tikZlengthwvi}}                                     
-\tikzset{w7/.style={line width=\tikZlengthwvii}}                                    
-\makeatletter%                                                                      
-\AtBeginDocument{%                                                                  
-	\TUM@ifpackageloaded[setting]{babel}{%                                          
-		\AfterEndPreamble{%                                                         
-			\addto\extrasnaustrian{%                                                
-				\pgfplotsset{%                                                      
-					x tick label style={/pgf/number format/set decimal separator={,}},% 
-					y tick label style={/pgf/number format/set decimal separator={,}},% 
-				}%                                                                  
-			}%                                                                      
-			\addto\extrasngerman{%                                                  
-				\pgfplotsset{%                                                      
-					x tick label style={/pgf/number format/set decimal separator={,}},% 
-					y tick label style={/pgf/number format/set decimal separator={,}},% 
-				}%                                                                  
-			}%                                                                      
-			\addto\extrasamerican{%                                                 
-				\pgfplotsset{%                                                      
+\NeedsTeXFormat{LaTeX2e}%
+\ProvidesExplPackage {packages/tumtikz} {2020-05-24} {\TUMversion}%
+	{The tikz/pgf-part made by Michael Labenbacher}%
+\ProcessKeysPackageOptions{packages/tumtikz}%
+\ExplSyntaxOff%
+\newlength{\tikZlengthwi}\setlength{\tikZlengthwi}{0.10mm}%
+\newlength{\tikZlengthwii}\setlength{\tikZlengthwi}{0.14mm}%
+\newlength{\tikZlengthwiii}\setlength{\tikZlengthwiii}{0.28mm}%
+\newlength{\tikZlengthwiv}\setlength{\tikZlengthwiv}{0.56mm}%
+\newlength{\tikZlengthwv}\setlength{\tikZlengthwv}{1.12mm}%
+\newlength{\tikZlengthwvi}\setlength{\tikZlengthwvi}{2.24mm}%
+\newlength{\tikZlengthwvii}\setlength{\tikZlengthwvii}{4.48mm}%
+\tikzset{w1/.style={line width=\tikZlengthwi}}
+\tikzset{w2/.style={line width=\tikZlengthwii}}
+\tikzset{w3/.style={line width=\tikZlengthwiii}}
+\tikzset{w4/.style={line width=\tikZlengthwiv}}
+\tikzset{w5/.style={line width=\tikZlengthwv}}
+\tikzset{w6/.style={line width=\tikZlengthwvi}}
+\tikzset{w7/.style={line width=\tikZlengthwvii}}
+\makeatletter%
+\AtBeginDocument{%
+	\TUM@ifpackageloaded[setting]{babel}{%
+		\AfterEndPreamble{%
+			\addto\extrasnaustrian{%
+				\pgfplotsset{%
+					x tick label style={/pgf/number format/set decimal separator={,}},%
+					y tick label style={/pgf/number format/set decimal separator={,}},%
+				}%
+			}%
+			\addto\extrasngerman{%
+				\pgfplotsset{%
+					x tick label style={/pgf/number format/set decimal separator={,}},%
+					y tick label style={/pgf/number format/set decimal separator={,}},%
+				}%
+			}%
+			\addto\extrasamerican{%
+				\pgfplotsset{%
 					x tick label style={/pgf/number format/set decimal separator=.},
 					y tick label style={/pgf/number format/set decimal separator=.},
-				}%                                                                  
-			}%                                                                      
-			\addto\extrasenglish{%                                                  
-				\pgfplotsset{%                                                      
+				}%
+			}%
+			\addto\extrasenglish{%
+				\pgfplotsset{%
 					x tick label style={/pgf/number format/set decimal separator=.},
 					y tick label style={/pgf/number format/set decimal separator=.},
-				}%                                                                  
-			}%                                                                      
-		}%                                                                          
-	}{}%                                                                            
-}%                                                                                  
-\makeatother%                                                                       
-\pgfplotsset{compat=newest,%                                                        
-	x tick label style={/pgf/number format/1000 sep={\;\!}},%                       
-	y tick label style={/pgf/number format/1000 sep={\;\!}},%                       
-	%% wissenschaftliche Arbeiten mit geschlossenen Diagrammen und genauer          
-	%% Bildunterschrift (z. B. 4 Zeilen)                                            
-	TUM style 1/.append style={%                                                    
-		tick style={%                                                               
-			black, w1%                                                              
-		},%                                                                         
-		tick align={%                                                               
-			outside%                                                                
-		},%                                                                         
-		major grid style={solid, black, w2},%                                       
-		minor grid style={dotted, black, w1},%                                      
-		inner axis line style={solid, black, w3},%                                  
-		axis line style={-stealth},%                                                
-		hide obscured x ticks=false, hide obscured y ticks=false%                   
-	},%                                                                             
-}%                                                                                  
-\tikzset{>=latex}%                                                                  
-\makeatletter%                                                                      
-\newcommand{\gettikzxy}[3]{%                                                        
-	\tikz@scan@one@point\pgfutil@firstofone#1\relax%                                
-	\edef#2{\the\pgf@x}%                                                            
-	\edef#3{\the\pgf@y}%                                                            
-}%                                                                                  
-\makeatother%                                                                       
-\endinput%                                                                          
+				}%
+			}%
+		}%
+	}{}%
+}%
+\makeatother%
+\pgfplotsset{compat=newest,%
+	x tick label style={/pgf/number format/1000 sep={\;\!}},%
+	y tick label style={/pgf/number format/1000 sep={\;\!}},%
+	%% wissenschaftliche Arbeiten mit geschlossenen Diagrammen und genauer
+	%% Bildunterschrift (z. B. 4 Zeilen)
+	TUM style 1/.append style={%
+		tick style={%
+			black, w1%
+		},%
+		tick align={%
+			outside%
+		},%
+		major grid style={solid, black, w2},%
+		minor grid style={dotted, black, w1},%
+		inner axis line style={solid, black, w3},%
+		axis line style={-stealth},%
+		hide obscured x ticks=false, hide obscured y ticks=false%
+	},%
+}%
+\tikzset{>=latex}%
+\makeatletter%
+\newcommand{\gettikzxy}[3]{%
+	\tikz@scan@one@point\pgfutil@firstofone#1\relax%
+	\edef#2{\the\pgf@x}%
+	\edef#3{\the\pgf@y}%
+}%
+\makeatother%
+\endinput%

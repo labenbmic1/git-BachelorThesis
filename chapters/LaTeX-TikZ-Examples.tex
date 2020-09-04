@@ -1,5 +1,5 @@
 %% begin: LaTeX-TikZ-Examples.tex
-
+%% This is a collection of TikZ-images, but only for the purpose of debugging (and a few examples due to requests). Therefore the tikzset-options were not included into tumtikz.sty, because this are only "local" settings for this file and therefore not very "good"... . For the created images, see /images/tikz/.
 
 \tikzset{%
 	circuit declare symbol = ammeter,
@@ -46,8 +46,6 @@
 	}%
 }%
 
-
-
 \tikzset{external/export=true}
 \setchemformula{tikz-external-disable=true}
 
@@ -58,13 +56,13 @@
 \begin{figure}\centering
 	\tikzsetnextfilename{Figure-1} 
 	\begin{tikzpicture}[x=10mm,y=10mm]
-	\draw[very thin,color=gray] (-0.1,-1.1) grid (9.9,3.9);
-	\draw[->] (-0.2,0) -- (10.2,0) node[right] {$x$}; 
-	\draw[->] (0,-1.2) -- (0,4.2) node[above] {$f(x)$};
-	\draw[color=red]    plot[domain=0:4] (\x,\x)             node[right] {$f(x) =x$}; 
-	\draw[color=blue]   plot[domain=0:9,samples=10] (\x,{sin(\x r)})    node[right] {$f(x) = \sin x$}; 
-	\draw[color=black]   plot[domain=0:10,samples=100] (\x,{cos(\x r)})    node[right] {$f(x) = \cos x$}; 
-	\draw[color=orange] plot[domain=0:4] (\x,{0.05*exp(\x)}) node[right] {$f(x) = \frac{1}{20} \mathrm e^x$};
+		\draw[very thin,color=gray] (-0.1,-1.1) grid (9.9,3.9);
+		\draw[->] (-0.2,0) -- (10.2,0) node[right] {$x$}; 
+		\draw[->] (0,-1.2) -- (0,4.2) node[above] {$f(x)$};
+		\draw[color=red]    plot[domain=0:4] (\x,\x)             node[right] {$f(x) =x$}; 
+		\draw[color=blue]   plot[domain=0:9,samples=10] (\x,{sin(\x r)})    node[right] {$f(x) = \sin x$}; 
+		\draw[color=black]   plot[domain=0:10,samples=100] (\x,{cos(\x r)})    node[right] {$f(x) = \cos x$}; 
+		\draw[color=orange] plot[domain=0:4] (\x,{0.05*exp(\x)}) node[right] {$f(x) = \frac{1}{20} \mathrm e^x$};
 	\end{tikzpicture}
 	\caption{Plotting a function with TikZ}
 	\label{fig:Auswertung:Visualisierung:Plotting a function with TikZ}
@@ -86,54 +84,54 @@
 	\pgfplotsset{lua backend=false}% ymode=log
 	\tikzsetnextfilename{Figure-2} 
 	\begin{tikzpicture}[x=10mm,y=10mm]
-	\pgfmathsetmacro{\expone}{exp(1)}
-	\begin{axis}[%
-	xmode=linear,%
-	ymode=log,%
-	axis x line = bottom,%
-	axis y line = left,%
-	axis on top,%
-	height=0.5\textwidth,
-	width=0.7\textwidth,
-	log basis ticks={y},
-	xtick = {0,5,...,35},
-	minor x tick num=4, 
-	xtick style = {orange},
-	xtick align = outside,
-	grid = major,%
-	major grid style = {solid, green!50!black},
-	log basis y={\expone},
-	log number format basis/.code 2 args={
-		$e^{\pgfmathprintnumber{#2}}$},
-	extra y ticks/.expanded ={\extrayticklist},
-	every extra y tick/.append style = {% 
-		grid = major,%
-		major grid style = {dotted, orange!50!black},
-		tick style = {blue},%
-		tick align = outside% 
-	},
-	extra y tick labels={},%
-	extra x tick style = {% 
-		grid = none,%
-		tick style = {orange},%
-		tick align = outside%
-	},%
-	xlabel={$t$ in $s$},
-	ylabel={$\varphi$ in $^{\circ}$},
-	xmin=0, xmax=36, ymin=1, ymax={exp(5.2)},
-	mark size=1mm,
-	legend pos=outer north east, legend cell align=left,
-	legend style ={% 
-		draw=black, 
-		fill=white,},%
-	]
-	\addplot[domain=0:5, samples=10, dotted, mark=triangle*, mark options={ fill=white}] {exp(x)};
-	\addlegendentry{$f(x)=e^{x}$}
-	\addplot[domain=5:10, samples=10, mark=star, mark options={fill}, dashed, color=blue] {exp(x-5)/2};
-	\addlegendentry{$f(x)=\frac{e^{x-5}}{2}$}
-	\addplot[domain=0:35, densely dashdotted, samples=10, color=red, mark=diamond*, mark options={fill=gray}] {x} node[pos=0.9, anchor=north] {$f(x)=x$};
-	\addlegendentry{$f(x)=x$}
-	\end{axis}
+		\pgfmathsetmacro{\expone}{exp(1)}
+		\begin{axis}[%
+			xmode=linear,%
+			ymode=log,%
+			axis x line = bottom,%
+			axis y line = left,%
+			axis on top,%
+			height=0.5\textwidth,
+			width=0.7\textwidth,
+			log basis ticks={y},
+			xtick = {0,5,...,35},
+			minor x tick num=4, 
+			xtick style = {orange},
+			xtick align = outside,
+			grid = major,%
+			major grid style = {solid, green!50!black},
+			log basis y={\expone},
+			log number format basis/.code 2 args={
+				$e^{\pgfmathprintnumber{#2}}$},
+			extra y ticks/.expanded ={\extrayticklist},
+			every extra y tick/.append style = {% 
+				grid = major,%
+				major grid style = {dotted, orange!50!black},
+				tick style = {blue},%
+				tick align = outside% 
+			},
+			extra y tick labels={},%
+			extra x tick style = {% 
+				grid = none,%
+				tick style = {orange},%
+				tick align = outside%
+			},%
+			xlabel={$t$ in $s$},
+			ylabel={$\varphi$ in $^{\circ}$},
+			xmin=0, xmax=36, ymin=1, ymax={exp(5.2)},
+			mark size=1mm,
+			legend pos=outer north east, legend cell align=left,
+			legend style ={% 
+				draw=black, 
+				fill=white,},%
+			]
+			\addplot[domain=0:5, samples=10, dotted, mark=triangle*, mark options={ fill=white}] {exp(x)};
+			\addlegendentry{$f(x)=e^{x}$}
+			\addplot[domain=5:10, samples=10, mark=star, mark options={fill}, dashed, color=blue] {exp(x-5)/2};
+			\addlegendentry{$f(x)=\frac{e^{x-5}}{2}$}
+			\addplot[domain=0:35, densely dashdotted, samples=10, color=red, mark=diamond*, mark options={fill=gray}] {x} node[pos=0.9, anchor=north] {$f(x)=x$};
+			\addlegendentry{$f(x)=x$}
+		\end{axis}
 	\end{tikzpicture}
 	\pgfplotsset{lua backend=false}% ymode=log
 	\caption{Plotting a function with axis-environment}
@@ -142,135 +140,135 @@
 
 \tikzsetnextfilename{Figure-3} 
 \begin{tikzpicture}[x=10mm,y=10mm]
-\begin{axis}[xmode=linear, ymode=linear, axis x line=center, axis y line=center, TUM style 1, xmin=0, xmax=1, ymin=0, ymax=1, grid=both, 
-enlarge x limits={rel=0.05,upper},
-enlarge y limits={rel=0.05,upper},
-xtick distance=0.2, minor x tick num=5,
-ytick distance=0.2, minor y tick num=5, 
-samples=50, domain=0:1]
-\addplot {x};
-\addplot {x/1.2};
-\addplot {x/1.4};
-\addplot {x/1.6};
-\addplot {x/1.8};
-\addplot {x/2};
-\addplot {x/2.5};
-\addplot {x/3};
-\addplot {x/5};
-\addplot {x/10};
-\addplot {x/20};
-\end{axis}
+	\begin{axis}[xmode=linear, ymode=linear, axis x line=center, axis y line=center, TUM style 1, xmin=0, xmax=1, ymin=0, ymax=1, grid=both, 
+		enlarge x limits={rel=0.05,upper},
+		enlarge y limits={rel=0.05,upper},
+		xtick distance=0.2, minor x tick num=5,
+		ytick distance=0.2, minor y tick num=5, 
+		samples=50, domain=0:1]
+		\addplot {x};
+		\addplot {x/1.2};
+		\addplot {x/1.4};
+		\addplot {x/1.6};
+		\addplot {x/1.8};
+		\addplot {x/2};
+		\addplot {x/2.5};
+		\addplot {x/3};
+		\addplot {x/5};
+		\addplot {x/10};
+		\addplot {x/20};
+	\end{axis}
 \end{tikzpicture}
 
 \begin{figure}
 	\tikzsetnextfilename{Figure-4} 
 	\begin{tikzpicture}
-	\begin{axis}[xmode=linear, ymode=linear, axis y line=center,
-	axis x line=center, TUM style 1,
-	width=\textwidth,
-	height=0.3\textwidth, 
-	tick align=center, hide obscured x ticks=true,
-	ymin=-80, ymax=80, xmin=0, xmax=0.045,
-	enlarge y limits={abs=19},
-	enlarge x limits={abs=0.0049,upper},
-	xtick distance=0.005, minor x tick num=4,
-	ytick distance=40, minor y tick num=3, 
-	ymajorgrids, yminorgrids,
-	ylabel={$u(t)$ in $\mathrm{V}$}, xlabel={$t$ in $\mathrm{s}$}, 
-	every axis x label/.style={at={(axis description cs:0.95,0.5)}, anchor=south},%
-	every axis y label/.style={at={(axis description cs:0,1)}, anchor=south},
-	scaled x ticks={base 10:3},
-	x tick label style={/pgf/number format/.cd,fixed,precision=1,/tikz/.cd},%
-	legend cell align=left,
-	legend style ={% 
-		at={(1,1)}, anchor=south east,
-		draw=black, 
-		fill=white,}%
-	]%
-	\addplot [color=RedViolet] table[skip first n=1,x index=2,y index=3, col sep = comma] {files/oszi/help/CH1.csv};
-	\addlegendentry{$u_{1}(t)$}
-	\addplot [color=ForestGreen] table[skip first n=1,x index=2,y index=3, col sep = comma] {files/oszi/help/CH2.csv};
-	\addlegendentry{$u_{2}(t)$}
-	\end{axis}
+		\begin{axis}[xmode=linear, ymode=linear, axis y line=center,
+			axis x line=center, TUM style 1,
+			width=\textwidth,
+			height=0.3\textwidth, 
+			tick align=center, hide obscured x ticks=true,
+			ymin=-80, ymax=80, xmin=0, xmax=0.045,
+			enlarge y limits={abs=19},
+			enlarge x limits={abs=0.0049,upper},
+			xtick distance=0.005, minor x tick num=4,
+			ytick distance=40, minor y tick num=3, 
+			ymajorgrids, yminorgrids,
+			ylabel={$u(t)$ in $\mathrm{V}$}, xlabel={$t$ in $\mathrm{s}$}, 
+			every axis x label/.style={at={(axis description cs:0.95,0.5)}, anchor=south},%
+			every axis y label/.style={at={(axis description cs:0,1)}, anchor=south},
+			scaled x ticks={base 10:3},
+			x tick label style={/pgf/number format/.cd,fixed,precision=1,/tikz/.cd},%
+			legend cell align=left,
+			legend style ={% 
+				at={(1,1)}, anchor=south east,
+				draw=black, 
+				fill=white,}%
+			]%
+			\addplot [color=RedViolet] table[skip first n=1,x index=2,y index=3, col sep = comma] {files/oszi/help/CH1.csv};
+			\addlegendentry{$u_{1}(t)$}
+			\addplot [color=ForestGreen] table[skip first n=1,x index=2,y index=3, col sep = comma] {files/oszi/help/CH2.csv};
+			\addlegendentry{$u_{2}(t)$}
+		\end{axis}
 	\end{tikzpicture}
 	\caption{Zeitverläufe der Messgrößen bei $ \alpha = 0 \, ^{\mathrm{ \circ}} $ (B2C mit Energiespeicher)}
 	\label{fig:Auswertung:Visualisierung:Zeitverlaeufe der Messgroessen bei alpha=0 (B2C mit Energiespeicher)}
 \end{figure}
 
 \begin{figure}
-\centering
-\tikzsetnextfilename{Figure-5} 
-\begin{tikzpicture}[x=1mm, y=1mm]%
-%% ** 1. \coordinate[⟨options⟩] (⟨name⟩) at (⟨coordinate⟩);
-%% same as \path coordinate 
-%% options ... i. e. [label = left:$A$]
-\coordinate (origin) at (0,0);%
-\def\localDistanceLength{0.9\textwidth}%
-\def\localDistanceHeight{40}%
-\def\globalGroundDistance{3.333}%
-\coordinate (lo) at (-\localDistanceLength/2,\localDistanceHeight/2);%
-\coordinate (ru) at (\localDistanceLength/2,-\localDistanceHeight/2);%
-\coordinate (lu) at (lo |- ru);%
-\coordinate (ro) at (lo -| ru);%
-\coordinate (Ao) at ($(lo)!1/5!(ro)$);%
-\coordinate (Bo) at ($(lo)!2/5!(ro)$);%
-\coordinate (Co) at ($(lo)!3/5!(ro)$);%
-\coordinate (Do) at ($(lo)!4/5!(ro)$);%
-\coordinate (Au) at (Ao |- ru);%
-\coordinate (Bu) at (Bo |- ru);%
-\coordinate (Cu) at (Co |- ru);%
-\coordinate (Du) at (Do |- ru);%
-%
-%% ** 2. \draw, \node, etc.
-\draw (lo) to [resistor = {info' = {$R_{1} = \SI{10}{\ohm}$}}, small circuit symbols] (Ao);%
-\draw (Ao) to [resistor = {info = {$R_{2}$}}] (Bo);%
-\draw (Bo) to [capacitor = {info = {$C_{1}$}}] (Co);%
-\draw (Co) to [inductor = {color = blue}] (Do);%
-\draw (Bu) -- (Au);%
-\draw (Bu) to [ammeter = {color = red}, small circuit symbols, color = blue] (Cu);
-\draw (Cu) to [voltmeter] (Du);
-\draw (lo) to [ac source] (lu);
-
-\node[rectangle, minimum size = 15mm, draw = black, align = center] (rec1) at (0,0) {OSZ\\ X};
-\draw (Bo) |- ([yshift = 2.5mm]rec1.west);
-\draw (Bu) |- ([yshift = -2.5mm]rec1.west);
-
-\draw (Bu) -- ([shift={(0,-\globalGroundDistance)}]Bu) node[ground, point down, anchor=west] (g1) {};
-
-\foreach \x/\y in {oc1/lo,oc2/lu,oc3/ro,oc4/ru}{
-	\node[ocirc] (\x) at (\y) {};
-}
-\foreach \x/\y in {c1/Ao,c2/Au,c3/Bo,c4/Bu,c5/Co,c6/Cu,c7/Do,c8/Du}{
-	\node[circ] (\x) at (\y) {};
-}
-
-%% ** 3. scope for layers
-\begin{scope}[on background layer]
-\node (nothing) {};
-\end{scope}
-\end{tikzpicture}
-\caption{Schaltbild}
-\label{fig:Auswertung:Visualisierung:Schaltbild}
+	\centering
+	\tikzsetnextfilename{Figure-5} 
+	\begin{tikzpicture}[x=1mm, y=1mm]%
+		%% ** 1. \coordinate[⟨options⟩] (⟨name⟩) at (⟨coordinate⟩);
+		%% same as \path coordinate 
+		%% options ... i. e. [label = left:$A$]
+		\coordinate (origin) at (0,0);%
+		\def\localDistanceLength{0.9\textwidth}%
+		\def\localDistanceHeight{40}%
+		\def\globalGroundDistance{3.333}%
+		\coordinate (lo) at (-\localDistanceLength/2,\localDistanceHeight/2);%
+		\coordinate (ru) at (\localDistanceLength/2,-\localDistanceHeight/2);%
+		\coordinate (lu) at (lo |- ru);%
+		\coordinate (ro) at (lo -| ru);%
+		\coordinate (Ao) at ($(lo)!1/5!(ro)$);%
+		\coordinate (Bo) at ($(lo)!2/5!(ro)$);%
+		\coordinate (Co) at ($(lo)!3/5!(ro)$);%
+		\coordinate (Do) at ($(lo)!4/5!(ro)$);%
+		\coordinate (Au) at (Ao |- ru);%
+		\coordinate (Bu) at (Bo |- ru);%
+		\coordinate (Cu) at (Co |- ru);%
+		\coordinate (Du) at (Do |- ru);%
+		%
+		%% ** 2. \draw, \node, etc.
+		\draw (lo) to [resistor = {info' = {$R_{1} = \SI{10}{\ohm}$}}, small circuit symbols] (Ao);%
+		\draw (Ao) to [resistor = {info = {$R_{2}$}}] (Bo);%
+		\draw (Bo) to [capacitor = {info = {$C_{1}$}}] (Co);%
+		\draw (Co) to [inductor = {color = blue}] (Do);%
+		\draw (Bu) -- (Au);%
+		\draw (Bu) to [ammeter = {color = red}, small circuit symbols, color = blue] (Cu);
+		\draw (Cu) to [voltmeter] (Du);
+		\draw (lo) to [ac source] (lu);
+		
+		\node[rectangle, minimum size = 15mm, draw = black, align = center] (rec1) at (0,0) {OSZ\\ X};
+		\draw (Bo) |- ([yshift = 2.5mm]rec1.west);
+		\draw (Bu) |- ([yshift = -2.5mm]rec1.west);
+		
+		\draw (Bu) -- ([shift={(0,-\globalGroundDistance)}]Bu) node[ground, point down, anchor=west] (g1) {};
+		
+		\foreach \x/\y in {oc1/lo,oc2/lu,oc3/ro,oc4/ru}{
+			\node[ocirc] (\x) at (\y) {};
+		}
+		\foreach \x/\y in {c1/Ao,c2/Au,c3/Bo,c4/Bu,c5/Co,c6/Cu,c7/Do,c8/Du}{
+			\node[circ] (\x) at (\y) {};
+		}
+		
+		%% ** 3. scope for layers
+		\begin{scope}[on background layer]
+			\node (nothing) {};
+		\end{scope}
+	\end{tikzpicture}
+	\caption{Schaltbild}
+	\label{fig:Auswertung:Visualisierung:Schaltbild}
 \end{figure}
 
 \tikzsetnextfilename{Figure-6} 
 \begin{tikzpicture}[baseline]
-\begin{axis}[xmode=linear, ymode=linear, axis y line=left,
-axis x line=bottom, TUM style 1,
-width=0.5\textwidth,
-height=0.5\textwidth, 
-tick align=outside,
-ymin=0, ymax=10, xmin=0, xmax=200,
-enlarge y limits={abs=0.9,upper},
-enlarge x limits={abs=19,upper},
-xtick distance=50, minor x tick num=4,
-ytick distance=2, minor y tick num=1, 
-xlabel={I/mA},
-ylabel={R/$\Omega$}, grid=both]%
-%
-\addplot+[only marks, error bars/.cd, y dir = both, y explicit, x dir = both, x explicit] table[y error = dy, x error = dx] {files/help/test.dat};%
-%
-\end{axis}
+	\begin{axis}[xmode=linear, ymode=linear, axis y line=left,
+		axis x line=bottom, TUM style 1,
+		width=0.5\textwidth,
+		height=0.5\textwidth, 
+		tick align=outside,
+		ymin=0, ymax=10, xmin=0, xmax=200,
+		enlarge y limits={abs=0.9,upper},
+		enlarge x limits={abs=19,upper},
+		xtick distance=50, minor x tick num=4,
+		ytick distance=2, minor y tick num=1, 
+		xlabel={I/mA},
+		ylabel={R/$\Omega$}, grid=both]%
+		%
+		\addplot+[only marks, error bars/.cd, y dir = both, y explicit, x dir = both, x explicit] table[y error = dy, x error = dx] {files/help/test.dat};%
+		%
+	\end{axis}
 \end{tikzpicture}%
 
 \newlength{\tikZlengthV}
@@ -279,93 +277,200 @@ ylabel={R/$\Omega$}, grid=both]%
 \begin{figure}
 	\centering
 	\tikzsetnextfilename{Figure-7} 
-	\begin{tikzpicture}[x=1mm,y=1mm]
-	\setlength{\tikZlengthH}{\textwidth-\tikZlengthwiii}
-	\setlength{\tikZlengthV}{0.5\textwidth-\tikZlengthwiii}
-	\coordinate (lo) at (-\tikZlengthH/2,\tikZlengthV/2);
-	\coordinate (ru) at (\tikZlengthH/2,-\tikZlengthV/2);
-	\coordinate (lu) at (lo |- ru);
-	\coordinate (ro) at (lo -| ru);
-	\coordinate (lm) at ($(lo)!0.5!(lu)$);
-	\coordinate (rm) at (ro |- lm);
-	\draw (lo) -- (ru);
-%	
-	\coordinate (spaltlu) at ($(lu)!0.1!(ru)$);
-	\coordinate (spaltlo) at (spaltlu |- lo);
-	\coordinate (spaltru) at ([shift={(2,0)}]spaltlu);
-	\coordinate (spaltro) at (spaltru |- spaltlo);
-	\draw[fill=black] (spaltlo) rectangle (spaltru); 
-%	
-	\coordinate (spaltlm) at ($(spaltlo)!0.5!(spaltlu)$);
-	\coordinate (gitterlm) at (spaltlm);
-	\coordinate (gitterlo) at ($(spaltlm)!0.05!(spaltlo)$);
-	\coordinate (gitterlu) at ($(spaltlm)!0.05!(spaltlu)$);
-	\coordinate (gitterro) at (spaltro |- gitterlo);
-	\coordinate (gitterru) at (spaltro |- gitterlu);
-	\draw[fill=white, draw=black] (gitterlo) rectangle (gitterru);
-	
-	\coordinate (incommingWavel0) at (lm |- spaltlm);
-	\coordinate (incommingWaver0) at (spaltlm);
-	\coordinate (incommingWaver1) at ($(spaltlm)!0.15!(spaltlo)$);
-	\coordinate (incommingWaver2) at ($(spaltlm)!0.15!(spaltlu)$);
-	\coordinate (incommingWavel1) at (incommingWavel0 |- incommingWaver1);
-	\coordinate (incommingWavel2) at (incommingWavel0 |- incommingWaver2);
-	\foreach \x in {0,1,2}{
-		\draw[-latex] (incommingWavel\x) -- (incommingWaver\x);
-	}
-	
+	\begin{tikzpicture}[x=1mm, y=1mm]
+		\coordinate (origin) at (0,0);%
+		\def\localDistanceLength{0.15\textwidth}%
+		\def\localDistanceHeight{0.15\textwidth}%	
+		% 1.
+		\coordinate (lo) at (-\localDistanceLength/2,\localDistanceHeight/2);%
+		\coordinate (ru) at (\localDistanceLength/2,-\localDistanceHeight/2);%
+		\coordinate (lu) at (lo |- ru);%
+		\coordinate (ro) at (lo -| ru);%
+		
+		\begin{scope}[shift={(lu)}]
+			\clip (lu) rectangle (ro);
+			\foreach \p in{1,...,50}{%
+				\node[circle,inner sep=0pt, outer sep=0pt,fill=TUMcolorII, minimum width=1mm] at (1*\localDistanceLength*rnd,1*\localDistanceHeight*rnd) {};%
+			}%
+		\end{scope}
+		
+		\draw[] (lu) rectangle (ro);
+		\node[circle,inner sep=0pt, outer sep=0pt,draw = black, minimum width=\localDistanceLength] at (origin) {};%
+		
+		\coordinate (lol) at ([shift={(-0.15*\localDistanceLength,0)}]lo);
+		\coordinate (lor) at ([shift={(0.08*\localDistanceLength,0)}]lol);
+		\coordinate (lom) at ($(lol)!0.5!(lor)$);
+		\coordinate (lul) at (lol|-lu);
+		\coordinate (lum) at (lom|-lu);
+		\coordinate (lur) at (lor|-lu);
+		\draw (lol) -- (lor) (lul) -- (lur);
+		\draw[<->] (lom) -- node[label=left:{$1$}]{} (lum);
+		\coordinate (lol) at ([shift={(0,-0.15*\localDistanceLength)}]ru);
+		\coordinate (lor) at ([shift={(0,0.08*\localDistanceLength)}]lol);
+		\coordinate (lom) at ($(lol)!0.5!(lor)$);
+		\coordinate (lul) at (lol-|lu);
+		\coordinate (lum) at (lom-|lu);
+		\coordinate (lur) at (lor-|lu);
+		\draw (lol) -- (lor) (lul) -- (lur);
+		\draw[<->] (lom) -- node[label=below:{$1$}]{} (lum);
 	\end{tikzpicture}
-	\caption{Prinzip der Autokollimationsmethode}
-	\label{fig:Auswertung:Visualisierung:Prinzip der Autokollimationsmethode}
+	\caption{Monte Carlo\ldots{}}
+	\label{fig:Auswertung:Visualisierung:MonteCarlo}
 \end{figure}
 
 \begin{figure}
 	\centering
 	\tikzsetnextfilename{Figure-8} 
-	\begin{tikzpicture}[x=1mm,y=1mm]
-	\setlength{\tikZlengthH}{150mm-\tikZlengthwiii}
-	\setlength{\tikZlengthV}{50mm-\tikZlengthwiii}
-	\coordinate (lo) at (-\tikZlengthH/2,\tikZlengthV/2);
-	\coordinate (ru) at (\tikZlengthH/2,-\tikZlengthV/2);
-	\coordinate (lu) at (lo |- ru);
-	\coordinate (ro) at (lo -| ru);
-	\coordinate (lm) at ($(lo)!0.5!(lu)$);
-	\coordinate (rm) at (ro |- lm);
-	\draw[dashed] (lm) -- (rm);
-%	
-	\coordinate (linse1m) at ([shift={(50,0)}]lm);
-	\coordinate (linse1o) at ([shift={(0,15)}]linse1m);
-	\coordinate (linse1u) at ([shift={(0,-15)}]linse1m);
-	\draw[fill=black!15!white] (linse1o) to [bend right = 10] (linse1u) to [bend right = 10] (linse1o);
-	
-	
-	\coordinate (linse2m) at ([shift={(50,0)}]linse1m);
-	\coordinate (linse2o) at (linse2m |- linse1o);
-	\coordinate (linse2u) at (linse2m |- linse1u);
-	\draw[fill=black!15!white] (linse2o) to [bend right = 12] (linse2u) to [bend right = 12] (linse2o);
-%	
-	\coordinate (f1l) at ([shift={(-10,0)}]linse1m);
-	\coordinate (f1r) at ([shift={(10,0)}]linse1m);
-	\coordinate (f2l) at ([shift={(-12,0)}]linse2m);
-	\coordinate (f2r) at ([shift={(12,0)}]linse2m);
-	\foreach \x/\y/\z in {f1l/{$F_1$}/{45}, f1r/{$F_1^\prime$}/{135}, f2l/{$F_2$}/{45}, f2r/{$F_2^\prime$}/{135}}{
-		\node [circ, label={\z:\y}] at (\x) {};
-	}
-
-	\coordinate (hl) at ([shift={(-30,0)}]linse1m);
-	\coordinate (hr) at ([shift={(30,0)}]linse2m);
-	\foreach \x in {hl, hr}{
-		\node [circ] at (\x) {};
-	}
-	
-	\foreach \x in {linse1m, linse2m}{
-		\draw (\x |- lo) -- (\x |- lu);
-	}
+	\begin{tikzpicture}[x=7mm, y=4mm]
+		\def\a{1.7}
+		\def\b{5.7}
+		\def\c{3.7}
+		\def\L{0.5} % width of interval
+		
+		\pgfmathsetmacro{\Va}{2*sin(\a r+1)+4} \pgfmathresult
+		\pgfmathsetmacro{\Vb}{2*sin(\b r+1)+4} \pgfmathresult
+		\pgfmathsetmacro{\Vc}{2*sin(\c r+1)+4} \pgfmathresult
+		
+		\draw[->,thick] (-0.4,0) -- (8,0) coordinate (x axis) node[below] {$x$};
+		\draw[->,thick] (0,-0.7) -- (0,7) coordinate (y axis) node[left] {$y$};
+		\foreach \f in {1.7,2.2,...,6.2} {\pgfmathparse{2*sin(\f r+1)+4} \pgfmathresult
+			\draw[fill=\TUMcolor{16}!20] (\f-\L/2,\pgfmathresult |- x axis) -- (\f-\L/2,\pgfmathresult) -- (\f+\L/2,\pgfmathresult) -- (\f+\L/2,\pgfmathresult |- x axis) -- cycle;}
+		\node at (\a-\L/2,-5pt) {{$a$}};
+		\node at (\b+\L/2+\L,-5pt) {{$b$}};
+		\draw[color=TUMBlue,thick,smooth,samples=100,domain=1:6.6] plot(\x,{2*sin(\x r+1)+4});
 	\end{tikzpicture}
-	\caption{Linsensystem}
-	\label{fig:Auswertung:Visualisierung:Linsensystem}
+	\caption{Integration\ldots{}}
+	\label{fig:Auswertung:Visualisierung:Integration}
 \end{figure}
 
-\tikzset{external/export=false}
 
+\begin{figure}
+	\centering
+	\tikzsetnextfilename{Figure-9} 
+	\begin{tikzpicture}[baseline]
+		\begin{axis}[xmode=linear, ymode=linear, 
+			major grid style={solid, black, w2},%										%%
+			minor grid style={dotted, black, w1},%										%%
+			inner axis line style={solid, black, w3},%									%%
+			width=0.95\textwidth,
+			height=0.6\textwidth, 
+			tick align=inside,
+			axis line style={-},%														%%
+			ymin=0, ymax=1.1, xmin=-17, xmax=17,
+			xtick distance=5, minor x tick num=4,
+			ytick distance=0.2, minor y tick num=1, 
+			xlabel={Transversalimpuls in $\si{\milli\radian}\cdot m_\mathrm{e} c$},
+			ylabel={Koinzidenz-Zählrate in a.u.}, grid=both,
+			legend cell align={left},
+			legend style={%
+				at={(axis cs:17,1.1)},%
+				anchor=north east%
+			}%
+			]%
+			%
+			\addplot+[only marks, mark=x, color=TUMcolorII, TUMcolorII, 
+			error bars/.cd, x dir=none, y dir=both, y explicit%
+			] table[col sep=comma, y error index=2]  {files/help/test-tikz-2.txt};%
+			\addplot+[mark=none, color=TUMBlue, TUMBlue] table[col sep=comma]  {files/help/test-tikz-1.txt};%
+			\addplot+[color=TUMBlue, TUMBlue, dashed, mark=none, domain=-10:10] {0.371634 + 5.67826*10^(-9)*x - 0.0132079*x*x};% python...
+			\legend{normierte koinzidente Ereignisse, gesamter Fit, parabolischer Anteil des Fits}
+			%
+		\end{axis}
+	\end{tikzpicture}%
+	\caption{Data and fit function :P (but please do this in, for example, python and only use \texttt{includegraphics})\ldots{}}
+	\label{fig:Auswertung:Visualisierung:Data}
+\end{figure}
+
+
+\tikzset{%
+	block/.style n args={2}%
+	{rectangle,minimum width=15mm, minimum height=12.5mm,align=center, w3,%
+		draw=#1, fill=#2, drop shadow},%
+	block/.default={{red}{TUMBlue!24!white}},%
+	block-regular/.style={block={#1}{#1!24!white}},%
+	block-regular/.default={{TUMcolorII}}%
+}%
+\begin{figure}
+	\centering%
+	\tikzsetnextfilename{Figure-10}%
+	\begin{tikzpicture}[x=1mm,y=1mm]
+		\coordinate (ref) at (0,0);
+		\coordinate (probe) at (ref);
+		\coordinate (detektor1) at ([shift={(-0.2\textwidth,0)}]ref);
+		\gettikzxy{(detektor1)}{\ax}{\ay}
+		\coordinate (detektor2) at (-\ax,\ay);
+		\node (probe) [block-regular={TUMBlue}, circle] at (ref) {Probe};
+		\node (detektor1) [block-regular] at (detektor1) {Detektor 1};
+		\node (detektor2) [block-regular] at (detektor2) {Detektor 2};
+		
+		\gettikzxy{(detektor1)}{\ax}{\ay}
+		\coordinate (SA1) at ([shift={(0,-10mm)}]2*\ax,0);
+		\gettikzxy{(detektor2)}{\ax}{\ay}
+		\coordinate (SA2) at ([shift={(0,-10mm)}]2*\ax,0);
+		\node (SA1) [block-regular] at (SA1) {Spectroscopy\\ Amplifier};
+		\node (SA2) [block-regular] at (SA2) {Spectroscopy\\ Amplifier};
+		
+		\gettikzxy{(SA1)}{\ax}{\ay}
+		\coordinate (SCA1) at ([shift={(0,-20mm)}]\ax,\ay);
+		\gettikzxy{(SA2)}{\ax}{\ay}
+		\coordinate (SCA2) at ([shift={(0,-20mm)}]\ax,\ay);
+		\node (SCA1) [block-regular] at (SCA1) {Single Channel\\ Analyser};
+		\node (SCA2) [block-regular] at (SCA2) {Single Channel\\ Analyser};
+		
+		\gettikzxy{(detektor1)}{\ax}{\ay}
+		\gettikzxy{(SCA1)}{\bx}{\by}
+		\coordinate (verzoegerung) at ([shift={(0,-10mm)}]\ax,\by);
+		\node (verzoegerung) [block-regular] at (verzoegerung) {Signal-\\ verzögerung};
+		
+		\gettikzxy{(probe)}{\ax}{\ay}
+		\gettikzxy{(verzoegerung)}{\bx}{\by}
+		\coordinate (koinzidenz) at (\ax,\by);
+		\node (koinzidenz) [block-regular] at (koinzidenz) {Koinzidenz-\\ einheit};
+		
+		\gettikzxy{(koinzidenz)}{\ax}{\ay}
+		\coordinate (zaehler) at ([shift={(0,-15mm)}]\ax,\ay);
+		\node (zaehler) [block-regular, minimum height=7.5mm] at (zaehler) {Zähler};
+		\gettikzxy{(zaehler)}{\ax}{\ay}
+		\coordinate (PC) at ([shift={(0,-15mm)}]\ax,\ay);
+		\node (PC) [block-regular] at (PC) {PC};
+		
+		\draw[-] (detektor1)-|(SA1)--(SCA1)|-(verzoegerung)--(koinzidenz);
+		\draw[-] (detektor2)-|(SA2)--(SCA2)|-(koinzidenz);
+		\draw[-] (koinzidenz)--(zaehler);
+		\draw[-] (zaehler)--(PC);
+		\draw[-] (SCA2)|-(zaehler);
+		\gettikzxy{(SCA2)}{\ax}{\ay}
+		\gettikzxy{(koinzidenz)}{\bx}{\by}
+		\node[circle,fill=black,minimum width=1mm,draw=black,inner sep=0pt,outer sep=0pt] at (\ax,\by) {};
+		
+		\gettikzxy{(SA2)}{\ax}{\ay}
+		\gettikzxy{(SCA2)}{\bx}{\by}
+		\gettikzxy{(detektor2)}{\cx}{\cy}
+		\coordinate (schritt) at (\cx,\ay/2+\by/2);
+		\node (schritt) [block-regular, circle] at (schritt) {Schritt-\\ motor};
+		\draw[-] (PC)-|(schritt);
+		
+		\begin{scope}[on background layer]
+			\coordinate (rec) at (\cx,\ay/2);
+			\node [rectangle, draw=black, minimum width=3mm, minimum height = 30mm] at (rec) {};
+		\end{scope}
+		
+		\gettikzxy{(detektor1)}{\ax}{\ay}
+		\gettikzxy{(SA1)}{\bx}{\by}
+		\coordinate (HV1) at (1.5*\ax,-\by);
+		\node (HV1) [block-regular, minimum width=7.5mm, minimum height=7.5mm] at (HV1) {HV};
+		\draw[-] ([shift={(0,2.5)}]detektor1)-|(HV1);
+		\gettikzxy{(HV1)}{\ax}{\ay}
+		\coordinate (HV2) at (-\ax,\ay);
+		\node (HV2) [block-regular, minimum width=7.5mm, minimum height=7.5mm] at (HV2) {HV};
+		\draw[-] ([shift={(0,2.5)}]detektor2)-|(HV2);
+	\end{tikzpicture}
+	\caption{Schematischer Aufbau und Schaltplan des Versuchs.}%
+	\label{fig:Auswertung:Visualisierung:Schematischer Aufbau und Schaltplan des Versuchs}%
+\end{figure}
+
+
+
+
+\tikzset{external/export=false}
 %% end: LaTeX-TikZ-Examples.tex

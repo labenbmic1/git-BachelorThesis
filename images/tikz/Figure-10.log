@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7 NEXT) (preloaded format=pdflatex 2020.8.28)  5 SEP 2020 00:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7 NEXT) (preloaded format=pdflatex 2020.8.28)  5 SEP 2020 00:04
 entering extended mode
 **\def\tikzexternalrealjob{main}\input{main}
 (main.tex
@@ -2573,7 +2573,7 @@ Package csquotes Info: ... found 'babel' package.
 Package chemmacros Info: You haven't chosen a formula method so I'm assuming
 (chemmacros)             the default method `chemformula'.
 
-No file images/tikz/Figure-5.aux.
+No file images/tikz/Figure-10.aux.
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 100.
 LaTeX Font Info:    ... okay on input line 100.
 LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 100.
@@ -2764,8 +2764,8 @@ Package biblatex Info: Input encoding 'utf8' detected.
 Package biblatex Info: Automatic encoding selection.
 (biblatex)             Assuming data encoding 'utf8'.
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'images/tikz/Figure-5.bbl' not found.
-No file images/tikz/Figure-5.bbl.
+Package biblatex Info: ... file 'images/tikz/Figure-10.bbl' not found.
+No file images/tikz/Figure-10.bbl.
 Package biblatex Info: Reference section=0 on input line 100.
 Package biblatex Info: Reference segment=0 on input line 100.
 
@@ -4065,15 +4065,8 @@ A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
-\openout7 = `images/tikz/Figure-5.dpth'.
-
-[63
-
-
-
-
-
-{C:/Users/micha/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
+isable this.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 \tikZlengthV=\skip158
@@ -4084,9 +4077,16 @@ A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
-A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
-isable this.
-) (chapters/introduction.tex
+\openout7 = `images/tikz/Figure-10.dpth'.
+
+[63
+
+
+
+
+
+{C:/Users/micha/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]) (chapters/
+introduction.tex
 chapter 13.
 ) (chapters/theoBackground.tex
 chapter 14.
@@ -4455,32 +4455,27 @@ LaTeX Warning: There were undefined references.
 
 
 Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                images/tikz/Figure-5
+(biblatex)                images/tikz/Figure-10
 (biblatex)                and rerun LaTeX afterwards.
 
-Package logreq Info: Writing requests to 'images/tikz/Figure-5.run.xml'.
-\openout1 = `images/tikz/Figure-5.run.xml'.
+Package logreq Info: Writing requests to 'images/tikz/Figure-10.run.xml'.
+\openout1 = `images/tikz/Figure-10.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 72203 strings out of 481174
- 1690844 string characters out of 2902296
- 2778912 words of memory out of 100000000
- 86273 multiletter control sequences out of 15000+200000
+ 71975 strings out of 481174
+ 1686196 string characters out of 2902296
+ 2778916 words of memory out of 100000000
+ 86045 multiletter control sequences out of 15000+200000
  746208 words of font info for 288 fonts, out of 3000000 for 9000
  1146 hyphenation exceptions out of 8191
  103i,22n,170p,10681b,3380s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/micha/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.en
-c}{C:/Users/micha/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.en
-c}{C:/Users/micha/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathi
-t.enc}<C:/Users/micha/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsf
-onts/euler/eurm10.pfb><C:/Users/micha/AppData/Local/Programs/MiKTeX 2.9/fonts/t
-ype1/public/lm/lmmi10.pfb><C:/Users/micha/AppData/Local/Programs/MiKTeX 2.9/fon
-ts/type1/public/lm/lmr10.pfb><C:/Users/micha/AppData/Local/Programs/MiKTeX 2.9/
-fonts/type1/public/lm/lmr8.pfb>
-Output written on images/tikz/Figure-5.pdf (1 page, 60654 bytes).
+c}<C:/Users/micha/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr10
+.pfb>
+Output written on images/tikz/Figure-10.pdf (1 page, 42338 bytes).
 PDF statistics:
- 70 PDF objects out of 1000 (max. 8388607)
+ 54 PDF objects out of 1000 (max. 8388607)
  1 named destinations out of 1000 (max. 500000)
  60525 words of extra memory for PDF output out of 61914 (max. 10000000)
 

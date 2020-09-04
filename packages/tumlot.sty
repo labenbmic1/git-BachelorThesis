@@ -1,45 +1,45 @@
-\NeedsTeXFormat{LaTeX2e}%                                                           
-\ProvidesExplPackage {packages/tumlot} {2020-05-24} {\TUMversion}%                  
-	{The list-of-table-part made by Michael Labenbacher}%                           
-\ProcessKeysPackageOptions{packages/tumlot}%                                        
-\ExplSyntaxOff%                                                                     
-%% ================================== LOT-names =================================== 
-\makeatletter%                                                                      
-\AtBeginDocument{%                                                                  
-	\TUM@ifpackageloaded[setting]{babel}{%                                          
-		\AfterEndPreamble{%                                                         
-			\addto\extrasnaustrian{%                                                
-				\renewcommand{\listtablename}{%                                     
-				Tabellenverzeichnis}%                                               
-			}%                                                                      
-			\addto\extrasngerman{%                                                  
-				\renewcommand{\listtablename}{%                                     
-				Tabellenverzeichnis}%                                               
-			}%                                                                      
-			\addto\extrasamerican{%                                                 
-				\renewcommand{\listtablename}{%                                     
-				List of Tables}%                                                    
-			}%                                                                      
-			\addto\extrasenglish{%                                                  
-				\renewcommand{\listtablename}{%                                     
-				List of Tables}%                                                    
-			}%                                                                      
-		}%                                                                          
-	}{}%                                                                            
-}%                                                                                  
-\makeatother%                                                                       
-%% ========================== Definition of the TUM-LOT =========================== 
-%% \renewcommand*{\tableformat}{\tablename~\thetable\autodot}%                      
-%% \setlength{\cfttabindent}{0pt}%                                                  
-\makeatletter%                                                                      
-\def\TUMlistoftables%                                                               
-{%                                                                                  
-	{%                                                                              
-		\newpage%                                                                   
-		\pagestyle{scrheadings}%                                                    
-		\listoftables%                                                              
-		\newpage%                                                                   
-	}%                                                                              
-}%                                                                                  
-\makeatother%                                                                       
-\endinput%                                                                          
+\NeedsTeXFormat{LaTeX2e}%
+\ProvidesExplPackage {packages/tumlot} {2020-05-24} {\TUMversion}%
+	{The list-of-table-part made by Michael Labenbacher}%
+\ProcessKeysPackageOptions{packages/tumlot}%
+\ExplSyntaxOff%
+%% ================================== LOT-names ===================================
+\makeatletter%
+\AtBeginDocument{%
+	\TUM@ifpackageloaded[setting]{babel}{%
+		\AfterEndPreamble{%
+			\addto\extrasnaustrian{%
+				\renewcommand{\listtablename}{%
+				Tabellenverzeichnis}%
+			}%
+			\addto\extrasngerman{%
+				\renewcommand{\listtablename}{%
+				Tabellenverzeichnis}%
+			}%
+			\addto\extrasamerican{%
+				\renewcommand{\listtablename}{%
+				List of Tables}%
+			}%
+			\addto\extrasenglish{%
+				\renewcommand{\listtablename}{%
+				List of Tables}%
+			}%
+		}%
+	}{}%
+}%
+\makeatother%
+%% ========================== Definition of the TUM-LOT ===========================
+%% \renewcommand*{\tableformat}{\tablename~\thetable\autodot}%
+%% \setlength{\cfttabindent}{0pt}%
+\makeatletter%
+\def\TUMlistoftables%
+{%
+	{%
+		\newpage%
+		\pagestyle{scrheadings}%
+		\listoftables%
+		\newpage%
+	}%
+}%
+\makeatother%
+\endinput%

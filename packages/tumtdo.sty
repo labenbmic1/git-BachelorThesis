@@ -1,9 +1,9 @@
-\NeedsTeXFormat{LaTeX2e}%                                                           
-\ProvidesExplPackage {packages/tumtdo} {2020-05-24} {\TUMversion}%                  
-	{The todonotes-part made by Michael Labenbacher}%                               
-\ProcessKeysPackageOptions{packages/tumtdo}%                                        
-\ExplSyntaxOff%                                                                     
-%% ================================== LOF-names =================================== 
+\NeedsTeXFormat{LaTeX2e}%
+\ProvidesExplPackage {packages/tumtdo} {2020-05-24} {\TUMversion}%
+	{The todonotes-part made by Michael Labenbacher}%
+\ProcessKeysPackageOptions{packages/tumtdo}%
+\ExplSyntaxOff%
+%% ================================== LOF-names ===================================
 \makeatletter%
 \AtBeginDocument{%
 	\TUM@ifpackageloaded[setting]{babel}{%
@@ -33,44 +33,44 @@
 		}%
 	}{}%
 }%
-\makeatother%                                                                       
-%% ========================== Definition of the TUM-TDO =========================== 
-\setuptodonotes{line, noinline, list}%                                              
-\NewDocumentCommand{\todoUnsure}{O{}m}{%                                            
-	\todo[linecolor=\TUMcolor{30}, backgroundcolor=\TUMcolor{30}!25,%               
-		bordercolor=\TUMcolor{30},#1]{#2}%                                          
-}%                                                                                  
-\NewDocumentCommand{\todoChange}{O{}m}{%                                            
-	\todo[linecolor=\TUMcolor{31}, backgroundcolor=\TUMcolor{31}!25,%               
-		bordercolor=\TUMcolor{31},#1]{#2}%                                          
-}%                                                                                  
-\NewDocumentCommand{\todoInfo}{O{}m}{%                                              
-	\todo[linecolor=\TUMcolor{32}, backgroundcolor=\TUMcolor{32}!25,%               
-		bordercolor=\TUMcolor{32},#1]{#2}%                                          
-}%                                                                                  
-\NewDocumentCommand{\todoImprovement}{O{}m}{%                                       
-	\todo[linecolor=\TUMcolor{33}, backgroundcolor=\TUMcolor{33}!25,%               
-		bordercolor=\TUMcolor{33},#1]{#2}%                                          
-}%                                                                                  
-\NewDocumentCommand{\todoMissing}{O{}m}{%                                           
-	\todo[linecolor=\TUMcolor{34}, backgroundcolor=\TUMcolor{34}!25,%               
-		bordercolor=\TUMcolor{34},#1]{#2}%                                          
-}%                                                                                  
-\makeatletter%                                                                      
-\renewcommand{\listoftodos}[1][\@todonotes@todolistname]{%                          
-	\if@todonotes@disabled\else%                                                    
-		\@ifundefined{chapter}{\section*{#1}}{\chapter*{#1}}%                       
-		\todototoc\@starttoc{tdo}%                                                  
-	\fi%                                                                            
-}%                                                                                  
-\def\TUMlistoftodos%                                                                
-{%                                                                                  
-	{%                                                                              
-		\newpage%                                                                   
-		\pagestyle{scrheadings}%                                                    
-		\listoftodos%                                                               
-		\newpage%                                                                   
-	}%                                                                              
-}%                                                                                  
-\makeatother%                                                                       
-\endinput%                                                                          
+\makeatother%
+%% ========================== Definition of the TUM-TDO ===========================
+\setuptodonotes{line, noinline, list}%
+\NewDocumentCommand{\todoUnsure}{O{}m}{%
+	\todo[linecolor=\TUMcolor{30}, backgroundcolor=\TUMcolor{30}!25,%
+		bordercolor=\TUMcolor{30},#1]{#2}%
+}%
+\NewDocumentCommand{\todoChange}{O{}m}{%
+	\todo[linecolor=\TUMcolor{31}, backgroundcolor=\TUMcolor{31}!25,%
+		bordercolor=\TUMcolor{31},#1]{#2}%
+}%
+\NewDocumentCommand{\todoInfo}{O{}m}{%
+	\todo[linecolor=\TUMcolor{32}, backgroundcolor=\TUMcolor{32}!25,%
+		bordercolor=\TUMcolor{32},#1]{#2}%
+}%
+\NewDocumentCommand{\todoImprovement}{O{}m}{%
+	\todo[linecolor=\TUMcolor{33}, backgroundcolor=\TUMcolor{33}!25,%
+		bordercolor=\TUMcolor{33},#1]{#2}%
+}%
+\NewDocumentCommand{\todoMissing}{O{}m}{%
+	\todo[linecolor=\TUMcolor{34}, backgroundcolor=\TUMcolor{34}!25,%
+		bordercolor=\TUMcolor{34},#1]{#2}%
+}%
+\makeatletter%
+\renewcommand{\listoftodos}[1][\@todonotes@todolistname]{%
+	\if@todonotes@disabled\else%
+		\@ifundefined{chapter}{\section*{#1}}{\chapter*{#1}}%
+		\todototoc\@starttoc{tdo}%
+	\fi%
+}%
+\def\TUMlistoftodos%
+{%
+	{%
+		\newpage%
+		\pagestyle{scrheadings}%
+		\listoftodos%
+		\newpage%
+	}%
+}%
+\makeatother%
+\endinput%

@@ -1,57 +1,57 @@
-\NeedsTeXFormat{LaTeX2e}%                                                           
-\ProvidesExplPackage {packages/tumtoc} {2020-05-24} {\TUMversion}%                  
-	{The table-of-contents-part made by Michael Labenbacher}%                       
-\ProcessKeysPackageOptions{packages/tumtoc}%                                        
-\ExplSyntaxOff%                                                                     
-%% ================================== TOC-names =================================== 
-\makeatletter%                                                                      
-\AtBeginDocument{%                                                                  
-	\TUM@ifpackageloaded[setting]{babel}{%                                          
-		\AfterEndPreamble{%                                                         
-			\addto\extrasnaustrian{%                                                
-				\renewcommand{\contentsname}{%                                      
-				Inhaltsverzeichnis}%                                                
-			}%                                                                      
-			\addto\extrasngerman{%                                                  
-				\renewcommand{\contentsname}{%                                      
-				Inhaltsverzeichnis}%                                                
-			}%                                                                      
-			\addto\extrasamerican{%                                                 
-				\renewcommand{\contentsname}{%                                      
-				Contents}%                                                          
-			}%                                                                      
-			\addto\extrasenglish{%                                                  
-				\renewcommand{\contentsname}{%                                      
-				Contents}%                                                          
-			}%                                                                      
-		}%                                                                          
-	}{}%                                                                            
-}%                                                                                  
-\makeatother%                                                                       
-%% =============================== Table-of-contents ============================== 
-%% secnumdepth turns on/out the numbering                                           
-%% tocdepth turns on/out, if it should be in the TOC                                
-\setcounter{tocdepth}{2}% ... bis part - subsection (einschliesslich)               
-\setcounter{secnumdepth}{4}% Nummerierung bis zur Ebene paragraph (4)               
-%% Set the pnumwidth and tocrmarg                                                   
-%\makeatletter%                                                                     
-%\renewcommand{\@pnumwidth}{2em}% toc: Nummerbreite                                 
-%\renewcommand{\@tocrmarg}{3em}% toc: Textbreite                                    
-%\makeatother%                                                                      
-%% Bookmark for tableofcontents,                                                    
-\BeforeTOCHead[toc]{{\cleardoublepage\pdfbookmark[0]{\contentsname}{toc}}}%         
-%\BeforeTOCHead[toc]{%                                                              
-%   \hypersetup{linkcolor=\TUMcolor{2}}%                                            
-%}%                                                                                 
-\makeatletter%                                                                      
-\def\TUMtableofcontents%                                                            
-{%                                                                                  
-	{%                                                                              
-		\newpage%                                                                   
-		\pagestyle{scrheadings}%                                                    
-		\tableofcontents%                                                           
-		\newpage%                                                                   
-	}%                                                                              
-}%                                                                                  
-\makeatother%                                                                       
-\endinput%                                                                          
+\NeedsTeXFormat{LaTeX2e}%
+\ProvidesExplPackage {packages/tumtoc} {2020-05-24} {\TUMversion}%
+	{The table-of-contents-part made by Michael Labenbacher}%
+\ProcessKeysPackageOptions{packages/tumtoc}%
+\ExplSyntaxOff%
+%% ================================== TOC-names ===================================
+\makeatletter%
+\AtBeginDocument{%
+	\TUM@ifpackageloaded[setting]{babel}{%
+		\AfterEndPreamble{%
+			\addto\extrasnaustrian{%
+				\renewcommand{\contentsname}{%
+				Inhaltsverzeichnis}%
+			}%
+			\addto\extrasngerman{%
+				\renewcommand{\contentsname}{%
+				Inhaltsverzeichnis}%
+			}%
+			\addto\extrasamerican{%
+				\renewcommand{\contentsname}{%
+				Contents}%
+			}%
+			\addto\extrasenglish{%
+				\renewcommand{\contentsname}{%
+				Contents}%
+			}%
+		}%
+	}{}%
+}%
+\makeatother%
+%% =============================== Table-of-contents ==============================
+%% secnumdepth turns on/out the numbering
+%% tocdepth turns on/out, if it should be in the TOC
+\setcounter{tocdepth}{2}% ... bis part - subsection (einschliesslich)
+\setcounter{secnumdepth}{4}% Nummerierung bis zur Ebene paragraph (4)
+%% Set the pnumwidth and tocrmarg
+%\makeatletter%
+%\renewcommand{\@pnumwidth}{2em}% toc: Nummerbreite
+%\renewcommand{\@tocrmarg}{3em}% toc: Textbreite
+%\makeatother%
+%% Bookmark for tableofcontents,
+\BeforeTOCHead[toc]{{\cleardoublepage\pdfbookmark[0]{\contentsname}{toc}}}%
+%\BeforeTOCHead[toc]{%
+%   \hypersetup{linkcolor=\TUMcolor{2}}%
+%}%
+\makeatletter%
+\def\TUMtableofcontents%
+{%
+	{%
+		\newpage%
+		\pagestyle{scrheadings}%
+		\tableofcontents%
+		\newpage%
+	}%
+}%
+\makeatother%
+\endinput%

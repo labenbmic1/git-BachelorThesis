@@ -44,10 +44,10 @@
   <internal package="biblatex" priority="9" active="1">
     <generic>latex</generic>
     <provides type="dynamic">
-      <file>images/tikz/Figure-3.bcf</file>
+      <file>images/tikz/Figure-9.bcf</file>
     </provides>
     <requires type="dynamic">
-      <file>images/tikz/Figure-3.bbl</file>
+      <file>images/tikz/Figure-9.bbl</file>
     </requires>
     <requires type="static">
       <file>blx-dm.def</file>
@@ -68,19 +68,19 @@
     <generic>biber</generic>
     <cmdline>
       <binary>biber</binary>
-      <infile>images/tikz/Figure-3</infile>
+      <infile>images/tikz/Figure-9</infile>
     </cmdline>
     <input>
-      <file>images/tikz/Figure-3.bcf</file>
+      <file>images/tikz/Figure-9.bcf</file>
     </input>
     <output>
-      <file>images/tikz/Figure-3.bbl</file>
+      <file>images/tikz/Figure-9.bbl</file>
     </output>
     <provides type="dynamic">
-      <file>images/tikz/Figure-3.bbl</file>
+      <file>images/tikz/Figure-9.bbl</file>
     </provides>
     <requires type="dynamic">
-      <file>images/tikz/Figure-3.bcf</file>
+      <file>images/tikz/Figure-9.bcf</file>
     </requires>
     <requires type="editable">
       <file>references/references.bib</file>
