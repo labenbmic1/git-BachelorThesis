@@ -1414,9 +1414,8 @@ examstyle/.style={%
 	\expandafter\MakeUppercase\proofrefname}{proofstyle}{proof}%
 \newtcbtheorem[number within=chapter]{example}{%
 	\expandafter\MakeUppercase\examplerefname}{examstyle}{exam}%
-%% no autoref supported, if necessary define it with \tcb@cnt@theoremautorefname...
-%% , but if use counter from is used, then a new alias must be defined
-%%
+%% No autoref supported, if necessary define it with \tcb@cnt@theoremautorefname...
+%% , but if use counter from is used, then a new alias must be defined.
 }{}% end: ifpackageloaded
 \makeatother%
 %% ================================================================================
@@ -1500,13 +1499,11 @@ examstyle/.style={%
 %% Multiple-footnotes enabled
 \KOMAoptions{footnotes=multiple}%
 \renewcommand*{\multfootsep}{,\nobreakspace}% %% \nobreakspace !
-%% \blfootnote is a footnote without a number and the counter doesn't
-%% increment
+%% \blfootnote is a footnote without a number and the counter doesn't increment
 \makeatletter%
 \def\blfootnote{\xdef\@thefnmark{}\@footnotetext}%
 \makeatother%
-%% \setfootnoterule[Höhe]{Länge} %% falls die Länge des Strichs verändert
-%% werden soll
+%% \setfootnoterule[Höhe]{Länge} %% falls die Länge des Strichs verändert werden soll
 %% Hinweis: Mehrere Fussnoten zur gleichen Referenz werden mit \footref erzeugt
 \makeatletter%
 \@ifclassloaded{scrreprt}{%
@@ -1544,8 +1541,8 @@ examstyle/.style={%
 			per-mode = symbol,% fraction-symbol (or: fraction)
 			inter-unit-product = \,,%
 			multi-part-units = single,% (or: brackets (standard))
-			range-phrase = {~--~} ,% text mode: symbol/text like: (z.B.: 1 to 5)
-			%% if math mode: then range-phrase = {-} ,%
+			range-phrase = {--} ,% text mode: symbol/text like: (standard: ~to~)
+			%% if math mode: then range-phrase = {\text{--}} ,
 			detect-all,% detect-all: weight, family, shape, mode
 			%% change for each table-row !
 			table-number-alignment=center,%

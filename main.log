@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7 NEXT) (preloaded format=pdflatex 2020.8.28)  5 SEP 2020 00:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7 NEXT) (preloaded format=pdflatex 2020.8.28)  5 SEP 2020 01:20
 entering extended mode
 **./main.tex
 (main.tex
@@ -3148,7 +3148,7 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 Here is how much of TeX's memory you used:
  70224 strings out of 481174
  1652912 string characters out of 2902296
- 102627144 words of memory out of 202384924
+ 102627139 words of memory out of 202384919
  84389 multiletter control sequences out of 15000+200000
  665321 words of font info for 175 fonts, out of 3000000 for 9000
  1146 hyphenation exceptions out of 8191
