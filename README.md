@@ -11,9 +11,9 @@ Standard Bibliographieprogramm: txs:///biber --validate_datamodel<br />
 Standard Index Tool: txs:///makeindex<br /><br />
 
 Changes in 1.0.1.nightly.001000000010001:<br />
-Bug with tikz/pgf-externalize library and (imakeidx, todonotes, showframe, (geometry, pdfpages)) fixed
-Added some (requested) TikZ-examples.
-Small minor changes and white spaces removed.
+Bug with tikz/pgf-externalize library and (imakeidx, todonotes, showframe, (geometry, pdfpages)) fixed.<br />
+Added some (requested) TikZ-examples.<br />
+Small minor changes and white spaces removed.<br /><br />
 
 Changes in 1.0.0.nightly.001000000010024:<br />
 Added todonotes.<br />
