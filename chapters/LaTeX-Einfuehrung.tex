@@ -185,21 +185,34 @@ Das war ein \verb|\parsmallskip|.
 	\caption{Test einer langen, langen, langen, langen, langen, langen, langen, langen, langen, langen, langen, langen, langen, langen, langen, langen Unterschrift }%
 \end{figure}%
 \lipsum[1-1]
-\begin{figure}
-	\begin{captionbeside}[Titel des Bildes im lof (optional)]{Titel des Bildes}[i][\linewidth]%
+\begin{figure}%
+	\begingroup%
+	\KOMAoption{captions}{centeredbeside}%
+	\begin{captionbeside}[Titel des Bildes im lof (optional)]{Titel des Bildes mittig}[i][\linewidth]%
 		% r, l, i, o (in, out, bei rechts/links seitigen Dokumenten moeglich)
 		\includegraphics[width=0.2\textwidth]{help}
-	\end{captionbeside}\label{fig:Gleitumgebungen:Titel des Bildes}
+	\end{captionbeside}\label{fig:Gleitumgebungen:Titel des Bildes mittig}%
+	\endgroup%
 \end{figure}
-\lipsum[1-1]
+\lipsum[1-1]%
 \begin{figure}
-	\begin{captionbeside}[Titel des Bildes im lof (optional)]{Titel des Bildes mittig}[i][\linewidth]%
+	\begingroup%
+	\KOMAoption{captions}{topbeside}% ( = bottombeside + \raisebox{}{})
+	\begin{captionbeside}[Titel des Bildes im lof (optional)]{Titel des Bildes oben}[i][\linewidth]%
 		% r, l, i, o (in, out, bei rechts/links seitigen Dokumenten moeglich)
 		\raisebox{\dimexpr\baselineskip-\totalheight\relax}{%
 		\includegraphics[width=0.2\textwidth]{help}}%
-	\end{captionbeside}\label{fig:Gleitumgebungen:Titel des Bildes mittig}%
+	\end{captionbeside}\label{fig:Gleitumgebungen:Titel des Bildes oben}%
+	\endgroup%
 \end{figure}
-\lipsum[1-1]% allg.: KOMAoption{captions}{...}, bottombesides (standard), centered...., 
+\lipsum[1-1]%
+\begin{figure}
+	\begin{captionbeside}[Titel des Bildes im lof (optional)]{Titel des Bildes unten (standard)}[i][\linewidth]%
+		% r, l, i, o (in, out, bei rechts/links seitigen Dokumenten moeglich)
+		\includegraphics[width=0.2\textwidth]{help}%
+	\end{captionbeside}\label{fig:Gleitumgebungen:Titel des Bildes unten}%
+\end{figure}
+\lipsum[1-1]%
 
 
 \chapter{Tabellarische Darstellung mit/ohne \texttt{table}-Umgebung}
@@ -475,11 +488,11 @@ Z\index{Z}Z\index{Za}Z\index{Zb}Z\index{Zc}Z\index{Zd}
 \#\index{\#} \num{16.4}, \index{10}, \index{\#,A}, 
 \index{\LaTeX}, % symbol
 \index{LaTeX@\LaTeX}, % text
-\index{9b}, \index{228}, \index{Papier}, \index{Papier!Ausrichtung}, \index{Papier!Format}, \index{Papier!+@everystyle+@@\texttt{+@everystyle+@}|TUMstyle{idxnumber}}
+\index{9b}, \index{228},  \index{Papier!+@everystyle+@@\texttt{+@everystyle+@}|TUMstyle{idxnumber}}
 \index{+@}, \index{+!}%
 
 %\TUMstyle{number}{...} for emphasing text (or \TUMfont{number})
-\TUMstyle{1}{Der} Mensch\index{Mensch} \TUMstyle{2}{ist} \TUMstyle{3}{ein} Tier\index{Tier}, das Geschäfte\index{Mensch!Geschäfte} macht; kein anderes Tier\index{Tier} tut dies -- kein Hund\index{Tier!Hund} tauscht Knochen\index{Mensch!Knochen}\index{Tier!Knochen} mit einem anderen. \cite{LabenbacherTeX}. \index{Papier}, \index{Papier!Ausrichtung}, \index{Papier!Format}, \index{Papier!empty@\texttt{empty}} %babel\idx[fcp]{babel},\par% 
+\TUMstyle{1}{Der} Mensch\index{Mensch} \TUMstyle{2}{ist} \TUMstyle{3}{ein} Tier\index{Tier}, das Geschäfte\index{Mensch!Geschäfte} macht; kein anderes Tier tut dies -- kein Hund\index{Tier!Hund} tauscht Knochen\index{Mensch!Knochen}\index{Tier!Knochen} mit einem anderen. \cite{LabenbacherTeX}. \index{Papier}, \index{Papier!Ausrichtung}, \index{Papier!Format}, \index{Papier!empty@\texttt{empty}}% 
 
 L\\
 La\todoMissing[caption={Missing.}]{I'm missing here\ldots.}\\
@@ -527,7 +540,7 @@ LaTeX\todoInfo[caption={Info.}]{Nothing interesting.}\index{LaTeX@\LaTeX!package
 \lipsum[1-1] Mensch\index{Mensch!Student}\newline%
 \index{Mensch|(}%
 \lipsum[1-3] Mensch\newline%
-\lipsum[1-4] Mensch\todoImprovement[disable]{Everything that heightens the feeling of power in man, the will to power, power itself.}%\index{Mensch|(TUMstyle{1}}\newline%
+\lipsum[1-4] Mensch\todoImprovement[disable]{Everything that heightens the feeling of power in man, the will to power, power itself.}%
 \lipsum[1-5] Mensch%\index{Mensch}\newline%
 \lipsum[1-6] Mensch%\index{Mensch}\newline%
 \lipsum[1-7] Mensch%\index{Mensch}\newline%
@@ -536,8 +549,8 @@ LaTeX\todoInfo[caption={Info.}]{Nothing interesting.}\index{LaTeX@\LaTeX!package
 \lipsum[1-10] Mensch\index{Mensch}\newline%
 \lipsum[1-11] Mensch\index{Mensch}\newline%
 \lipsum[1-12] Mensch\index{Mensch}\newline%
-\lipsum[1-13] Mensch\index{Mensch|TUMstyle{idxnumber}}\newpage%
-\index{Mensch|(}\lipsum[1-18] \index{Mensch|)}%
+\lipsum[1-13] Mensch\index{Mensch|TUMstyle{idxnumber}}%
+\lipsum[1-8]\index{Mensch|(}\lipsum[1-18] \index{Mensch|)}%
 
 \begin{equation}
 	a^2=b^2+c^2 \textrm{\todoChange{Delete this.}}

@@ -1,36 +1,36 @@
-\NeedsTeXFormat{LaTeX2e}%                                                           
-\ProvidesExplPackage {packages/Ex-tumsections} {2020-08-23} {\TUMversion}%          
-	{The additional sections-part (examples) made by Michael Labenbacher}%          
-\ProcessKeysPackageOptions{packages/Ex-tumsections}%                                
-\ExplSyntaxOff%                                                                     
-%% ======================== Redefinitions of Sectionstyles ======================== 
+\NeedsTeXFormat{LaTeX2e}%
+\ProvidesExplPackage {packages/Ex-tumsections} {2020-08-23} {\TUMversion}%
+	{The additional sections-part (examples) made by Michael Labenbacher}%
+\ProcessKeysPackageOptions{packages/Ex-tumsections}%
+\ExplSyntaxOff%
+%% ======================== Redefinitions of Sectionstyles ========================
 
-%% ******************************************************************************** 
-%% ================================= chapter (1) ================================== 
-%% ******************************************************************************** 
-%% (1): added font (color, size) for chapternumber                                  
+%% ********************************************************************************
+%% ================================= chapter (1) ==================================
+%% ********************************************************************************
+%% (1): added font (color, size) for chapternumber
 %\newkomafont{chapternumber}{\usekomafont{disposition}%
 %    \IfUsePrefixLine{\usekomafont{chapterprefix}}{\usekomafont{chapter}}%
 %    \color{red}\fontsize{50}{60}\selectfont% (only testing)
 %}%
 %\addtokomafont{chapter}{\color{orange}\LARGE}% (only testing)
 %\addtokomafont{chapterprefix}{\color{blue}\Huge}% (only testing)
-%\renewcommand*{\chapterformat}{%                                                   
-%    \mbox{%                                                                        
-%        \usekomafont{chapterprefix}\chapappifchapterprefix{\nobreakspace}%         
-%        \usekomafont{chapternumber}\thechapter\autodot%                            
-%        \usekomafont{chapter}\IfUsePrefixLine{}{\enskip}%                          
-%    }%                                                                             
-%}%                                                                                 
-%% ******************************************************************************** 
+%\renewcommand*{\chapterformat}{%
+%    \mbox{%
+%        \usekomafont{chapterprefix}\chapappifchapterprefix{\nobreakspace}%
+%        \usekomafont{chapternumber}\thechapter\autodot%
+%        \usekomafont{chapter}\IfUsePrefixLine{}{\enskip}%
+%    }%
+%}%
+%% ********************************************************************************
 
-%% ******************************************************************************** 
-%% ================================= chapter (2) ================================== 
-%% ******************************************************************************** 
-%% (2): rmfamily + prefix=false:    added font for chapternumber,                   
-%%                                  added lines above(half)/below + font            
-%% for prefix=true, not optimized (\chapterlineswithprefixformat)                   
-\addtokomafont{disposition}{\rmfamily}% 
+%% ********************************************************************************
+%% ================================= chapter (2) ==================================
+%% ********************************************************************************
+%% (2): rmfamily + prefix=false:    added font for chapternumber,
+%%                                  added lines above(half)/below + font
+%% for prefix=true, not optimized (\chapterlineswithprefixformat)
+\addtokomafont{disposition}{\rmfamily}%
 \newkomafont{chapternumber}{\usekomafont{disposition}%
 	\IfUsePrefixLine{\usekomafont{chapterprefix}}{\usekomafont{chapter}}%
 	\color{black}\fontsize{50}{60}\selectfont% (only testing)
@@ -50,13 +50,13 @@
 	\par\nobreak%
 	\begingroup\usekomafont{chapterline}\rule{\textwidth}{4\rulewidth}\endgroup%
 }%
-\renewcommand*{\chapterformat}{%                                                    
-	\mbox{%                                                                         
-		\usekomafont{chapterprefix}\chapappifchapterprefix{\nobreakspace}%          
-		\usekomafont{chapternumber}\thechapter\autodot%                             
-		\usekomafont{chapter}\IfUsePrefixLine{}{\enskip}%                           
-	}%                                                                              
-}%                                                                                  
+\renewcommand*{\chapterformat}{%
+	\mbox{%
+		\usekomafont{chapterprefix}\chapappifchapterprefix{\nobreakspace}%
+		\usekomafont{chapternumber}\thechapter\autodot%
+		\usekomafont{chapter}\IfUsePrefixLine{}{\enskip}%
+	}%
+}%
 \makeatletter%
 \newlength\@temp@TUM@dima%
 \renewcommand*{\chapterheadstartvskip}{%
@@ -66,11 +66,11 @@
 		\vspace{-\@temp@TUM@dima}%
 }%
 \makeatother%
-%% ******************************************************************************** 
+%% ********************************************************************************
 
-%% ******************************************************************************** 
-%% ================================= sections (1) ================================= 
-%% ******************************************************************************** 
-%% ******************************************************************************** 
+%% ********************************************************************************
+%% ================================= sections (1) =================================
+%% ********************************************************************************
+%% ********************************************************************************
 
-\endinput%                                                                          
+\endinput%

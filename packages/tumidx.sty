@@ -1,10 +1,10 @@
-\NeedsTeXFormat{LaTeX2e}%                                                           
-\ProvidesExplPackage {packages/tumidx} {2020-05-24} {\TUMversion}%                  
-	{The index-part made by Michael Labenbacher}%                                   
-\ProcessKeysPackageOptions{packages/tumidx}%                                        
-\ExplSyntaxOff%                                                                     
-%% ================================== IDX-names =================================== 
-\begingroup\makeatletter\renewcommand{\@latex@warning@no@line}[1]{}%                
+\NeedsTeXFormat{LaTeX2e}%
+\ProvidesExplPackage {packages/tumidx} {2020-05-24} {\TUMversion}%
+	{The index-part made by Michael Labenbacher}%
+\ProcessKeysPackageOptions{packages/tumidx}%
+\ExplSyntaxOff%
+%% ================================== IDX-names ===================================
+\begingroup\makeatletter\renewcommand{\@latex@warning@no@line}[1]{}%
 \begin{filecontents}[overwrite]{index.ist}
 quote '+'
 headings_flag 1
@@ -16,7 +16,7 @@ delim_2 "\\dotfill "
 delim_r "--"
 \end{filecontents}
 \makeatother\endgroup%
-%% ================================== IDX-names =================================== 
+%% ================================== IDX-names ===================================
 \ExplSyntaxOn%
 \int_new:N \l_index_count_int%
 \int_set:Nn \l_index_count_int {0}%
@@ -33,44 +33,44 @@ delim_r "--"
 		\indexsetup{level=\chapter*, toclevel=chapter, noclearpage}% level, toclevel ignored (see KomaOptions) / noclearpage not relevant (chapter)
 	}{}%
 }%
-\makeatletter%                                                                      
-\AtBeginDocument{%                                                                  
-	\TUM@ifpackageloaded[setting]{babel}{%                                          
-		\AfterEndPreamble{%                                                         
-			\int_compare:nNnTF {\int_use:N \l_index_count_int} > {1} {%             
-				\addto\extrasamerican{%                                             
-					\renewcommand{\indexname}{Indices}%                             
-				}%                                                                  
-				\addto\extrasenglish{%                                              
-					\renewcommand{\indexname}{Indices}%                             
-				}%                                                                  
-				\addto\extrasnaustrian{%                                            
-					\renewcommand{\indexname}{Indices}%                             
-				}%                                                                  
-				\addto\extrasngerman{%                                              
-					\renewcommand{\indexname}{Indices}%                             
-				}%                                                                  
-			}{}%                                                                    
-			\int_compare:nNnTF {\int_use:N \l_index_count_int} = {1} {%             
-				\addto\extrasamerican{%                                             
-					\renewcommand{\indexname}{Index}%                               
-				}%                                                                  
-				\addto\extrasenglish{%                                              
-					\renewcommand{\indexname}{Index}%                               
-				}%                                                                  
-				\addto\extrasnaustrian{%                                            
-					\renewcommand{\indexname}{Index}%                               
-				}%                                                                  
-				\addto\extrasngerman{%                                              
-					\renewcommand{\indexname}{Index}%                               
-				}%                                                                  
-			}{}%                                                                    
-		}%                                                                          
-	}{}%                                                                            
-}%                                                                                  
-\makeatother%                                                                       
-\ExplSyntaxOff%                                                                     
-%% ========================== Definition of the TUM-IDX =========================== 
+\makeatletter%
+\AtBeginDocument{%
+	\TUM@ifpackageloaded[setting]{babel}{%
+		\AfterEndPreamble{%
+			\int_compare:nNnTF {\int_use:N \l_index_count_int} > {1} {%
+				\addto\extrasamerican{%
+					\renewcommand{\indexname}{Indices}%
+				}%
+				\addto\extrasenglish{%
+					\renewcommand{\indexname}{Indices}%
+				}%
+				\addto\extrasnaustrian{%
+					\renewcommand{\indexname}{Indices}%
+				}%
+				\addto\extrasngerman{%
+					\renewcommand{\indexname}{Indices}%
+				}%
+			}{}%
+			\int_compare:nNnTF {\int_use:N \l_index_count_int} = {1} {%
+				\addto\extrasamerican{%
+					\renewcommand{\indexname}{Index}%
+				}%
+				\addto\extrasenglish{%
+					\renewcommand{\indexname}{Index}%
+				}%
+				\addto\extrasnaustrian{%
+					\renewcommand{\indexname}{Index}%
+				}%
+				\addto\extrasngerman{%
+					\renewcommand{\indexname}{Index}%
+				}%
+			}{}%
+		}%
+	}{}%
+}%
+\makeatother%
+\ExplSyntaxOff%
+%% ========================== Definition of the TUM-IDX ===========================
 \let\setindexpreamble\setindexprenote%
 \let\indexprologue\setindexprenote%
 \let\noindexpreamble\noindexprenote%
@@ -107,15 +107,15 @@ delim_r "--"
 		\KOMAoptions{index=standardlevel}%
 		\KOMAoptions{toc=index}%
 		\newpage%
-		%\pagestyle{scrheadings}% overwriten do to indexpagestyle 
-		\int_set:Nn \l_index_preamble_count_int {\prop_count:N \l_index_preamble_prop}%     
+		%\pagestyle{scrheadings}% overwriten do to indexpagestyle
+		\int_set:Nn \l_index_preamble_count_int {\prop_count:N \l_index_preamble_prop}%
 	}{}%
 	\int_compare:nNnTF {\l_index_count_int} > {1} {%
 		\KOMAoptions{index=leveldown}%
 		\KOMAoptions{toc=noindex}%
 		\newpage%
 		\addchap{\indexname}%
-		%\pagestyle{scrheadings}% overwriten do to indexpagestyle 
+		%\pagestyle{scrheadings}% overwriten do to indexpagestyle
 		\int_set:Nn \l_index_preamble_count_int {\prop_count:N \l_index_preamble_prop}%
 		\prop_if_in:NnTF \l_index_preamble_prop {index} {%
 			\int_decr:N \l_index_preamble_count_int%
@@ -132,7 +132,7 @@ delim_r "--"
 				You~have~set~more~index-preambles~then~indices.%
 			}{}%
 			\msg_warning:nn {tum-physics} {index/more_preambles}%
-		}{}%    
+		}{}%
 		\clist_map_inline:Nn \l_index_clist {%
 			\prop_if_in:NnTF \l_index_preamble_prop {##1} {%
 				\setindexpreamble{\TUMgetindexpreamble{##1}}%
@@ -144,4 +144,4 @@ delim_r "--"
 		\newpage%
 	}{}%
 }%
-\endinput%                                                                          
+\endinput%

@@ -1,46 +1,46 @@
-\NeedsTeXFormat{LaTeX2e}%                                                           
-\ProvidesExplPackage {packages/tumlof} {2020-05-24} {\TUMversion}%                  
-	{The list-of-figures-part made by Michael Labenbacher}%                         
-\ProcessKeysPackageOptions{packages/tumlof}%                                        
-\ExplSyntaxOff%                                                                     
-%% ================================== LOF-names =================================== 
-\makeatletter%                                                                      
-\AtBeginDocument{%                                                                  
-	\TUM@ifpackageloaded[setting]{babel}{%                                          
-		\AfterEndPreamble{%                                                         
-			\addto\extrasnaustrian{%                                                
-				\renewcommand{\listfigurename}{%                                    
-				Abbildungsverzeichnis}%                                             
-			}%                                                                      
-			\addto\extrasngerman{%                                                  
-				\renewcommand{\listfigurename}{%                                    
-				Abbildungsverzeichnis}%                                             
-			}%                                                                      
-			\addto\extrasamerican{%                                                 
-				\renewcommand{\listfigurename}{%                                    
-				List of Figures}%                                                   
-			}%                                                                      
-			\addto\extrasenglish{%                                                  
-				\renewcommand{\listfigurename}{%                                    
-				List of Figures}%                                                   
-			}%                                                                      
-		}%                                                                          
-	}{}%                                                                            
-}%                                                                                  
-\makeatother%                                                                       
-%% ========================== Definition of the TUM-LOF =========================== 
-%% \renewcommand*{\captionformat}{:}%                                               
-%% \renewcommand*{\figureformat}{\figurename~\thefigure\autodot}%                   
-%% \setlength{\cftfigindent}{0pt}%                                                  
-\makeatletter%                                                                      
-\def\TUMlistoffigures%                                                              
-{%                                                                                  
-	{%                                                                              
-		\newpage%                                                                   
-		\pagestyle{scrheadings}%                                                    
-		\listoffigures%                                                             
-		\newpage%                                                                   
-	}%                                                                              
-}%                                                                                  
-\makeatother%                                                                       
-\endinput%                                                                          
+\NeedsTeXFormat{LaTeX2e}%
+\ProvidesExplPackage {packages/tumlof} {2020-05-24} {\TUMversion}%
+	{The list-of-figures-part made by Michael Labenbacher}%
+\ProcessKeysPackageOptions{packages/tumlof}%
+\ExplSyntaxOff%
+%% ================================== LOF-names ===================================
+\makeatletter%
+\AtBeginDocument{%
+	\TUM@ifpackageloaded[setting]{babel}{%
+		\AfterEndPreamble{%
+			\addto\extrasnaustrian{%
+				\renewcommand{\listfigurename}{%
+				Abbildungsverzeichnis}%
+			}%
+			\addto\extrasngerman{%
+				\renewcommand{\listfigurename}{%
+				Abbildungsverzeichnis}%
+			}%
+			\addto\extrasamerican{%
+				\renewcommand{\listfigurename}{%
+				List of Figures}%
+			}%
+			\addto\extrasenglish{%
+				\renewcommand{\listfigurename}{%
+				List of Figures}%
+			}%
+		}%
+	}{}%
+}%
+\makeatother%
+%% ========================== Definition of the TUM-LOF ===========================
+%% \renewcommand*{\captionformat}{:}%
+%% \renewcommand*{\figureformat}{\figurename~\thefigure\autodot}%
+%% \setlength{\cftfigindent}{0pt}%
+\makeatletter%
+\def\TUMlistoffigures%
+{%
+	{%
+		\newpage%
+		\pagestyle{scrheadings}%
+		\listoffigures%
+		\newpage%
+	}%
+}%
+\makeatother%
+\endinput%

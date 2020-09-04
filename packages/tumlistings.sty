@@ -1,58 +1,58 @@
-\NeedsTeXFormat{LaTeX2e}%                                                           
-\ProvidesExplPackage {packages/tumlistings} {2020-05-24} {\TUMversion}%             
-	{The listings-part made by Michael Labenbacher}%                                
-\ProcessKeysPackageOptions{packages/tumlistings}%                                   
-\ExplSyntaxOff%                                                                     
+\NeedsTeXFormat{LaTeX2e}%
+\ProvidesExplPackage {packages/tumlistings} {2020-05-24} {\TUMversion}%
+	{The listings-part made by Michael Labenbacher}%
+\ProcessKeysPackageOptions{packages/tumlistings}%
+\ExplSyntaxOff%
 
-%%================================================================================= 
-%% Python:                                                                          
-\definecolor{Pythondoc}{HTML}{3D8E2C}%          %% Kommentare (green)               
-\definecolor{Pythonkey}{HTML}{3B76A3}%          %% Keywoerter (blue)                
-\definecolor{Pythoncomment}{HTML}{807E7C}%      %% Docstyle (gray)                  
-\definecolor{Pythonemph}{HTML}{9B5F89}%         %% Emphstyle (purple)               
-\definecolor{Pythonproc}{HTML}{E18E00}%         %% Procstyle (yellow)               
-\lstdefinestyle{python}{%                                                           
-	language=Python,%                   %% Programmiersprache Python                
-	backgroundcolor=\color{white},%     %% Hintergrundfarbe                         
-	commentstyle=\color{Pythoncomment},%%% Kommentarfarbe                           
-	keywordstyle=\color{Pythonkey},%    %% Keyword-Farbe                            
-	morekeywords={False,True},%                                                     
-	stringstyle=\color{Pythondoc},%     %% String-Farbe                             
-	emphstyle=\color{Pythonemph},%      %% Emph-Farbe                               
-	emph={self},%                                                                   
-	procnamestyle=\color{Pythonproc},%  %% Proc-Farbe                               
-	procnamekeys={def},%                   ev. + class                              
-	numbers=left,%                      %% Nummerierung links                       
-	numberstyle=\color{black},%         %% Nummern-Stil                             
-	frame=single,%                      %% Rahmen                                   
-	tabsize=2,%                         %% Tabsize                                  
-	basicstyle=\small,%                 %% Schriftgroesse                           
-	inputencoding=utf8,%                %% Encoding UTF8                            
-	showspaces=false,%                  %% Abstaende anzeigen (warum ?)             
-	showtabs=false,%                    %% Tabs anzeigen (warum ?)                  
-	showstringspaces=false,%                                                        
-	literate=%                          %% Umlaute, ....                            
-	{Ö}{{\"O}}1%                                                                    
-	{Ä}{{\"A}}1%                                                                    
-	{Ü}{{\"U}}1%                                                                    
-	{ß}{{\ss}}2%                                                                    
-	{ü}{{\"u}}1%                                                                    
-	{ä}{{\"a}}1%                                                                    
-	{ö}{{\"o}}1%                                                                    
-}%                                                                                  
-%%================================================================================= 
-%% General:                                                                         
-\lstset{%                                                                           
-	captionpos=t,%                                                                  
-	breaklines=true,%                                                               
-	literate=%                  %% Umlaute, ...                                     
-	{Ö}{{\"O}}1%                                                                    
-	{Ä}{{\"A}}1%                                                                    
-	{Ü}{{\"U}}1%                                                                    
-	{ß}{{\ss}}2%                                                                    
-	{ü}{{\"u}}1%                                                                    
-	{ä}{{\"a}}1%                                                                    
-	{ö}{{\"o}}1%                                                                    
-}%                                                                                  
+%%=================================================================================
+%% Python:
+\definecolor{Pythondoc}{HTML}{3D8E2C}%          %% Kommentare (green)
+\definecolor{Pythonkey}{HTML}{3B76A3}%          %% Keywoerter (blue)
+\definecolor{Pythoncomment}{HTML}{807E7C}%      %% Docstyle (gray)
+\definecolor{Pythonemph}{HTML}{9B5F89}%         %% Emphstyle (purple)
+\definecolor{Pythonproc}{HTML}{E18E00}%         %% Procstyle (yellow)
+\lstdefinestyle{python}{%
+	language=Python,%                   %% Programmiersprache Python
+	backgroundcolor=\color{white},%     %% Hintergrundfarbe
+	commentstyle=\color{Pythoncomment},%%% Kommentarfarbe
+	keywordstyle=\color{Pythonkey},%    %% Keyword-Farbe
+	morekeywords={False,True},%
+	stringstyle=\color{Pythondoc},%     %% String-Farbe
+	emphstyle=\color{Pythonemph},%      %% Emph-Farbe
+	emph={self},%
+	procnamestyle=\color{Pythonproc},%  %% Proc-Farbe
+	procnamekeys={def},%                   ev. + class
+	numbers=left,%                      %% Nummerierung links
+	numberstyle=\color{black},%         %% Nummern-Stil
+	frame=single,%                      %% Rahmen
+	tabsize=2,%                         %% Tabsize
+	basicstyle=\small,%                 %% Schriftgroesse
+	inputencoding=utf8,%                %% Encoding UTF8
+	showspaces=false,%                  %% Abstaende anzeigen (warum ?)
+	showtabs=false,%                    %% Tabs anzeigen (warum ?)
+	showstringspaces=false,%
+	literate=%                          %% Umlaute, ....
+	{Ö}{{\"O}}1%
+	{Ä}{{\"A}}1%
+	{Ü}{{\"U}}1%
+	{ß}{{\ss}}2%
+	{ü}{{\"u}}1%
+	{ä}{{\"a}}1%
+	{ö}{{\"o}}1%
+}%
+%%=================================================================================
+%% General:
+\lstset{%
+	captionpos=t,%
+	breaklines=true,%
+	literate=%                  %% Umlaute, ...
+	{Ö}{{\"O}}1%
+	{Ä}{{\"A}}1%
+	{Ü}{{\"U}}1%
+	{ß}{{\ss}}2%
+	{ü}{{\"u}}1%
+	{ä}{{\"a}}1%
+	{ö}{{\"o}}1%
+}%
 
-\endinput%                                                                          
+\endinput%
