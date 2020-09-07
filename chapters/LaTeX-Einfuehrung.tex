@@ -22,7 +22,7 @@ Das war ein \verb|\parsmallskip|.
 
 \part[Einführung in \LaTeX{}, KOMA-Script für Autoren\texorpdfstring{, \cite{LabenbacherTeX}}{}]{Einführung in \LaTeX{}, KOMA-Script für Autoren\texorpdfstring{, \cite{LabenbacherTeX}, \protect\footnote{In \texttt{part}.}}{}}%
 \label{part:Einfuehrung in LaTeX, KOMA-Script fuer Autoren, scrbook}%
-\chapter[Satzspiegelberechnung mit \texttt{typearea.sty}]{Satzspiegelberechnung mit \texttt{typearea.sty}\texorpdfstring{, \protect\footnotemark{}}{}}\footnotetext{In \texttt{chapter}.}%
+\chapter[Satzspiegelberechnung mit \texorpdfstring{\TUMstyle{package}{typearea.sty}}{typearea.sty}]{Satzspiegelberechnung mit \TUMstyle{package}{typearea.sty}\texorpdfstring{, \protect\footnotemark{}}{}}\footnotetext{In \texttt{chapter}.}%
 \label{chap:Einfuehrung:Satzspiegelberechnung}%
 % mbox, only due to underlineing :P
 \section[Grundlagen der Satzspiegelkonstruktion]{Grundlagen der Satzspiegelkonstruktion\texorpdfstring{, \cite{LabenbacherTeX}, \ref{sec:Einfuehrung:Hauptklassen:Abgrenzung}, \eqref{equ:Mathematik:E = mc2}}{}\texorpdfstring{, \protect\mbox{\footnotemark}}{}}\footnotetext{In \texttt{section}.}%
@@ -57,7 +57,7 @@ Das war ein \verb|\parsmallskip|.
 \label{sec:Einfuehrung:Satzspiegelberechnung:Tipps}
 \lipsum[1-1]
 
-\chapter{Die Hauptklassen \texttt{scrbook, scrreprt, scrartcl}}
+\chapter{Die Hauptklassen \texorpdfstring{\TUMstyle{package}{scrbook, scrreprt, scrartcl}}{scrbook, scrreprt, scrartcl}}
 \label{chap:Einfuehrung:Hauptklassen}
 \section{Frühe oder späte Optionenwahl}
 \label{sec:Einfuehrung:Hauptklassen:Optionenwahl}
@@ -139,7 +139,7 @@ Das war ein \verb|\parsmallskip|.
 	{files/help/help.pdf}%															%%
 \clearpage\TUMStandardAreaMain%														%%
 
-\part{Gleitumgebungen in \texttt{scrbook}\texorpdfstring{ siehe Abb.~\ref{fig:Gleitumgebungen:Grafik mit subcaptionbox ohne captionsetup (Standard: komafont)}}{}}
+\part{Gleitumgebungen in \texorpdfstring{\TUMstyle{package}{scrbook} siehe Abb.~\ref{fig:Gleitumgebungen:Grafik mit subcaptionbox ohne captionsetup (Standard: komafont)}}{scrbook}}
 \label{part:Gleitumgebungen in scrbook}
 \chapter{Abbildungen mit/ohne \texttt{figure}-Umgebung\texorpdfstring{, \cite{LabenbacherTeX}}{}}
 \label{chap:Gleitumgebungen:Abbildungen figure-Umgebung}
@@ -171,12 +171,13 @@ Das war ein \verb|\parsmallskip|.
 \end{figure}%
 \newcounter{TUMcthelp}%
 \setcounter{TUMcthelp}{1}%
-\whiledo{\value{TUMcthelp} < 140}% 148
+\whiledo{\value{TUMcthelp} < 100}% 148
 {%
 	\begin{figure}%
 		\includegraphics[scale=0.2, angle=\theTUMcthelp]{help}%
 		\caption{Grafik \theTUMcthelp{}}% ohne label
 	\end{figure}%
+	\lipsum[1-1]%
 	\stepcounter{TUMcthelp}%
 }%
 \lipsum[1-1]
@@ -212,7 +213,18 @@ Das war ein \verb|\parsmallskip|.
 		\includegraphics[width=0.2\textwidth]{help}%
 	\end{captionbeside}\label{fig:Gleitumgebungen:Titel des Bildes unten}%
 \end{figure}
-\lipsum[1-1]%
+\lipsum[1-3]\par\medskip%
+Nun ein kleines Video (einfach mit \verb|\href|):%
+\begin{figure}%
+	% Include a video (youtube-link, .mpg, and so on...)
+	\hfill%
+	\href{https://www.youtube.com/watch?v=mg26ViPfJxA&list=RDmg26ViPfJxA&start_radio=1}{\includegraphics{help}}%
+	\hspace*{\fill}%
+	\caption[Students explain their initial idea about Newton's third law to a teaching assistant.]{\hypersetup{urlcolor=black}\href{https://www.youtube.com/watch?v=-GLqQIs4Dm0}{Clip: students explain their initial idea about Newton's third law to a teaching assistant.}}% change urlcolor (local)
+	\label{fig:Gleitumgebungen:Video 1}%
+\end{figure}
+
+
 
 
 \chapter{Tabellarische Darstellung mit/ohne \texttt{table}-Umgebung}
@@ -251,16 +263,17 @@ Das war ein \verb|\parsmallskip|.
 	\bottomrule
 	\endfoot
 	\midrule
-	l-foot, \cite{LabenbacherTeX} & l-foot, \ref{subfig:Gleitumgebungen:mit subcaptionbox:C} & l-foot \\
-	\bottomrule
-	\endlastfoot
+	l-foot, \cite{LabenbacherTeX} & l-foot, \ref{subfig:Gleitumgebungen:mit subcaptionbox:C} & l-foot \\%
+	\bottomrule%
+	\endlastfoot%
 	%% =========================== %%
-	\footnotetext{A footnote in the tableentry-firsthead of longtable.\label{footnote:Tabellen:A footnote in the tableentry-firsthead}} a&b\footnote{A footnote in the tableentry-body of longtable.\label{footnote:Tabellen:A footnote in the tableentry-body}} &c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\
+	\footnotetext{A footnote in the tableentry-firsthead of longtable.\label{footnote:Tabellen:A footnote in the tableentry-firsthead}}%
+	a&b\footnote{A footnote in the tableentry-body of longtable.\label{footnote:Tabellen:A footnote in the tableentry-body}} &c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\a&b&c\\ a&b&c\\ a&b&c\\ a&b&c\\
 \end{longtable}
 
 Nun eine Messwerttabelle von Excel mit \verb|\input|.\\
 %\input{tables/test1}% Funktioniert, aber nicht schoen
-Messwerttabelle \ref{tab:Tabellen:Messwerttabelle} mit \texttt{siunitx}.
+Messwerttabelle \ref{tab:Tabellen:Messwerttabelle} mit \TUMstyle{package}{siunitx} und \TUMstyle{package}{longtable}.%
 \sisetup{%
 		table-number-alignment=center,%
 		table-column-width=0.18\textwidth-2\tabcolsep%
@@ -292,7 +305,50 @@ Messwerttabelle \ref{tab:Tabellen:Messwerttabelle} mit \texttt{siunitx}.
 		0.2   & -969   	& -22 		\\
 		0.3   & -1374  	& -22e-4	\\
 		0.4   & 1740  	& 30 
-\end{longtable}
+\end{longtable}%
+\par\medskip%
+Nun eine Tabelle mit \texttt{tabular} (with \TUMstyle{package}{tabularx} you can not \texttt{externalize} TikZ), mathematischem Inhalt, TikZ-Bild und vertikaler Zentrierung (ohne \texttt{table}):\par\noindent%
+\begin{tabular}{@{}C{0.75\linewidth-\tabcolsep}N{0.25\linewidth-\tabcolsep}@{}}%
+{%
+\begin{tabular}{%
+		@{}C{0.3\linewidth-\tabcolsep}%
+		C{0.17\linewidth-2\tabcolsep}%
+		>{$}C{0.17\linewidth-2\tabcolsep}<{$}%
+		>{$}C{0.17\linewidth-2\tabcolsep}<{$}%
+		>{$}C{0.17\linewidth-\tabcolsep}<{$}@{}}%
+	\toprule
+	Zu\-sam\-men\-hangs\-kom\-po\-nen\-te 
+	& Gruppe & \det(\Lambda) & \sgn(\Lambda\indices{^0_0}) & \in \\
+	\midrule
+	$\mathcal{L}^\uparrow_+$		& ja 	& 1 & 1 & 1_4 \\
+	$\mathcal{L}^\uparrow_-$		& nein 	& -1 & 1 & P \\
+	$\mathcal{L}^\downarrow_+$ 		& nein 	& 1 & -1 & PT \\
+	$\mathcal{L}^\downarrow_-$ 		& nein 	& -1 & -1 & T \\
+	\bottomrule%
+\end{tabular}%
+}%
+&%
+\tikzset{external/export=true}%
+\tikzsetnextfilename{Figure-Einfuehrung-1}%
+\begin{tikzpicture}[x=1mm,y=1mm]%
+	\ifdefined\tikZlength\else\newlength{\tikZlength}\fi
+	\setlength{\tikZlength}{0.75\linewidth}
+	\coordinate (lo) at (-\tikZlength/2,\tikZlength/2);
+	\coordinate (ru) at (\tikZlength/2,-\tikZlength/2);
+	\coordinate (lu) at (lo |- ru);
+	\coordinate (ro) at (lo -| ru);
+	\node (nlo) at (lo) {$\mathcal{L}^\uparrow_+$};
+	\node (nlu) at (lu) {$\mathcal{L}^\downarrow_-$};
+	\node (nro) at (ro) {$\mathcal{L}^\uparrow_-$};
+	\node (nru) at (ru) {$\mathcal{L}^\downarrow_+$};
+	\draw[-latex] (nlo) -- node[below] {$P$} (nro);
+	\draw[-latex] (nlo) -- node[right] {$T$} (nlu);
+	\draw[-latex] (nlu) -- node[above] {$P$} (nru);
+	\draw[-latex] (nro) -- node[left] {$T$} (nru);
+\end{tikzpicture}%
+\tikzset{external/export=false}%
+\end{tabular}%
+
 
 \chapter{Aufzählungen mit \texttt{enumerate, itemize}\texorpdfstring{, \url{https://github.com/labenbmic1}}{}}
 \label{chap:Aufzaehlungen}
@@ -312,48 +368,53 @@ Oder mit \texttt{itemize}:
 	\end{enumerate}
 \end{itemize}
 \lipsum[1-5] Test, des \verb|\marginpar[links]{rechts}|\marginpar[Notiz (l)]{Notiz (r)} Randes. (links, wenn links Rand ist, ansonst wird der Text rechts ausgegeben), 
-\lipsum[1-1] mit \verb|\marginline{}|\marginline{Test, \cite{LabenbacherTeX}, \ref{subfig:Gleitumgebungen:mit subcaptionbox:A}} erfolgt immer eine Ausgabe (egal ob links rechts). Besser: \verb|scrlayer-notecolumn|
+\lipsum[1-1] mit \verb|\marginline{}|\marginline{Test, \cite{LabenbacherTeX}, \ref{subfig:Gleitumgebungen:mit subcaptionbox:A}} erfolgt immer eine Ausgabe (egal ob links rechts). Besser: \TUMstyle{package}{scrlayer-notecolumn}
 
-\chapter{Richtiges Referenzieren mit \texttt{autoref, ref, footref}}
+\chapter{Richtiges Referenzieren mit \texttt{autoref, ref, subref, footref, eqref, pageref}}
 \label{chap:Richtiges Referenzieren}
 \begin{table}\centering
 	\caption{Referenzierungsmöglichkeiten}
 	\label{tab:Referenzieren:Referenzierungsmoeglichkeiten}
-	\begin{tabular}{c|c|c|c|c}%
+	\begin{tabular}{c|c|c|c}%
 & \TUMstyle{1}{autoref} & 
-\TUMstyle{1}{ref} &
-self-made-\TUMstyle{1}{ref} &
-special \\
+\TUMstyle{1}{ref}  &
+\TUMstyle{1}{special} \\
 Part & 
 \autoref{part:Gleitumgebungen in scrbook}	& 
-\ref{part:Gleitumgebungen in scrbook} \\
+\ref{part:Gleitumgebungen in scrbook} &\\
 Chapter & \autoref{chap:Einfuehrung:Hauptklassen}	 &
-\ref{chap:Einfuehrung:Hauptklassen} \\
+\ref{chap:Einfuehrung:Hauptklassen} &\\
 Section & \autoref{sec:Einfuehrung:Hauptklassen:Absatzauszeichnung} &
-\ref{sec:Einfuehrung:Hauptklassen:Absatzauszeichnung} \\
+\ref{sec:Einfuehrung:Hauptklassen:Absatzauszeichnung} &\\
 Tabelle & \autoref{tab:Tabellen:A long table} & 
-\ref{tab:Tabellen:A long table} \\
+\ref{tab:Tabellen:A long table} &\\
 Tabelle & \autoref{subtab:Tabellen:mit latex-subtable:two} & 
 \ref{subtab:Tabellen:mit latex-subtable:two} &
- & 
 \subref{subtab:Tabellen:mit latex-subtable:two}\\
 Abbildung & \autoref{fig:Gleitumgebungen:Grafik mit subcaptionbox ohne captionsetup (Standard: komafont)} & 
-\ref{fig:Gleitumgebungen:Grafik mit subcaptionbox ohne captionsetup (Standard: komafont)} \\
+\ref{fig:Gleitumgebungen:Grafik mit subcaptionbox ohne captionsetup (Standard: komafont)} &\\
 Abbildung & \autoref{subfig:Gleitumgebungen:mit subcaptionbox:D} & 
 \ref{subfig:Gleitumgebungen:mit subcaptionbox:D} &
-& 
 \subref{subfig:Gleitumgebungen:mit subcaptionbox:D}\\
-Theorem & & \ref{theo:Theorem 1:theorem 1} \\
-Lemma &  & \ref{lem:Theorem 1:lemma 1} \\
-Korollar & & \ref{cor:Theorem 1:corollary 1} \\
-Definition &  & \ref{def:Theorem 1:definition 1} \\
-Remark & & \ref{rem:Theorem 1:remark 1} \\
-Formel & & \eqref{equ:Mathematik:sub-gesamt} & & \eqref{subequ:Mathematik:sub-b} 
+Theorem & & \ref{theo:Theorem 1:theorem 1}& \\
+Lemma &  & \ref{lem:Theorem 1:lemma 1}& \\
+Korollar & & \ref{cor:Theorem 1:corollary 1}& \\
+Definition &  & \ref{def:Theorem 1:definition 1}& \\
+Remark & & \ref{rem:Theorem 1:remark 1}& \\
+Formel & \autoref{equ:Mathematik:sub-gesamt} & \eqref{equ:Mathematik:sub-gesamt} & \eqref{subequ:Mathematik:sub-b} \\
+Subsec.~\ref{subsec:Einfuehrung:Satzspiegelberechnung:Grundlagen:Weiterentwicklung} on page && \pageref{subsec:Einfuehrung:Satzspiegelberechnung:Grundlagen:Weiterentwicklung} &\\
 	\end{tabular}
 \end{table}
-Vom Buch: \cite{LabenbacherTeX}, oder siehe Fußnoten: Mit ref: \ref{footnote:Tabellen:A footnote in the tableentry-firsthead}, Mit \verb|\footref| (KomaScript): \footref{footnote:Tabellen:A footnote in the tableentry-firsthead} (Bei Fußnoten kein autoref, da dies nicht unterstützt wird!). 
+Vom Buch: \cite{LabenbacherTeX}, oder siehe Fußnoten: Mit ref: \ref{footnote:Tabellen:A footnote in the tableentry-firsthead}, Mit \verb|\footref| (KomaScript): \footref{footnote:Tabellen:A footnote in the tableentry-firsthead} (Bei Fußnoten kein autoref, da dies nicht unterstützt wird!). Der Style von \verb|\eqref| wird nicht beeinflusst im gegensatz zu \verb|\ref|, er ist immer \verb|\textup{...}| und \verb|\normalfont|. Würde man dies ändern wollen, d.h. so dass sich der Befehl wie \verb|\ref| verhält so müsste man in die Preamble folgendes ergänzen (Einfach von \TUMstyle{package}{amsmath} kopiert ohne \verb|\textup{...}| (zweite Zeile) und \verb|\normalfont| (dritte Zeile).):%
+\begin{lstlisting}[style=LaTeX, caption={\LaTeX-Code für \ldots{}.}, label={lst:introduction:3}]
+\makeatletter%
+\renewcommand*\maketag@@@[1]{\hbox{\m@th #1}}%
+\renewcommand{\eqref}[1]{{\tagform@{\ref{#1}}}}%
+\makeatother%
+\end{lstlisting}
 
-\chapter{Mathematik mit/ohne \texttt{equbox}, und \texttt{chemformula}-Package}
+
+\chapter{Mathematik mit/ohne \texttt{equbox}, und \texorpdfstring{\TUMstyle{package}{chemformula}}{chemformula}-Package}
 \label{chap:Mathematik}
 \begin{align}
 \int\limits_{a}^{b} f \left( x \right) \dd{x} &= F(b) - F(a) \\
@@ -378,36 +439,87 @@ Vom Buch: \cite{LabenbacherTeX}, oder siehe Fußnoten: Mit ref: \ref{footnote:Ta
 	a&=b
 	\end{align}%
 \end{equbox}%
-Nun zum Paket siunitx: Man schreibt $a=\SI{5000}{\kilo\gram\metre\per\square\second}$ oder z.B. einfach mal etwas so wie $\si{\joule\per\mole\per\kelvin}$, $\si{\kilo\gram_{poly}\squared\per\mole_{cat}\per\hour}$ (für Hochzahlen muss cat als SI-Qualifier erklärt werden in der Preamble!), $\SI{3.00}{\MHz}$ \\%
+Nun zum Paket siunitx: Man schreibt $a=\SI{5000}{\kilo\gram\metre\per\square\second}$ oder z.B. einfach mal etwas so wie $\si{\joule\per\mole\per\kelvin}$, $\si{\kilo\gram_{poly}\squared\per\mole_{cat}\per\hour}$ (für Hochzahlen muss cat als SI-Qualifier erklärt werden in der Preamble!), $\SI{3.00}{\MHz}$%
+\begin{center}%
 \ch{
 	!($1s^22s^1$)( "\chlewis{180.}{Li}" ) +%
 	!($1s^22s^22p^5$)( "\chlewis{0.90,180,270}{F}" ) %
 	-> %
 	!($1s^2$)( Li+ ) + !($1s^22s^22p^6$)( "\chlewis{0,90,180,270}{F}" {}- )%
 }%
-\begin{subequations}
-	\label{equ:Mathematik:sub-gesamt}
-	\begin{eqnarray}
+\end{center}%
+Nun Subequations:%
+\begin{subequations}%
+	\label{equ:Mathematik:sub-gesamt}%
+	\begin{align}%
 	{\cal M}=&ig_Z^2(4E_1E_2)^{1/2}(l_i^2)^{-1}
 	(g_{\sigma_2}^e)^2\chi_{-\sigma_2}(p_2)\nonumber\\
 	&\times
 	[\epsilon_i]_{\sigma_1}\chi_{\sigma_1}(p_1)
 	\label{subequ:Mathematik:sub-a}
-	\end{eqnarray}
-	\begin{equation}
+	\end{align}%
+	\begin{gather}%
 	\left\{
 	abc123456abcdef\alpha\beta\gamma\delta 1234556\alpha\beta
 	\frac{1\sum^{a}_{b}}{A^2}
 	\right\}
 	\label{subequ:Mathematik:sub-b}
-	\end{equation}
-\end{subequations}
-Die Formel \eqref{equ:Mathematik:sub-gesamt} besteht aus \eqref{subequ:Mathematik:sub-a} und \eqref{subequ:Mathematik:sub-b}.
+	\end{gather}%
+\end{subequations}%
+Die Formel \eqref{equ:Mathematik:sub-gesamt} besteht aus \eqref{subequ:Mathematik:sub-a} und \eqref{subequ:Mathematik:sub-b}.\par%
+Nun ein Beispiel einer Matrix mit \TUMstyle{package}{nicematrix}:%
+\tikzset{external/optimize=false}% currently necessary for nicematrix
+\begin{gather}
+	\hat{b} = \text{$%
+		\begin{pNiceMatrix}[nullify-dots]
+			0 			& 1		 	& 0			& \Cdots 	& 				&  		& \\
+			\Vdots		& 0 		& \sqrt{2} 	& 0 		& \Cdots		&  		& \\
+			& \Vdots	& 0			& \sqrt{3}	& 0				& \Cdots& \\
+			& 		 	& \Vdots	& 0			& \Ddots		& 		& \\
+			& 		 	& 		 	& \Vdots	&				& 		& \\
+		\end{pNiceMatrix}
+		$}
+	,\qquad
+	\hat{b}^\dagger = \text{$%
+		\begin{pNiceMatrix}[nullify-dots]
+			0 			& \Cdots 	&  			& 		 	& 				& \\
+			1 			& 0 		& \Cdots 	&  			&				& \\
+			0 			& \sqrt{2} 	& 0			& \Cdots 	&				& \\
+			\Vdots		& 0 		& \sqrt{3}	& 0			& \Cdots		& \\
+			& \Vdots 	& 0			& \Ddots	& 				& \\
+			& 		 	& \Vdots 	& 			&				& \\
+		\end{pNiceMatrix}
+		$}.
+\end{gather}%
+\tikzset{external/optimize=true}%
+And again:
+\tikzset{external/optimize=false}%
+\begin{gather}
+	\hat{b} = \text{$%
+		\begin{pNiceMatrix}[nullify-dots]
+			0 			& 1		 	& 0			& \Cdots 	& 				&  		& \\
+			\Vdots		& 0 		& \sqrt{2} 	& 0 		& \Cdots		&  		& \\
+			& \Vdots	& 0			& \sqrt{3}	& 0				& \Cdots& \\
+			& 		 	& \Vdots	& 0			& \Ddots		& 		& \\
+			& 		 	& 		 	& \Vdots	&				& 		& \\
+		\end{pNiceMatrix}
+		$}
+	,\qquad
+	\hat{b}^\dagger = \text{$%
+		\begin{pNiceMatrix}[nullify-dots]
+			0 			& \Cdots 	&  			& 		 	& 				& \\
+			1 			& 0 		& \Cdots 	&  			&				& \\
+			0 			& \sqrt{2} 	& 0			& \Cdots 	&				& \\
+			\Vdots		& 0 		& \sqrt{3}	& 0			& \Cdots		& \\
+			& \Vdots 	& 0			& \Ddots	& 				& \\
+			& 		 	& \Vdots 	& 			&				& \\
+		\end{pNiceMatrix}
+		$}.
+\end{gather}%
+\tikzset{external/optimize=true}%
 
-
-\chapter{Theorem Teil 1 mit \texttt{tcolorbox}}%
+\chapter{Theorem Teil 1 mit \texorpdfstring{\TUMstyle{package}{tcolorbox}}{tcolorbox}}%
 \label{chap:Theorem 1}%
-
 \lipsum[1-1]%
 \begin{theorem}{Mittelwertsatz f\"{u}r $n$ Variable}{Theorem 1:Mittelwertsatz}%
 	Es sei $n\in\mathbb{N}$, $D\subseteq\mathbb{R}^n$ eine offene Menge und $f\in C^{1}(D,\mathbb{R})$. Dann gibt es auf jeder Strecke $[x_0,x]\subset D$ einen Punkt $\xi\in[x_0,x]$, so dass gilt%
@@ -445,7 +557,7 @@ Die Formel \eqref{equ:Mathematik:sub-gesamt} besteht aus \eqref{subequ:Mathemati
 	\lipsum[1-1]
 \end{proof*}
 
-\chapter{Theorem Teil 2 mit \texttt{tcolorbox}}%
+\chapter{Theorem Teil 2 mit \texorpdfstring{\TUMstyle{package}{tcolorbox}}{tcolorbox}}%
 \label{chap:Theorem 2}%
 \begin{theorem}{title :D}{Theorem 2:theorem 2}%
 	\lipsum[1-1]
@@ -454,8 +566,15 @@ Dies ist das Theorem \nameref{theo:Theorem 1:Mittelwertsatz}, oder Theorem \ref{
 \newpage%
 \layout%
 \newpage%
-\chapter{Indices mit \texttt{imakeidx} and Todos mit \texttt{todonotes}}%
-\label{chap:IndicesTodos}%
+
+
+\newpage%
+\KOMAoption{headheight}{27.2pt}% see .log file, after one miscalculation
+\AfterCalculatingTypearea{%
+	\TUMAfterCalculatingTypearea%
+}\recalctypearea%
+\chapter{Indices -- \texorpdfstring{\TUMstyle{package}{imakeidx}}{imakeidx}, todos -- \texorpdfstring{\TUMstyle{package}{todonotes}}{todonotes}, notes -- \texorpdfstring{\TUMstyle{package}{scrlayer-notecolumn}}{scrlayer-notecolumn}, Langer Header (sowas sollte man unterlassen aber so ginge es\ldots{}) :P.}%
+\label{chap:IndicesTodosNotes}%
 %% Index-Optimierungen: for sorting numbers --> xindy instead of splitindex
 %% Index-style-clist/tl for idxtext as 1 more optional parameter
 A\index{A}A\index{Aa}A\index{Ab}A\index{Ac}A\index{Ad}
@@ -499,7 +618,16 @@ La\todoMissing[caption={Missing.}]{I'm missing here\ldots.}\\
 LaT\todoUnsure[caption={Unsure.}]{Unsure if that's good enough.}\index{LaTeX@\LaTeX}\\
 LaTe\todoChange[caption={Change/Delete.}]{Please change this later on.}\index{LaTeX@\LaTeX!class|TUMstyle{idxnumber}}\\
 LaTeX\todoInfo[caption={Info.}]{Nothing interesting.}\index{LaTeX@\LaTeX!package}\\
-\LaTeX\todoImprovement[caption={Improvement.}]{Please Improve this code.}\index{LaTeX@\LaTeX!file}
+\LaTeX\todoImprovement[caption={Improvement.}]{Please Improve this code.}\index{LaTeX@\LaTeX!file}\\
+\LaTeXe\\
+\LaTeX3, \makenote[marginpar]{%.
+	Bei \LaTeX3 steht ein wichtiger Text bzw. Bild in der Randnotiz:\\%
+	\includegraphics[width=\linewidth]{help}\\%
+	Wir \textit{können} mit \TUMstyle{package}{scrlayer-notecolumn} auch Umbrüche \textcolor{red}{ohne Probleme} behandeln.\par\medskip%
+	Skip und weiter\ldots{}.%
+}\makenote[marginpar]{An selben Stelle noch einmal führt dazu, dass der Text nach dem vorherigen ausgegeben wird ohne Überschneidung.}%
+Es gibt zwei Arten sein Leben zu leben: Entweder so, als wäre nichts ein Wunder, oder so, als wäre Alles eines.\par\medskip%
+Mit Hilfe von \verb|\makenote| kann Text in die Randspalte geschrieben werden. Im Gegensatz zu \verb|\todo| handelt es sich hier aber um einen \openautoquote{}wichtigen\closeautoquote{} Text und kann sowohl Seitenumbrüche händeln und die einzelnen Notizen überschneiden sich nicht. (Natürlich überschneiden sich todonotes mit den makenotes, aber die todos sind ja am Ende nicht mehr dabei.)
 
 \begin{longtable}{C{0.25\textwidth}Z{p}{0.2\textwidth}{\raggedleft}l}%
 	\caption{A long table}\label{tab:introduction:1}\\%
@@ -520,7 +648,7 @@ LaTeX\todoInfo[caption={Info.}]{Nothing interesting.}\index{LaTeX@\LaTeX!package
 	\bottomrule%
 	\endlastfoot%
 	%% =========================== %%
-	a&b&c\\ a&b\todoChange[caption={Change/Delete.}]{Please delete this part of the introduction.}&c\\%
+	a&b\todoChange[caption={Change/Delete.}]{Please delete this part of the introduction.}&c\\%
 	%% =========================== %%
 \end{longtable}%
 \begin{figure}%
@@ -530,14 +658,14 @@ LaTeX\todoInfo[caption={Info.}]{Nothing interesting.}\index{LaTeX@\LaTeX!package
 	\todoincludegraphics{Missing number one.}% *[options]
 	\todoincludegraphics[]{Missing number two.}% *[options]
 	\todoincludegraphics[angle=90]{Missing number three.}% *[options]
-	\caption[Test 1]{\lipsum[1]}%
+	\caption[Test 1]{Hier dann die Beschreibung des Bildes bitte rein. :P, und nochmals: Hier dann die Beschreibung des Bildes bitte rein.\todoChange[caption={Change/Delete.}]{Please delete this part of the introduction.} :P, Hier dann die Beschreibung des Bildes bitte rein. :P, Hier dann die Beschreibung des Bildes bitte rein. :P, Hier dann die Beschreibung des Bildes bitte rein. :P, Hier dann die Beschreibung des Bildes bitte rein. :P, Hier dann die Beschreibung des Bildes bitte rein. :P, Hier dann die Beschreibung des Bildes bitte rein. :P, \ldots{}.}%
 	\label{fig:introduction:1}%
 \end{figure}%
 \lstinputlisting[style=python, caption={Python-Code für \ldots{}.}, label={lst:introduction:1}]{listings/test.py}%
 
 \section{Sub-(ind/todo)}%
 \label{sec:introduction:Sub-indtodo}%
-\lipsum[1-1] Mensch\index{Mensch!Student}\newline%
+\lipsum[1-1] Mensch\index{Mensch!Student}
 \index{Mensch|(}%
 \lipsum[1-3] Mensch\newline%
 \lipsum[1-4] Mensch\todoImprovement[disable]{Everything that heightens the feeling of power in man, the will to power, power itself.}%
@@ -555,5 +683,10 @@ LaTeX\todoInfo[caption={Info.}]{Nothing interesting.}\index{LaTeX@\LaTeX!package
 \begin{equation}
 	a^2=b^2+c^2 \textrm{\todoChange{Delete this.}}
 \end{equation}
+
+\newpage\TUMStandardAreaMain%
+\chapter[Nun wieder ein kurzer Titel.]{Nun wieder ein kurzer Titel, zumindest im Header, so sollte man es normalerweise machen.}\label{chap:Nun wieder ein kurzer Titel}%
+Der Header sollte wieder klein sein. \lipsum[1-30]%
+
 
 %% end: LaTeX-Einfeuhrung.tex

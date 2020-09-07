@@ -21,12 +21,16 @@
 	\else%
 		\automark{chapter}%
 	\fi%
-	\lehead*[]{\color{\TUMcolor{5}}\pagemark}%
+	%% To ensure that the pagenumber and the text do not overlap, "exclude" pagenumber from header
+	\KOMAoptions{headwidth=\dimexpr \textwidth-2em:0pt}%
+	\lehead*[]{\makebox[0pt][r]{\makebox[2em][l]{\usekomafont{pagenumber}{\thepage}}}}%
+	%\lehead*[]{\color{\TUMcolor{5}}\pagemark}%
 	\cehead*[]{}%
 	\rehead*[]{\color{\TUMcolor{5}}\headmark}%
 	\lohead*[]{\color{\TUMcolor{5}}\headmark}%
 	\cohead*[]{}%
-	\rohead*[]{\color{\TUMcolor{5}}\pagemark}%
+	\rohead*[]{\makebox[0pt][l]{\makebox[2em][r]{\usekomafont{pagenumber}{\thepage}}}}%
+	%\rohead*[]{\color{\TUMcolor{5}}\pagemark}%
 	\lefoot*[]{}%
 	\cefoot*[]{}%
 	\refoot*[]{\color{\TUMcolor{6}}\@responsible}%

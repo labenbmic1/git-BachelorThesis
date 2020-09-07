@@ -25,9 +25,10 @@ captions=figuresignature, captions=tableheading,% --> Position von caption relev
 ]{scrreprt}% KOMAScript
 %% scrbook: openright, towside=true, (part, chapter, section, subsection, etc.)
 %% scrreprt: openany, twoside=false, ((part), chapter, section, subsection, etc.)
-\usepackage[debug=false, todo=true]{tum-physics}%
-% [debug, debug=true/false, todo, todo=true/false]
-% --> if debug=false, ev. load package {lipsum, etc. }
+\usepackage[debug=false, todo=true, notecolumn=false, printlist=false]{tum-physics}%
+% [debug, debug=true/false*, todo (bool), notecolumn (bool), printlist** (bool)]
+% * If debug=false, ev. load package {lipsum, etc. }
+% ** Same as \listfiles but prints them at the end of the document. (there can be overfull boxes here, because it prints strings in a table, ignore them.)
 \pdftitle{Detecting Thermal Phase Transitions in a Trapped Ion Quantum Computer}%
 \pdfauthor{Michael Labenbacher}%
 \pdfsubject{Bachelor Thesis}%
@@ -41,24 +42,24 @@ captions=figuresignature, captions=tableheading,% --> Position von caption relev
 %TODO: makeidx (if multiple, ev. improve pagebreak-algorithmus (splitidx -- xindy))
 %TODO: titelpage + header translate to englisch
 %TODO: listings package (python, Einstellungen betrachten und verwalten)
-%TODO: bookmark package (Einstellungen betrachten und verwalten)
 
 %% !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! %%
 %TODO: "Hack"
-%% falls man Seitenverhältnis 1-1 statt 1-2 von typearea will, z.B.
-\AfterCalculatingTypearea{%
-	% HOEHE: 1-1 instead of 1-2 (standard typearea)
-	\setlength\textheight{1in+\topmargin+\headheight+\headsep+\textheight}%
+\makeatletter%
+\NewExpandableDocumentCommand{\TUMAfterCalculatingTypearea}{}{%
+	%% HOEHE: 1-1 instead of 1-2 (standard typearea)
+	\setlength\textheight{\paperheight-2in-2\voffset-2\topmargin-2\headheight-2\headsep}%
 	\setlength\footskip{\headheight+\headsep}%
-	%BREITE: symmetrisch auch bei twoside (but why necessary, use oneside instead...)
-	%   \if@twoside%
-	%       \setlength\oddsidemargin{0.5\paperwidth-1in-\hoffset-0.5\textwidth}%
-	%       \setlength\evensidemargin{0.5\paperwidth-1in-\hoffset-0.5\textwidth}%
-	%       \setlength\marginparwidth{%
-	%           \paperwidth-1in-\hoffset-\oddsidemargin-\textwidth-2\marginparsep%
-	%       }%
-	%   \else%
-	%   \fi%
+	%% BREITE: 2-3 instead of 1-1 (standard typearea)
+	% for example with scrlayer-notecolumn in oneside-mode
+	\if@twoside\else%
+	\setlength\oddsidemargin{2\paperwidth/5-2\textwidth/5-1in-\hoffset}% 0.4 = 2/5 = 2/(2+3)
+	\setlength\marginparwidth{\paperwidth-1in-\hoffset-\oddsidemargin-\textwidth-2\marginparsep}%
+	\fi%
+}%
+\makeatother%
+\AfterCalculatingTypearea{%
+	\TUMAfterCalculatingTypearea%
 }\recalctypearea%
 %% !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! %%
 
@@ -66,7 +67,7 @@ captions=figuresignature, captions=tableheading,% --> Position von caption relev
 % 2. Write+Save into file: main_memory=100000000
 % 3. Run: initexmf --dump=pdflatex
 % 4. In TeXstudio/Optionen (pdflatex):
-% 1/2x pdflatex, biber, 2/3x pdlfatex (txs///bibtex --> txs:///biber --validate_datamodel) %%
+% 1/2x pdflatex, biber, 2/3x pdlfatex (txs///bibtex --> txs:///biber --validate_datamodel)
 
 % Before \AtBeginDocument for keywords:
 \TUMheader[american]{%
@@ -98,16 +99,16 @@ captions=figuresignature, captions=tableheading,% --> Position von caption relev
 %}%
 
 \begin{document}%
-	\selectlanguage{american}%
+	\selectlanguage{american}% (Supported languages: american, naustrian, english*, ngerman* (*pass to babel))
 	\nomatter%
-	\responsible{Michael Labenbacher}%\&{}
+	\responsible{Michael Labenbacher}% \&{}
 	\maketitle%
 	\frontmatter%
 	\input{chapters/abstract}%
 	\TUMtableofcontents%
 	\mainmatter%
 	%% ************************* (Start) Input the files **************************
-	%\input{chapters/LaTeX-Einfuehrung}% [debug=true] remove
+	%\input{chapters/LaTeX-Einfuehrung}% [debug=true, notecolumn=true] remove
 	%\input{chapters/LaTeX-TikZ-Examples}% [debug=true] remove
 	\input{chapters/introduction}% change the following ...
 	\input{chapters/theoBackground}%
