@@ -25,7 +25,7 @@ captions=figuresignature, captions=tableheading,% --> Position von caption relev
 ]{scrreprt}% KOMAScript
 %% scrbook: openright, towside=true, (part, chapter, section, subsection, etc.)
 %% scrreprt: openany, twoside=false, ((part), chapter, section, subsection, etc.)
-\usepackage[debug=false, todo=true, notecolumn=false, printlist=false]{tum-physics}%
+\usepackage[todo=true]{tum-physics}%
 % [debug, debug=true/false*, todo (bool), notecolumn (bool), printlist** (bool)]
 % * If debug=false, ev. load package {lipsum, etc. }
 % ** Same as \listfiles but prints them at the end of the document. (there can be overfull boxes here, because it prints strings in a table, ignore them.)
@@ -52,10 +52,10 @@ captions=figuresignature, captions=tableheading,% --> Position von caption relev
 	\setlength\footskip{\headheight+\headsep}%
 	%% BREITE: 2-3 instead of 1-1 (standard typearea)
 	% for example with scrlayer-notecolumn in oneside-mode
-	\if@twoside\else%
-	\setlength\oddsidemargin{2\paperwidth/5-2\textwidth/5-1in-\hoffset}% 0.4 = 2/5 = 2/(2+3)
-	\setlength\marginparwidth{\paperwidth-1in-\hoffset-\oddsidemargin-\textwidth-2\marginparsep}%
-	\fi%
+	%\if@twoside\else%
+	%\setlength\oddsidemargin{2\paperwidth/5-2\textwidth/5-1in-\hoffset}% 0.4 = 2/5 = 2/(2+3)
+	%\setlength\marginparwidth{\paperwidth-1in-\hoffset-\oddsidemargin-\textwidth-2\marginparsep}%
+	%\fi%
 }%
 \makeatother%
 \AfterCalculatingTypearea{%

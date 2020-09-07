@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.9.7)  7 SEP 2020 06:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.9.7)  7 SEP 2020 07:03
 entering extended mode
 **./main.tex
 (main.tex
@@ -2695,14 +2695,14 @@ lations-basic-dictionary')
 * \paperheight=845.04694pt
 * \textwidth=448.13095pt
 * \textheight=704.20576pt
-* \oddsidemargin=-12.5192pt
+* \oddsidemargin=2.4185pt
 * \evensidemargin=2.4185pt
 * \topmargin=-39.24942pt
 * \headheight=17.0pt
 * \headsep=20.40001pt
 * \topskip=11.0pt
 * \footskip=37.40001pt
-* \marginparwidth=63.94598pt
+* \marginparwidth=49.79233pt
 * \marginparsep=12.8401pt
 * \columnsep=10.0pt
 * \skip\footins=10.0pt plus 4.0pt minus 2.0pt
@@ -2879,7 +2879,7 @@ LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 Package marginnote Info: Margin note 2.1 is on absolute page 2 on input line 4.
 
 Package marginnote Info: right page because not two side mode on input line 4.
-Package marginnote Info: xpos seems to be 332.48509pt on input line 4.
+Package marginnote Info: xpos seems to be 347.42279pt on input line 4.
 )
 [1
 
@@ -3001,7 +3001,7 @@ chapter without number
 Package marginnote Info: Margin note 18.1 is on absolute page 18 on input line 
 4.
 Package marginnote Info: right page because not two side mode on input line 4.
-Package marginnote Info: xpos seems to be 103.37979pt on input line 4.
+Package marginnote Info: xpos seems to be 118.31749pt on input line 4.
 <images/appendix/signature.png, id=174, 117.13762pt x 19.272pt>
 File: images/appendix/signature.png Graphic file (type png)
 <use images/appendix/signature.png>
@@ -3014,7 +3014,7 @@ chapter without number
 Package marginnote Info: Margin note 19.1 is on absolute page 19 on input line 
 3.
 Package marginnote Info: right page because not two side mode on input line 3.
-Package marginnote Info: xpos seems to be 375.90082pt on input line 3.
+Package marginnote Info: xpos seems to be 390.83852pt on input line 3.
 ) [15
 
 ]
@@ -3030,11 +3030,11 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 Here is how much of TeX's memory you used:
  70556 strings out of 481212
  1658701 string characters out of 2905974
- 102661285 words of memory out of 202419330
+ 102661201 words of memory out of 202419246
  84695 multiletter control sequences out of 15000+200000
  665404 words of font info for 176 fonts, out of 3000000 for 9000
  1146 hyphenation exceptions out of 8191
- 100i,16n,163p,10685b,2319s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 100i,16n,163p,10637b,2319s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/micha/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C
 :/Users/micha/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}{C:/Use
 rs/micha/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}<C:/Users/
@@ -3049,7 +3049,7 @@ ha/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/micha
 ppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/micha/A
 ppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/micha/A
 ppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb>
-Output written on main.pdf (18 pages, 285649 bytes).
+Output written on main.pdf (18 pages, 285656 bytes).
 PDF statistics:
  291 PDF objects out of 1000 (max. 8388607)
  44 named destinations out of 1000 (max. 500000)

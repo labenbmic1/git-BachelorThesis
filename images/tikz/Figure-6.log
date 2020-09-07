@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.9.7)  7 SEP 2020 06:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.9.7)  7 SEP 2020 06:50
 entering extended mode
 **\def\tikzexternalrealjob{main}\input{main}
 (main.tex
@@ -222,10 +222,10 @@ LaTeX Info: Redefining \GenericWarning on input line 433.
 \sl@BankOfErrors=\toks25
 LaTeX Info: Redefining \GenericError on input line 601.
 )
-Package: tum-physics 2020-05-24 v1.0.1.nightly.001000000010001 A (:P) "package"
+Package: tum-physics 2020-05-24 v1.0.1.nightly.001000000020013 A (:P) "package"
  made by Michael Labenbacher, scrbook/scrreprt
 ==========================================================================
-Version: 1.0.1.nightly.001000000010001
+Version: 1.0.1.nightly.001000000020013
 000 for: -- paper=a4,11/12pt,twoside,open=right--scrbook
 001 for: -- paper=a4,11/12pt,oneside,open=any--scrreprt
 002 for: -- paper=a4,11/12pt,twoside,open=right--scrartcl
@@ -1036,7 +1036,7 @@ Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
 \multirow@dima=\skip129
 \bigstrutjot=\dimen257
 ) (packages/tumcolors.sty
-Package: packages/tumcolors 2020-05-24 v1.0.1.nightly.001000000010001 The color
+Package: packages/tumcolors 2020-05-24 v1.0.1.nightly.001000000020013 The color
 -part made by Michael Labenbacher
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
@@ -2297,7 +2297,7 @@ File: tikzlibraryshapes.misc.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 pgflibraryshapes.misc.code.tex
 File: pgflibraryshapes.misc.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )) (packages/tumtikz.sty
-Package: packages/tumtikz 2020-05-24 v1.0.1.nightly.001000000010001 The tikz/pg
+Package: packages/tumtikz 2020-05-24 v1.0.1.nightly.001000000020013 The tikz/pg
 f-part made by Michael Labenbacher
 \tikZlengthwi=\skip151
 \tikZlengthwii=\skip152
@@ -2307,7 +2307,7 @@ f-part made by Michael Labenbacher
 \tikZlengthwvi=\skip156
 \tikZlengthwvii=\skip157
 ) (packages/tumlistings.sty
-Package: packages/tumlistings 2020-05-24 v1.0.1.nightly.001000000010001 The lis
+Package: packages/tumlistings 2020-05-24 v1.0.1.nightly.001000000020013 The lis
 tings-part made by Michael Labenbacher
 )
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcblistings.c
@@ -2356,31 +2356,31 @@ Library (tcolorbox): 'tcbxparse.code.tex' version '4.31'
 \c@tcb@cnt@theorem=\count598
 \c@tcb@cnt@example=\count599
 (packages/tumheader.sty
-Package: packages/tumheader 2020-05-24 v1.0.1.nightly.001000000010001 The heade
+Package: packages/tumheader 2020-05-24 v1.0.1.nightly.001000000020013 The heade
 r-part made by Michael Labenbacher
 ) (packages/tummatter.sty
-Package: packages/tummatter 2020-05-24 v1.0.1.nightly.001000000010001 The matte
+Package: packages/tummatter 2020-05-24 v1.0.1.nightly.001000000020013 The matte
 r-part made by Michael Labenbacher
 ) (packages/tumnote.sty
-Package: packages/tumnote 2020-05-24 v1.0.1.nightly.001000000010001 The notecol
+Package: packages/tumnote 2020-05-24 v1.0.1.nightly.001000000020013 The notecol
 umn-part made by Michael Labenbacher
 ) (packages/tumtoc.sty
-Package: packages/tumtoc 2020-05-24 v1.0.1.nightly.001000000010001 The table-of
+Package: packages/tumtoc 2020-05-24 v1.0.1.nightly.001000000020013 The table-of
 -contents-part made by Michael Labenbacher
 ) (packages/tumlof.sty
-Package: packages/tumlof 2020-05-24 v1.0.1.nightly.001000000010001 The list-of-
+Package: packages/tumlof 2020-05-24 v1.0.1.nightly.001000000020013 The list-of-
 figures-part made by Michael Labenbacher
 ) (packages/tumlot.sty
-Package: packages/tumlot 2020-05-24 v1.0.1.nightly.001000000010001 The list-of-
+Package: packages/tumlot 2020-05-24 v1.0.1.nightly.001000000020013 The list-of-
 table-part made by Michael Labenbacher
 ) (packages/tumlob.sty
-Package: packages/tumlob 2020-05-24 v1.0.1.nightly.001000000010001 The list-of-
+Package: packages/tumlob 2020-05-24 v1.0.1.nightly.001000000020013 The list-of-
 bibliography-part made by Michael Labenbacher
 ) (packages/tumlol.sty
-Package: packages/tumlol 2020-05-24 v1.0.1.nightly.001000000010001 The list-of-
+Package: packages/tumlol 2020-05-24 v1.0.1.nightly.001000000020013 The list-of-
 listings-part made by Michael Labenbacher
 ) (packages/tumidx.sty
-Package: packages/tumidx 2020-05-24 v1.0.1.nightly.001000000010001 The index-pa
+Package: packages/tumidx 2020-05-24 v1.0.1.nightly.001000000020013 The index-pa
 rt made by Michael Labenbacher
 \openout15 = `index.ist'.
 
@@ -2388,10 +2388,10 @@ rt made by Michael Labenbacher
 \l_index_count_int=\count600
 \l_index_preamble_count_int=\count601
 ) (packages/tumtdo.sty
-Package: packages/tumtdo 2020-05-24 v1.0.1.nightly.001000000010001 The todonote
+Package: packages/tumtdo 2020-05-24 v1.0.1.nightly.001000000020013 The todonote
 s-part made by Michael Labenbacher
 ) (packages/tumtitlepage.sty
-Package: packages/tumtitlepage 2020-05-24 v1.0.1.nightly.001000000010001 The ti
+Package: packages/tumtitlepage 2020-05-24 v1.0.1.nightly.001000000020013 The ti
 tlepage-part made by Michael Labenbacher
 ))
 LaTeX Font Info:    Trying to load font information for T1+lmr on input line 63
@@ -4555,7 +4555,7 @@ scrlfile.sty    2020/07/22 v3.31 KOMA-Script package (loading files)
 tocbasic.sty    2020/07/22 v3.31 KOMA-Script package (handling toc-files)
 scrsize11pt.clo    2020/07/22 v3.31 KOMA-Script font size class option (11pt)
 typearea.sty    2020/07/22 v3.31 KOMA-Script package (type area)
-tum-physics.sty    2020-05-24 v1.0.1.nightly.001000000010001 A (:P) "package" m
+tum-physics.sty    2020-05-24 v1.0.1.nightly.001000000020013 A (:P) "package" m
 ade by Michael Labenbacher, scrbook/scrreprt
    expl3.sty    2020-08-07 L3 programming layer (loader) 
 l3backend-pdfmode.def    2020-08-07 L3 backend support: PDF mode
