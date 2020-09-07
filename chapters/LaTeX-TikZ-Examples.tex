@@ -1,5 +1,8 @@
 %% begin: LaTeX-TikZ-Examples.tex
 %% This is a collection of TikZ-images, but only for the purpose of debugging (and a few examples due to requests). Therefore the tikzset-options were not included into tumtikz.sty, because this are only "local" settings for this file and therefore not very "good"... . For the created images, see /images/tikz/.
+\tikzset{external/export=true}%
+
+
 
 \tikzset{%
 	circuit declare symbol = ammeter,
@@ -46,8 +49,6 @@
 	}%
 }%
 
-\tikzset{external/export=true}
-\setchemformula{tikz-external-disable=true}
 
 \chapter{Auswertung von Daten}
 \label{chap:Auswertung von Daten}
@@ -271,13 +272,14 @@
 	\end{axis}
 \end{tikzpicture}%
 
-\newlength{\tikZlengthV}
-\newlength{\tikZlengthH}
+\ifdefined\tikZlengthV\else\newlength{\tikZlengthV}\fi
+\ifdefined\tikZlengthH\else\newlength{\tikZlengthH}\fi
 
 \begin{figure}
 	\centering
 	\tikzsetnextfilename{Figure-7} 
 	\begin{tikzpicture}[x=1mm, y=1mm]
+		\setchemformula{tikz-external-disable=false}
 		\coordinate (origin) at (0,0);%
 		\def\localDistanceLength{0.15\textwidth}%
 		\def\localDistanceHeight{0.15\textwidth}%	
@@ -313,8 +315,9 @@
 		\coordinate (lur) at (lor-|lu);
 		\draw (lol) -- (lor) (lul) -- (lur);
 		\draw[<->] (lom) -- node[label=below:{$1$}]{} (lum);
+		\node[align=left, right] at (ru) {\ch{A-B -> A+ + B-}};
 	\end{tikzpicture}
-	\caption{Monte Carlo\ldots{}}
+	\caption{Monte Carlo\ldots{} and \TUMstyle{package}{chemformula}}
 	\label{fig:Auswertung:Visualisierung:MonteCarlo}
 \end{figure}
 

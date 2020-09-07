@@ -59,7 +59,7 @@
 % {revtex4-2}{\def\@TUM@version@hook{003}}{}%
 % {transcript}{\def\@TUM@version@hook{004}}{}%
 % {cheatsheet}{\def\@TUM@version@hook{005}}{}%
-\def\TUMversion{1.0.1.nightly.\@TUM@version@hook000000010001}%
+\def\TUMversion{1.0.1.nightly.\@TUM@version@hook000000020013}%
 \makeatother%
 %% Information of the provided package
 %% ProvidesExplPackage{name of package}{YYYY-MM-DD}{version}{more information}
@@ -78,12 +78,20 @@
 \typeout{Author:~Labenbacher~Michael}%
 \typeout{==========================================================================}
 %% ----------------------------------- Options ------------------------------------
-%% Options: debug (bool), todo (bool)
+%% Options: debug (bool), todo (bool), printlist (bool)
 \bool_new:N \l_debug_key_bool%
 \bool_new:N \l_todo_key_bool%
+\bool_new:N \l_notecolumn_key_bool%
+\bool_new:N \l_printlist_key_bool%
 \keys_define:nn {tum-physics}{%
 	debug .bool_set:N = \l_debug_key_bool,%
+	debug .default:n  = false,%
 	todo .bool_set:N = \l_todo_key_bool,%
+	todo .default:n  = false,%
+	notecolumn .bool_set:N = \l_notecolumn_key_bool,%
+	notecolumn .default:n  = false,%
+	printlist .bool_set:N = \l_printlist_key_bool,%
+	printlist .default:n  = false,%
 }%
 \ProcessKeysPackageOptions{tum-physics}%
 %% -------- DocumentCommand: TUMRequirePackage and TUMPassOptionsToPackage --------
@@ -104,8 +112,8 @@
 \prop_new:N \l_package_after_prop%
 %% package must be loaded after = {package(s)}
 \prop_set_from_keyval:Nn \l_package_after_prop {%
-	showframe={ltxcmds,iftex,xcolor},%
-	lipsum={geometry,multicol,babel},%
+	showframe={ltxcmds,iftex,xcolor},% (!!)
+	lipsum={geometry,multicol,babel},% (!!)
 	ifpdf={microtype},% (!)
 	inputenc={babel},%
 	fontenc={scrlayer-scrpage},%
@@ -137,6 +145,7 @@
 	kvoptions={ltxcmds},%
 	xkeyval={keyval},%
 	glossaries={hyperref},% (!!)
+	scrlayer-notecolumn={scrlayer-scrpage},% (!)
 	todonotes={ifthen, xkeyval, xcolor, tikz, pgf, pgfrcs, pgfsys, pgffor, everyshi, graphicx, graphics, trig, pgfkeys, pgfmath, calc}% (!!)
 }%
 \bool_new:N \l_if_package_before_bool%
@@ -154,7 +163,7 @@
 	ltxcmds={idxlayout,kvoptions},%
 	everysel={ragged2e},%
 	microtype={ifpdf,graphics,color,pstricks,hyperref},%
-	babel={inputenc,microtype,imakeidx,idxlayout},%
+	babel={inputenc,microtype,imakeidx,idxlayout,lipsum},%
 	scrlayer-scrpage={fontenc,biblatex,imakeidx,idxlayout},%
 	upgreek={microtype,chemmacros},%
 	amsmath={babel},%
@@ -185,7 +194,7 @@
 	iftex={chemmacros,imakeidx},%
 	ifxetex={imakeidx},%
 	ifluatex={imakeidx},%
-	multicol={imakeidx},%
+	multicol={imakeidx,lipsum},%
 	ltxcmds={chemmacros},%
 	chemgreek={chemmacros},%
 	graphics={chemmacros,lscape,todonotes},%
@@ -204,6 +213,7 @@
 	scrhack={float,hyperref},%
 	float={hyperref},%
 	hyperref={nccmath,bookmark,glossaries},%
+	geometry={lipsum},%
 	imakeidx={hyperref,idxlayout},%
 	idxlayout={hyperref}%
 }%
@@ -445,25 +455,30 @@
 	\str_case_e:nnTF {\l_optional_argument_str} {{setting}{}{setting=true}{}} {%
 		\str_set:Nn \l_optional_argument_str {setting=true}%
 	}{}%
+	\clist_set:Nn \l_if_clist {#2}%
+	\bool_set_true:N \l_if_all_packages_loaded_bool%
+	\clist_map_function:NN \l_if_clist \check_if_all_packages_loaded:n%
 	\str_case_e:nnTF {\l_optional_argument_str}{%
-		{setting=false} {%
-			\@ifpackageloaded{#2}{%
+		{setting=false}{%
+			\bool_if:nTF {\l_if_all_packages_loaded_bool}{%
 				#3%
 				\msg_set:nnnn {tum-physics} {if_package_loaded/can_not_set_settings} {%
-					Can~not~set~settings,~because~package~{#2}~was~loaded~(or/and~package~(should)~not~(be)~loaded~normally).%
+					Can~not~set~settings,~because~package/s~{#2}~was/were~loaded~(or/and~package/s~(should)~not~(be)~loaded~normally).%
 				}{}%
 				\msg_warning:nn {tum-physics} {if_package_loaded/can_not_set_settings}%
-			}{#4}}%
-		{setting=true} {%
-			\@ifpackageloaded{#2}{#3}{%
+			}{#4}%
+		}%
+		{setting=true}{%
+			\bool_if:nTF {\l_if_all_packages_loaded_bool}{#3}{%
 				#4%
 				\msg_set:nnnn {tum-physics} {if_package_loaded/can_not_set_settings} {%
-					Can~not~set~settings,~because~package~{#2}~was~not~loaded~(or/and~package~(should~be)~loaded~normally).%
+					Can~not~set~settings,~because~package/s~{#2}~was/were~not~loaded~(or/and~package/s~(should~be)~loaded~normally).%
 				}{}%
 				\msg_warning:nn {tum-physics} {if_package_loaded/can_not_set_settings}%
-			}}%
+			}%
+		}%
 	}{}{%
-		\@ifpackageloaded{#2}{#3}{#4}%
+		\bool_if:nTF {\l_if_all_packages_loaded_bool}{#3}{#4}%
 		\str_if_eq:NNTF {\l_optional_argument_str} {normal} {}{%
 			\msg_set:nnnn {tum-physics} {if_package_loaded/optional_argument_unknown} {%
 				The~optional~argument~[#1]~is~not~defined.~Proceeded~with~[normal].%
@@ -491,6 +506,85 @@
 \bool_if:NTF \l_todo_key_bool {}{%
 	\TUMPassOptionsToPackage{disable}{todonotes}%
 }%
+\bool_if:NTF \l_notecolumn_key_bool {%
+	%% scrlayer-notecolumn = Control note columns parallel to the main text
+	\TUMRequirePackage[][scrlayer-scrpage]{scrlayer-notecolumn}%
+}{}%
+\bool_if:NTF \l_printlist_key_bool {%
+	\AtBeginDocument{%
+		\TUMRequirePackage{seqsplit}%
+		\listfiles%
+	}%
+	\AtEndDocument{\printfilelist}%
+	\NewDocumentCommand{\printfilelist}{}{%
+		\cleardoublepage%
+		\addchap{\printfilelistname}%
+		\setlength{\LTleft}{\fill}%
+		\setlength{\LTright}{\fill}%
+		\begin{longtable}{@{}%
+			>{\ttfamily}%
+			L{0.3\textwidth-\tabcolsep}%
+			L{\widthof{9999/99/99}}%
+			>{\raggedright}%
+			p{0.7\textwidth-\widthof{9999/99/99}-3\tabcolsep}%
+			@{}}%
+			\toprule%
+			\multicolumn{1}{@{}l}{\bfseries File~name} & \multicolumn{1}{c}{\bfseries Date} & \bfseries File~info%
+			\tabularnewline%
+			\midrule%
+			\endhead%
+			\bottomrule%
+			\endfoot%
+			\TUM_print_filelist:%
+		\end{longtable}%
+	}%
+	\tl_new:N \l_TUM_filelist_body_tl%
+	\tl_new:N \l_TUM_fileinfo_tl%
+	\cs_new_protected:Npn \TUM_print_filelist: {%
+		\clist_map_inline:cn {@filelist}{%
+			\TUM_print_fileinfo:n {##1}%
+		}%
+		\tl_use:N \l_TUM_filelist_body_tl%
+	}%
+	\cs_new_protected:Npn \TUM_print_fileinfo:n #1 {%
+		\regex_match:nnT { \.(sty|cls|tex|clo|fd|cfg|bbx|cbx|lbx|ldf|def|hak)\Z } {#1}{%
+			\TUM_print_pkginfo:n {#1}%
+		}%
+	}%
+	\cs_new_protected:Npn \TUM_print_pkginfo:n #1 {%
+		\tl_set_eq:Nc \l_TUM_fileinfo_tl {ver@#1}%
+		\tl_replace_once:Nnn \l_TUM_fileinfo_tl {~} {&}%
+		\tl_put_right:Nx \l_TUM_filelist_body_tl {%
+			\exp_not:N \seqsplit{#1}%%
+			&%
+			\exp_not:V \l_TUM_fileinfo_tl%
+			\exp_not:N \tabularnewline%
+		}%
+	}%
+}{}%
+\ExplSyntaxOff%
+\makeatletter%
+\AtBeginDocument{%
+	\TUM@ifpackageloaded[normal]{babel,seqsplit}{%
+		\newcommand*{\printfilelistname}{}%
+		\AfterEndPreamble{%
+			\addto\extrasnaustrian{%
+				\renewcommand*{\printfilelistname}{Verwendete Klasse, Packete und weitere Files.}%
+			}%
+			\addto\extrasngerman{%
+				\renewcommand*{\printfilelistname}{Verwendete Klasse, Packete und weitere Files.}%
+			}%
+			\addto\extrasamerican{%
+				\renewcommand*{\printfilelistname}{Used Class, Packages and other Files}%
+			}%
+			\addto\extrasenglish{%
+				\renewcommand*{\printfilelistname}{Used Class, Packages and other Files}%
+			}%
+		}%
+	}{}%
+}%
+\makeatother%
+\ExplSyntaxOn%
 %% ----------------------------------- Checks -------------------------------------
 %% Check: Packages which must not be loaded
 \AtEndPreamble{%
@@ -672,7 +766,7 @@ splitindex%
 %% idxlayout = Configurable index layout, responsive to KOMA-Script and memoir
 \TUMRequirePackage[%
 columns=2,%
-unbalanced,%
+%unbalanced,% last page
 itemlayout=abshang%
 ]{idxlayout}%
 
@@ -858,15 +952,20 @@ pass%
 \newcommand{\pdfkeywords}[1]{\gdef\@pdfkeywords{#1}}%
 \newcommand{\@pdfkeywords}{\@latex@warning@no@line{No \noexpand\pdfkeywords given}}%
 \makeatother%
+%% bookmark's-package overwrites (copies) following hyperref-option's
+% [bookmarks=true] --No option available (disable for example with hyperref)
+% [bookmarksopen=true] -- [open]
+% [bookmarksopenlevel=0] -- [openlevel=0]
+% [bookmarksnumbered=true] -- [numbered]
+% [bookmarksdepth] -- [depth]
 \TUMRequirePackage[%
 bookmarks=true,%        %% enable bookmarks
-bookmarksopen=true,%    %% display the bookmarks when opening the documnet
-bookmarksopenlevel=0,%  %% display the bookmarks at level when opening the document
-bookmarksnumbered=true,%%% number the bookmarks
 hyperfootnotes=false,%  %% = false, to ensure that KOMAoptions{footnotes=multiple}
-unicode=true%           %%
+unicode=true%
 ]{hyperref}%
 \hypersetup{%
+pdftoolbar=true,% (standard)
+pdfmenubar=true,% (standard)
 colorlinks=true,%       %% colored links
 linkbordercolor={1 1 1},%% frame color
 linkcolor=\TUMcolor{2},%%% link color
@@ -879,8 +978,7 @@ citebordercolor={1 1 1},%%% cite border color
 breaklinks=true,%       %% enable breaking links in listof...
 linktocpage=true,%      %% true = only page numbers in toc are hyperlinks + color
 hypertexnames=true,%    %% because of biblatex-backref
-plainpages=false%       %% biblatex
-%%                      %% is possible
+plainpages=false%       %% biblatex is possible
 }%
 \makeatletter%
 \if@twoside%
@@ -905,107 +1003,110 @@ plainpages=false%       %% biblatex
 }{}%
 %% Ref/Autoref-names for hyperref
 \AtBeginDocument{%
-	\TUM@ifpackageloaded[setting]{babel}{% begin: babel loaded
-		\TUM@ifpackageloaded[setting]{hyperref}{% begin: hyperref loaded
-			\TUM@ifpackageloaded[setting]{listings}{% begin: listings loaded
-				\newcommand*{\lstlistingautorefname}{}%
-			}{}% end: listings not loaded
+	\TUM@ifpackageloaded[setting]{babel,hyperref}{% begin: babel, hyperref loaded
+		\TUM@ifpackageloaded[setting]{listings}{% begin: listings loaded
+			\newcommand*{\lstlistingautorefname}{}%
+		}{}% end: listings not loaded
+		\AfterEndPreamble{%
+			\addto\extrasamerican{%
+				\renewcommand*{\tableautorefname}{table}%
+				\renewcommand*{\figureautorefname}{figure}%
+				\renewcommand*{\partautorefname}{part}%
+				\renewcommand*{\chapterautorefname}{chapter}%
+				\renewcommand*{\sectionautorefname}{section}%
+				\renewcommand*{\subsectionautorefname}{subsection}%
+				\renewcommand*{\subsubsectionautorefname}{subsubsection}%
+				\renewcommand*{\paragraphautorefname}{paragraph}%
+				\renewcommand*{\subparagraphautorefname}{subparagraph}%
+				\renewcommand*{\equationautorefname}{equation}%
+				\renewcommand*{\appendixautorefname}{appendix}%
+			}%
+			\addto\extrasenglish{%
+				\renewcommand*{\tableautorefname}{table}%
+				\renewcommand*{\figureautorefname}{figure}%
+				\renewcommand*{\partautorefname}{part}%
+				\renewcommand*{\chapterautorefname}{chapter}%
+				\renewcommand*{\sectionautorefname}{section}%
+				\renewcommand*{\subsectionautorefname}{subsection}%
+				\renewcommand*{\subsubsectionautorefname}{subsubsection}%
+				\renewcommand*{\paragraphautorefname}{paragraph}%
+				\renewcommand*{\subparagraphautorefname}{subparagraph}%
+				\renewcommand*{\equationautorefname}{equation}%
+				\renewcommand*{\appendixautorefname}{appendix}%
+			}%
+			\addto\extrasnaustrian{%
+				\renewcommand*{\tableautorefname}{Tabelle}%
+				\renewcommand*{\figureautorefname}{Abbildung}%
+				\renewcommand*{\partautorefname}{Teil}%
+				\renewcommand*{\chapterautorefname}{Kapitel}%
+				\renewcommand*{\sectionautorefname}{Abschnitt}%
+				\renewcommand*{\subsectionautorefname}{Unterabschnitt}%
+				\renewcommand*{\subsubsectionautorefname}{Unterunterabscnhitt}%
+				\renewcommand*{\paragraphautorefname}{Paragraph}%
+				\renewcommand*{\subparagraphautorefname}{Unterparagraph}%
+				\renewcommand*{\equationautorefname}{Gleichung}%
+				\renewcommand*{\appendixautorefname}{Anhang}%
+			 }%
+			\addto\extrasngerman{%
+				\renewcommand*{\tableautorefname}{Tabelle}%
+				\renewcommand*{\figureautorefname}{Abbildung}%
+				\renewcommand*{\partautorefname}{Teil}%
+				\renewcommand*{\chapterautorefname}{Kapitel}%
+				\renewcommand*{\sectionautorefname}{Abschnitt}%
+				\renewcommand*{\subsectionautorefname}{Unterabschnitt}%
+				\renewcommand*{\subsubsectionautorefname}{Unterunterabscnhitt}%
+				\renewcommand*{\paragraphautorefname}{Paragraph}%
+				\renewcommand*{\subparagraphautorefname}{Unterparagraph}%
+				\renewcommand*{\equationautorefname}{Gleichung}%
+				\renewcommand*{\appendixautorefname}{Anhang}%
+			 }%
+		}%
+		\TUM@ifpackageloaded[setting]{listings}{% begin: listings loaded
 			\AfterEndPreamble{%
 				\addto\extrasamerican{%
-					\renewcommand*{\tableautorefname}{table}%
-					\renewcommand*{\figureautorefname}{figure}%
-					\renewcommand*{\partautorefname}{part}%
-					\renewcommand*{\chapterautorefname}{chapter}%
-					\renewcommand*{\sectionautorefname}{section}%
-					\renewcommand*{\subsectionautorefname}{subsection}%
-					\renewcommand*{\subsubsectionautorefname}{subsubsection}%
-					\renewcommand*{\paragraphautorefname}{paragraph}%
-					\renewcommand*{\subparagraphautorefname}{subparagraph}%
-					\renewcommand*{\equationautorefname}{equation}%
-					\renewcommand*{\appendixautorefname}{appendix}%
+					\renewcommand*{\lstlistingautorefname}{listing}%
 				}%
 				\addto\extrasenglish{%
-					\renewcommand*{\tableautorefname}{table}%
-					\renewcommand*{\figureautorefname}{figure}%
-					\renewcommand*{\partautorefname}{part}%
-					\renewcommand*{\chapterautorefname}{chapter}%
-					\renewcommand*{\sectionautorefname}{section}%
-					\renewcommand*{\subsectionautorefname}{subsection}%
-					\renewcommand*{\subsubsectionautorefname}{subsubsection}%
-					\renewcommand*{\paragraphautorefname}{paragraph}%
-					\renewcommand*{\subparagraphautorefname}{subparagraph}%
-					\renewcommand*{\equationautorefname}{equation}%
-					\renewcommand*{\appendixautorefname}{appendix}%
+					\renewcommand*{\lstlistingautorefname}{listing}%
 				}%
 				\addto\extrasnaustrian{%
-					\renewcommand*{\tableautorefname}{Tabelle}%
-					\renewcommand*{\figureautorefname}{Abbildung}%
-					\renewcommand*{\partautorefname}{Teil}%
-					\renewcommand*{\chapterautorefname}{Kapitel}%
-					\renewcommand*{\sectionautorefname}{Abschnitt}%
-					\renewcommand*{\subsectionautorefname}{Unterabschnitt}%
-					\renewcommand*{\subsubsectionautorefname}{Unterunterabscnhitt}%
-					\renewcommand*{\paragraphautorefname}{Paragraph}%
-					\renewcommand*{\subparagraphautorefname}{Unterparagraph}%
-					\renewcommand*{\equationautorefname}{Gleichung}%
-					\renewcommand*{\appendixautorefname}{Anhang}%
-				 }%
+					\renewcommand*{\lstlistingautorefname}{Listing}%
+				}%
 				\addto\extrasngerman{%
-					\renewcommand*{\tableautorefname}{Tabelle}%
-					\renewcommand*{\figureautorefname}{Abbildung}%
-					\renewcommand*{\partautorefname}{Teil}%
-					\renewcommand*{\chapterautorefname}{Kapitel}%
-					\renewcommand*{\sectionautorefname}{Abschnitt}%
-					\renewcommand*{\subsectionautorefname}{Unterabschnitt}%
-					\renewcommand*{\subsubsectionautorefname}{Unterunterabscnhitt}%
-					\renewcommand*{\paragraphautorefname}{Paragraph}%
-					\renewcommand*{\subparagraphautorefname}{Unterparagraph}%
-					\renewcommand*{\equationautorefname}{Gleichung}%
-					\renewcommand*{\appendixautorefname}{Anhang}%
-				 }%
+					\renewcommand*{\lstlistingautorefname}{Listing}%
+				}%
 			}%
-			\TUM@ifpackageloaded[setting]{listings}{% begin: listings loaded
-				\AfterEndPreamble{%
-					\addto\extrasamerican{%
-						\renewcommand*{\lstlistingautorefname}{listing}%
-					}%
-					\addto\extrasenglish{%
-						\renewcommand*{\lstlistingautorefname}{listing}%
-					}%
-					\addto\extrasnaustrian{%
-						\renewcommand*{\lstlistingautorefname}{Listing}%
-					}%
-					\addto\extrasngerman{%
-						\renewcommand*{\lstlistingautorefname}{Listing}%
-					}%
+		}{}% end: listings not loaded
+		\TUM@ifpackageloaded[setting]{subcaption}{% begin: subcaption loaded
+			\AfterEndPreamble{%
+				\addto\extrasamerican{%
+					\renewcommand*{\subfigureautorefname}{figure}%
+					\renewcommand*{\subtableautorefname}{table}%
 				}%
-			}{}% end: listings not loaded
-			\TUM@ifpackageloaded[setting]{subcaption}{% begin: subcaption loaded
-				\AfterEndPreamble{%
-					\addto\extrasamerican{%
-						\renewcommand*{\subfigureautorefname}{figure}%
-						\renewcommand*{\subtableautorefname}{table}%
-					}%
-					\addto\extrasenglish{%
-						\renewcommand*{\subfigureautorefname}{figure}%
-						\renewcommand*{\subtableautorefname}{table}%
-					}%
-					\addto\extrasnaustrian{%
-						\renewcommand*{\subfigureautorefname}{Abbildung}%
-						\renewcommand*{\subtableautorefname}{Tabelle}%
-					}%
-					\addto\extrasngerman{%
-						\renewcommand*{\subfigureautorefname}{Abbildung}%
-						\renewcommand*{\subtableautorefname}{Tabelle}%
-					}%
+				\addto\extrasenglish{%
+					\renewcommand*{\subfigureautorefname}{figure}%
+					\renewcommand*{\subtableautorefname}{table}%
 				}%
-			}{}% end: subcaption not loaded
-		}{}% end: hyperref not loaded
-	}{}% end: babel not loaded
+				\addto\extrasnaustrian{%
+					\renewcommand*{\subfigureautorefname}{Abbildung}%
+					\renewcommand*{\subtableautorefname}{Tabelle}%
+				}%
+				\addto\extrasngerman{%
+					\renewcommand*{\subfigureautorefname}{Abbildung}%
+					\renewcommand*{\subtableautorefname}{Tabelle}%
+				}%
+			}%
+		}{}% end: subcaption not loaded
+	}{}% end: babel, hyperref not loaded
 }% end: AtBeginDocument
 \makeatother%
 %% bookmark = A new bookmark (outline) organization for hyperref
-\TUMRequirePackage[][hyperref]{bookmark}%
+\TUMRequirePackage[%
+open,% display the bookmarks when opening the documnet
+openlevel=0,% display the bookmarks at level when opening the document 
+depth=2,% (max) depth of the bookmarks (= tocdepth (see tumtoc.sty))
+numbered,% number the bookmarks 
+][hyperref]{bookmark}%
 
 
 %% ================================================================================
@@ -1151,6 +1252,8 @@ plainpages=false%       %% biblatex
 %% TikZ (external) and pdfpages -- Fix with [optimize command away=\includepdf]
 %% TikZ (external) and geometry (showframe=true) -- Fix see below
 %% TikZ (external) and showframe -- Fix see below
+%% TikZ (external) and nicematrix -- Fix: add locally (nicematrix): \tikzset{external/optimize=false}
+%% TikZ (external) and chemformula -- Fix: see below (add locally inside ex.tikz-environment: \setchemformula{tikz-external-disable=false}%)
 %% TikZ (external) and todonotes -- Normal way to fix:
 % Use \tikzset{external/export=false}% (local) and only activate it before a
 % tikz-picture you want to externalize and set it back to false after.
@@ -1205,11 +1308,13 @@ plainpages=false%       %% biblatex
 \TUM@ifpackageloaded[setting]{tcolorbox}{%
 	\tcbset{shield externalize}%
 }{}%
+\TUM@ifpackageloaded[setting]{chemformula}{%
+	\setchemformula{tikz-external-disable=true}%
+}{}%
 \makeatother%
 %% \tikzexternaldisable% (global)
 %% \tikzset{external/export=false}% (local)
 %% Standard, locally enable it, if tikzexternalize = true (external/export=true)
-%% + (local) \setchemformula{tikz-external-disable=false}%
 \makeatletter%
 \TUM@ifpackageloaded[setting]{pgfplotstable}{%
 	\usepgfplotslibrary{fillbetween}% fuer z.~B. den Befehl fillbetween
@@ -1230,10 +1335,8 @@ plainpages=false%       %% biblatex
 	\usetikzlibrary{shapes.misc}% fuer z.B. cross node
 	\usetikzlibrary{shadows}%
 }{}%
-\TUM@ifpackageloaded[setting]{pgf}{%
-	\TUM@ifpackageloaded[setting]{tikz}{%
-		\TUMRequirePackage{packages/tumtikz}%
-	}{}%
+\TUM@ifpackageloaded[setting]{pgfplotstable,tikz}{%
+	\TUMRequirePackage{packages/tumtikz}%
 }{}%
 \makeatother%
 %% ================================================================================
@@ -1427,9 +1530,9 @@ examstyle/.style={%
 \prop_new:N \l_font_prop%
 \prop_set_from_keyval:Nn \l_font_prop {%
 	idxnumber = {\boldmath\bfseries\upshape},%
-	1 = {\unboldmath\mdseries\itshape\normalsize\leavevmode\color{\TUMcolor{27}}},% for emphasing text...
-	2 = {\unboldmath\mdseries\itshape\normalsize\leavevmode\color{\TUMcolor{28}}},%
-	3 = {\unboldmath\mdseries\itshape\normalsize\leavevmode\color{\TUMcolor{29}}},%
+	1 = {\unboldmath\mdseries\itshape\leavevmode\color{\TUMcolor{27}}},% for emphasing text...
+	2 = {\unboldmath\mdseries\itshape\leavevmode\color{\TUMcolor{28}}},%
+	3 = {\unboldmath\mdseries\itshape\leavevmode\color{\TUMcolor{29}}},%
 }%
 \NewDocumentCommand{\TUMfont}{m}{%
 	\prop_if_in:NnTF \l_font_prop {#1} {%
@@ -1468,6 +1571,9 @@ examstyle/.style={%
 \NewExpandableDocumentCommand{\TUMstyle}{mm}%
 {{%
 	\str_case_e:nnTF {#1} {%
+		{package}{%
+			{\urlstyle{tt}\nolinkurl{#2}}%
+		}%
 		{1}{%
 			{\TUMfont{1}#2}%
 		}%
@@ -1629,6 +1735,7 @@ examstyle/.style={%
 	\TUM@ifpackageloaded[setting]{todonotes}{%
 		\RenewDocumentCommand{\todoincludegraphics}{sO{}m}{%
 			\if@todonotes@disabled\else%
+				\phantomsection%
 				\addcontentsline{tdo}{todo}{\@todonotes@MissingFigureText: #3}%
 			\fi%
 			\IfBooleanTF{#1}{\includegraphicshelp*[#2]}{\includegraphicshelp[#2]}%
@@ -1825,11 +1932,20 @@ pagenumberbox=\TUM@pagenumberbox% necessary if pagenumber > 100 (and e.q. bold-f
 		pdftitle={\@pdftitle},%
 		pdfsubject={\@pdfsubject},%
 		pdfauthor={\@pdfauthor},%
-		pdfkeywords={\@pdfkeywords}%
-		% pdfcreator, pdfproducer
+		pdfkeywords={\@pdfkeywords},%
+		%pdfcreator={...},% LaTeX with hyperref
+		%pdfproducer={...},% MiKTeX pdfTeX-1.40.21
 	}%
 }%
 \ExplSyntaxOff%
+\makeatother%
+%% ================================================================================
+%% ================================= Note columns =================================
+%% ********************************************************************************
+\makeatletter%
+\TUM@ifpackageloaded[normal]{scrlayer-notecolumn}{%
+	\TUMRequirePackage{packages/tumnote}%
+}{}%
 \makeatother%
 %% ================================================================================
 %% ==================== TOC/LOF/LOT/LOB/LOL/IDX/TDO/titlepage =====================
@@ -1837,8 +1953,10 @@ pagenumberbox=\TUM@pagenumberbox% necessary if pagenumber > 100 (and e.q. bold-f
 \TUMRequirePackage{packages/tumtoc}%
 \TUMRequirePackage{packages/tumlof}%
 \TUMRequirePackage{packages/tumlot}%
-\TUMRequirePackage{packages/tumlob}%
 \makeatletter%
+\TUM@ifpackageloaded[setting]{biblatex}{%
+	\TUMRequirePackage{packages/tumlob}%
+}{}%
 \TUM@ifpackageloaded[setting]{listings}{%
 	\TUMRequirePackage{packages/tumlol}%
 }{}%

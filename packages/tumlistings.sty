@@ -41,10 +41,40 @@
 	{ö}{{\"o}}1%
 }%
 %%=================================================================================
+%% LaTeX:
+\definecolor{LaTeXcomment}{HTML}{807E7C}% 		%% Kommentare (gray)
+\definecolor{LaTeXkey}{HTML}{C22200}% 			%% Keywoerter (red/black)
+\definecolor{LaTeXmath}{HTML}{0F8340}% 			%% Mathmodus (green)
+\lstdefinelanguage{LaTeXSettings}{%
+	moretexcs={maketag@@@, hbox, m@th, tagform@, eqref},% add more...
+	delim = [s][\color{LaTeXmath}]{$}{$},%
+	moredelim = [s][\color{LaTeXmath}]{$$}{$$},%
+	moredelim = [is][\color{black}]{<$$}{$$>},%
+}%
+\lstdefinestyle{LaTeX}{%
+	language={[LaTeX]TeX},%
+	alsolanguage=LaTeXSettings,%
+	texcsstyle=*\ttfamily\color{LaTeXkey},%
+	backgroundcolor=\color{white},%			%% Hintergrundfarbe
+	commentstyle=\color{LaTeXcomment},%		%% Kommentarfarbe
+	keywordstyle=\ttfamily\color{LaTeXkey},%	%% Keyword-Farbe
+	numbers=left,%							%% Nummerierung links
+	numberstyle=\color{black},%				%% Nummern-Stil
+	frame=single,%							%% Rahmen
+	tabsize=2,%								%% Tabsize
+	basicstyle=\ttfamily\small,%			%% Schriftgroesse
+	stringstyle=\color{black},%				%% String-Farbe	
+	inputencoding=utf8,%					%% Encoding UTF8
+	showspaces=false,%						%% Abstaende anzeigen (warum ?)
+	showtabs=false,%						%% Tabs anzeigen (warum ?)
+	showstringspaces=false%
+}%
+%%=================================================================================
 %% General:
 \lstset{%
 	captionpos=t,%
 	breaklines=true,%
+	breakatwhitespace=true,%	%% only break when whitespace
 	literate=%                  %% Umlaute, ...
 	{Ö}{{\"O}}1%
 	{Ä}{{\"A}}1%
