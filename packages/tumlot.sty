@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}%
-\ProvidesExplPackage {packages/tumlot} {2020-05-24} {\TUMversion}%
+\ProvidesExplPackage {packages/tumlot} {\TUMversiondate} {\TUMversion}%
 	{The list-of-table-part made by Michael Labenbacher}%
 \ProcessKeysPackageOptions{packages/tumlot}%
 \ExplSyntaxOff%
@@ -32,8 +32,7 @@
 %% \renewcommand*{\tableformat}{\tablename~\thetable\autodot}%
 %% \setlength{\cfttabindent}{0pt}%
 \makeatletter%
-\def\TUMlistoftables%
-{%
+\NewDocumentCommand{\TUMlistoftables}{}{%
 	{%
 		\newpage%
 		\pagestyle{scrheadings}%

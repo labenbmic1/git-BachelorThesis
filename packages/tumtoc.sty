@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}%
-\ProvidesExplPackage {packages/tumtoc} {2020-05-24} {\TUMversion}%
+\ProvidesExplPackage {packages/tumtoc} {\TUMversiondate} {\TUMversion}%
 	{The table-of-contents-part made by Michael Labenbacher}%
 \ProcessKeysPackageOptions{packages/tumtoc}%
 \ExplSyntaxOff%
@@ -54,8 +54,7 @@
 %   \hypersetup{linkcolor=\TUMcolor{2}}%
 %}%
 \makeatletter%
-\def\TUMtableofcontents%
-{%
+\NewDocumentCommand{\TUMtableofcontents}{}{%
 	{%
 		\newpage%
 		\pagestyle{scrheadings}%

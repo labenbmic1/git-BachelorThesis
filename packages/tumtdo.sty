@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}%
-\ProvidesExplPackage {packages/tumtdo} {2020-05-24} {\TUMversion}%
+\ProvidesExplPackage {packages/tumtdo} {\TUMversiondate} {\TUMversion}%
 	{The todonotes-part made by Michael Labenbacher}%
 \ProcessKeysPackageOptions{packages/tumtdo}%
 \ExplSyntaxOff%
@@ -63,8 +63,7 @@
 		\todototoc\@starttoc{tdo}%
 	\fi%
 }%
-\def\TUMlistoftodos%
-{%
+\NewDocumentCommand{\TUMlistoftodos}{}{%
 	{%
 		\newpage%
 		\pagestyle{scrheadings}%

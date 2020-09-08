@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.9.7)  7 SEP 2020 07:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.9.7)  8 SEP 2020 04:48
 entering extended mode
 **./main.tex
 (main.tex
@@ -208,35 +208,11 @@ LaTeX Info: Redefining \addtolength on input line 81.
 \calc@Ccount=\count188
 \calc@Cskip=\skip66
 )
-(C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/silence\silence.sty
-Package: silence 2012/07/02 v1.5b Selective filtering of warnings and error mes
-sages
-\sl@Save=\count189
-\sl@StateNumber=\count190
-\sl@MessageCount=\count191
-\sl@Casualties=\count192
-\sl@Filter=\toks18
-\sl@Message=\toks19
-\sl@UnexpandedMessage=\toks20
-\sl@Mess@ge=\toks21
-\sl@WarningCount=\count193
-\sl@WarningNumber=\count194
-\sl@WarningCasualties=\count195
-\sl@TempBOW=\toks22
-\sl@BankOfWarnings=\toks23
-LaTeX Info: Redefining \GenericWarning on input line 433.
-\sl@ErrorCount=\count196
-\sl@ErrorNumber=\count197
-\sl@ErrorCasualties=\count198
-\sl@TempBOE=\toks24
-\sl@BankOfErrors=\toks25
-LaTeX Info: Redefining \GenericError on input line 601.
-)
-Package: tum-physics 2020-05-24 v1.0.1.nightly.001000000020013 A (:P) "package"
+Package: tum-physics 2020-09-08 v1.0.1.nightly.001000000020016 A (:P) "package"
  made by Michael Labenbacher, scrbook/scrreprt
 
 ==========================================================================
-Version: 1.0.1.nightly.001000000020013
+Version: 1.0.1.nightly.001000000020016
 000 for: -- paper=a4,11/12pt,twoside,open=right--scrbook
 001 for: -- paper=a4,11/12pt,oneside,open=any--scrreprt
 002 for: -- paper=a4,11/12pt,twoside,open=right--scrartcl
@@ -245,9 +221,33 @@ Version: 1.0.1.nightly.001000000020013
 005 for: -- paper=a3,11/12pt/tiny,oneside--scrreprt,(cheatsheet)
 Author: Labenbacher Michael
 ==========================================================================
-\l_load_packages_int=\count199
+\l_load_packages_int=\count189
+(C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/silence\silence.sty
+Package: silence 2012/07/02 v1.5b Selective filtering of warnings and error mes
+sages
+\sl@Save=\count190
+\sl@StateNumber=\count191
+\sl@MessageCount=\count192
+\sl@Casualties=\count193
+\sl@Filter=\toks18
+\sl@Message=\toks19
+\sl@UnexpandedMessage=\toks20
+\sl@Mess@ge=\toks21
+\sl@WarningCount=\count194
+\sl@WarningNumber=\count195
+\sl@WarningCasualties=\count196
+\sl@TempBOW=\toks22
+\sl@BankOfWarnings=\toks23
+LaTeX Info: Redefining \GenericWarning on input line 433.
+\sl@ErrorCount=\count197
+\sl@ErrorNumber=\count198
+\sl@ErrorCasualties=\count199
+\sl@TempBOE=\toks24
+\sl@BankOfErrors=\toks25
+LaTeX Info: Redefining \GenericError on input line 601.
+)
 Missing optimization: imakeidx, glossaries, biblatex, listings, theorems, todon
-otes
+otes, tikz (external)
 Problem with: etex - paracol (can not be loaded at the same time)
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
 Package: amsmath 2020/01/20 v2.17e AMS math features
@@ -538,14 +538,9 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\helvet.sty
 Package: helvet 2020/03/25 PSNFSS-v9.3 (WaS) 
 )
-(C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/bbm\bbm.sty
-Package: bbm 1999/03/15 V 1.2 provides fonts for set symbols - TH
-LaTeX Font Info:    Overwriting math alphabet `\mathbbm' in version `bold'
-(Font)                  U/bbm/m/n --> U/bbm/bx/n on input line 33.
-LaTeX Font Info:    Overwriting math alphabet `\mathbbmss' in version `bold'
-(Font)                  U/bbmss/m/n --> U/bbmss/bx/n on input line 35.
-)
-(C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/was\upgreek.sty
+(C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/doublestroke\dsfont.sty
+Package: dsfont 1995/08/01 v0.1 Double stroke roman fonts
+) (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/was\upgreek.sty
 Package: upgreek 2003/02/12 v2.0 (WaS)
 Package upgreek Info: Using Euler Roman for upright Greek on input line 31.
 \symugrf@m=\mathgroup7
@@ -1057,7 +1052,7 @@ Normal \dimen register pool exhausted, switching to extended pool.
 \c@LT@chunks=\count463
 \LT@p@ftn=\toks49
 )
-Class scrreprt Info: longtable captions redefined on input line 839.
+Class scrreprt Info: longtable captions redefined on input line 890.
 
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
 Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
@@ -1067,7 +1062,7 @@ Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
 \bigstrutjot=\dimen257
 )
 (packages/tumcolors.sty
-Package: packages/tumcolors 2020-05-24 v1.0.1.nightly.001000000020013 The color
+Package: packages/tumcolors 2020-09-08 v1.0.1.nightly.001000000020016 The color
 -part made by Michael Labenbacher
 
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
@@ -2115,7 +2110,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks77
 \@floatcapt=\box155
 )
-Package scrhack Info: loading float hack on input line 942.
+Package scrhack Info: loading float hack on input line 1001.
 
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\float.hak
 File: float.hak 2020/07/22 v3.31 KOMA-Script scrhack part (hacking package floa
@@ -2126,7 +2121,7 @@ Package scrhack Info: undefining \float@addtolists on input line 163.
 )
 Package scrhack Info: hyperref hack deactivated because of
 (scrhack)             detection of KOMA-Script class, that doesn't
-(scrhack)             need that hack, on input line 965.
+(scrhack)             need that hack, on input line 1024.
 
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
 Package: hyperref 2020-05-15 v7.00e Hypertext links for LaTeX
@@ -2228,13 +2223,13 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 Package: nccmath 2006/01/20 v1.3 Additional Math Commands (NCC)
 \NCC@fracrulewidth=\dimen426
 )
-Package hyperref Info: Option `pdftoolbar' set `true' on input line 982.
-Package hyperref Info: Option `pdfmenubar' set `true' on input line 982.
-Package hyperref Info: Option `colorlinks' set `true' on input line 982.
-Package hyperref Info: Option `breaklinks' set `true' on input line 982.
-Package hyperref Info: Option `linktocpage' set `true' on input line 982.
-Package hyperref Info: Option `hypertexnames' set `true' on input line 982.
-Package hyperref Info: Option `plainpages' set `false' on input line 982.
+Package hyperref Info: Option `pdftoolbar' set `true' on input line 1041.
+Package hyperref Info: Option `pdfmenubar' set `true' on input line 1041.
+Package hyperref Info: Option `colorlinks' set `true' on input line 1041.
+Package hyperref Info: Option `breaklinks' set `true' on input line 1041.
+Package hyperref Info: Option `linktocpage' set `true' on input line 1041.
+Package hyperref Info: Option `hypertexnames' set `true' on input line 1041.
+Package hyperref Info: Option `plainpages' set `false' on input line 1041.
 
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/bookmark\bookmark.sty
 Package: bookmark 2019/12/03 v1.28 PDF bookmarks (HO)
@@ -2354,7 +2349,7 @@ File: tikzlibraryshapes.misc.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 pgflibraryshapes.misc.code.tex
 File: pgflibraryshapes.misc.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )) (packages/tumtikz.sty
-Package: packages/tumtikz 2020-05-24 v1.0.1.nightly.001000000020013 The tikz/pg
+Package: packages/tumtikz 2020-09-08 v1.0.1.nightly.001000000020016 The tikz/pg
 f-part made by Michael Labenbacher
 \tikZlengthwi=\skip151
 \tikZlengthwii=\skip152
@@ -2365,7 +2360,7 @@ f-part made by Michael Labenbacher
 \tikZlengthwvii=\skip157
 )
 (packages/tumlistings.sty
-Package: packages/tumlistings 2020-05-24 v1.0.1.nightly.001000000020013 The lis
+Package: packages/tumlistings 2020-09-08 v1.0.1.nightly.001000000020016 The lis
 tings-part made by Michael Labenbacher
 )
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcblistings.c
@@ -2414,30 +2409,30 @@ Library (tcolorbox): 'tcbxparse.code.tex' version '4.31'
 \c@tcb@cnt@theorem=\count595
 \c@tcb@cnt@example=\count596
  (packages/tumheader.sty
-Package: packages/tumheader 2020-05-24 v1.0.1.nightly.001000000020013 The heade
+Package: packages/tumheader 2020-09-08 v1.0.1.nightly.001000000020016 The heade
 r-part made by Michael Labenbacher
 ) (packages/tummatter.sty
-Package: packages/tummatter 2020-05-24 v1.0.1.nightly.001000000020013 The matte
+Package: packages/tummatter 2020-09-08 v1.0.1.nightly.001000000020016 The matte
 r-part made by Michael Labenbacher
 ) (packages/tumtoc.sty
-Package: packages/tumtoc 2020-05-24 v1.0.1.nightly.001000000020013 The table-of
+Package: packages/tumtoc 2020-09-08 v1.0.1.nightly.001000000020016 The table-of
 -contents-part made by Michael Labenbacher
 )
 (packages/tumlof.sty
-Package: packages/tumlof 2020-05-24 v1.0.1.nightly.001000000020013 The list-of-
+Package: packages/tumlof 2020-09-08 v1.0.1.nightly.001000000020016 The list-of-
 figures-part made by Michael Labenbacher
 ) (packages/tumlot.sty
-Package: packages/tumlot 2020-05-24 v1.0.1.nightly.001000000020013 The list-of-
+Package: packages/tumlot 2020-09-08 v1.0.1.nightly.001000000020016 The list-of-
 table-part made by Michael Labenbacher
 ) (packages/tumlob.sty
-Package: packages/tumlob 2020-05-24 v1.0.1.nightly.001000000020013 The list-of-
+Package: packages/tumlob 2020-09-08 v1.0.1.nightly.001000000020016 The list-of-
 bibliography-part made by Michael Labenbacher
 )
 (packages/tumlol.sty
-Package: packages/tumlol 2020-05-24 v1.0.1.nightly.001000000020013 The list-of-
+Package: packages/tumlol 2020-09-08 v1.0.1.nightly.001000000020016 The list-of-
 listings-part made by Michael Labenbacher
 ) (packages/tumidx.sty
-Package: packages/tumidx 2020-05-24 v1.0.1.nightly.001000000020013 The index-pa
+Package: packages/tumidx 2020-09-08 v1.0.1.nightly.001000000020016 The index-pa
 rt made by Michael Labenbacher
 \openout15 = `index.ist'.
 
@@ -2446,10 +2441,10 @@ rt made by Michael Labenbacher
 \l_index_count_int=\count597
 \l_index_preamble_count_int=\count598
 ) (packages/tumtdo.sty
-Package: packages/tumtdo 2020-05-24 v1.0.1.nightly.001000000020013 The todonote
+Package: packages/tumtdo 2020-09-08 v1.0.1.nightly.001000000020016 The todonote
 s-part made by Michael Labenbacher
 ) (packages/tumtitlepage.sty
-Package: packages/tumtitlepage 2020-05-24 v1.0.1.nightly.001000000020013 The ti
+Package: packages/tumtitlepage 2020-09-08 v1.0.1.nightly.001000000020016 The ti
 tlepage-part made by Michael Labenbacher
 ))
 LaTeX Font Info:    Trying to load font information for T1+lmr on input line 63
@@ -2489,29 +2484,29 @@ Package chemmacros Info: You haven't chosen a formula method so I'm assuming
 (main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-Package scrbase Info: activating american \contentsname on input line 101.
-Package scrbase Info: activating american \listfigurename on input line 101.
-Package scrbase Info: activating american \listtablename on input line 101.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+Package scrbase Info: activating american \contentsname on input line 102.
+Package scrbase Info: activating american \listfigurename on input line 102.
+Package scrbase Info: activating american \listtablename on input line 102.
  ABD: EverySelectfont initializing macros
-LaTeX Info: Redefining \selectfont on input line 101.
+LaTeX Info: Redefining \selectfont on input line 102.
 Package scrdate Info: \dategerman not defined.
 (scrdate)             \todaysname probably cannot use \dayname@german.
 Package scrdate Info: \datengerman not defined.
@@ -2562,14 +2557,14 @@ Package scrdate Info: \dateczech not defined.
 (scrdate)             \todaysname probably cannot use \dayname@czech.
 Package scrdate Info: \dateslovak not defined.
 (scrdate)             \todaysname probably cannot use \dayname@slovak.
-LaTeX Info: Redefining \microtypecontext on input line 101.
+LaTeX Info: Redefining \microtypecontext on input line 102.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `basictext'.
-LaTeX Info: Redefining \showhyphens on input line 101.
+LaTeX Info: Redefining \showhyphens on input line 102.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -2625,8 +2620,8 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' found.
  (main.bbl)
-Package biblatex Info: Reference section=0 on input line 101.
-Package biblatex Info: Reference segment=0 on input line 101.
+Package biblatex Info: Reference section=0 on input line 102.
+Package biblatex Info: Reference segment=0 on input line 102.
 
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/translator\translator-b
 asic-dictionary-English.dict
@@ -2669,7 +2664,7 @@ s been generated with the most recent feature set (\pgfplotsset{compat=1.17}).
 
 \c@lstlisting=\count605
 
-Package chemgreek Info: Activating mapping `upgreek' on line 101.
+Package chemgreek Info: Activating mapping `upgreek' on line 102.
 
 
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/translations/dicts\tran
@@ -2715,8 +2710,8 @@ lations-basic-dictionary')
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package scrhack Info: undefining \float@addtolists on input line 101.
-Package hyperref Info: Link coloring ON on input line 101.
+Package scrhack Info: undefining \float@addtolists on input line 102.
+Package hyperref Info: Link coloring ON on input line 102.
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 
@@ -2729,41 +2724,40 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count610
 )
-LaTeX Info: Redefining \ref on input line 101.
-LaTeX Info: Redefining \pageref on input line 101.
-LaTeX Info: Redefining \nameref on input line 101.
-Package scrbase Info: activating american \abstractname on input line 101.
+LaTeX Info: Redefining \ref on input line 102.
+LaTeX Info: Redefining \pageref on input line 102.
+LaTeX Info: Redefining \nameref on input line 102.
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
-01.
+02.
 
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-01.
+02.
 
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-101.
+102.
 
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-101.
+102.
 
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 101.
+(Font)              <10.95> on input line 102.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 101.
+(Font)              <8> on input line 102.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 101.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 101
+(Font)              <6> on input line 102.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 102
 .
 
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
@@ -2772,7 +2766,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 101
+LaTeX Font Info:    Trying to load font information for U+msb on input line 102
 .
 
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
@@ -2782,7 +2776,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    Trying to load font information for U+rsfs on input line 10
-1.
+2.
 
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
@@ -2791,7 +2785,7 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 File: mt-eur.cfg 2006/07/31 v1.1 microtype config. file: AMS Euler Roman (RS)
 )
 LaTeX Font Info:    Trying to load font information for OT1+lmss on input line 
-101.
+102.
 
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmss.fd
 File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -2801,7 +2795,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Trying to load font information for OT1+lmtt on input line 
-101.
+102.
 
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmtt.fd
 File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -2813,44 +2807,44 @@ Package microtype Info: Loading generic protrusion settings for font family
 <images/titlepage/PH.pdf, id=30, 29.8716pt x 29.8716pt>
 File: images/titlepage/PH.pdf Graphic file (type pdf)
 <use images/titlepage/PH.pdf>
-Package pdftex.def Info: images/titlepage/PH.pdf  used on input line 106.
+Package pdftex.def Info: images/titlepage/PH.pdf  used on input line 107.
 (pdftex.def)             Requested size: 44.81636pt x 44.81583pt.
 <images/titlepage/TUMlogo2.pdf, id=31, 53.24893pt x 28.45631pt>
 File: images/titlepage/TUMlogo2.pdf Graphic file (type pdf)
 <use images/titlepage/TUMlogo2.pdf>
-Package pdftex.def Info: images/titlepage/TUMlogo2.pdf  used on input line 106.
+Package pdftex.def Info: images/titlepage/TUMlogo2.pdf  used on input line 107.
 
 (pdftex.def)             Requested size: 83.87074pt x 44.81583pt.
 Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
-ine 106.
+ine 107.
 Package marginnote Info: Margin note 1.1 is on absolute page 1 on input line 10
-6.
-Package marginnote Info: right page because not two side mode on input line 106
+7.
+Package marginnote Info: right page because not two side mode on input line 107
 .
-Package marginnote Info: xpos seems to be 258.58446pt on input line 106.
+Package marginnote Info: xpos seems to be 258.58446pt on input line 107.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <20.74> on input line 106.
+(Font)              <20.74> on input line 107.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 106.
+(Font)              <14.4> on input line 107.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 106.
+(Font)              <12> on input line 107.
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
-06.
+07.
 
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 106.
+(Font)              <10> on input line 107.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 106.
+(Font)              <7> on input line 107.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 106.
+(Font)              <5> on input line 107.
 Package marginnote Info: Margin note 1.2 is on absolute page 1 on input line 10
-6.
-Package marginnote Info: right page because not two side mode on input line 106
+7.
+Package marginnote Info: right page because not two side mode on input line 107
 .
-Package marginnote Info: xpos seems to be 393.88367pt on input line 106.
+Package marginnote Info: xpos seems to be 393.88367pt on input line 107.
  [1
 
 
@@ -2887,9 +2881,9 @@ Package marginnote Info: xpos seems to be 347.42279pt on input line 4.
 
 ]
 Package marginnote Info: Using workaround for absolute page number on input lin
-e 108.
+e 109.
 Package tocbasic Info: character protrusion at toc deactivated on input line 10
-8.
+9.
  (main.toc
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 11.39996pt on input line 10.
@@ -2938,10 +2932,19 @@ chapter B.
 1: chapter
 runsystem(splitindex -m "" main.idx)...executed.
 
-runsystem(makeindex -s index.ist main-main.idx)...executed (allowed).
+runsystem(makeindex -s index.ist -r main-main.idx)...executed (allowed).
 
 (main-main.ind
 chapter without number
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
+.
+(C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `lmtt' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
 ) [8
 
 
@@ -2950,22 +2953,12 @@ chapter without number
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/lmr/m/sc/10.95'.
 (microtype)             Ignoring protrusion settings for this character.
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
-25.
-(C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
-File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `lmtt' (encoding: T1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
- [9
+[9
 
 ]
 Package tocbasic Info: character protrusion at lof deactivated on input line 12
-5.
-
-(main.lof)
+6.
+ (main.lof)
 \tf@lof=\write9
 \openout9 = `main.lof'.
 
@@ -2973,7 +2966,7 @@ Package tocbasic Info: character protrusion at lof deactivated on input line 12
 
 ]
 Package tocbasic Info: character protrusion at lot deactivated on input line 12
-6.
+7.
  (main.lot)
 \tf@lot=\write10
 \openout10 = `main.lot'.
@@ -2982,7 +2975,7 @@ Package tocbasic Info: character protrusion at lot deactivated on input line 12
 
 ]
 Package tocbasic Info: character protrusion at lol deactivated on input line 12
-7.
+8.
  (main.lol)
 \tf@lol=\write11
 \openout11 = `main.lol'.
@@ -3018,20 +3011,20 @@ Package marginnote Info: xpos seems to be 390.83852pt on input line 3.
 ) [15
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 131.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 131.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 132.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 132.
  (main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 131.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 131.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 132.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 132.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 70556 strings out of 481212
- 1658701 string characters out of 2905974
- 102661201 words of memory out of 202419246
- 84695 multiletter control sequences out of 15000+200000
+ 70571 strings out of 481212
+ 1659045 string characters out of 2905974
+ 102661892 words of memory out of 202419937
+ 84711 multiletter control sequences out of 15000+200000
  665404 words of font info for 176 fonts, out of 3000000 for 9000
  1146 hyphenation exceptions out of 8191
  100i,16n,163p,10637b,2319s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -3049,7 +3042,7 @@ ha/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/micha
 ppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/micha/A
 ppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/micha/A
 ppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb>
-Output written on main.pdf (18 pages, 285656 bytes).
+Output written on main.pdf (18 pages, 287273 bytes).
 PDF statistics:
  291 PDF objects out of 1000 (max. 8388607)
  44 named destinations out of 1000 (max. 500000)

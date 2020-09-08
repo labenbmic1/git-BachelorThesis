@@ -1,4 +1,4 @@
-# Labenbacher Michael 1.0.1.nightly.001000000020013
+# Labenbacher Michael 1.0.1.nightly.001000000020016
 Have fun. Please report bugs to michael@labenbacher.at or m.labenbacher@tum.de. (It's not perfect I know, but it was a starting point for the Bachelor Thesis.)<br /><br />
 
 Compile (MiKTeX/TeXstudio):<br />
@@ -11,6 +11,10 @@ Biber: biber.exe %<br /><br />
 Erzeugen:<br />
 Standard Bibliographieprogramm: txs:///biber --validate_datamodel<br />
 Standard Index Tool: txs:///makeindex<br /><br />
+
+Changes in 1.0.1.nightly.001000000020016:<br />
+Extended the macro \TUM@ifpackageloaded for check for multiple packages (and/or).<br />
+Small changes and shorten compilation time.<br /><br />
 
 Changes in 1.0.1.nightly.001000000020013:<br />
 Bug with {tikz/pgf}-externalize library and {nicematrix, chemformula} fixed.<br />
