@@ -14,6 +14,10 @@ Standard Index Tool: txs:///makeindex<br /><br />
 
 Changes in 1.0.1.nightly.001000000020016:<br />
 Extended the macro \TUM@ifpackageloaded for check for multiple packages (and/or).<br />
+Added autoref for theorems (normally one should only use ref...).<br />
+Added another theorem-style example (Ex-) package.<br />
+Added -r option to imakeidx.<br />
+Added microtype implementations (toc, lof, etc.).<br />
 Small changes and shorten compilation time.<br /><br />
 
 Changes in 1.0.1.nightly.001000000020013:<br />

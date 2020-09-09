@@ -51,16 +51,18 @@
 %% Bookmark for tableofcontents,
 \BeforeTOCHead[toc]{{\cleardoublepage\pdfbookmark[0]{\contentsname}{toc}}}%
 %\BeforeTOCHead[toc]{%
-%   \hypersetup{linkcolor=\TUMcolor{2}}%
+%   \hypersetup{linkcolor=TUMBlack}%
 %}%
-\makeatletter%
 \NewDocumentCommand{\TUMtableofcontents}{}{%
-	{%
-		\newpage%
-		\pagestyle{scrheadings}%
-		\tableofcontents%
-		\newpage%
-	}%
+	\newpage%
+	\pagestyle{scrheadings}%
+	\tableofcontents%
+	\newpage%
 }%
+\makeatletter%
+\TUM@ifpackageloaded[setting]{microtype}{%
+	\pretocmd{\TUMtableofcontents}{\newpage\microtypesetup{protrusion=false}}{}{}%
+	\apptocmd{\TUMtableofcontents}{\microtypesetup{protrusion=true}\newpage}{}{}%
+}{}%
 \makeatother%
 \endinput%

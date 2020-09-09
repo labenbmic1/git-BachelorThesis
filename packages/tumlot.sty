@@ -31,14 +31,16 @@
 %% ========================== Definition of the TUM-LOT ===========================
 %% \renewcommand*{\tableformat}{\tablename~\thetable\autodot}%
 %% \setlength{\cfttabindent}{0pt}%
-\makeatletter%
 \NewDocumentCommand{\TUMlistoftables}{}{%
-	{%
-		\newpage%
-		\pagestyle{scrheadings}%
-		\listoftables%
-		\newpage%
-	}%
+	\newpage%
+	\pagestyle{scrheadings}%
+	\listoftables%
+	\newpage%
 }%
+\makeatletter%
+\TUM@ifpackageloaded[setting]{microtype}{%
+	\pretocmd{\TUMlistoftables}{\newpage\microtypesetup{protrusion=false}}{}{}%
+	\apptocmd{\TUMlistoftables}{\microtypesetup{protrusion=true}\newpage}{}{}%
+}{}%
 \makeatother%
 \endinput%

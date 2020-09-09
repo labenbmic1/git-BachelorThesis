@@ -29,14 +29,16 @@
 }%
 \makeatother%
 %% ========================== Definition of the TUM-LOL ===========================
-\makeatletter%
 \NewDocumentCommand{\TUMlistoflistings}{}{%
-	{%
-		\newpage%
-		\pagestyle{scrheadings}%
-		\lstlistoflistings%
-		\newpage%
-	}%
+	\newpage%
+	\pagestyle{scrheadings}%
+	\lstlistoflistings%
+	\newpage%
 }%
+\makeatletter%
+\TUM@ifpackageloaded[setting]{microtype}{%
+	\pretocmd{\TUMlistoflistings}{\newpage\microtypesetup{protrusion=false}}{}{}%
+	\apptocmd{\TUMlistoflistings}{\microtypesetup{protrusion=true}\newpage}{}{}%
+}{}%
 \makeatother%
 \endinput%

@@ -43,47 +43,49 @@ hyperref,%
 \definecolor{TUMcolorVII}{RGB}{200, 0, 99}%    Purple
 %% Storing the colors into commands
 \ExplSyntaxOn%
-\clist_new:N \l_TUM_color_clist%
-\clist_clear:N \l_TUM_color_clist%
-\clist_put_right:Nn \l_TUM_color_clist {%
-TUMcolorIV,%            % cite (hyperref)                                       1
-TUMBlue,%               % link (hyperref)                                       2
-TUMSecondaryBlue,%      % url (hyperref)                                        3
-TUMBlack,%              % menue (hyperref)                                      4
-TUMBlack,%              % head                                                  5
-TUMBlack,%              % foot                                                  6
-TUMBlack,%              % headine                                               7
-TUMBlack,%              % footline                                              8
-TUMBlack,%              % section (sub, etc.)                                   9
-TUMBlue,%               % sectionnumber (sub, etc., and line)                   10
-TUMBlack,%              % chapter (sub, etc.)                                   11
-TUMBlack,%              % chapterprefix (sub, etc., and line)                   12
-TUMBlue,%               % chapternumber (sub, etc., and line)                   13
-TUMBlack,%              % part (sub, etc.)                                      14
-TUMBlue,%               % partnumber (sub, etc., and line)                      15
-TUMBlue,%               % tcolorbox (equation, title)                           16
-TUMBlack,%              % tcolorbox (equation, text)                            17
-TUMBlack,%              % tcolorbox (equation, border)                          18
-TUMBlue,%               % tcolorbox (theorem, prefix)                           19
-TUMBlack,%              % tcolorbox (theorem, title)                            20
-TUMBlue,%               % title page (header)                                   21
-TUMBlack,%              % title page (title)                                    22
-TUMBlack,%              % title page (subtitle)                                 23
-TUMBlack,%              % title page (author)                                   24
-TUMBlack,%              % title page (supervisor)                               25
-TUMBlack,%              % title page (submissiondate)                           26
-TUMBlack,%              % style (text-emph 1)                                   27
-TUMBlue,%               % style (text-emph 2)                                   28
-TUMAccentOrange,%       % style (text-emph 3)                                   29
-TUMcolorII,%            % todo-1                                                30
-TUMBlue,%               % todo-2                                                31
-TUMcolorIV,%            % todo-3                                                32
-TUMcolorVI,%            % todo-4                                                33
-TUMcolorVII,%           % todo-5                                                34
+\prop_new:N \l_TUM_color_prop%
+\prop_set_from_keyval:Nn \l_TUM_color_prop {%
+	hyp_cite					= TUMcolorIV,%
+	hyp_link					= TUMBlue,%
+	hyp_url						= TUMSecondaryBlue,%
+	hyp_menu					= TUMBlack,%
+	header						= TUMBlack,%
+	footer						= TUMBlack,%
+	headline					= TUMBlack,%
+	footline					= TUMBlack,%
+	section						= TUMBlack,%
+	sectionnumber				= TUMBlue,%
+	chapter						= TUMBlack,%
+	chapterprefix				= TUMBlack,%
+	chapternumber				= TUMBlue,%
+	part						= TUMBlack,%
+	partnumber					= TUMBlue,%
+	tcb_equationtitle			= TUMBlue,%
+	tcb_equationtext			= TUMBlack,%
+	tcb_equationborder			= TUMBlack,%
+	tcb_blank_prefix			= TUMBlue,%
+	tcb_blank_title				= TUMBlack,%
+	tcb_round_prefix			= TUMBlue,%
+	tcb_round_title				= TUMBlack,%
+	tcb_round_back				= TUMBlue!25!white,%
+	tcb_round_border			= TUMBlue,%
+	titlepage_header			= TUMBlue,%
+	titlepage_title				= TUMBlack,%
+	titlepage_subtitle			= TUMBlack,%
+	titlepage_author			= TUMBlack,%
+	titlepage_supervisor		= TUMBlack,%
+	titlepage_submissiondate	= TUMBlack,%
+	1							= TUMBlack,%
+	2							= TUMBlue,%
+	3							= TUMAccentOrange,%
+	todo-1						= TUMcolorII,%
+	todo-2						= TUMBlue,%
+	todo-3						= TUMcolorIV,%
+	todo-4						= TUMcolorVI,%
+	todo-5						= TUMcolorVII,%
 }%
-\DeclareExpandableDocumentCommand{\TUMcolor}{m}%
-{%
-	\clist_item:Nn {\l_TUM_color_clist}{#1}%
+\DeclareExpandableDocumentCommand{\TUMcolor}{m}{%
+	\prop_item:Nn \l_TUM_color_prop {#1}%
 }%
 \ExplSyntaxOff%
 \endinput%

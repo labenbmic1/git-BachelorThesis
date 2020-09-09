@@ -1,0 +1,239 @@
+\NeedsTeXFormat{LaTeX2e}%
+\ProvidesExplPackage {packages/tumtcb} {\TUMversiondate} {\TUMversion}%
+	{The tcolorbox(theorem)-part made by Michael Labenbacher}%
+\ProcessKeysPackageOptions{packages/tumnote}%
+\ExplSyntaxOff%
+%% ===================================== Load libraries ======================================
+%% loads: listings
+\makeatletter%
+\TUM@ifpackageloaded[setting]{listings}{%
+	\tcbuselibrary{listings}%
+}{}%
+%% loads: amsmath
+\tcbuselibrary{theorems}%
+%% loads: tikz
+\TUM@ifpackageloaded[setting]{tikz}{%
+	\tcbuselibrary{skins}%
+}{}%
+\makeatother%
+%% documentation: disables linkcolor, etc. from hyperref (extra macro then, etc.)
+%\tcbuselibrary{documentation}%
+%% breakable: option breakable
+\tcbuselibrary{breakable}%
+%% xparse: to use \DeclareTColorBox
+\tcbuselibrary{xparse}%
+%% ========================================== Boxes ==========================================
+%% equbox ... box for equations \begin{equbox}[title][opt.par.] ... \end{equbox}
+%% Arguments same as "xparse"-package
+\DeclareTColorBox[]{equbox}{+oO{}}{%
+	title=\IfValueTF{#1}{#1}{},%
+	fonttitle=\bfseries\boldmath,%
+	coltitle=\TUMcolor{tcb_equationtitle}, coltext=\TUMcolor{tcb_equationtext},%
+	%% ***** no box:
+	empty, borderline={\rulewidth}{0pt}{\TUMcolor{tcb_equationborder}},%
+	%% *****
+	%% titlerule=0mm,%
+	%% boxrule=0mm,%
+	%% bottomrule=\rulewidth, toprule=\rulewidth,%
+	%% leftrule=\rulewidth, rightrule=\rulewidth,%
+	arc=0mm,%
+	left=0mm,right=0mm,% only boxsep
+	#2%
+}%
+%% ==================================== Theorems (styles) ====================================
+%%  1. Definition%
+%%  2. Bemerkung%
+%%  3. Theorem (Satz)%
+%%  3. Lemma (Hilfssatz), (Unterscheidung Theorem - Lemma ist subjektiv!)%
+%%      3.1 Korollar (Triviale Folgerung eines Satzes)%
+%%  (4.) Beweis%
+%%  5. Beispiel%
+%%	6. Postulat%
+%% proof exists, if amsthm is loaded%
+\ifdefined\proof%
+	\let\proof\relax\let\endproof\relax%
+\else\fi%
+\ifdefined\qed%
+	\let\qed\relax%
+\else\fi%
+\makeatletter%
+\TUM@ifpackageloaded[setting]{amssymb}{%
+	\newcommand*{\qed}{\ensuremath{\square}}%
+}{}%
+\makeatother%
+%% \newtcbtheorem[use counter from= (z. B.) <(other) name>, <init options>]
+%% {<name>}{<displayed name>}{<options>}{<prefix>}, prefix for nameref
+\tcbset{%
+defstyle/.style={%
+	theorem style=plain,%
+	separator sign none,% standard --
+	description delimiters parenthesis,% standrad -- ()
+	terminator sign colon,% standard -- :
+	label separator=:,% standard -- :
+	%% ***** no box:
+	empty,%
+	%% *****
+	%% enhanced,%
+	%% colframe=\TUMcolor{1},%
+	coltitle=\TUMcolor{tcb_blank_prefix},%
+	description color=\TUMcolor{tcb_blank_title},%
+	fonttitle=\upshape\bfseries\boldmath,% titlefont (z. B.: Theorem 1.0)
+	description font=\upshape\bfseries\boldmath,% description font (z. B.: "Titel")
+	fontupper=\itshape,% textfont
+	%% boxrule=\rulewidth, arc=0mm,%
+	width=\linewidth, left skip=0mm, right skip=0mm,%
+	boxsep=0mm, left*=0mm, right*=0mm, bottom=0mm, top=0mm,%
+	},%
+proofstyle/.style={%
+	defstyle,%
+	breakable,%
+	after upper={\hfill\qed}%
+	},%
+examstyle/.style={%
+	defstyle,%
+	breakable%
+	},%
+remstyle/.style={%
+	defstyle,%
+	breakable%
+	},%
+poststyle/.style={%
+	defstyle%
+},%
+theostyle/.style={%
+	poststyle%
+	},%
+lemstyle/.style={%
+	poststyle%
+	},%
+corstyle/.style={%
+	poststyle%
+	},%
+}%
+\makeatletter%
+\AtBeginDocument{%
+	\ifdefined\proofrefname\let\proofrefname\relax\else\fi%
+	\ifdefined\definitionrefname\let\definitionrefname\relax\else\fi%
+	\ifdefined\remarkrefname\let\remarkrefname\relax\else\fi%
+	\ifdefined\theoremrefname\let\theoremrefname\relax\else\fi%
+	\ifdefined\lemmarefname\let\lemmarefname\relax\else\fi%
+	\ifdefined\corollaryrefname\let\corollaryrefname\relax\else\fi%
+	\ifdefined\examplerefname\let\examplerefname\relax\else\fi%
+	\ifdefined\postulaterefname\let\postulaterefname\relax\else\fi%
+	\newcommand*{\proofrefname}{}%
+	\newcommand*{\definitionrefname}{}%
+	\newcommand*{\remarkrefname}{}%
+	\newcommand*{\theoremrefname}{}%
+	\newcommand*{\lemmarefname}{}%
+	\newcommand*{\corollaryrefname}{}%
+	\newcommand*{\examplerefname}{}%
+	\newcommand*{\postulaterefname}{}%
+	\newcommand*{\tcb@cnt@definitionautorefname}{}%
+	\newcommand*{\tcb@cnt@remarkautorefname}{}%
+	\newcommand*{\tcb@cnt@exampleautorefname}{}%
+	\newcommand*{\tcb@cnt@theoremautorefname}{}%
+	\newcommand*{\tcb@cnt@lemmaautorefname}{}%
+	\newcommand*{\tcb@cnt@corollaryautorefname}{}%
+	\newcommand*{\tcb@cnt@postulateautorefname}{}%
+	\TUM@ifpackageloaded[setting]{babel}{% begin: babel loaded
+		\AfterEndPreamble{%
+			\addto\extrasamerican{%
+				\renewcommand*{\proofrefname}{proof}%
+				\renewcommand*{\definitionrefname}{definition}%
+				\renewcommand*{\remarkrefname}{remark}%
+				\renewcommand*{\theoremrefname}{theorem}%
+				\renewcommand*{\lemmarefname}{lemma}%
+				\renewcommand*{\corollaryrefname}{corollary}%
+				\renewcommand*{\examplerefname}{example}%
+				\renewcommand*{\postulaterefname}{postulate}%
+				\renewcommand*{\tcb@cnt@definitionautorefname}{\definitionrefname}%
+				\renewcommand*{\tcb@cnt@remarkautorefname}{\remarkrefname}%
+				\renewcommand*{\tcb@cnt@exampleautorefname}{\examplerefname}%
+				\renewcommand*{\tcb@cnt@theoremautorefname}{\theoremrefname}%
+				\renewcommand*{\tcb@cnt@lemmaautorefname}{\lemmarefname}%
+				\renewcommand*{\tcb@cnt@corollaryautorefname}{\corollaryrefname}%
+				\renewcommand*{\tcb@cnt@postulateautorefname}{\postulaterefname}%
+			}%
+			\addto\extrasenglish{%
+				\renewcommand*{\proofrefname}{proof}%
+				\renewcommand*{\definitionrefname}{definition}%
+				\renewcommand*{\remarkrefname}{remark}%
+				\renewcommand*{\theoremrefname}{theorem}%
+				\renewcommand*{\lemmarefname}{lemma}%
+				\renewcommand*{\corollaryrefname}{corollary}%
+				\renewcommand*{\examplerefname}{example}%
+				\renewcommand*{\postulaterefname}{postulate}%
+				\renewcommand*{\tcb@cnt@definitionautorefname}{\definitionrefname}%
+				\renewcommand*{\tcb@cnt@remarkautorefname}{\remarkrefname}%
+				\renewcommand*{\tcb@cnt@exampleautorefname}{\examplerefname}%
+				\renewcommand*{\tcb@cnt@theoremautorefname}{\theoremrefname}%
+				\renewcommand*{\tcb@cnt@lemmaautorefname}{\lemmarefname}%
+				\renewcommand*{\tcb@cnt@corollaryautorefname}{\corollaryrefname}%
+				\renewcommand*{\tcb@cnt@postulateautorefname}{\postulaterefname}%
+			}%
+			\addto\extrasnaustrian{%
+				\renewcommand*{\proofrefname}{Beweis}%
+				\renewcommand*{\definitionrefname}{Definition}%
+				\renewcommand*{\remarkrefname}{Bemerkung}%
+				\renewcommand*{\theoremrefname}{Theorem}%
+				\renewcommand*{\lemmarefname}{Lemma}%
+				\renewcommand*{\corollaryrefname}{Korollar}%
+				\renewcommand*{\examplerefname}{Beispiel}%
+				\renewcommand*{\postulaterefname}{Postulat}%
+				\renewcommand*{\tcb@cnt@definitionautorefname}{\definitionrefname}%
+				\renewcommand*{\tcb@cnt@remarkautorefname}{\remarkrefname}%
+				\renewcommand*{\tcb@cnt@exampleautorefname}{\examplerefname}%
+				\renewcommand*{\tcb@cnt@theoremautorefname}{\theoremrefname}%
+				\renewcommand*{\tcb@cnt@lemmaautorefname}{\lemmarefname}%
+				\renewcommand*{\tcb@cnt@corollaryautorefname}{\corollaryrefname}%
+				\renewcommand*{\tcb@cnt@postulateautorefname}{\postulaterefname}%
+			 }%
+			\addto\extrasngerman{%
+				\renewcommand*{\proofrefname}{Beweis}%
+				\renewcommand*{\definitionrefname}{Definition}%
+				\renewcommand*{\remarkrefname}{Bemerkung}%
+				\renewcommand*{\theoremrefname}{Theorem}%
+				\renewcommand*{\lemmarefname}{Lemma}%
+				\renewcommand*{\corollaryrefname}{Korollar}%
+				\renewcommand*{\examplerefname}{Beispiel}%
+				\renewcommand*{\postulaterefname}{Postulat}%
+				\renewcommand*{\tcb@cnt@definitionautorefname}{\definitionrefname}%
+				\renewcommand*{\tcb@cnt@remarkautorefname}{\remarkrefname}%
+				\renewcommand*{\tcb@cnt@exampleautorefname}{\examplerefname}%
+				\renewcommand*{\tcb@cnt@theoremautorefname}{\theoremrefname}%
+				\renewcommand*{\tcb@cnt@lemmaautorefname}{\lemmarefname}%
+				\renewcommand*{\tcb@cnt@corollaryautorefname}{\corollaryrefname}%
+				\renewcommand*{\tcb@cnt@postulateautorefname}{\postulaterefname}%
+			 }%
+		}%
+	}{}%
+}%
+%% Definition
+\newtcbtheorem[number within=chapter]{definition}{%
+	\expandafter\MakeUppercase\definitionrefname}{defstyle}{def}%
+%% Remark
+\newtcbtheorem[number within=chapter]{remark}{%
+	\expandafter\MakeUppercase\remarkrefname}{remstyle}{rem}%
+%% Theorem / Lemma / Corollary
+% [use counter from=theorem] works with clevref but not with autoref
+\newcounter{tcb@cnt@theorem}%
+\newtcbtheorem[number within=chapter, use counter=tcb@cnt@theorem]{theorem}{%
+	\expandafter\MakeUppercase\theoremrefname}{theostyle}{theo}%
+\newaliascnt{tcb@cnt@lemma}{tcb@cnt@theorem}%
+\newtcbtheorem[number within=chapter, use counter=tcb@cnt@lemma]{lemma}{%
+	\expandafter\MakeUppercase\lemmarefname}{lemstyle}{lem}%
+\aliascntresetthe{tcb@cnt@lemma}%
+\newaliascnt{tcb@cnt@corollary}{tcb@cnt@theorem}
+\newtcbtheorem[number within=chapter, use counter=tcb@cnt@corollary]{corollary}{%
+	\expandafter\MakeUppercase\corollaryrefname}{corstyle}{cor}%
+\aliascntresetthe{tcb@cnt@lemma}%
+%% Postulate
+\newtcbtheorem[number within=chapter]{postulate}{%
+	\expandafter\MakeUppercase\postulaterefname}{poststyle}{post}%
+%% Proof / Example
+\newtcbtheorem[no counter]{proof}{%
+	\expandafter\MakeUppercase\proofrefname}{proofstyle}{proof}%
+\newtcbtheorem[number within=chapter]{example}{%
+	\expandafter\MakeUppercase\examplerefname}{examstyle}{exam}%
+\makeatother%
+\endinput%
