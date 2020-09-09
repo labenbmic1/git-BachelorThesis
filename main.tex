@@ -25,9 +25,9 @@ captions=figuresignature, captions=tableheading,% --> Position von caption relev
 ]{scrreprt}% KOMAScript
 %% scrbook: openright, towside=true, (part, chapter, section, subsection, etc.)
 %% scrreprt: openany, twoside=false, ((part), chapter, section, subsection, etc.)
-\usepackage[todo=true]{tum-physics}%
-% [debug, debug=true/false*, todo (bool), notecolumn (bool), printlist** (bool)]
-% * If debug=false, ev. load package {lipsum, etc. }
+\usepackage[todo=true, debug=false, notecolumn=false, printlist=false]{tum-physics}%
+% [debug (bool*), todo (bool*), notecolumn (bool*), printlist** (bool*)]
+% * default = false
 % ** Same as \listfiles but prints them at the end of the document. (there can be overfull boxes here, because it prints strings in a table, ignore them.)
 \pdftitle{Detecting Thermal Phase Transitions in a Trapped Ion Quantum Computer}%
 \pdfauthor{Michael Labenbacher}%
@@ -37,14 +37,7 @@ captions=figuresignature, captions=tableheading,% --> Position von caption relev
 %           2.  USE: toc=listof, toc=bibliography, (toc=index (see .sty))
 %               NOT: toc=listofnumbered, toc=bibliographynumbered,
 %           3.  USE: listof=indented, toc=indented,
-%TODO: biblatex (ev. ieee (changes names))
-%TODO: theorem (not needed)
-%TODO: makeidx (if multiple, ev. improve pagebreak-algorithmus (splitidx -- xindy))
-%TODO: titelpage + header translate to englisch
-%TODO: listings package (python, Einstellungen betrachten und verwalten)
 
-%% !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! %%
-%TODO: "Hack"
 \makeatletter%
 \NewExpandableDocumentCommand{\TUMAfterCalculatingTypearea}{}{%
 	%% HOEHE: 1-1 instead of 1-2 (standard typearea)
@@ -61,7 +54,6 @@ captions=figuresignature, captions=tableheading,% --> Position von caption relev
 \AfterCalculatingTypearea{%
 	\TUMAfterCalculatingTypearea%
 }\recalctypearea%
-%% !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! %%
 
 % 1. Run: initexmf --edit-config-file=pdflatex
 % 2. Write+Save into file: main_memory=100000000
@@ -87,7 +79,7 @@ captions=figuresignature, captions=tableheading,% --> Position von caption relev
 %% Single Index: (before \AtEndPreamble)
 \TUMmakeindex{main}{\indexname}%
 \TUMsetindexpreamble{%
-	main={Die unerfahrenen Freunde sind gefährlich. Klugheit ist besser, selbst in einem Feind. Fett hervorgehobene Zahlen geben die Seiten der Erklärung zu einem Stichwort wieder. Normal gedruckte Zahlen verweisen hingegen auf Seiten mit zusätzlichen Informationen zum jeweiligen Stichwort.\par\bigskip}%
+	main={Die unerfahrenen Freunde sind gefährlich. Klugheit ist besser, selbst in einem Feind. Unterstrichene Zahlen (\texttt{idxnumber2}) verweisen auf die Definition, fett hervorgehobene (\texttt{idxnumber(1)}) geben Seiten der Erklärung zum jeweiligen Stichwort wieder und normal gedruckte verweisen hingegen auf Seiten mit zusätzlichen Informationen (Numbers underlined point to the definition; numbers written in boldface refer to the pages where the corresponding entry is described; all others indicate the places where it is used.).\par\bigskip}%
 }%
 %% Multiple Indices:
 %\TUMmakeindex{main}{General Index}%
@@ -108,14 +100,14 @@ captions=figuresignature, captions=tableheading,% --> Position von caption relev
 	\TUMtableofcontents%
 	\mainmatter%
 	%% ************************* (Start) Input the files **************************
-	%\input{chapters/LaTeX-Einfuehrung}% [debug=true, notecolumn=true] remove
-	%\input{chapters/LaTeX-TikZ-Examples}% [debug=true] remove
-	\input{chapters/introduction}% change the following ...
+	%\input{chapters/LaTeX-Einfuehrung}% [debug=true, notecolumn=true, todo=true] remove
+	%\input{chapters/LaTeX-TikZ-Examples}% remove
+	\input{chapters/introduction}% change the following ...	
 	\input{chapters/theoBackground}%
 	\input{chapters/compMethods}%
 	\input{chapters/evaluation}%
 	\input{chapters/conclusionAndPerspective}%
-	\appendix%  activate only if there is an appendix
+	\appendix% activate only if there is an appendix
 	\chapter{Experimental Setup Details}% (only for the purpose of testing
 	\chapter{Additional Measurement Data}% (only for the purpose of testing
 	%% ************************** (End) Input the files ***************************

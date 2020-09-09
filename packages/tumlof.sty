@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}%
-\ProvidesExplPackage {packages/tumlof} {2020-05-24} {\TUMversion}%
+\ProvidesExplPackage {packages/tumlof} {\TUMversiondate} {\TUMversion}%
 	{The list-of-figures-part made by Michael Labenbacher}%
 \ProcessKeysPackageOptions{packages/tumlof}%
 \ExplSyntaxOff%
@@ -32,15 +32,16 @@
 %% \renewcommand*{\captionformat}{:}%
 %% \renewcommand*{\figureformat}{\figurename~\thefigure\autodot}%
 %% \setlength{\cftfigindent}{0pt}%
-\makeatletter%
-\def\TUMlistoffigures%
-{%
-	{%
-		\newpage%
-		\pagestyle{scrheadings}%
-		\listoffigures%
-		\newpage%
-	}%
+\NewDocumentCommand{\TUMlistoffigures}{}{%
+	\newpage%
+	\pagestyle{scrheadings}%
+	\listoffigures%
+	\newpage%
 }%
+\makeatletter%
+\TUM@ifpackageloaded[setting]{microtype}{%
+	\pretocmd{\TUMlistoffigures}{\newpage\microtypesetup{protrusion=false}}{}{}%
+	\apptocmd{\TUMlistoffigures}{\microtypesetup{protrusion=true}\newpage}{}{}%
+}{}%
 \makeatother%
 \endinput%

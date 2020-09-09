@@ -337,7 +337,7 @@
 		\draw[->,thick] (-0.4,0) -- (8,0) coordinate (x axis) node[below] {$x$};
 		\draw[->,thick] (0,-0.7) -- (0,7) coordinate (y axis) node[left] {$y$};
 		\foreach \f in {1.7,2.2,...,6.2} {\pgfmathparse{2*sin(\f r+1)+4} \pgfmathresult
-			\draw[fill=\TUMcolor{16}!20] (\f-\L/2,\pgfmathresult |- x axis) -- (\f-\L/2,\pgfmathresult) -- (\f+\L/2,\pgfmathresult) -- (\f+\L/2,\pgfmathresult |- x axis) -- cycle;}
+			\draw[fill=\TUMcolor{1}!20] (\f-\L/2,\pgfmathresult |- x axis) -- (\f-\L/2,\pgfmathresult) -- (\f+\L/2,\pgfmathresult) -- (\f+\L/2,\pgfmathresult |- x axis) -- cycle;}
 		\node at (\a-\L/2,-5pt) {{$a$}};
 		\node at (\b+\L/2+\L,-5pt) {{$b$}};
 		\draw[color=TUMBlue,thick,smooth,samples=100,domain=1:6.6] plot(\x,{2*sin(\x r+1)+4});

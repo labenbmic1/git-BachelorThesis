@@ -36,10 +36,6 @@
 %% calc = Simple arithmetic in LaTeX commands
 %% needed by authors (pdflscape)
 \RequirePackage{calc}%
-%% silcence = Selective filtering of error messages and warnings
-%% needed for todonotes
-\RequirePackage{silence}%
-\WarningsOff[todonotes]%
 
 
 %% ================================================================================
@@ -59,22 +55,23 @@
 % {revtex4-2}{\def\@TUM@version@hook{003}}{}%
 % {transcript}{\def\@TUM@version@hook{004}}{}%
 % {cheatsheet}{\def\@TUM@version@hook{005}}{}%
-\def\TUMversion{1.0.1.nightly.\@TUM@version@hook000000020013}%
+\def\TUMversion{1.0.1.nightly.\@TUM@version@hook000000020016}%
+\def\TUMversiondate{2020-09-09}%
 \makeatother%
 %% Information of the provided package
 %% ProvidesExplPackage{name of package}{YYYY-MM-DD}{version}{more information}
 %% ExplSyntax is ON after this...
-\ProvidesExplPackage {tum-physics} {2020-05-24} {\TUMversion}%
-	{A (:P) "package" made by Michael Labenbacher, scrbook/scrreprt}%
+\ProvidesExplPackage {tum-physics} {\TUMversiondate} {\TUMversion}%
+	{A "package" made by Michael Labenbacher, scrbook/scrreprt, :P}%
 %% Output on the command-line in the log-file
 \typeout{==========================================================================}
 \typeout{Version:~\TUMversion}%
-\typeout{000~for:~--~paper=a4,11/12pt,twoside,open=right -- scrbook}%
-\typeout{001~for:~--~paper=a4,11/12pt,oneside,open=any -- scrreprt}%
-\typeout{002~for:~--~paper=a4,11/12pt,twoside,open=right -- scrartcl}%
-\typeout{003~for:~--~a4paper,11/12pt,oneside -- revtex4-2}%
-\typeout{004~for:~--~paper=a4,11/12pt,oneside -- scrreprt, (transcript)}%
-\typeout{005~for:~--~paper=a3,11/12pt/tiny,oneside -- scrreprt, (cheatsheet)}%
+\typeout{000~for:~--~paper=a4,11/12pt,twoside,open=right~--~scrbook}%
+\typeout{001~for:~--~paper=a4,11/12pt,oneside,open=any~--~scrreprt}%
+\typeout{002~for:~--~paper=a4,11/12pt,twoside,open=right~--~scrartcl}%
+\typeout{003~for:~--~a4paper,11/12pt,oneside~--~revtex4-2}%
+\typeout{004~for:~--~paper=a4,11/12pt,oneside~--~scrreprt,~(transcript)}%
+\typeout{005~for:~--~paper=a3,11/12pt/tiny,oneside~--~scrreprt,~(cheatsheet)}%
 \typeout{Author:~Labenbacher~Michael}%
 \typeout{==========================================================================}
 %% ----------------------------------- Options ------------------------------------
@@ -450,40 +447,87 @@
 \makeatletter%
 \msg_new:nnn {tum-physics} {if_package_loaded/optional_argument_unknown} {}%
 \msg_new:nnn {tum-physics} {if_package_loaded/can_not_set_settings} {}%
-\NewExpandableDocumentCommand{\TUM@ifpackageloaded}{O{normal}mmm}{%
-	\str_set:Nn \l_optional_argument_str {#1}%
-	\str_case_e:nnTF {\l_optional_argument_str} {{setting}{}{setting=true}{}} {%
-		\str_set:Nn \l_optional_argument_str {setting=true}%
+\NewExpandableDocumentCommand{\TUM@ifpackageloaded}{O{normal}O{and}mmm}{%
+	\str_set:Nn \l_optional_argument_one_str {#1}%
+	\str_set:Nn \l_optional_argument_two_str {#2}%
+	\str_case_e:nnTF {\l_optional_argument_one_str} {{setting}{}{setting=true}{}{true}{}} {%
+		\str_set:Nn \l_optional_argument_one_str {setting=true}%
 	}{}%
-	\clist_set:Nn \l_if_clist {#2}%
-	\bool_set_true:N \l_if_all_packages_loaded_bool%
-	\clist_map_function:NN \l_if_clist \check_if_all_packages_loaded:n%
-	\str_case_e:nnTF {\l_optional_argument_str}{%
-		{setting=false}{%
-			\bool_if:nTF {\l_if_all_packages_loaded_bool}{%
-				#3%
-				\msg_set:nnnn {tum-physics} {if_package_loaded/can_not_set_settings} {%
-					Can~not~set~settings,~because~package/s~{#2}~was/were~loaded~(or/and~package/s~(should)~not~(be)~loaded~normally).%
-				}{}%
-				\msg_warning:nn {tum-physics} {if_package_loaded/can_not_set_settings}%
-			}{#4}%
-		}%
-		{setting=true}{%
-			\bool_if:nTF {\l_if_all_packages_loaded_bool}{#3}{%
-				#4%
-				\msg_set:nnnn {tum-physics} {if_package_loaded/can_not_set_settings} {%
-					Can~not~set~settings,~because~package/s~{#2}~was/were~not~loaded~(or/and~package/s~(should~be)~loaded~normally).%
-				}{}%
-				\msg_warning:nn {tum-physics} {if_package_loaded/can_not_set_settings}%
-			}%
-		}%
+	\str_case_e:nnTF {\l_optional_argument_one_str} {{setting=false}{}{false}{}} {%
+		\str_set:Nn \l_optional_argument_one_str {setting=false}%
+	}{}%
+	\clist_set:Nn \l_if_clist {#3}%
+	\bool_set_true:N \l_optional_argument_two_bool%
+	\str_case_e:nnTF {\l_optional_argument_two_str}{%
+		{and}{\bool_set_true:N \l_optional_argument_two_bool}%
+		{or}{\bool_set_false:N \l_optional_argument_two_bool}%
 	}{}{%
-		\bool_if:nTF {\l_if_all_packages_loaded_bool}{#3}{#4}%
-		\str_if_eq:NNTF {\l_optional_argument_str} {normal} {}{%
-			\msg_set:nnnn {tum-physics} {if_package_loaded/optional_argument_unknown} {%
-				The~optional~argument~[#1]~is~not~defined.~Proceeded~with~[normal].%
-			}{}%
-			\msg_warning:nn {tum-physics} {if_package_loaded/optional_argument_unknown}%
+		\msg_set:nnnn {tum-physics} {if_package_loaded/optional_argument_unknown} {%
+			The~optional~argument~[#2]~is~not~defined.~Proceeded~with~[and].%
+		}{}%
+		\msg_warning:nn {tum-physics} {if_package_loaded/optional_argument_unknown}%
+	}%
+	\bool_if:nTF {\l_optional_argument_two_bool}{%
+		\bool_set_true:N \l_if_all_packages_loaded_bool%
+		\clist_map_function:NN \l_if_clist \check_if_all_packages_loaded:n%
+		\str_case_e:nnTF {\l_optional_argument_one_str}{%
+			{setting=false}{%
+				\bool_if:nTF {\l_if_all_packages_loaded_bool}{%
+					\msg_set:nnnn {tum-physics} {if_package_loaded/can_not_set_settings} {%
+						Can~not~set~settings,~because~package/s~{#3}~was/were~loaded~(or/and~package/s~(should)~not~(be)~loaded~normally).%
+					}{}%
+					\msg_warning:nn {tum-physics} {if_package_loaded/can_not_set_settings}%
+					#4%
+				}{#5}%
+			}%
+			{setting=true}{%
+				\bool_if:nTF {\l_if_all_packages_loaded_bool}{#4}{%
+					\msg_set:nnnn {tum-physics} {if_package_loaded/can_not_set_settings} {%
+						Can~not~set~settings,~because~package/s~{#3}~was/were~not~loaded~(or/and~package/s~(should~be)~loaded~normally).%
+					}{}%
+					\msg_warning:nn {tum-physics} {if_package_loaded/can_not_set_settings}%
+					#5%
+				}%
+			}%
+		}{}{%
+			\str_case_e:nnTF {\l_optional_argument_one_str} {{normal}{}{}{}} {}{%
+				\msg_set:nnnn {tum-physics} {if_package_loaded/optional_argument_unknown} {%
+					The~optional~argument~[#1]~is~not~defined.~Proceeded~with~[normal].%
+				}{}%
+				\msg_warning:nn {tum-physics} {if_package_loaded/optional_argument_unknown}%
+			}%
+			\bool_if:nTF {\l_if_all_packages_loaded_bool}{#4}{#5}%
+		}%
+	}{%
+		\bool_set_false:N \l_if_one_package_loaded_bool%
+		\clist_map_function:NN \l_if_clist \check_if_one_package_loaded:n%
+		\str_case_e:nnTF {\l_optional_argument_one_str}{%
+			{setting=true}{%
+				\bool_if:nTF {\l_if_one_package_loaded_bool}{#4}{%
+					\msg_set:nnnn {tum-physics} {if_package_loaded/can_not_set_settings} {%
+						Can~not~set~settings,~because~one~package/s~{#3}~was/were~not~loaded~(or/and~package/s~(should~be)~loaded~normally).%
+					}{}%
+					\msg_warning:nn {tum-physics} {if_package_loaded/can_not_set_settings}%
+					#5%
+				}%
+			}%
+			{setting=false}{%
+				\bool_if:nTF {\l_if_one_package_loaded_bool}{%
+					\msg_set:nnnn {tum-physics} {if_package_loaded/can_not_set_settings} {%
+						Can~not~set~settings,~because~one~package/s~{#3}~was/were~loaded~(or/and~package/s~(should)~not~(be)~loaded~normally).%
+					}{}%
+					\msg_warning:nn {tum-physics} {if_package_loaded/can_not_set_settings}%
+					#4%
+				}{#5}%
+			}%
+		}{}{%
+			\str_case_e:nnTF {\l_optional_argument_one_str} {{normal}{}{}{}} {}{%
+				\msg_set:nnnn {tum-physics} {if_package_loaded/optional_argument_unknown} {%
+					The~optional~argument~[#1]~is~not~defined.~Proceeded~with~[normal].%
+				}{}%
+				\msg_warning:nn {tum-physics} {if_package_loaded/optional_argument_unknown}%
+			}%
+			\bool_if:nTF {\l_if_one_package_loaded_bool}{#4}{#5}%
 		}%
 	}%
 }%
@@ -503,7 +547,12 @@
 	}%
 }{}%
 \makeatother%
-\bool_if:NTF \l_todo_key_bool {}{%
+\bool_if:NTF \l_todo_key_bool {%
+	%% silcence = Selective filtering of error messages and warnings
+	%% needed for todonotes
+	\TUMRequirePackage{silence}%
+	\WarningsOff[todonotes]%
+}{%
 	\TUMPassOptionsToPackage{disable}{todonotes}%
 }%
 \bool_if:NTF \l_notecolumn_key_bool {%
@@ -555,7 +604,7 @@
 		\tl_set_eq:Nc \l_TUM_fileinfo_tl {ver@#1}%
 		\tl_replace_once:Nnn \l_TUM_fileinfo_tl {~} {&}%
 		\tl_put_right:Nx \l_TUM_filelist_body_tl {%
-			\exp_not:N \seqsplit{#1}%%
+			\exp_not:N \seqsplit{#1}%
 			&%
 			\exp_not:V \l_TUM_fileinfo_tl%
 			\exp_not:N \tabularnewline%
@@ -564,24 +613,26 @@
 }{}%
 \ExplSyntaxOff%
 \makeatletter%
-\AtBeginDocument{%
-	\TUM@ifpackageloaded[normal]{babel,seqsplit}{%
-		\newcommand*{\printfilelistname}{}%
-		\AfterEndPreamble{%
-			\addto\extrasnaustrian{%
-				\renewcommand*{\printfilelistname}{Verwendete Klasse, Packete und weitere Files.}%
+\@ifundefined{printfilelist}{}{%
+	\AtBeginDocument{%
+		\TUM@ifpackageloaded[setting]{babel}{%
+			\newcommand*{\printfilelistname}{}%
+			\AfterEndPreamble{%
+				\addto\extrasnaustrian{%
+					\renewcommand*{\printfilelistname}{Verwendete Klasse, Packete und weitere Files.}%
+				}%
+				\addto\extrasngerman{%
+					\renewcommand*{\printfilelistname}{Verwendete Klasse, Packete und weitere Files.}%
+				}%
+				\addto\extrasamerican{%
+					\renewcommand*{\printfilelistname}{Used Class, Packages and other Files}%
+				}%
+				\addto\extrasenglish{%
+					\renewcommand*{\printfilelistname}{Used Class, Packages and other Files}%
+				}%
 			}%
-			\addto\extrasngerman{%
-				\renewcommand*{\printfilelistname}{Verwendete Klasse, Packete und weitere Files.}%
-			}%
-			\addto\extrasamerican{%
-				\renewcommand*{\printfilelistname}{Used Class, Packages and other Files}%
-			}%
-			\addto\extrasenglish{%
-				\renewcommand*{\printfilelistname}{Used Class, Packages and other Files}%
-			}%
-		}%
-	}{}%
+		}{}%
+	}%
 }%
 \makeatother%
 \ExplSyntaxOn%
@@ -612,8 +663,14 @@
 %% ======================= Loading Packages (ExplSyntaxOff) =======================
 %% ================================================================================
 %% ================================================================================
-\typeout{Missing optimization: imakeidx, glossaries, biblatex, listings, theorems, todonotes}%
-\typeout{Problem with: etex - paracol (can not be loaded at the same time)}%
+\typeout{Possible optimizations: imakeidx, biblatex, listings, theorems, (glossaries)}%
+\typeout{TODO: biblatex (ev. ieee (changes names))}
+\typeout{TODO: theorem (if necessary change style)}
+\typeout{TODO: makeidx (ev. improve pagebreak-algorithmus (splitidx -- xindy))}
+\typeout{TODO: listings package (Einstellungen betrachten und verwalten, z.B. Python)}
+\typeout{TODO: glossaries(-extra) (List ob abbreviations, if necessary use with bib2gls-option)}
+\typeout{TODO: titelpage + header translate to englisch}
+\typeout{Problem with: etex - paracol (can not be loaded at the same time, use first)}%
 %% not loaded:  l3regex, l3docstrips, l3packages, xfp, xtemplate, titlesec,
 %%              marginnote, perpage, hyphenat, extdash, cmap, rotating, dcolumn,
 %%              parskip, alltt, setspace, moreverb, beramono, fullpage, tabulary,
@@ -744,9 +801,9 @@ scaled%
 %% ---------------------------- Sans font in math mode ----------------------------
 %\RequirePackage{sansmath}%
 %\sansmath%
-%% ---------------------------- Bbm font in math mode -----------------------------
-%% bbm = \mathbbm{...}, for example 1 (identity matrix)
-\TUMRequirePackage{bbm}%
+%% --------------------------- + bb-font in math mode  ----------------------------
+%% dsfont = \mathds{}, for example 1 (identity matrix) (more ev. {newtxmath})
+\TUMRequirePackage{dsfont}%
 %% ---------------------------- Upright Greek letters -----------------------------
 %% upgreek = upright greek letters (z.B. \upmu)
 \TUMRequirePackage{upgreek}%
@@ -894,25 +951,34 @@ procnames%
 ]{listings}%
 
 %% todonotes = Marking things to do in a LaTeX document
-\TUMRequirePackage[%
-colorinlistoftodos,%
-textsize=tiny%
-]{todonotes}%
+\ExplSyntaxOn%
+\bool_if:NTF \l_todo_key_bool {%
+	\TUMRequirePackage[%
+	colorinlistoftodos,%
+	textsize=tiny%
+	]{todonotes}%
+}{}%
+\ExplSyntaxOff
 %% marginnote = Notes in the margin, even where \marginpar fails
 %% needed for todonotes (Better would be also to load scrlayer-notecolumn
 %%      if one want to write important stuff into the margin.)
-\TUMRequirePackage{marginnote}%
 \makeatletter%
-\TUM@ifpackageloaded[setting]{marginnote}{%
-	\renewcommand{\marginpar}{\marginnote}%
-	%\reversemarginpar%
+\ExplSyntaxOn%
+\bool_lazy_or:nnTF {\l_todo_key_bool} {\l_notecolumn_key_bool} {%
+	\TUMRequirePackage{marginnote}%
+	\TUM@ifpackageloaded[setting]{marginnote}{%
+		\renewcommand{\marginpar}{\marginnote}%
+		%\reversemarginpar%
+	}{}%
 }{}%
+\ExplSyntaxOff%
 \makeatother%
 
 %% tcolorbox = Coloured boxes, for LaTeX examples and theorems, etc.
 \TUMRequirePackage{verbatim}%
 \TUMRequirePackage{trimspaces}%
 \TUMRequirePackage{environ}%
+\TUMRequirePackage{aliascnt}% for \autoref
 \TUMRequirePackage{tcolorbox}%
 
 %% mhchem = Typeset chemical formulae/equations and Risk and Safety phrases
@@ -968,12 +1034,12 @@ pdftoolbar=true,% (standard)
 pdfmenubar=true,% (standard)
 colorlinks=true,%       %% colored links
 linkbordercolor={1 1 1},%% frame color
-linkcolor=\TUMcolor{2},%%% link color
-urlcolor=\TUMcolor{3},% %% url color
+linkcolor=\TUMcolor{hyp_link},%%% link color
+urlcolor=\TUMcolor{hyp_url},% %% url color
 urlbordercolor={1 1 1},%%% url border color
-menucolor=\TUMcolor{4},%% menu color
+menucolor=\TUMcolor{hyp_menu},%% menu color
 menubordercolor={1 1 1},%%% menu border color
-citecolor=\TUMcolor{1},%% cite color
+citecolor=\TUMcolor{hyp_cite},%% cite color
 citebordercolor={1 1 1},%%% cite border color
 breaklinks=true,%       %% enable breaking links in listof...
 linktocpage=true,%      %% true = only page numbers in toc are hyperlinks + color
@@ -1117,6 +1183,51 @@ numbered,% number the bookmarks
 
 
 %% ================================================================================
+%% ================================= ref/fullref **********************************
+%% ********************************************************************************
+\makeatletter%
+\AtBeginDocument{%
+	\newcommand*{\fullrefword}{}%
+	\TUM@ifpackageloaded[setting]{babel}{%
+		\AfterEndPreamble{%
+			\addto\extrasnaustrian{%
+				\renewcommand*{\fullrefword}{auf Seite}%
+			}%
+			\addto\extrasngerman{%
+				\renewcommand*{\fullrefword}{auf Seite}%
+			}%
+			\addto\extrasamerican{%
+				\renewcommand*{\fullrefword}{on page}%
+			}%
+			\addto\extrasenglish{%
+				\renewcommand*{\fullrefword}{on page}%
+			}%
+		}%
+	}{}%
+}%
+\makeatother%
+\NewDocumentCommand{\fullref}{sm}{%
+	\IfBooleanTF{#1}{%
+		\ref*{#2} \fullrefword~\pageref*{#2}%
+	}{%
+		\ref{#2} \fullrefword~\pageref{#2}%
+	}%
+}%
+\NewDocumentCommand{\fulleqref}{sm}{%
+	\IfBooleanTF{#1}{%
+		\eqref*{#2} \fullrefword~\pageref*{#2}%
+	}{%
+		\eqref{#2} \fullrefword~\pageref{#2}%
+	}%
+}%
+\NewDocumentCommand{\fullautoref}{sm}{%
+	\IfBooleanTF{#1}{%
+		\autoref*{#2} \fullrefword~\pageref*{#2}%
+	}{%
+		\autoref{#2} \fullrefword~\pageref{#2}%
+	}%
+}%
+%% ================================================================================
 %% ============================== line/rule-width's *******************************
 %% ********************************************************************************
 %% Set the width of the rules
@@ -1252,7 +1363,7 @@ numbered,% number the bookmarks
 %% TikZ (external) and pdfpages -- Fix with [optimize command away=\includepdf]
 %% TikZ (external) and geometry (showframe=true) -- Fix see below
 %% TikZ (external) and showframe -- Fix see below
-%% TikZ (external) and nicematrix -- Fix: add locally (nicematrix): \tikzset{external/optimize=false}
+%% TikZ (external) and nicematrix -- Fixed with newest version BUT with older one add locally inside group! {nicematrix}: \tikzexternaldisable 
 %% TikZ (external) and chemformula -- Fix: see below (add locally inside ex.tikz-environment: \setchemformula{tikz-external-disable=false}%)
 %% TikZ (external) and todonotes -- Normal way to fix:
 % Use \tikzset{external/export=false}% (local) and only activate it before a
@@ -1312,9 +1423,9 @@ numbered,% number the bookmarks
 	\setchemformula{tikz-external-disable=true}%
 }{}%
 \makeatother%
-%% \tikzexternaldisable% (global)
-%% \tikzset{external/export=false}% (local)
-%% Standard, locally enable it, if tikzexternalize = true (external/export=true)
+%% \tikzexternaldisable* can (global/group) disable externalizations (Use this inside groups!, else one needs \tikzexternalize again.).
+%% \tikzset{external/export=false}** can (local) REactivate the \tikzexternalize[...] given bevore. (* stronger than **)
+%% Standard: globally \tikzexternalize[..] and locally "REenable" it {external/export=true} AND locally "FullDisable" it with \tikzexternaldisable
 \makeatletter%
 \TUM@ifpackageloaded[setting]{pgfplotstable}{%
 	\usepgfplotslibrary{fillbetween}% fuer z.~B. den Befehl fillbetween
@@ -1352,174 +1463,8 @@ numbered,% number the bookmarks
 %% ********************************************************************************
 \makeatletter%
 \TUM@ifpackageloaded[setting]{tcolorbox}{%
-%% loads: listings
-\TUM@ifpackageloaded[setting]{listings}{%
-	\tcbuselibrary{listings}%
+	\TUMRequirePackage{packages/tumtcb}%
 }{}%
-%% loads: amsmath
-\tcbuselibrary{theorems}%
-%% loads: tikz
-\tcbuselibrary{skins}%
-%% documentation: disables linkcolor, etc. from hyperref (extra macro then, etc.)
-%\tcbuselibrary{documentation}%
-%% breakable: option breakable
-\tcbuselibrary{breakable}%
-%% xparse: to use \DeclareTColorBox
-\tcbuselibrary{xparse}%
-%% equbox ... box for equations \begin{equbox}[title][opt.par.] ... \end{equbox}
-%% Arguments same as "xparse"-package
-\DeclareTColorBox[]{equbox}{+oO{}}{%
-	title=\IfValueTF{#1}{#1}{},%
-	fonttitle=\bfseries\boldmath,%
-	coltitle=\TUMcolor{16}, coltext=\TUMcolor{17},%
-	%% ***** no box:
-	empty, borderline={\rulewidth}{0pt}{\TUMcolor{18}},%
-	%% *****
-	%% titlerule=0mm,%
-	%% boxrule=0mm,%
-	%% bottomrule=\rulewidth, toprule=\rulewidth,%
-	%% leftrule=\rulewidth, rightrule=\rulewidth,%
-	arc=0mm,%
-	left=0mm,right=0mm,% only boxsep
-	#2%
-}%
-%%  1. Definition%
-%%  2. Bemerkung%
-%%  3. Theorem (Satz)%
-%%  3. Lemma (Hilfssatz), (Unterscheidung Theorem - Lemma ist subjektiv!)%
-%%      3.1 Korollar (Triviale Folgerung eines Satzes)%
-%%  (4.) Beweis%
-%%  5. Beispiel%
-%% proof exists, if amsthm is loaded%
-\ifdefined\proof%
-	\let\proof\relax\let\endproof\relax%
-\else\fi%
-\ifdefined\qed%
-	\let\qed\relax%
-\else\fi%
-\TUM@ifpackageloaded[setting]{amssymb}{%
-	\newcommand*{\qed}{\ensuremath{\square}}%
-}{}%
-%% \newtcbtheorem[use counter from= (z. B.) <(other) name>, <init options>]
-%% {<name>}{<displayed name>}{<options>}{<prefix>}, prefix for nameref
-\tcbset{%
-defstyle/.style={%
-	theorem style=plain,%
-	separator sign none,% standard --
-	description delimiters parenthesis,% standrad -- ()
-	terminator sign colon,% standard -- :
-	label separator=:,% standard -- :
-	%% ***** no box:
-	empty,%
-	%% *****
-	%% enhanced,%
-	%% colframe=\TUMcolor{1},%
-	coltitle=\TUMcolor{19},%
-	description color=\TUMcolor{20},%
-	fonttitle=\upshape\bfseries\boldmath,% titlefont (z. B.: Theorem 1.0)
-	description font=\upshape\bfseries\boldmath,% description font (z. B.: "Titel")
-	fontupper=\itshape,% textfont
-	%% boxrule=\rulewidth, arc=0mm,%
-	width=\linewidth, left skip=0mm, right skip=0mm,%
-	boxsep=0mm, left*=0mm, right*=0mm, bottom=0mm, top=0mm,%
-	},%
-remstyle/.style={%
-	defstyle,%
-	breakable%
-	},%
-theostyle/.style={%
-	defstyle%
-	},%
-lemstyle/.style={%
-	defstyle%
-	},%
-corstyle/.style={%
-	defstyle%
-	},%
-proofstyle/.style={%
-	defstyle,%
-	breakable,%
-	after upper={\hfill\qed}%
-	},%
-examstyle/.style={%
-	defstyle,%
-	breakable%
-	}%
-}%
-\AtBeginDocument{%
-	\ifdefined\proofrefname\let\proofrefname\relax\else\fi%
-	\ifdefined\definitionrefname\let\definitionrefname\relax\else\fi%
-	\ifdefined\remarkrefname\let\remarkrefname\relax\else\fi%
-	\ifdefined\theoremrefname\let\theoremrefname\relax\else\fi%
-	\ifdefined\lemmarefname\let\lemmarefname\relax\else\fi%
-	\ifdefined\corollaryrefname\let\corollaryrefname\relax\else\fi%
-	\ifdefined\examplerefname\let\examplerefname\relax\else\fi%
-	\newcommand*{\proofrefname}{}%
-	\newcommand*{\definitionrefname}{}%
-	\newcommand*{\remarkrefname}{}%
-	\newcommand*{\theoremrefname}{}%
-	\newcommand*{\lemmarefname}{}%
-	\newcommand*{\corollaryrefname}{}%
-	\newcommand*{\examplerefname}{}%
-	\newcommand*{\postulaterefname}{}%
-	\TUM@ifpackageloaded[setting]{babel}{% begin: babel loaded
-		\AfterEndPreamble{%
-			\addto\extrasamerican{%
-				\renewcommand*{\proofrefname}{proof}%
-				\renewcommand*{\definitionrefname}{definition}%
-				\renewcommand*{\remarkrefname}{remark}%
-				\renewcommand*{\theoremrefname}{theorem}%
-				\renewcommand*{\lemmarefname}{lemma}%
-				\renewcommand*{\corollaryrefname}{corollary}%
-				\renewcommand*{\examplerefname}{example}%
-			}%
-			\addto\extrasenglish{%
-				\renewcommand*{\proofrefname}{proof}%
-				\renewcommand*{\definitionrefname}{definition}%
-				\renewcommand*{\remarkrefname}{remark}%
-				\renewcommand*{\theoremrefname}{theorem}%
-				\renewcommand*{\lemmarefname}{lemma}%
-				\renewcommand*{\corollaryrefname}{corollary}%
-				\renewcommand*{\examplerefname}{example}%
-			}%
-			\addto\extrasnaustrian{%
-				\renewcommand*{\proofrefname}{Beweis}%
-				\renewcommand*{\definitionrefname}{Definition}%
-				\renewcommand*{\remarkrefname}{Bemerkung}%
-				\renewcommand*{\theoremrefname}{Theorem}%
-				\renewcommand*{\lemmarefname}{Lemma}%
-				\renewcommand*{\corollaryrefname}{Korollar}%
-				\renewcommand*{\examplerefname}{Beispiel}%
-			 }%
-			\addto\extrasngerman{%
-				\renewcommand*{\proofrefname}{Beweis}%
-				\renewcommand*{\definitionrefname}{Definition}%
-				\renewcommand*{\remarkrefname}{Bemerkung}%
-				\renewcommand*{\theoremrefname}{Theorem}%
-				\renewcommand*{\lemmarefname}{Lemma}%
-				\renewcommand*{\corollaryrefname}{Korollar}%
-				\renewcommand*{\examplerefname}{Beispiel}%
-			 }%
-		}%
-	}{}%
-}%
-\newtcbtheorem[number within=chapter]{definition}{%
-	\expandafter\MakeUppercase\definitionrefname}{defstyle}{def}%
-\newtcbtheorem[number within=chapter]{remark}{%
-	\expandafter\MakeUppercase\remarkrefname}{remstyle}{rem}%
-\newtcbtheorem[number within=chapter]{theorem}{%
-	\expandafter\MakeUppercase\theoremrefname}{theostyle}{theo}%
-\newtcbtheorem[use counter from=theorem]{lemma}{%
-	\expandafter\MakeUppercase\lemmarefname}{lemstyle}{lem}%
-\newtcbtheorem[use counter from=theorem]{corollary}{%
-	\expandafter\MakeUppercase\corollaryrefname}{corstyle}{cor}%
-\newtcbtheorem[no counter]{proof}{%
-	\expandafter\MakeUppercase\proofrefname}{proofstyle}{proof}%
-\newtcbtheorem[number within=chapter]{example}{%
-	\expandafter\MakeUppercase\examplerefname}{examstyle}{exam}%
-%% No autoref supported, if necessary define it with \tcb@cnt@theoremautorefname...
-%% , but if use counter from is used, then a new alias must be defined.
-}{}% end: ifpackageloaded
 \makeatother%
 %% ================================================================================
 %% ======================== style-commands (ExplSyntaxOn) *************************
@@ -1528,12 +1473,6 @@ examstyle/.style={%
 \msg_new:nnn {tum-physics} {style/key_not_found} {}%
 \msg_new:nnn {tum-physics} {style/style_not_defined} {}%
 \prop_new:N \l_font_prop%
-\prop_set_from_keyval:Nn \l_font_prop {%
-	idxnumber = {\boldmath\bfseries\upshape},%
-	1 = {\unboldmath\mdseries\itshape\leavevmode\color{\TUMcolor{27}}},% for emphasing text...
-	2 = {\unboldmath\mdseries\itshape\leavevmode\color{\TUMcolor{28}}},%
-	3 = {\unboldmath\mdseries\itshape\leavevmode\color{\TUMcolor{29}}},%
-}%
 \NewDocumentCommand{\TUMfont}{m}{%
 	\prop_if_in:NnTF \l_font_prop {#1} {%
 		\prop_item:Nn \l_font_prop {#1}%
@@ -1568,24 +1507,30 @@ examstyle/.style={%
 \NewDocumentCommand{\removeTUMfont}{m}{%
 	\prop_remove:Nn \l_font_prop {#1}%
 }%
+\prop_set_from_keyval:Nn \l_font_prop {%
+	% "Staerke", "Variante", (und ev. "Familie" (standard), und "Farbe", und "Groesse", und "hypersetup/style")
+	package = {\unboldmath\mdseries\upshape\urlstyle{tt}},%
+	idxnumber1 = {\boldmath\bfseries\upshape},%
+	idxnumber2 = {\unboldmath\mdseries\upshape},%
+	1 = {\unboldmath\mdseries\itshape\leavevmode\color{\TUMcolor{1}}},% for emphasing text...
+	2 = {\unboldmath\mdseries\itshape\leavevmode\color{\TUMcolor{2}}},%
+	3 = {\unboldmath\mdseries\itshape\leavevmode\color{\TUMcolor{3}}},%
+}%
+\newTUMfont{idxnumber}{\TUMfont{idxnumber1}}%
 \NewExpandableDocumentCommand{\TUMstyle}{mm}%
 {{%
 	\str_case_e:nnTF {#1} {%
 		{package}{%
-			{\urlstyle{tt}\nolinkurl{#2}}%
+			{\TUMfont{package}\nolinkurl{#2}}%
 		}%
-		{1}{%
-			{\TUMfont{1}#2}%
-		}%
-		{2}{%
-			{\TUMfont{2}#2}%
-		}%
+		{1}{{\TUMfont{1}#2}}%
+		{2}{{\TUMfont{2}#2}}%
 		{3}{%
 			\fbox{\TUMfont{3}#2}%
 		}%
-		{idxnumber}{%
-			{\TUMfont{idxnumber}#2}%
-		}%
+		{idxnumber}{{\TUMfont{idxnumber}#2}}%
+		{idxnumber1}{{\TUMfont{idxnumber1}#2}}%
+		{idxnumber2}{{\underline{\TUMfont{idxnumber2}#2}}}%
 	}{}{#2%
 		\msg_set:nnnn {tum-physics} {style/style_not_defined} {%
 			Style~(#1)~not~defined.%
@@ -1732,7 +1677,7 @@ examstyle/.style={%
 \makeatletter%
 \NewDocumentCommand{\todoincludegraphics}{sO{}m}{}%
 \AtBeginDocument{%
-	\TUM@ifpackageloaded[setting]{todonotes}{%
+	\TUM@ifpackageloaded[normal]{todonotes}{%
 		\RenewDocumentCommand{\todoincludegraphics}{sO{}m}{%
 			\if@todonotes@disabled\else%
 				\phantomsection%
@@ -1755,10 +1700,6 @@ examstyle/.style={%
 \setkomafont{caption}{\normalsize}%
 \KOMAoption{captions}{bottombeside}%
 \makeatletter%
-\TUM@ifpackageloaded[setting=false]{subfig}{%
-	\renewcommand\p@subfigure{\thefigure.}%
-	\renewcommand\p@subtable{\thetable.}%
-}{}%
 \TUM@ifpackageloaded[setting]{caption}{%
 	\TUM@ifpackageloaded[setting]{hyperref}{%
 		\captionsetup{hypcap=true}%
@@ -1770,7 +1711,7 @@ examstyle/.style={%
 	\captionsetup[subfigure]{labelformat=simple,labelsep=period,listformat=simple}%
 	\captionsetup{format=plain}%
 }{}%
-\TUM@ifpackageloaded[setting]{subcaption}{%
+\TUM@ifpackageloaded[setting][or]{subcaption,subfig}{%
 	\renewcommand\p@subfigure{\thefigure.}%
 	\renewcommand\p@subtable{\thetable.}%
 }{}%
@@ -1830,8 +1771,27 @@ examstyle/.style={%
 %% ================================================================================
 %% =================================== Abstract ***********************************
 %% ********************************************************************************
-\renewcaptionname{american}{\abstractname}{Abstract}%
-\renewcaptionname{naustrian}{\abstractname}{Resümee}%
+\makeatletter%
+\AtBeginDocument{%
+	\@ifundefined{abstractname}{\newcommand*{\abstractname}{}}{\renewcommand*{\abstractname}{}}%
+	\TUM@ifpackageloaded[setting]{babel}{% begin: babel loaded
+		\AfterEndPreamble{%
+			\addto\extrasnaustrian{%
+				\renewcommand*{\abstractname}{Resümee}%
+			}%
+			\addto\extrasngerman{%
+				\renewcommand*{\abstractname}{Resümee}%
+			}%
+			\addto\extrasamerican{%
+				\renewcommand*{\abstractname}{Abstract}%
+			}%
+			\addto\extrasenglish{%
+				\renewcommand*{\abstractname}{Abstract}%
+			}%
+		}%
+	}{}%
+}%
+\makeatother%
 \ifcsmacro{abstract}{%
 	\renewenvironment{abstract}{%
 		\addchap{\abstractname}%
@@ -1963,21 +1923,27 @@ pagenumberbox=\TUM@pagenumberbox% necessary if pagenumber > 100 (and e.q. bold-f
 \TUM@ifpackageloaded[setting]{imakeidx}{%
 	\TUMRequirePackage{packages/tumidx}%
 }{}%
-\TUM@ifpackageloaded[setting]{todonotes}{%
+\TUM@ifpackageloaded[normal]{todonotes}{%
 	\TUMRequirePackage{packages/tumtdo}%
 }{}%
 \makeatother%
 \TUMRequirePackage{packages/tumtitlepage}%
 %% ================================================================================
-%% ===================================== TUM ? ====================================
+%% =========================== Tolerance, Penalty, etc. ===========================
 %% ********************************************************************************
-%\tolerance 1414
-%\hbadness 1414
-%\emergencystretch 1.5em
-%\hfuzz 0.3pt
-\widowpenalty=10000%
-\clubpenalty=10000%
-\displaywidowpenalty=10000%
-%\vfuzz \hfuzz
+%% \tolerance = low tolerance values will cause LATEX not to tolerate uneven spacing between words
+\makeatletter%
+\tolerance 141% max = 10000 (default: 200, example: 1414*, je geringer, desto "schöner", aber zu gering --> no auto line/page breaks...)
+\hbadness 141% max = 10000 (default: , example: 1414*, je geringer, desto "schöner", aber zu gering --> no forced line/page breaks...)
+\emergencystretch \z@% (default: \z@ (\z@, zero, 0pt), example: 1.5em*)
+\hfuzz 0.1\p@% (default: 0.1\p@ (\p@, one, 1pt), example: 0.3pt*, \hfuzz, \vfuzz do not affect the typesetting in any way: they stops TeX complaining if the box is only slightly overfull.)
+\vfuzz 0.1\p@% (default: 0.1\p@)
+\makeatother%
+%% If one uses *, then warnings should be taken seriously, because this are "limits" in the correspondending direction.
+\vfuzz\hfuzz%
+%% Hurenkinder und Schusterjungen fast komplett unterdrücken (https://en.wikibooks.org/wiki/TeX/penalty):
+\widowpenalty=10000% penalty for creating a widow line (Hure), at top page (defualt: 150, je höher, desto weniger (Huren))
+\clubpenalty=10000% penalty for creating a club line (Schuster), at bottom page (default: 150, je höher, desto weniger (Schuster))
+\displaywidowpenalty=10000% ditto, before display (default: 50, )
 \raggedbottom%
 \endinput%

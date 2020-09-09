@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}%
-\ProvidesExplPackage {packages/tumidx} {2020-05-24} {\TUMversion}%
+\ProvidesExplPackage {packages/tumidx} {\TUMversiondate} {\TUMversion}%
 	{The index-part made by Michael Labenbacher}%
 \ProcessKeysPackageOptions{packages/tumidx}%
 \ExplSyntaxOff%
@@ -78,9 +78,9 @@ delim_r "--"
 %% Do it like this:, or set the options in TeXstudio
 \NewDocumentCommand{\TUMmakeindex}{omm}{%
 	\IfValueTF{#1}{%
-		\makeindex[name={#2},title={#3},options={-s index.ist},#1]%
+		\makeindex[name={#2},title={#3},options={-s index.ist -r},#1]%
 	}{%
-		\makeindex[name={#2},title={#3},options={-s index.ist}]%
+		\makeindex[name={#2},title={#3},options={-s index.ist -r}]%
 	}%
 	\TUMmakeindexExpl{#2}%
 }%

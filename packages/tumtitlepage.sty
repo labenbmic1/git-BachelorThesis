@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}%
-\ProvidesExplPackage {packages/tumtitlepage} {2020-05-24} {\TUMversion}%
+\ProvidesExplPackage {packages/tumtitlepage} {\TUMversiondate} {\TUMversion}%
 	{The titlepage-part made by Michael Labenbacher}%
 \ProcessKeysPackageOptions{packages/tumtitlepage}%
 %% ExplSyntax is ON
@@ -187,34 +187,32 @@
 \ExplSyntaxOff%
 %% header%
 \newkomafont{header}{\unboldmath\mdseries\upshape\normalsize%
-	\color{\TUMcolor{21}}}%
+	\color{\TUMcolor{titlepage_header}}}%
 \TUMdefinemacro[header]{header}%
 %% title%
 \setkomafont{title}{\boldmath\bfseries\upshape\if@twoside\LARGE\else\huge\fi% ?
-	\color{\TUMcolor{22}}}%
+	\color{\TUMcolor{titlepage_title}}}%
 \TUMdefinemacro[normal]{title}%
 %% subtitle%
 \setkomafont{subtitle}{\boldmath\bfseries\upshape\huge%
-	\color{\TUMcolor{23}}}%
+	\color{\TUMcolor{titlepage_subtitle}}}%
 \TUMdefinemacro[normal]{subtitle}%
 %% author%
 \setkomafont{author}{\unboldmath\mdseries\upshape\large%
-	\color{\TUMcolor{24}}\hypersetup{urlcolor=\TUMcolor{24}}}%
+	\color{\TUMcolor{titlepage_author}}\hypersetup{urlcolor=\TUMcolor{titlepage_author}}}%
 \newkomafont{authortext}{\unboldmath\mdseries\upshape\large}%
 \TUMdefinemacro[author]{author}%
 %% supervisor%
 \newkomafont{supervisor}{\usekomafont{author}%
-	\color{\TUMcolor{25}}\hypersetup{urlcolor=\TUMcolor{25}}}%
+	\color{\TUMcolor{titlepage_supervisor}}\hypersetup{urlcolor=\TUMcolor{titlepage_supervisor}}}%
 \newkomafont{supervisortext}{\usekomafont{authortext}}%
 \TUMdefinemacro[supervisor]{supervisor}%
 %% first assessor%
-\newkomafont{firstassessor}{\usekomafont{author}%
-	\color{\TUMcolor{25}}\hypersetup{urlcolor=\TUMcolor{25}}}%
+\newkomafont{firstassessor}{\usekomafont{supervisor}}%
 \newkomafont{firstassessortext}{\unboldmath\mdseries\upshape\normalsize}%
 \TUMdefinemacro[assessor]{firstassessor}%
 %% second assessor%
-\newkomafont{secondassessor}{\usekomafont{author}%
-	\color{\TUMcolor{25}}\hypersetup{urlcolor=\TUMcolor{25}}}%
+\newkomafont{secondassessor}{\usekomafont{supervisor}}%
 \newkomafont{secondassessortext}{\usekomafont{firstassessortext}}%
 \TUMdefinemacro[assessor]{secondassessor}%
 %% topic%
@@ -223,7 +221,7 @@
 \TUMdefinemacro[topic]{topic}%
 %% submissiondate%
 \newkomafont{submissiondate}{\unboldmath\mdseries\upshape\normalsize%
-	\color{\TUMcolor{26}}}%
+	\color{\TUMcolor{titlepage_submissiondate}}}%
 \TUMdefinemacro[date]{submissiondate}%
 %% ===================================== Text =====================================
 \TUMauthortext[american]{Bachelor Thesis\\by\bigbreak}%

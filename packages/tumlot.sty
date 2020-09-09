@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}%
-\ProvidesExplPackage {packages/tumlot} {2020-05-24} {\TUMversion}%
+\ProvidesExplPackage {packages/tumlot} {\TUMversiondate} {\TUMversion}%
 	{The list-of-table-part made by Michael Labenbacher}%
 \ProcessKeysPackageOptions{packages/tumlot}%
 \ExplSyntaxOff%
@@ -31,15 +31,16 @@
 %% ========================== Definition of the TUM-LOT ===========================
 %% \renewcommand*{\tableformat}{\tablename~\thetable\autodot}%
 %% \setlength{\cfttabindent}{0pt}%
-\makeatletter%
-\def\TUMlistoftables%
-{%
-	{%
-		\newpage%
-		\pagestyle{scrheadings}%
-		\listoftables%
-		\newpage%
-	}%
+\NewDocumentCommand{\TUMlistoftables}{}{%
+	\newpage%
+	\pagestyle{scrheadings}%
+	\listoftables%
+	\newpage%
 }%
+\makeatletter%
+\TUM@ifpackageloaded[setting]{microtype}{%
+	\pretocmd{\TUMlistoftables}{\newpage\microtypesetup{protrusion=false}}{}{}%
+	\apptocmd{\TUMlistoftables}{\microtypesetup{protrusion=true}\newpage}{}{}%
+}{}%
 \makeatother%
 \endinput%

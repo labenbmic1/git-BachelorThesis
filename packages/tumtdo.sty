@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}%
-\ProvidesExplPackage {packages/tumtdo} {2020-05-24} {\TUMversion}%
+\ProvidesExplPackage {packages/tumtdo} {\TUMversiondate} {\TUMversion}%
 	{The todonotes-part made by Michael Labenbacher}%
 \ProcessKeysPackageOptions{packages/tumtdo}%
 \ExplSyntaxOff%
@@ -37,24 +37,24 @@
 %% ========================== Definition of the TUM-TDO ===========================
 \setuptodonotes{line, noinline, list}%
 \NewDocumentCommand{\todoUnsure}{O{}m}{%
-	\todo[linecolor=\TUMcolor{30}, backgroundcolor=\TUMcolor{30}!25,%
-		bordercolor=\TUMcolor{30},#1]{#2}%
+	\todo[linecolor=\TUMcolor{todo-1}, backgroundcolor=\TUMcolor{todo-1}!25,%
+		bordercolor=\TUMcolor{todo-1},#1]{#2}%
 }%
 \NewDocumentCommand{\todoChange}{O{}m}{%
-	\todo[linecolor=\TUMcolor{31}, backgroundcolor=\TUMcolor{31}!25,%
-		bordercolor=\TUMcolor{31},#1]{#2}%
+	\todo[linecolor=\TUMcolor{todo-2}, backgroundcolor=\TUMcolor{todo-2}!25,%
+		bordercolor=\TUMcolor{todo-2},#1]{#2}%
 }%
 \NewDocumentCommand{\todoInfo}{O{}m}{%
-	\todo[linecolor=\TUMcolor{32}, backgroundcolor=\TUMcolor{32}!25,%
-		bordercolor=\TUMcolor{32},#1]{#2}%
+	\todo[linecolor=\TUMcolor{todo-3}, backgroundcolor=\TUMcolor{todo-3}!25,%
+		bordercolor=\TUMcolor{todo-3},#1]{#2}%
 }%
 \NewDocumentCommand{\todoImprovement}{O{}m}{%
-	\todo[linecolor=\TUMcolor{33}, backgroundcolor=\TUMcolor{33}!25,%
-		bordercolor=\TUMcolor{33},#1]{#2}%
+	\todo[linecolor=\TUMcolor{todo-4}, backgroundcolor=\TUMcolor{todo-4}!25,%
+		bordercolor=\TUMcolor{todo-4},#1]{#2}%
 }%
 \NewDocumentCommand{\todoMissing}{O{}m}{%
-	\todo[linecolor=\TUMcolor{34}, backgroundcolor=\TUMcolor{34}!25,%
-		bordercolor=\TUMcolor{34},#1]{#2}%
+	\todo[linecolor=\TUMcolor{todo-5}, backgroundcolor=\TUMcolor{todo-5}!25,%
+		bordercolor=\TUMcolor{todo-5},#1]{#2}%
 }%
 \makeatletter%
 \renewcommand{\listoftodos}[1][\@todonotes@todolistname]{%
@@ -63,14 +63,15 @@
 		\todototoc\@starttoc{tdo}%
 	\fi%
 }%
-\def\TUMlistoftodos%
-{%
-	{%
-		\newpage%
-		\pagestyle{scrheadings}%
-		\listoftodos%
-		\newpage%
-	}%
+\NewDocumentCommand{\TUMlistoftodos}{}{%
+	\newpage%
+	\pagestyle{scrheadings}%
+	\listoftodos%
+	\newpage%
 }%
+\TUM@ifpackageloaded[setting]{microtype}{%
+	\pretocmd{\TUMlistoftodos}{\newpage\microtypesetup{protrusion=false}}{}{}%
+	\apptocmd{\TUMlistoftodos}{\microtypesetup{protrusion=true}\newpage}{}{}%
+}{}%
 \makeatother%
 \endinput%

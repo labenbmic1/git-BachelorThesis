@@ -308,6 +308,8 @@ Messwerttabelle \ref{tab:Tabellen:Messwerttabelle} mit \TUMstyle{package}{siunit
 \end{longtable}%
 \par\medskip%
 Nun eine Tabelle mit \texttt{tabular} (with \TUMstyle{package}{tabularx} you can not \texttt{externalize} TikZ), mathematischem Inhalt, TikZ-Bild und vertikaler Zentrierung (ohne \texttt{table}):\par\noindent%
+{% Group: Reactivate externalization 
+\tikzset{external/export=true}%
 \begin{tabular}{@{}C{0.75\linewidth-\tabcolsep}N{0.25\linewidth-\tabcolsep}@{}}%
 {%
 \begin{tabular}{%
@@ -320,7 +322,7 @@ Nun eine Tabelle mit \texttt{tabular} (with \TUMstyle{package}{tabularx} you can
 	Zu\-sam\-men\-hangs\-kom\-po\-nen\-te 
 	& Gruppe & \det(\Lambda) & \sgn(\Lambda\indices{^0_0}) & \in \\
 	\midrule
-	$\mathcal{L}^\uparrow_+$		& ja 	& 1 & 1 & 1_4 \\
+	$\mathcal{L}^\uparrow_+$		& ja 	& 1 & 1 & \mathds{1}_4 \\
 	$\mathcal{L}^\uparrow_-$		& nein 	& -1 & 1 & P \\
 	$\mathcal{L}^\downarrow_+$ 		& nein 	& 1 & -1 & PT \\
 	$\mathcal{L}^\downarrow_-$ 		& nein 	& -1 & -1 & T \\
@@ -328,7 +330,6 @@ Nun eine Tabelle mit \texttt{tabular} (with \TUMstyle{package}{tabularx} you can
 \end{tabular}%
 }%
 &%
-\tikzset{external/export=true}%
 \tikzsetnextfilename{Figure-Einfuehrung-1}%
 \begin{tikzpicture}[x=1mm,y=1mm]%
 	\ifdefined\tikZlength\else\newlength{\tikZlength}\fi
@@ -346,9 +347,26 @@ Nun eine Tabelle mit \texttt{tabular} (with \TUMstyle{package}{tabularx} you can
 	\draw[-latex] (nlu) -- node[above] {$P$} (nru);
 	\draw[-latex] (nro) -- node[left] {$T$} (nru);
 \end{tikzpicture}%
-\tikzset{external/export=false}%
-\end{tabular}%
-
+\end{tabular}\\%
+}%
+Now without externalization:\\%
+\tikzsetnextfilename{Figure-Einfuehrung-X}% Should not be externalized.
+\begin{tikzpicture}[x=1mm,y=1mm, color=red]%
+	\ifdefined\tikZlength\else\newlength{\tikZlength}\fi
+	\setlength{\tikZlength}{0.15\linewidth}
+	\coordinate (lo) at (-\tikZlength/2,\tikZlength/2);
+	\coordinate (ru) at (\tikZlength/2,-\tikZlength/2);
+	\coordinate (lu) at (lo |- ru);
+	\coordinate (ro) at (lo -| ru);
+	\node (nlo) at (lo) {$\mathcal{L}^\uparrow_+$};
+	\node (nlu) at (lu) {$\mathcal{L}^\downarrow_-$};
+	\node (nro) at (ro) {$\mathcal{L}^\uparrow_-$};
+	\node (nru) at (ru) {$\mathcal{L}^\downarrow_+$};
+	\draw[-latex] (nlo) -- node[below] {$P$} (nro);
+	\draw[-latex] (nlo) -- node[right] {$T$} (nlu);
+	\draw[-latex] (nlu) -- node[above] {$P$} (nru);
+	\draw[-latex] (nro) -- node[left] {$T$} (nru);
+\end{tikzpicture}%
 
 \chapter{Aufzählungen mit \texttt{enumerate, itemize}\texorpdfstring{, \url{https://github.com/labenbmic1}}{}}
 \label{chap:Aufzaehlungen}
@@ -396,22 +414,24 @@ Abbildung & \autoref{fig:Gleitumgebungen:Grafik mit subcaptionbox ohne captionse
 Abbildung & \autoref{subfig:Gleitumgebungen:mit subcaptionbox:D} & 
 \ref{subfig:Gleitumgebungen:mit subcaptionbox:D} &
 \subref{subfig:Gleitumgebungen:mit subcaptionbox:D}\\
-Theorem & & \ref{theo:Theorem 1:theorem 1}& \\
-Lemma &  & \ref{lem:Theorem 1:lemma 1}& \\
-Korollar & & \ref{cor:Theorem 1:corollary 1}& \\
-Definition &  & \ref{def:Theorem 1:definition 1}& \\
-Remark & & \ref{rem:Theorem 1:remark 1}& \\
-Formel & \autoref{equ:Mathematik:sub-gesamt} & \eqref{equ:Mathematik:sub-gesamt} & \eqref{subequ:Mathematik:sub-b} \\
+Theorem & \autoref{theo:Theorem 1:theorem 1} & \ref{theo:Theorem 1:theorem 1}& \\
+Lemma & \autoref{lem:Theorem 1:lemma 1} & \ref{lem:Theorem 1:lemma 1}& \\
+Korollar & \autoref{cor:Theorem 1:corollary 1} & \ref{cor:Theorem 1:corollary 1}& \\
+Definition &  \autoref{def:Theorem 1:definition 1} & \ref{def:Theorem 1:definition 1}& \\
+Example &  \autoref{exam:Theorem 1:example 1} & \ref{exam:Theorem 1:example 1}& \\
+Remark & \autoref{rem:Theorem 1:remark 1} & \ref{rem:Theorem 1:remark 1}& \\
+Formel &  & \eqref{equ:Mathematik:sub-gesamt} & \eqref{subequ:Mathematik:sub-b} \\
 Subsec.~\ref{subsec:Einfuehrung:Satzspiegelberechnung:Grundlagen:Weiterentwicklung} on page && \pageref{subsec:Einfuehrung:Satzspiegelberechnung:Grundlagen:Weiterentwicklung} &\\
 	\end{tabular}
 \end{table}
-Vom Buch: \cite{LabenbacherTeX}, oder siehe Fußnoten: Mit ref: \ref{footnote:Tabellen:A footnote in the tableentry-firsthead}, Mit \verb|\footref| (KomaScript): \footref{footnote:Tabellen:A footnote in the tableentry-firsthead} (Bei Fußnoten kein autoref, da dies nicht unterstützt wird!). Der Style von \verb|\eqref| wird nicht beeinflusst im gegensatz zu \verb|\ref|, er ist immer \verb|\textup{...}| und \verb|\normalfont|. Würde man dies ändern wollen, d.h. so dass sich der Befehl wie \verb|\ref| verhält so müsste man in die Preamble folgendes ergänzen (Einfach von \TUMstyle{package}{amsmath} kopiert ohne \verb|\textup{...}| (zweite Zeile) und \verb|\normalfont| (dritte Zeile).):%
+Nun gibt es noch \verb|\fullref|, \verb|\fulleqref| und \verb|\fullautoref| wo jeweils auch die Seite angegeben wird, z.\,B. letzer Befehl: \fullautoref{subtab:Tabellen:mit latex-subtable:two}. Vom Buch: \cite{LabenbacherTeX}, oder siehe Fußnoten: Mit ref: \ref{footnote:Tabellen:A footnote in the tableentry-firsthead}, Mit \verb|\footref| (KomaScript): \footref{footnote:Tabellen:A footnote in the tableentry-firsthead} (Bei Fußnoten kein autoref, da dies nicht unterstützt wird!). Der Style von \verb|\eqref| wird nicht beeinflusst im gegensatz zu \verb|\ref|, er ist immer \verb|\textup{...}| und \verb|\normalfont|. Würde man dies ändern wollen, d.h. so dass sich der Befehl wie \verb|\ref| verhält so müsste man in die Preamble folgendes ergänzen (Einfach von \TUMstyle{package}{amsmath} kopiert ohne \verb|\textup{...}| (zweite Zeile) und \verb|\normalfont| (dritte Zeile).):%
 \begin{lstlisting}[style=LaTeX, caption={\LaTeX-Code für \ldots{}.}, label={lst:introduction:3}]
 \makeatletter%
 \renewcommand*\maketag@@@[1]{\hbox{\m@th #1}}%
 \renewcommand{\eqref}[1]{{\tagform@{\ref{#1}}}}%
 \makeatother%
 \end{lstlisting}
+
 
 
 \chapter{Mathematik mit/ohne \texttt{equbox}, und \texorpdfstring{\TUMstyle{package}{chemformula}}{chemformula}-Package}
@@ -468,7 +488,8 @@ Nun Subequations:%
 \end{subequations}%
 Die Formel \eqref{equ:Mathematik:sub-gesamt} besteht aus \eqref{subequ:Mathematik:sub-a} und \eqref{subequ:Mathematik:sub-b}.\par%
 Nun ein Beispiel einer Matrix mit \TUMstyle{package}{nicematrix}:%
-\tikzset{external/optimize=false}% currently necessary for nicematrix
+\begingroup% Group: currently necessary for nicematrix (not in newest version anymore, but older ones)
+\tikzexternaldisable%
 \begin{gather}
 	\hat{b} = \text{$%
 		\begin{pNiceMatrix}[nullify-dots]
@@ -491,9 +512,31 @@ Nun ein Beispiel einer Matrix mit \TUMstyle{package}{nicematrix}:%
 		\end{pNiceMatrix}
 		$}.
 \end{gather}%
-\tikzset{external/optimize=true}%
-And again:
-\tikzset{external/optimize=false}%
+\endgroup%
+Now externalize a TikZ-picture again:\\%
+{% Group: Reactivate externalization 
+	\tikzset{external/export=true}%
+	\tikzsetnextfilename{Figure-Einfuehrung-2}%
+	\begin{tikzpicture}[x=1mm,y=1mm, color=TUMBlue]%
+		\ifdefined\tikZlength\else\newlength{\tikZlength}\fi
+		\setlength{\tikZlength}{0.15\linewidth}
+		\coordinate (lo) at (-\tikZlength/2,\tikZlength/2);
+		\coordinate (ru) at (\tikZlength/2,-\tikZlength/2);
+		\coordinate (lu) at (lo |- ru);
+		\coordinate (ro) at (lo -| ru);
+		\node (nlo) at (lo) {$\mathcal{L}^\uparrow_+$};
+		\node (nlu) at (lu) {$\mathcal{L}^\downarrow_-$};
+		\node (nro) at (ro) {$\mathcal{L}^\uparrow_-$};
+		\node (nru) at (ru) {$\mathcal{L}^\downarrow_+$};
+		\draw[-latex] (nlo) -- node[below] {$P$} (nro);
+		\draw[-latex] (nlo) -- node[right] {$T$} (nlu);
+		\draw[-latex] (nlu) -- node[above] {$P$} (nru);
+		\draw[-latex] (nro) -- node[left] {$T$} (nru);
+	\end{tikzpicture}\\%
+}%
+And again with \TUMstyle{package}{nicematrix}:%
+\begingroup% Group: currently necessary for nicematrix (not in newest version anymore, but older ones)
+\tikzexternaldisable%
 \begin{gather}
 	\hat{b} = \text{$%
 		\begin{pNiceMatrix}[nullify-dots]
@@ -516,7 +559,7 @@ And again:
 		\end{pNiceMatrix}
 		$}.
 \end{gather}%
-\tikzset{external/optimize=true}%
+\endgroup%
 
 \chapter{Theorem Teil 1 mit \texorpdfstring{\TUMstyle{package}{tcolorbox}}{tcolorbox}}%
 \label{chap:Theorem 1}%
@@ -539,7 +582,7 @@ And again:
 \begin{corollary}{title :D}{Theorem 1:corollary 1}%
 	Hallo Welt.
 \end{corollary}%
-\begin{proof}{}{}%
+\begin{proof}{}{Proof 1:proof 1}%
 	\lipsum[1-3]
 \end{proof}
 
@@ -556,6 +599,9 @@ And again:
 \begin{proof*}{Titel?, zu Lemma \ref{lem:Theorem 1:lemma 1}}%
 	\lipsum[1-1]
 \end{proof*}
+\begin{example}{}{Theorem 1:example 1}
+Hello
+\end{example}
 
 \chapter{Theorem Teil 2 mit \texorpdfstring{\TUMstyle{package}{tcolorbox}}{tcolorbox}}%
 \label{chap:Theorem 2}%
@@ -611,7 +657,7 @@ Z\index{Z}Z\index{Za}Z\index{Zb}Z\index{Zc}Z\index{Zd}
 \index{+@}, \index{+!}%
 
 %\TUMstyle{number}{...} for emphasing text (or \TUMfont{number})
-\TUMstyle{1}{Der} Mensch\index{Mensch} \TUMstyle{2}{ist} \TUMstyle{3}{ein} Tier\index{Tier}, das Geschäfte\index{Mensch!Geschäfte} macht; kein anderes Tier tut dies -- kein Hund\index{Tier!Hund} tauscht Knochen\index{Mensch!Knochen}\index{Tier!Knochen} mit einem anderen. \cite{LabenbacherTeX}. \index{Papier}, \index{Papier!Ausrichtung}, \index{Papier!Format}, \index{Papier!empty@\texttt{empty}}% 
+\TUMstyle{1}{Der} Mensch\index{Mensch|TUMstyle{idxnumber}} \TUMstyle{2}{ist} \TUMstyle{3}{ein} Tier\index{Tier}, das Geschäfte\index{Mensch!Geschäfte} macht; kein anderes Tier tut dies -- kein Hund\index{Tier!Hund} tauscht Knochen\index{Mensch!Knochen}\index{Tier!Knochen} mit einem anderen. \cite{LabenbacherTeX}. \index{Papier}, \index{Papier!Ausrichtung}, \index{Papier!Format}, \index{Papier!empty@\texttt{empty}}% 
 
 L\\
 La\todoMissing[caption={Missing.}]{I'm missing here\ldots.}\\
@@ -661,6 +707,7 @@ Mit Hilfe von \verb|\makenote| kann Text in die Randspalte geschrieben werden. I
 	\caption[Test 1]{Hier dann die Beschreibung des Bildes bitte rein. :P, und nochmals: Hier dann die Beschreibung des Bildes bitte rein.\todoChange[caption={Change/Delete.}]{Please delete this part of the introduction.} :P, Hier dann die Beschreibung des Bildes bitte rein. :P, Hier dann die Beschreibung des Bildes bitte rein. :P, Hier dann die Beschreibung des Bildes bitte rein. :P, Hier dann die Beschreibung des Bildes bitte rein. :P, Hier dann die Beschreibung des Bildes bitte rein. :P, Hier dann die Beschreibung des Bildes bitte rein. :P, \ldots{}.}%
 	\label{fig:introduction:1}%
 \end{figure}%
+\newpage% only for index-test
 \lstinputlisting[style=python, caption={Python-Code für \ldots{}.}, label={lst:introduction:1}]{listings/test.py}%
 
 \section{Sub-(ind/todo)}%
@@ -674,11 +721,12 @@ Mit Hilfe von \verb|\makenote| kann Text in die Randspalte geschrieben werden. I
 \lipsum[1-7] Mensch%\index{Mensch}\newline%
 \lipsum[1-8] Mensch%\index{Mensch}\newline%
 \lipsum[1-9] Mensch\index{Mensch|)}\newline%
-\lipsum[1-10] Mensch\index{Mensch}\newline%
-\lipsum[1-11] Mensch\index{Mensch}\newline%
-\lipsum[1-12] Mensch\index{Mensch}\newline%
-\lipsum[1-13] Mensch\index{Mensch|TUMstyle{idxnumber}}%
-\lipsum[1-8]\index{Mensch|(}\lipsum[1-18] \index{Mensch|)}%
+\lipsum[1-10] Mensch\index{Mensch|(}\newline%
+\lipsum[1-11] Mensch\index{Mensch|)}\newline%
+\lipsum[1-12] Mensch\index{Mensch|TUMstyle{idxnumber2}}\newline%
+\lipsum[1-13] Mensch\index{Mensch|(TUMstyle{idxnumber1}}%
+\lipsum[1-8]\lipsum[1-18] \index{Mensch|)}%
+\lipsum[1-8]\index{Mensch}%
 
 \begin{equation}
 	a^2=b^2+c^2 \textrm{\todoChange{Delete this.}}
