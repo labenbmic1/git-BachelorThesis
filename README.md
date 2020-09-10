@@ -5,12 +5,20 @@ Compile (MiKTeX/TeXstudio):<br />
 1/2x pdflatex, biber, 2/3x pdlfatex<br /><br />
 
 Befehle:<br />
-PdfLaTeX: pdflatex.exe -synctex=1 -interaction=nonstopmode --shell-escape --main-memory=100000000 --extra-mem-top=100000000 --extra-mem-bot=100000000 %.tex<br />
+PdfLaTeX: pdflatex.exe --shell-escape -synctex=1 -interaction=nonstopmode %.tex<br />
 Biber: biber.exe %<br /><br />
 
 Erzeugen:<br />
 Standard Bibliographieprogramm: txs:///biber --validate_datamodel<br />
 Standard Index Tool: txs:///makeindex<br /><br />
+
+TeX memory for tikz-externalize (if there are to many datapoints (normally one should instead use python/matlab...)):<br />
+1. Run: initexmf --edit-config-file=pdflatex<br />
+2. Write+Save into file (* is normally sufficient to increase only this)<br />
+extra_mem_top 	= 1000000000<br />
+extra_mem_bot 	= 1000000000<br />
+main_memory 	= 100000000 (*)<br />
+3. Run: initexmf --dump=pdflatex<br /><br />
 
 Changes in 1.0.1.nightly.001000000020016:<br />
 Extended the macro \TUM@ifpackageloaded for check for multiple packages (and/or).<br />

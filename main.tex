@@ -56,7 +56,10 @@ captions=figuresignature, captions=tableheading,% --> Position von caption relev
 }\recalctypearea%
 
 % 1. Run: initexmf --edit-config-file=pdflatex
-% 2. Write+Save into file: main_memory=100000000
+% 2. Write+Save into file (* is normally sufficient to increase only this)
+% extra_mem_top 	= 1000000000
+% extra_mem_bot 	= 1000000000
+% main_memory 		= 100000000 (*)
 % 3. Run: initexmf --dump=pdflatex
 % 4. In TeXstudio/Optionen (pdflatex):
 % 1/2x pdflatex, biber, 2/3x pdlfatex (txs///bibtex --> txs:///biber --validate_datamodel)
