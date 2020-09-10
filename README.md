@@ -21,7 +21,7 @@ main_memory 	= 100000000 (*)<br />
 3. Run: initexmf --dump=pdflatex<br /><br />
 
 ## Compile WINDOWS: (Commandline)<br />
-cd C:\Users\micha\{path...}<br />
+cd C:\{path...}<br />
 set TEXINPUTS=.;.\images\\;.\tables\\;.\chapters\\;.\files\\;.\listings\\;.\packges\\;%TEXINPUTS%<br />
 set BIBINPUTS=.;.\references\\;%BIBINPUTS%<br /> 
 
@@ -30,7 +30,7 @@ biber --validate_datamodel main<br />
 {...}<br />
 
 ## Compile UNIX:<br />
-export TEXINPUTS=.:$HOME/{phad...}//;$TEXINPUTS<br />
+export TEXINPUTS=.:$HOME/{path...}//;$TEXINPUTS<br />
 {...}<br /><br />
 
 ### Changes in 1.0.1.nightly.001000000020016:<br />
