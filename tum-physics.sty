@@ -1425,7 +1425,7 @@ numbered,% number the bookmarks
 \makeatother%
 %% \tikzexternaldisable* can (global/group) disable externalizations (Use this inside groups!, else one needs \tikzexternalize again.).
 %% \tikzset{external/export=false}** can (local) REactivate the \tikzexternalize[...] given bevore. (* stronger than **)
-%% Standard: globally \tikzexternalize[..] and locally "REenable" it {external/export=true} AND locally "FullDisable" it with \tikzexternaldisable
+%% Standard: globally \tikzexternalize[..] \tikzset{external/export=false} and --> locally "REenable" it {external/export=true} AND locally "FullDisable" it with \tikzexternaldisable
 \makeatletter%
 \TUM@ifpackageloaded[setting]{pgfplotstable}{%
 	\usepgfplotslibrary{fillbetween}% fuer z.~B. den Befehl fillbetween
