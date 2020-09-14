@@ -619,52 +619,19 @@ Dies ist das Theorem \nameref{theo:Theorem 1:Mittelwertsatz}, oder Theorem \ref{
 \AfterCalculatingTypearea{%
 	\TUMAfterCalculatingTypearea%
 }\recalctypearea%
-\chapter{Indices -- \texorpdfstring{\TUMstyle{package}{imakeidx}}{imakeidx}, todos -- \texorpdfstring{\TUMstyle{package}{todonotes}}{todonotes}, notes -- \texorpdfstring{\TUMstyle{package}{scrlayer-notecolumn}}{scrlayer-notecolumn}, Langer Header (sowas sollte man unterlassen aber so ginge es\ldots{}) :P.}%
+\chapter{Indices -- \texorpdfstring{\TUMstyle{package}{glossaries}}{glossaries}, todos -- \texorpdfstring{\TUMstyle{package}{todonotes}}{todonotes}, notes -- \texorpdfstring{\TUMstyle{package}{scrlayer-notecolumn}}{scrlayer-notecolumn}, Langer Header (sowas sollte man unterlassen aber so ginge es\ldots{}) :P.}%
 \label{chap:IndicesTodosNotes}%
-%% Index-Optimierungen: for sorting numbers --> xindy instead of splitindex
-%% Index-style-clist/tl for idxtext as 1 more optional parameter
-A\index{A}A\index{Aa}A\index{Ab}A\index{Ac}A\index{Ad}
-B\index{B}B\index{Ba}B\index{Bb}B\index{Bc}B\index{Bd}
-C\index{C}C\index{Ca}C\index{Cb}C\index{Cc}C\index{Cd}
-D\index{D}D\index{Da}D\index{Db}D\index{Dc}D\index{Dd}
-E\index{E}E\index{Ea}E\index{Eb}E\index{Ec}E\index{Ed}
-G\index{G}G\index{Ga}G\index{Gb}G\index{Gc}G\index{Gd}
-G\index{G}G\index{Ga}G\index{Gb}G\index{Gc}G\index{Gd}
-H\index{H}H\index{Ha}H\index{Hb}H\index{Hc}H\index{Hd}
-I\index{I}I\index{Ia}I\index{Ib}I\index{Ic}I\index{Id}
-J\index{J}J\index{Ja}J\index{Jb}J\index{Jc}J\index{Jd}
-L\index{L}L\index{La}L\index{Lb}L\index{Lc}L\index{Ld}
-K\index{K}K\index{Ka}K\index{Kb}K\index{Kc}K\index{Kd}
-M\index{M}M\index{Ma}M\index{Mb}M\index{Mc}M\index{Md}
-N\index{N}N\index{Na}N\index{Nb}N\index{Nc}N\index{Nd}
-O\index{O}O\index{Oa}O\index{Ob}O\index{Oc}O\index{Od}
-P\index{P}P\index{Pa}P\index{Pb}P\index{Pc}P\index{Pd}
-Q\index{Q}Q\index{Qa}Q\index{Qb}Q\index{Qc}Q\index{Qd}
-R\index{R}R\index{Ra}R\index{Rb}R\index{Rc}R\index{Rd}
-S\index{S}S\index{Sa}S\index{Sb}S\index{Sc}S\index{Sd}
-T\index{T}T\index{Ta}T\index{Tb}T\index{Tc}T\index{Td}
-U\index{U}U\index{Ua}U\index{Ub}U\index{Uc}U\index{Ud}
-V\index{V}V\index{Va}V\index{Vb}V\index{Vc}V\index{Vd}
-W\index{W}W\index{Wa}W\index{Wb}W\index{Wc}W\index{Wd}
-X\index{X}X\index{Xa}X\index{Xb}X\index{Xc}X\index{Xd}
-Y\index{Y}Y\index{Ya}Y\index{Yb}Y\index{Yc}Y\index{Yd}
-Z\index{Z}Z\index{Za}Z\index{Zb}Z\index{Zc}Z\index{Zd}
-9\index{9}
-\#\index{\#} \num{16.4}, \index{10}, \index{\#,A}, 
-\index{\LaTeX}, % symbol
-\index{LaTeX@\LaTeX}, % text
-\index{9b}, \index{228},  \index{Papier!+@everystyle+@@\texttt{+@everystyle+@}|TUMstyle{idxnumber}}
-\index{+@}, \index{+!}%
-
 %\TUMstyle{number}{...} for emphasing text (or \TUMfont{number})
-\TUMstyle{1}{Der} Mensch\index{Mensch|TUMstyle{idxnumber}} \TUMstyle{2}{ist} \TUMstyle{3}{ein} Tier\index{Tier}, das Geschäfte\index{Mensch!Geschäfte} macht; kein anderes Tier tut dies -- kein Hund\index{Tier!Hund} tauscht Knochen\index{Mensch!Knochen}\index{Tier!Knochen} mit einem anderen. \cite{LabenbacherTeX}. \index{Papier}, \index{Papier!Ausrichtung}, \index{Papier!Format}, \index{Papier!empty@\texttt{empty}}% 
+Der Mensch ist ein Tier, das Geschäfte macht; kein anderes Tier tut dies -- kein Hund tauscht Knochen mit einem anderen. \cite{LabenbacherTeX} Hello \gls{idx.people}, \gls*{idx.entry}, \Gls+{idx.entry.subentry}, \Gls{idx.entry.subentry.subsubentry}, \gls*[format=TUMindexnumber]{idx.animal}, 
+\gls+{idx.beast}, 
+\gls{fcp.aa}, \gls*{fcp.ab}, \gls+{fcp.ac}, \gls{fcp.ad}, \gls*{fcp.dd}, \gls+{fcp.da}, empty\glsadd[format=TUMindexnumber]{idx.empty}, %
 
 L\\
 La\todoMissing[caption={Missing.}]{I'm missing here\ldots.}\\
-LaT\todoUnsure[caption={Unsure.}]{Unsure if that's good enough.}\index{LaTeX@\LaTeX}\\
-LaTe\todoChange[caption={Change/Delete.}]{Please change this later on.}\index{LaTeX@\LaTeX!class|TUMstyle{idxnumber}}\\
-LaTeX\todoInfo[caption={Info.}]{Nothing interesting.}\index{LaTeX@\LaTeX!package}\\
-\LaTeX\todoImprovement[caption={Improvement.}]{Please Improve this code.}\index{LaTeX@\LaTeX!file}\\
+LaT\todoUnsure[caption={Unsure.}]{Unsure if that's good enough.}\\
+LaTe\todoChange[caption={Change/Delete.}]{Please change this later on.}\\
+LaTeX\todoInfo[caption={Info.}]{Nothing interesting.}\\
+\LaTeX\todoImprovement[caption={Improvement.}]{Please Improve this code.}\\
 \LaTeXe\\
 \LaTeX3, \makenote[marginpar]{%.
 	Bei \LaTeX3 steht ein wichtiger Text bzw. Bild in der Randnotiz:\\%
@@ -712,21 +679,22 @@ Mit Hilfe von \verb|\makenote| kann Text in die Randspalte geschrieben werden. I
 
 \section{Sub-(ind/todo)}%
 \label{sec:introduction:Sub-indtodo}%
-\lipsum[1-1] Mensch\index{Mensch!Student}
-\index{Mensch|(}%
+\Gls{idx.people}, \gls[format=TUMindexnumberi]{idx.entry}, beast\idxadd{beast}, dog\idxadd{animal.dog}, \gls{fcp.ad}, \fcpadd[format=(TUMindexnumberi]{ba}
+\newpage\glspl{idx.people}, \gls[format=TUMindexnumberi]{idx.animal}, \gls{idx.entry}, key\idxadd[format=TUMindexnumberi]{key}, electrician\glsadd{idx.people.electrician}, 
+\newpage\gls{idx.entry}, \gls[format=(]{idx.people},\newpage{}A,\newpage{}\gls[format=)]{idx.people}, 
+ba\fcpadd[format=)]{ba}, \gls[format=TUMindexnumber]{fcp.empty}, \gls{idx.LaTeX}, \gls{idx.LaTeX.file}, \gls{idx.LaTeX.class}, \gls{idx.LaTeX.package}, \gls{fcp.aa}, \gls{fcp.ab}, \gls{fcp.ac}, \gls{fcp.ad}, \gls{fcp.ba}, \gls{fcp.bb}, \gls{fcp.bc}, \gls{fcp.bd}, \gls{fcp.ca}, \gls{fcp.cb}, \gls{fcp.cc}, \gls{fcp.cd}, \gls{fcp.da}, \gls{fcp.db}, \gls{fcp.dc}, \gls{fcp.dd}, \gls{idx.dump}, \gls{idx.cinema}, \gls{idx.control}%
+
+\lipsum[1-1] \gls{idx.entry.subentry} \gls*{idx.entry.subentry.subsubentry} \gls+[format=(]{idx.entry} %
 \lipsum[1-3] Mensch\newline%
 \lipsum[1-4] Mensch\todoImprovement[disable]{Everything that heightens the feeling of power in man, the will to power, power itself.}%
-\lipsum[1-5] Mensch%\index{Mensch}\newline%
-\lipsum[1-6] Mensch%\index{Mensch}\newline%
-\lipsum[1-7] Mensch%\index{Mensch}\newline%
-\lipsum[1-8] Mensch%\index{Mensch}\newline%
-\lipsum[1-9] Mensch\index{Mensch|)}\newline%
-\lipsum[1-10] Mensch\index{Mensch|(}\newline%
-\lipsum[1-11] Mensch\index{Mensch|)}\newline%
-\lipsum[1-12] Mensch\index{Mensch|TUMstyle{idxnumber2}}\newline%
-\lipsum[1-13] Mensch\index{Mensch|(TUMstyle{idxnumber1}}%
-\lipsum[1-8]\lipsum[1-18] \index{Mensch|)}%
-\lipsum[1-8]\index{Mensch}%
+\lipsum[1-26] Mensch%\newline%
+\lipsum[1-9] Mensch\gls[format=)]{idx.entry}\newline%
+\lipsum[1-10] Mensch\gls[format=(]{idx.entry}\newline%
+\lipsum[1-11] Mensch\gls[format=)]{idx.entry}\newline%
+\lipsum[1-12] Mensch\gls[format=TUMindexnumberi]{idx.entry}\newline%
+\lipsum[1-13] Mensch\gls[format=(TUMindexnumber]{idx.entry}%
+\lipsum[1-8]\lipsum[1-18] \gls[format=)]{idx.entry}%
+\lipsum[1-8]\gls{idx.entry}%
 
 \begin{equation}
 	a^2=b^2+c^2 \textrm{\todoChange{Delete this.}}

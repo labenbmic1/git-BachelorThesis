@@ -1,7 +1,0 @@
-\begin{theindex}
-{ \bfseries L}\nopagebreak%
- \indexspace\nopagebreak%
-  \item \LaTeX\dotfill \hyperpage{i}
-    \subitem class\dotfill \hyperindexformat{\TUMstyle{idxnumber}}{i}
-
-\end{theindex}
