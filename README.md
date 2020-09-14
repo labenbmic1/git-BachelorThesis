@@ -2,7 +2,7 @@
 Have fun. Please report bugs to michael@labenbacher.at or m.labenbacher@tum.de. (It's not perfect I know, but it was a starting point for the Bachelor Thesis.)<br /><br />
 
 ## Compile (MiKTeX/TeXstudio):<br />
-1/2x pdflatex, biber, 2/3x pdlfatex<br /><br />
+1/2x pdflatex, biber, bib2gls, 2/3x pdlfatex<br /><br />
 
 Befehle:<br />
 PdfLaTeX: pdflatex.exe --shell-escape -synctex=1 -interaction=nonstopmode %.tex<br />
