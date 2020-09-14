@@ -1,4 +1,4 @@
-# Labenbacher Michael 1.0.1.nightly.001000000020016
+# Labenbacher Michael 1.0.2.nightly.001000000010003
 Have fun. Please report bugs to michael@labenbacher.at or m.labenbacher@tum.de. (It's not perfect I know, but it was a starting point for the Bachelor Thesis.)<br /><br />
 
 ## Compile (MiKTeX/TeXstudio):<br />
@@ -6,11 +6,13 @@ Have fun. Please report bugs to michael@labenbacher.at or m.labenbacher@tum.de. 
 
 Befehle:<br />
 PdfLaTeX: pdflatex.exe --shell-escape -synctex=1 -interaction=nonstopmode %.tex<br />
-Biber: biber.exe %<br /><br />
+Biber: biber.exe %<br />
+Makeindex: bib2gls.exe --group %<br /><br />
 
 Erzeugen:<br />
+Standardcompiler: txs:///pdflatex<br />
 Standard Bibliographieprogramm: txs:///biber --validate_datamodel<br />
-Standard Index Tool: txs:///makeindex<br /><br />
+Standard Index Tool: txs:///bib2gls<br /><br />
 
 TeX memory for tikz-externalize (if there are to many datapoints (normally one should instead use python/matlab...)):<br />
 1. Run: initexmf --edit-config-file=pdflatex<br />
@@ -23,7 +25,7 @@ main_memory 	= 100000000 (*)<br />
 ## Compile WINDOWS: (Commandline)<br />
 cd C:\{path...}<br />
 set TEXINPUTS=.;.\images\\;.\tables\\;.\chapters\\;.\files\\;.\listings\\;.\packges\\;%TEXINPUTS%<br />
-set BIBINPUTS=.;.\references\\;%BIBINPUTS%<br /> 
+set BIBINPUTS=.;.\references\\;.\glossaries\\;%BIBINPUTS%<br /> 
 
 pdflatex --shell-escape main.tex<br />
 biber --validate_datamodel main<br />
@@ -32,6 +34,10 @@ biber --validate_datamodel main<br />
 ## Compile UNIX:<br />
 export TEXINPUTS=.:$HOME/{path...}//;$TEXINPUTS<br />
 {...}<br /><br />
+
+### Changes in 1.0.2.nightly.001000000010003:<br />
+Implementation of {glossaries(-extra)}. Removed {imakeidx/idxlayout}. Now one can make an Index (and List of Abbreviations, -Symbols, etc.) with bib2gls (best option available).<br />
+Small changes and improvements.<br /><br />
 
 ### Changes in 1.0.1.nightly.001000000020016:<br />
 Extended the macro \TUM@ifpackageloaded for check for multiple packages (and/or).<br />
