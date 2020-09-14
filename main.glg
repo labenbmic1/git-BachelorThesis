@@ -1,0 +1,16 @@
+bib2gls version 2.7 (2020-07-11)
+Reading main.aux
+TeX character encoding: UTF-8
+Initialising resource main.glstex.
+Parsing bib files for resource main.glstex.
+Default encoding: not set
+Reading glossaries\help-index-1.bib
+Cross-resource references allowed.
+Processing resource main.glstex.
+Selecting entries for resource main.glstex.
+Writing C:\Users\micha\LaTeX\TUM\_Bachelor-Thesis\BScThesis-Vorlagen\template\main.glstex
+Encoding: UTF-8
+idx.LaTeX
+idx.LaTeX.class
+idx.LaTeX.sty
+3 entries written to C:\Users\micha\LaTeX\TUM\_Bachelor-Thesis\BScThesis-Vorlagen\template\main.glstex.

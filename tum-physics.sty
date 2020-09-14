@@ -55,7 +55,7 @@
 % {revtex4-2}{\def\@TUM@version@hook{003}}{}%
 % {transcript}{\def\@TUM@version@hook{004}}{}%
 % {cheatsheet}{\def\@TUM@version@hook{005}}{}%
-\def\TUMversion{1.0.1.nightly.\@TUM@version@hook000000020016}%
+\def\TUMversion{1.0.2.nightly.\@TUM@version@hook000000010003}%
 \def\TUMversiondate{2020-09-09}%
 \makeatother%
 %% Information of the provided package
@@ -134,42 +134,40 @@
 	nicematrix={tikz, expl3, l3keys2e, array, amsmath, xparse},% (!)
 	scrhack={datetime,listings,tcolorbox,tikz},% (!!)
 	float={scrhack},% (!!)
-	hyperref={scrhack,float,longtable,url,microtype,imakeidx,idxlayout,kvdefinekeys},% (!!)
+	hyperref={scrhack,float,longtable,url,microtype,kvdefinekeys},% (!!)
 	nccmath={hyperref},% (!!)
 	bookmark={hyperref},% (!!)
-	imakeidx={iftex, ifxetex, ifluatex, xkeyval, multicol, babel, scrlayer-scrpage},% (!)
-	idxlayout={etoolbox, imakeidx, kvoptions, kvsetkeys, ragged2e, everysel, ltxcmds, babel, scrlayer-scrpage},% (!!)
 	kvoptions={ltxcmds},%
 	xkeyval={keyval},%
 	glossaries={hyperref},% (!!)
 	scrlayer-notecolumn={scrlayer-scrpage},% (!)
+	glossaries-extra={hyperref, babel, inputenc, multicol, bookmark, longtable, supertabular, amsmath, amstext, amsgen, amsbsy, amsopn, etoolbox, ifthen, xkeyval},% (!!)
 	todonotes={ifthen, xkeyval, xcolor, tikz, pgf, pgfrcs, pgfsys, pgffor, everyshi, graphicx, graphics, trig, pgfkeys, pgfmath, calc}% (!!)
 }%
 \bool_new:N \l_if_package_before_bool%
 \prop_new:N \l_package_before_prop%
 %% package must be loaded before = {package(s)}
 \prop_set_from_keyval:Nn \l_package_before_prop {%
-	polyglossia={todonotes},%
-	ragged2e={idxlayout},%
-	everysel={idxlayout},%
-	everyshi={todonotes},%
-	kvoptions={idxlayout},%
-	kvsetkeys={idxlayout},%
+	inputenc={glossaries-extra},%
+	fontenc={glossaries-extra},%
+	multicol={glossaries-extra},%
+	polyglossia={todonotes, glossaries-extra},%
 	keyval={xkeyval},%
-	xkeyval={todonotes},%
-	ltxcmds={idxlayout,kvoptions},%
+	xkeyval={todonotes,glossaries-extra},%
+	ltxcmds={kvoptions},%
 	everysel={ragged2e},%
 	microtype={ifpdf,graphics,color,pstricks,hyperref},%
-	babel={inputenc,microtype,imakeidx,idxlayout,lipsum},%
-	scrlayer-scrpage={fontenc,biblatex,imakeidx,idxlayout},%
+	babel={inputenc,microtype,lipsum,glossaries-extra},%
+	scrlayer-scrpage={fontenc,biblatex},%
 	upgreek={microtype,chemmacros},%
-	amsmath={babel},%
+	amsmath={babel,glossaries-extra},%
 	url={biblatex,hyperref},%
 	biblatex={csquotes},%
-	longtable={multirow,hyperref},%
+	longtable={multirow,hyperref,glossaries-extra},%
+	supertabular={glossaries-extra},%
 	graphicx={nicefrac,xfrac,graphbox,pdfpages,chemmacros,todonotes},%
 	pdflscape={pdfpages},%
-	ifthen={pdfpages,chemmacros,todonotes},%
+	ifthen={pdfpages,chemmacros,todonotes,glossaries-extra},%
 	calc={pdfpages,todonotes},%
 	trimspaces={environ},%
 	tikz={tcolorbox,chemformula,chemmacros,nicematrix,scrhack,todonotes},%
@@ -178,7 +176,7 @@
 	pgffor={todonotes},%
 	trig={todonotes},%
 	verbatim={tcolorbox},%
-	etoolbox={tcolorbox,chemmacros,idxlayout},%
+	etoolbox={tcolorbox,chemmacros,glossaries-extra},%
 	environ={tcolorbox},%
 	listings={tcolorbox,scrhack},%
 	xparse={chemformula,chemmacros,nicematrix},%
@@ -188,10 +186,8 @@
 	nicefrac={chemformula,chemmacros},%
 	scrlfile={chemformula},%
 	expl3={chemmacros,nicematrix},%
-	iftex={chemmacros,imakeidx},%
-	ifxetex={imakeidx},%
-	ifluatex={imakeidx},%
-	multicol={imakeidx,lipsum},%
+	iftex={chemmacros},%
+	multicol={lipsum},%
 	ltxcmds={chemmacros},%
 	chemgreek={chemmacros},%
 	graphics={chemmacros,lscape,todonotes},%
@@ -209,10 +205,9 @@
 	tcolorbox={scrhack},%
 	scrhack={float,hyperref},%
 	float={hyperref},%
-	hyperref={nccmath,bookmark,glossaries},%
-	geometry={lipsum},%
-	imakeidx={hyperref,idxlayout},%
-	idxlayout={hyperref}%
+	bookmark={glossaries-extra},%
+	hyperref={nccmath,bookmark,glossaries,glossaries-extra},%
+	geometry={lipsum}%
 }%
 %% Packages which must not be loaded due to {...}
 %\clist_new:N \l_do_not_load_clist
@@ -663,7 +658,7 @@
 %% ======================= Loading Packages (ExplSyntaxOff) =======================
 %% ================================================================================
 %% ================================================================================
-\typeout{Possible optimizations: imakeidx, biblatex, listings, theorems, (glossaries)}%
+\typeout{Possible optimizations: glossaries, biblatex, listings, theorems}%
 \typeout{TODO: biblatex (ev. ieee (changes names))}
 \typeout{TODO: theorem (if necessary change style)}
 \typeout{TODO: makeidx (ev. improve pagebreak-algorithmus (splitidx -- xindy))}
@@ -814,19 +809,6 @@ scaled%
 babel=true,%
 ]{microtype}%
 
-%% multicol = Intermix single and multiple columns
-\TUMRequirePackage{multicol}%
-%% imakeidx = A package for producing multiple indexes
-\TUMRequirePackage[%
-splitindex%
-]{imakeidx}%
-%% idxlayout = Configurable index layout, responsive to KOMA-Script and memoir
-\TUMRequirePackage[%
-columns=2,%
-%unbalanced,% last page
-itemlayout=abshang%
-]{idxlayout}%
-
 %% url = Verbatim with URL-sensitive line breaks
 \TUMRequirePackage[%
 hyphens,%
@@ -889,8 +871,11 @@ singlespacing%
 %% pdflscape = Make landscape pages display as landscape
 \TUMRequirePackage{pdflscape}%
 
+%% supertabular = A multi-page tables package
+\TUMRequirePackage{supertabular}%
 %% tabularx = Tabulars with adjustable-width columns
 \TUMRequirePackage{tabularx}%
+%% booktabsPublication quality tables in LaTeX
 \TUMRequirePackage{booktabs}%
 %% longtable =  Allow tables to flow over page boundaries
 \TUMRequirePackage{longtable}%
@@ -1173,6 +1158,16 @@ openlevel=0,% display the bookmarks at level when opening the document
 depth=2,% (max) depth of the bookmarks (= tocdepth (see tumtoc.sty))
 numbered,% number the bookmarks 
 ][hyperref]{bookmark}%
+%% multicol = Intermix single and multiple columns
+\TUMRequirePackage{multicol}%
+%% glossaries = An extension to the glossaries package
+\TUMRequirePackage[%
+record=only,%
+nomain,
+index,% 
+nopostdot,%
+stylemods={mcols}%
+][hyperref]{glossaries-extra}%
 
 
 %% ================================================================================
@@ -1368,32 +1363,12 @@ numbered,% number the bookmarks
 %% TikZ (external) and todonotes -- Normal way to fix:
 % Use \tikzset{external/export=false}% (local) and only activate it before a
 % tikz-picture you want to externalize and set it back to false after.
-%% TikZ (external) and imakeidx -- Three ways to fix:
-% 1.    Load \makeindex before \tikzexternalize
-%       Remaining problem (*): only working if no [name=] given as option in \makeindex)
-% 2.    Use [optimize command away=\printindex] (and 1) to fix the Problem (*)
-%       Remaining problem (**): only working in combination with 1 and adds the file .idx during optimization due to 1.)
-% 3.    Use \tikzifexternalizing{...} is working in every situation
-%% --> Use 3 (+2 to be on the save side).
 \TUM@ifpackageloaded[setting]{pdfpages}{%
-	\TUM@ifpackageloaded[setting]{imakeidx}{%
-		\tikzexternalize[%
-			optimize command away=\includepdf,%
-			optimize command away=\printindex, optimize command away=\makeindex%
-			]% (*)
-	}{%
-		\tikzexternalize[%
-			optimize command away=\includepdf%
-		]%
-	}%
+	\tikzexternalize[%
+		optimize command away=\includepdf%
+	]%
 }{%
-	\TUM@ifpackageloaded[setting]{imakeidx}{%
-		\tikzexternalize[%
-			optimize command away=\printindex, optimize command away=\makeindex%
-		]% (*)
-	}{%
-		\tikzexternalize%
-	}%
+	\tikzexternalize%
 }%
 \TUM@ifpackageloaded{showframe}{%
 	\tikzifexternalizing{%
@@ -1404,13 +1379,6 @@ numbered,% number the bookmarks
 	\tikzifexternalizing{%
 		\setkeys{Gm}{showframe=false}%
 	}{}%
-}{}%
-\TUM@ifpackageloaded[setting]{imakeidx}{%
-	\tikzifexternalizing{% after \tikzexternalize
-		\renewcommand\index[2][]{}%
-		\renewcommand\printindex{}% (**)
-		\renewcommand\makeindex[1][]{}% (**)
-   }{}%
 }{}%
 \TUM@ifpackageloaded[setting]{pgfplotstable}{%
 	\tikzsetexternalprefix{images/tikz/}%
@@ -1510,13 +1478,10 @@ numbered,% number the bookmarks
 \prop_set_from_keyval:Nn \l_font_prop {%
 	% "Staerke", "Variante", (und ev. "Familie" (standard), und "Farbe", und "Groesse", und "hypersetup/style")
 	package = {\unboldmath\mdseries\upshape\urlstyle{tt}},%
-	idxnumber1 = {\boldmath\bfseries\upshape},%
-	idxnumber2 = {\unboldmath\mdseries\upshape},%
 	1 = {\unboldmath\mdseries\itshape\leavevmode\color{\TUMcolor{1}}},% for emphasing text...
 	2 = {\unboldmath\mdseries\itshape\leavevmode\color{\TUMcolor{2}}},%
 	3 = {\unboldmath\mdseries\itshape\leavevmode\color{\TUMcolor{3}}},%
 }%
-\newTUMfont{idxnumber}{\TUMfont{idxnumber1}}%
 \NewExpandableDocumentCommand{\TUMstyle}{mm}%
 {{%
 	\str_case_e:nnTF {#1} {%
@@ -1528,9 +1493,6 @@ numbered,% number the bookmarks
 		{3}{%
 			\fbox{\TUMfont{3}#2}%
 		}%
-		{idxnumber}{{\TUMfont{idxnumber}#2}}%
-		{idxnumber1}{{\TUMfont{idxnumber1}#2}}%
-		{idxnumber2}{{\underline{\TUMfont{idxnumber2}#2}}}%
 	}{}{#2%
 		\msg_set:nnnn {tum-physics} {style/style_not_defined} {%
 			Style~(#1)~not~defined.%
@@ -1920,7 +1882,7 @@ pagenumberbox=\TUM@pagenumberbox% necessary if pagenumber > 100 (and e.q. bold-f
 \TUM@ifpackageloaded[setting]{listings}{%
 	\TUMRequirePackage{packages/tumlol}%
 }{}%
-\TUM@ifpackageloaded[setting]{imakeidx}{%
+\TUM@ifpackageloaded[setting]{glossaries}{%
 	\TUMRequirePackage{packages/tumidx}%
 }{}%
 \TUM@ifpackageloaded[normal]{todonotes}{%

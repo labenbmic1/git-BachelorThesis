@@ -1,0 +1,133 @@
+\glsnoexpandfields
+\providecommand{\bibglshashchar}{\expandafter\@gobble\string\#}
+\providecommand{\bibglscircumchar}{\expandafter\@gobble\string\^}
+\providecommand{\bibglsdollarchar}{\expandafter\@gobble\string\$}
+\providecommand{\bibglsampersandchar}{\expandafter\@gobble\string\&}
+\providecommand{\bibglsunderscorechar}{\expandafter\@gobble\string\_}
+\providecommand{\bibglshrefchar}[2]{\glspercentchar #1}
+\providecommand{\bibglshexunicodechar}[1]{\csname ifHy@unicode\endcsname\texorpdfstring{\symbol{\string"#1}}{\unichar{\string"#1}}\else\symbol{\string"#1}\fi}
+\providecommand{\bibglsusesee}[1]{\glsxtrusesee{#1}}
+\providecommand{\bibglsusealias}[1]{%
+ \glsxtrifhasfield{alias}{#1}%
+ {\expandafter\glsseeformat\expandafter{\glscurrentfieldvalue}{}}%
+ {}%
+}
+\providecommand{\bibglsuseseealso}[1]{\glsxtruseseealso{#1}}
+\providecommand{\bibglsdelimN}{\delimN}
+\providecommand{\bibglslastDelimN}{,~}
+\providecommand{\bibglsrange}[1]{#1}
+\providecommand{\bibglsinterloper}[1]{#1\bibglsdelimN }
+\providecommand{\bibglspassimname}{passim}
+\providecommand{\bibglspassim}{ \bibglspassimname}
+\providecommand*{\bibglshyperlink}[2]{\glshyperlink[#1]{#2}}
+
+\providecommand{\bibglsuppercase}{\MakeTextUppercase}
+\providecommand{\bibglslowercase}{\MakeTextLowercase}
+\providecommand{\bibglsfirstuc}{\makefirstuc}
+\providecommand{\bibglstitlecase}{\capitalisewords}
+
+\providecommand{\bibglsprimaryprefixlabel}[1]{}
+\providecommand{\bibglsdualprefixlabel}[1]{}
+\providecommand{\bibglstertiaryprefixlabel}[1]{}
+\providecommand{\bibglsexternalprefixlabel}[2]{}
+
+\bibglstertiaryprefixlabel{tertiary.}
+\bibglsdualprefixlabel{dual.}
+\bibglsprimaryprefixlabel{idx.}
+\providecommand{\bibglsseesep}{, }
+
+\providecommand{\bibglsseealsosep}{, }
+
+\providecommand{\bibglsaliassep}{, }
+
+\ifdef\glsxtrsetgrouptitle
+{
+  \providecommand{\bibglslettergroup}[4]{#4#3}
+  \providecommand{\bibglslettergrouptitle}[4]{\unexpanded{#1}}
+  \providecommand{\bibglssetlettergrouptitle}[1]{%
+    \glsxtrsetgrouptitle{\bibglslettergroup#1}{\bibglslettergrouptitle#1}}
+  \providecommand{\bibglsunicodegroup}[4]{#4#3}
+  \providecommand{\bibglsunicodegrouptitle}[4]{\unexpanded{#1}}
+  \providecommand{\bibglssetunicodegrouptitle}[1]{%
+    \glsxtrsetgrouptitle{\bibglsunicodegroup#1}{\bibglsunicodegrouptitle#1}}
+  \providecommand{\bibglsothergroup}[3]{glssymbols}
+  \providecommand{\bibglsothergrouptitle}[3]{\protect\glssymbolsgroupname}
+  \providecommand{\bibglssetothergrouptitle}[1]{%
+    \glsxtrsetgrouptitle{\bibglsothergroup#1}{\bibglsothergrouptitle#1}}
+  \providecommand{\bibglsemptygroup}[1]{glssymbols}
+  \providecommand{\bibglsemptygrouptitle}[1]{\protect\glssymbolsgroupname}
+  \providecommand{\bibglssetemptygrouptitle}[1]{%
+    \glsxtrsetgrouptitle{\bibglsemptygroup#1}{\bibglsemptygrouptitle#1}}
+  \providecommand{\bibglsnumbergroup}[3]{glsnumbers}
+  \providecommand{\bibglsnumbergrouptitle}[3]{\protect\glsnumbersgroupname}
+  \providecommand{\bibglssetnumbergrouptitle}[1]{%
+    \glsxtrsetgrouptitle{\bibglsnumbergroup#1}{\bibglsnumbergrouptitle#1}}
+}
+{
+  \providecommand{\bibglslettergroup}[4]{#1}
+  \providecommand{\bibglsothergroup}[3]{glssymbols}
+  \providecommand{\bibglsnumbergroup}[3]{glsnumbers}
+  \providecommand{\bibglssetlettergrouptitle}[1]{}
+  \providecommand{\bibglssetothergrouptitle}[1]{}
+  \providecommand{\bibglssetnumbergrouptitle}[1]{}
+  \providecommand{\bibglssetdatetimegrouptitle}[1]{}
+  \providecommand{\bibglssetdategrouptitle}[1]{}
+  \providecommand{\bibglssettimegrouptitle}[1]{}
+}
+
+\providecommand{\bibglssetlastgrouptitle}[2]{}
+
+\bibglssetlettergrouptitle{{L}{L}{6160384}{idx}}
+
+\bibglssetlastgrouptitle{\bibglslettergroup}{{L}{L}{6160384}{idx}}
+\ifdef\@glsnavhypertarget
+{
+  \ifdef\bibglsorgnavhypertarget
+  {}
+  {
+    \let\bibglsorgnavhypertarget\@glsnavhypertarget
+  }
+  \renewcommand*{\@glsnavhypertarget}[3]{%
+    \ifcsdef{@gls@hypergrouplist@#1}%
+    {\@glstarget{\glsnavhyperlinkname{#1}{#2}}{#3}}%
+    {\bibglsorgnavhypertarget{#1}{#2}{#3}}%
+  }
+  \providecommand{\bibglshypergroup}{\@gls@hypergroup}
+}
+{
+  \providecommand{\bibglshypergroup}[2]{}
+}
+\providecommand*{\bibglsflattenedhomograph}[2]{#1}
+\bibglshypergroup{idx}{\bibglslettergroup{L}{L}{6160384}{idx}}
+
+\providecommand{\bibglsnewindex}[2]{%
+ \newglossaryentry{#1}{name={#1},category={index},description={},#2}%
+}
+
+\bibglsnewindex{idx.LaTeX}%
+{name={\LaTeX},
+location={\glsnoidxdisplayloc{}{page}{hyperrm}{i}},
+sort={LaTeX|},
+type={idx},
+group={\bibglslettergroup{L}{L}{6160384}{idx}}}
+\glsxtrfieldlistadd{idx.LaTeX}{loclist}{\glsnoidxdisplayloc{}{page}{hyperrm}{i}}
+
+
+\bibglsnewindex{idx.LaTeX.class}%
+{parent={idx.LaTeX},
+name={class},
+location={\glsnoidxdisplayloc{}{page}{TUMindexnumber}{i}},
+sort={class|},
+type={idx}}
+\glsxtrfieldlistadd{idx.LaTeX.class}{loclist}{\glsnoidxdisplayloc{}{page}{TUMindexnumber}{i}}
+
+
+\bibglsnewindex{idx.LaTeX.sty}%
+{parent={idx.LaTeX},
+name={sty},
+location={\glsnoidxdisplayloc{}{page}{hyperrm}{i}},
+sort={sty|},
+type={idx}}
+\glsxtrfieldlistadd{idx.LaTeX.sty}{loclist}{\glsnoidxdisplayloc{}{page}{hyperrm}{i}}
+
+

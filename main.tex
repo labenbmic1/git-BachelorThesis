@@ -62,7 +62,11 @@ captions=figuresignature, captions=tableheading,% --> Position von caption relev
 % main_memory 		= 100000000 (*)
 % 3. Run: initexmf --dump=pdflatex
 % 4. In TeXstudio/Optionen (pdflatex):
-% 1/2x pdflatex, biber, 2/3x pdlfatex (txs///bibtex --> txs:///biber --validate_datamodel)
+% 1/2x pdflatex, biber, bib2gls, 2/3x pdlfatex 
+% Biber: biber.exe %
+% Makeindex: makeindex.exe %.idx --> bib2gls.exe --group %
+% Standard Bibliographieprogramm: txs///bibtex --> txs:///biber --validate_datamodel
+% Standard Index Tool: txs:///makeindex --> txs:///bib2gls
 
 % Before \AtBeginDocument for keywords:
 \TUMheader[american]{%
@@ -80,17 +84,17 @@ captions=figuresignature, captions=tableheading,% --> Position von caption relev
 \TUMtopic[naustrian]{Quantum Many-Body Physics (Theory)}
 \TUMsubmissiondate{30}{01}{2020}% \formatdate
 %% Single Index: (before \AtEndPreamble)
-\TUMmakeindex{main}{\indexname}%
+\TUMmakeindex{glossaries/help-index-1}{idx}%
 \TUMsetindexpreamble{%
-	main={Die unerfahrenen Freunde sind gefährlich. Klugheit ist besser, selbst in einem Feind. Unterstrichene Zahlen (\texttt{idxnumber2}) verweisen auf die Definition, fett hervorgehobene (\texttt{idxnumber(1)}) geben Seiten der Erklärung zum jeweiligen Stichwort wieder und normal gedruckte verweisen hingegen auf Seiten mit zusätzlichen Informationen (Numbers underlined point to the definition; numbers written in boldface refer to the pages where the corresponding entry is described; all others indicate the places where it is used.).\par\bigskip}%
+	idx={Unterstrichene Zahlen (\texttt{idxnumber(1)}) verweisen auf die Definition, fett hervorgehobene (\texttt{idxnumber}) geben Seiten der Erklärung zum jeweiligen Stichwort wieder und normal gedruckte verweisen hingegen auf Seiten mit zusätzlichen Informationen (Numbers underlined point to the definition; numbers written in boldface refer to the pages where the corresponding entry is described; all others indicate the places where it is used.).\par\bigskip}%
 }%
 %% Multiple Indices:
-%\TUMmakeindex{main}{General Index}%
-%\TUMmakeindex{fcp}{Index of Files, Classes and Packages}%
+%\TUMmakeindex[General Index]{glossaries/help-index-1}{idx}%
+%\TUMmakeindex[Index of Files, Classes and Packages]{glossaries/help-index-2}{fcp}%
 %\TUMsetindexpreamble{%
-%   index={Der Mensch ist zur Freiheit verdammt. Den gefährlichsten Verräter von allen hat jeder Mensch in sich selbst.},%
-%   main={Die unerfahrenen Freunde sind gefährlich. Klugheit ist besser, selbst in einem Feind.\par\bigskip},%
-%   fcp={Lasst, die Ihr eintretet, alle Hoffnung fahren.\par\bigskip},%
+%	main={Die unerfahrenen Freunde sind gefährlich. Klugheit ist besser, selbst in einem Feind.\par\bigskip},%
+%	idx={Der Mensch ist zur Freiheit verdammt. Den gefährlichsten Verräter von allen hat jeder Mensch in sich selbst.},%
+%	fcp={Lasst, die Ihr eintretet, alle Hoffnung fahren.\par\bigskip},%
 %}%
 
 \begin{document}%
