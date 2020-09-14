@@ -249,7 +249,6 @@ LaTeX Info: Redefining \GenericError on input line 601.
 Possible optimizations: glossaries, biblatex, listings, theorems
 TODO: biblatex (ev. ieee (changes names))
 TODO: theorem (if necessary change style)
-TODO: makeidx (ev. improve pagebreak-algorithmus (splitidx -- xindy))
 TODO: listings package (Einstellungen betrachten und verwalten, z.B. Python)
 TODO: glossaries(-extra) (List ob abbreviations, if necessary use with bib2gls-
 option)
