@@ -29,6 +29,7 @@ set BIBINPUTS=.;.\references\\;.\glossaries\\;%BIBINPUTS%<br />
 
 pdflatex --shell-escape main.tex<br />
 biber --validate_datamodel main<br />
+bib2gls.exe --group main<br />
 {...}<br />
 
 ## Compile UNIX:<br />
