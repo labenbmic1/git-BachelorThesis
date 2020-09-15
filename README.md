@@ -1,4 +1,4 @@
-# Labenbacher Michael 1.0.2.nightly.001000000010003
+# Labenbacher Michael 1.0.2.nightly.001000000010008
 Have fun. Please report bugs to michael@labenbacher.at or m.labenbacher@tum.de. (It's not perfect I know, but it was a starting point for the Bachelor Thesis.)<br /><br />
 
 ## Compile (MiKTeX/TeXstudio):<br />
@@ -35,6 +35,10 @@ bib2gls.exe --group main<br />
 ## Compile UNIX:<br />
 export TEXINPUTS=.:$HOME/{path...}//;$TEXINPUTS<br />
 {...}<br /><br />
+
+### Changes in 1.0.2.nightly.001000000010008:<br />
+<br />
+Small changes and improvements.<br /><br />
 
 ### Changes in 1.0.2.nightly.001000000010003:<br />
 Implementation of {glossaries(-extra)}. Removed {imakeidx/idxlayout}. Now one can make an Index (and List of Abbreviations, -Symbols, etc.) with bib2gls (best option available).<br />
