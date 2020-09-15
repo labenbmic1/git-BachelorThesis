@@ -1,5 +1,5 @@
 # Labenbacher Michael 1.0.2.nightly.001000000010008
-Have fun. Please report bugs to michael@labenbacher.at or m.labenbacher@tum.de. (It's not perfect I know, but it was a starting point for the Bachelor Thesis. Empty: [a relative link](main.pdf), Example: [a relative link](main-example.pdf)<br /><br />
+Have fun. Please report bugs to michael@labenbacher.at or m.labenbacher@tum.de. (It's not perfect I know, but it was a starting point for the Bachelor Thesis. Empty: [main.pdf](main.pdf), Example: [main-example.pdf](main-example.pdf)<br /><br />
 
 ## Compile (MiKTeX/TeXstudio):<br />
 1/2x pdflatex, biber, bib2gls, 2/3x pdlfatex<br /><br />
