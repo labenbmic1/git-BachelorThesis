@@ -26,7 +26,8 @@
 \RequirePackage{ifxetex}%
 %% ifluatex = Provides the \ifluatex switch
 \RequirePackage{ifluatex}%
-%% etoolbox = eTeX-tools for LaTeX
+%% etoolbox = eTeX-tools for LaTeX 
+%%	(\AtEndPreamble (before main aux file read) - \begin{document} - \AtBeginDocument - \AfterEndPreamble)
 \RequirePackage{etoolbox}%
 %% xparse = A generic document command parser (LaTeX3)
 \RequirePackage{xparse}%
@@ -55,8 +56,8 @@
 % {revtex4-2}{\def\@TUM@version@hook{003}}{}%
 % {transcript}{\def\@TUM@version@hook{004}}{}%
 % {cheatsheet}{\def\@TUM@version@hook{005}}{}%
-\def\TUMversion{1.0.2.nightly.\@TUM@version@hook000000010003}%
-\def\TUMversiondate{2020-09-09}%
+\def\TUMversion{1.0.2.nightly.\@TUM@version@hook000000010004}%
+\def\TUMversiondate{2020-09-14}%
 \makeatother%
 %% Information of the provided package
 %% ProvidesExplPackage{name of package}{YYYY-MM-DD}{version}{more information}
@@ -611,20 +612,9 @@
 \@ifundefined{printfilelist}{}{%
 	\AtBeginDocument{%
 		\TUM@ifpackageloaded[setting]{babel}{%
-			\newcommand*{\printfilelistname}{}%
 			\AfterEndPreamble{%
-				\addto\extrasnaustrian{%
-					\renewcommand*{\printfilelistname}{Verwendete Klasse, Packete und weitere Files.}%
-				}%
-				\addto\extrasngerman{%
-					\renewcommand*{\printfilelistname}{Verwendete Klasse, Packete und weitere Files.}%
-				}%
-				\addto\extrasamerican{%
-					\renewcommand*{\printfilelistname}{Used Class, Packages and other Files}%
-				}%
-				\addto\extrasenglish{%
-					\renewcommand*{\printfilelistname}{Used Class, Packages and other Files}%
-				}%
+				\TUM@addto@extras@renew*{american,english}{printfilelistname}{Used Class, Packages and other Files}%
+				\TUM@addto@extras@renew{naustrian,ngerman}{printfilelistname}{Verwendete Klasse, Packete und weitere Files.}%
 			}%
 		}{}%
 	}%
@@ -707,11 +697,38 @@ showonlyrefs%
 naustrian,%
 main=american%
 ]{babel}%
-%% inputenc =
+\ExplSyntaxOn%
+\makeatletter%
+%% Get main-language:
+\str_new:N \l_main_language_str%
+\exp_args:NNo \str_set:Nn \l_main_language_str {\bbl@main@language}%
+%% \addto\extras{...} for multiple languages
+\clist_new:N \l_TUM_addto_extras_clist
+\NewDocumentCommand{\TUM@addto@extras}{mm}{%
+	\clist_set:Nn \l_TUM_addto_extras_clist {#1}%
+	\clist_map_inline:Nn \l_TUM_addto_extras_clist {%
+		\expandafter\addto\csname extras##1\endcsname{%
+			#2%
+		}%	
+	}%
+}%
+\NewDocumentCommand{\TUM@addto@extras@renew}{smmm}{%
+	\IfBooleanTF{#1}{%
+		\@ifundefined{#3}{%
+			\expandafter\newcommand\expandafter*\csname #3\endcsname{#4}%
+		}{}%
+	}{}%
+	\TUM@addto@extras{#2}{%
+		\expandafter\renewcommand\expandafter*\csname #3\endcsname{#4}%
+	}%
+}%
+\ExplSyntaxOff%
+\makeatother%
+%% inputenc = Accept different input encodings
 \TUMRequirePackage[%
 utf8%
 ]{inputenc}%
-%% ulem = (redefines \@empty, also zur Sicherheit for Koma-Script)
+%% ulem = (redefines \@empty, also zur Sicherheit vor Koma-Script)
 \TUMRequirePackage[%
 normalem%
 ]{ulem}%
@@ -1058,93 +1075,41 @@ plainpages=false%       %% biblatex is possible
 			\newcommand*{\lstlistingautorefname}{}%
 		}{}% end: listings not loaded
 		\AfterEndPreamble{%
-			\addto\extrasamerican{%
-				\renewcommand*{\tableautorefname}{table}%
-				\renewcommand*{\figureautorefname}{figure}%
-				\renewcommand*{\partautorefname}{part}%
-				\renewcommand*{\chapterautorefname}{chapter}%
-				\renewcommand*{\sectionautorefname}{section}%
-				\renewcommand*{\subsectionautorefname}{subsection}%
-				\renewcommand*{\subsubsectionautorefname}{subsubsection}%
-				\renewcommand*{\paragraphautorefname}{paragraph}%
-				\renewcommand*{\subparagraphautorefname}{subparagraph}%
-				\renewcommand*{\equationautorefname}{equation}%
-				\renewcommand*{\appendixautorefname}{appendix}%
-			}%
-			\addto\extrasenglish{%
-				\renewcommand*{\tableautorefname}{table}%
-				\renewcommand*{\figureautorefname}{figure}%
-				\renewcommand*{\partautorefname}{part}%
-				\renewcommand*{\chapterautorefname}{chapter}%
-				\renewcommand*{\sectionautorefname}{section}%
-				\renewcommand*{\subsectionautorefname}{subsection}%
-				\renewcommand*{\subsubsectionautorefname}{subsubsection}%
-				\renewcommand*{\paragraphautorefname}{paragraph}%
-				\renewcommand*{\subparagraphautorefname}{subparagraph}%
-				\renewcommand*{\equationautorefname}{equation}%
-				\renewcommand*{\appendixautorefname}{appendix}%
-			}%
-			\addto\extrasnaustrian{%
-				\renewcommand*{\tableautorefname}{Tabelle}%
-				\renewcommand*{\figureautorefname}{Abbildung}%
-				\renewcommand*{\partautorefname}{Teil}%
-				\renewcommand*{\chapterautorefname}{Kapitel}%
-				\renewcommand*{\sectionautorefname}{Abschnitt}%
-				\renewcommand*{\subsectionautorefname}{Unterabschnitt}%
-				\renewcommand*{\subsubsectionautorefname}{Unterunterabscnhitt}%
-				\renewcommand*{\paragraphautorefname}{Paragraph}%
-				\renewcommand*{\subparagraphautorefname}{Unterparagraph}%
-				\renewcommand*{\equationautorefname}{Gleichung}%
-				\renewcommand*{\appendixautorefname}{Anhang}%
-			 }%
-			\addto\extrasngerman{%
-				\renewcommand*{\tableautorefname}{Tabelle}%
-				\renewcommand*{\figureautorefname}{Abbildung}%
-				\renewcommand*{\partautorefname}{Teil}%
-				\renewcommand*{\chapterautorefname}{Kapitel}%
-				\renewcommand*{\sectionautorefname}{Abschnitt}%
-				\renewcommand*{\subsectionautorefname}{Unterabschnitt}%
-				\renewcommand*{\subsubsectionautorefname}{Unterunterabscnhitt}%
-				\renewcommand*{\paragraphautorefname}{Paragraph}%
-				\renewcommand*{\subparagraphautorefname}{Unterparagraph}%
-				\renewcommand*{\equationautorefname}{Gleichung}%
-				\renewcommand*{\appendixautorefname}{Anhang}%
-			 }%
+			\TUM@addto@extras@renew{american,english}{tableautorefname}{table}%
+			\TUM@addto@extras@renew{american,english}{figureautorefname}{figure}%
+			\TUM@addto@extras@renew{american,english}{partautorefname}{part}%
+			\TUM@addto@extras@renew{american,english}{chapterautorefname}{chapter}%
+			\TUM@addto@extras@renew{american,english}{sectionautorefname}{section}%
+			\TUM@addto@extras@renew{american,english}{subsectionautorefname}{subsection}%
+			\TUM@addto@extras@renew{american,english}{subsubsectionautorefname}{subsubsection}%
+			\TUM@addto@extras@renew{american,english}{paragraphautorefname}{paragraph}%
+			\TUM@addto@extras@renew{american,english}{subparagraphautorefname}{subparagraph}%
+			\TUM@addto@extras@renew{american,english}{equationautorefname}{equation}%
+			\TUM@addto@extras@renew{american,english}{appendixautorefname}{appendix}%
+			\TUM@addto@extras@renew{naustrian,ngerman}{tableautorefname}{Tabelle}%
+			\TUM@addto@extras@renew{naustrian,ngerman}{figureautorefname}{Abbildung}%
+			\TUM@addto@extras@renew{naustrian,ngerman}{partautorefname}{Teil}%
+			\TUM@addto@extras@renew{naustrian,ngerman}{chapterautorefname}{Kapitel}%
+			\TUM@addto@extras@renew{naustrian,ngerman}{sectionautorefname}{Abschnitt}%
+			\TUM@addto@extras@renew{naustrian,ngerman}{subsectionautorefname}{Unterabschnitt}%
+			\TUM@addto@extras@renew{naustrian,ngerman}{subsubsectionautorefname}{Unterunterabscnhitt}%
+			\TUM@addto@extras@renew{naustrian,ngerman}{paragraphautorefname}{Paragraph}%
+			\TUM@addto@extras@renew{naustrian,ngerman}{subparagraphautorefname}{Unterparagraph}%
+			\TUM@addto@extras@renew{naustrian,ngerman}{equationautorefname}{Gleichung}%
+			\TUM@addto@extras@renew{naustrian,ngerman}{appendixautorefname}{Anhang}%
 		}%
 		\TUM@ifpackageloaded[setting]{listings}{% begin: listings loaded
 			\AfterEndPreamble{%
-				\addto\extrasamerican{%
-					\renewcommand*{\lstlistingautorefname}{listing}%
-				}%
-				\addto\extrasenglish{%
-					\renewcommand*{\lstlistingautorefname}{listing}%
-				}%
-				\addto\extrasnaustrian{%
-					\renewcommand*{\lstlistingautorefname}{Listing}%
-				}%
-				\addto\extrasngerman{%
-					\renewcommand*{\lstlistingautorefname}{Listing}%
-				}%
+				\TUM@addto@extras@renew{american,english}{lstlistingautorefname}{listing}%
+				\TUM@addto@extras@renew{naustrian,ngerman}{lstlistingautorefname}{Listing}%
 			}%
 		}{}% end: listings not loaded
 		\TUM@ifpackageloaded[setting]{subcaption}{% begin: subcaption loaded
 			\AfterEndPreamble{%
-				\addto\extrasamerican{%
-					\renewcommand*{\subfigureautorefname}{figure}%
-					\renewcommand*{\subtableautorefname}{table}%
-				}%
-				\addto\extrasenglish{%
-					\renewcommand*{\subfigureautorefname}{figure}%
-					\renewcommand*{\subtableautorefname}{table}%
-				}%
-				\addto\extrasnaustrian{%
-					\renewcommand*{\subfigureautorefname}{Abbildung}%
-					\renewcommand*{\subtableautorefname}{Tabelle}%
-				}%
-				\addto\extrasngerman{%
-					\renewcommand*{\subfigureautorefname}{Abbildung}%
-					\renewcommand*{\subtableautorefname}{Tabelle}%
-				}%
+				\TUM@addto@extras@renew{american,english}{subfigureautorefname}{figure}%
+				\TUM@addto@extras@renew{american,english}{subtableautorefname}{table}%
+				\TUM@addto@extras@renew{naustrian,ngerman}{subfigureautorefname}{Abbildung}%
+				\TUM@addto@extras@renew{naustrian,ngerman}{subtableautorefname}{Tabelle}%
 			}%
 		}{}% end: subcaption not loaded
 	}{}% end: babel, hyperref not loaded
@@ -1181,21 +1146,10 @@ stylemods={mcols}%
 %% ********************************************************************************
 \makeatletter%
 \AtBeginDocument{%
-	\newcommand*{\fullrefword}{}%
 	\TUM@ifpackageloaded[setting]{babel}{%
 		\AfterEndPreamble{%
-			\addto\extrasnaustrian{%
-				\renewcommand*{\fullrefword}{auf Seite}%
-			}%
-			\addto\extrasngerman{%
-				\renewcommand*{\fullrefword}{auf Seite}%
-			}%
-			\addto\extrasamerican{%
-				\renewcommand*{\fullrefword}{on page}%
-			}%
-			\addto\extrasenglish{%
-				\renewcommand*{\fullrefword}{on page}%
-			}%
+			\TUM@addto@extras@renew*{american,english}{fullrefword}{on page}%
+			\TUM@addto@extras@renew{naustrian,ngerman}{fullrefword}{auf Seite}%
 		}%
 	}{}%
 }%
@@ -1535,17 +1489,11 @@ stylemods={mcols}%
 \AtBeginDocument{%
 	\TUM@ifpackageloaded[setting]{babel}{%
 		\AfterEndPreamble{%
-			\addto\extrasnaustrian{%
-				\sisetup{output-decimal-marker = {,}}%
-			}%
-			\addto\extrasngerman{%
-				\sisetup{output-decimal-marker = {,}}%
-			}%
-			\addto\extrasamerican{%
+			\TUM@addto@extras{american,english}{%
 				\sisetup{output-decimal-marker = {.}}%
 			}%
-			\addto\extrasenglish{%
-				\sisetup{output-decimal-marker = {.}}%
+			\TUM@addto@extras{naustrian,ngerman}{%
+				\sisetup{output-decimal-marker = {,}}%
 			}%
 			\sisetup{group-minimum-digits=4, group-separator = \, ,%
 			exponent-product=\cdot, output-product=\cdot,%
@@ -1734,21 +1682,10 @@ stylemods={mcols}%
 %% ********************************************************************************
 \makeatletter%
 \AtBeginDocument{%
-	\@ifundefined{abstractname}{\newcommand*{\abstractname}{}}{\renewcommand*{\abstractname}{}}%
 	\TUM@ifpackageloaded[setting]{babel}{% begin: babel loaded
 		\AfterEndPreamble{%
-			\addto\extrasnaustrian{%
-				\renewcommand*{\abstractname}{Resümee}%
-			}%
-			\addto\extrasngerman{%
-				\renewcommand*{\abstractname}{Resümee}%
-			}%
-			\addto\extrasamerican{%
-				\renewcommand*{\abstractname}{Abstract}%
-			}%
-			\addto\extrasenglish{%
-				\renewcommand*{\abstractname}{Abstract}%
-			}%
+			\TUM@addto@extras@renew*{american,english}{abstractname}{Abstract}%
+			\TUM@addto@extras@renew{naustrian,ngerman}{abstractname}{Resümee}%
 		}%
 	}{}%
 }%
@@ -1767,21 +1704,10 @@ stylemods={mcols}%
 %% ********************************************************************************
 \makeatletter%
 \AtBeginDocument{%
-	\newcommand*{\declarationofauthorshipname}{}%
 	\TUM@ifpackageloaded[setting]{babel}{% begin: babel loaded
 		\AfterEndPreamble{%
-			\addto\extrasnaustrian{%
-				\renewcommand*{\declarationofauthorshipname}{Eidesstattliche Erklärung}%
-			}%
-			\addto\extrasngerman{%
-				\renewcommand*{\declarationofauthorshipname}{Eidesstattliche Erklärung}%
-			}%
-			\addto\extrasamerican{%
-				\renewcommand*{\declarationofauthorshipname}{Declaration of Authorship}%
-			}%
-			\addto\extrasenglish{%
-				\renewcommand*{\declarationofauthorshipname}{Declaration of Authorship}%
-			}%
+			\TUM@addto@extras@renew*{american,english}{declarationofauthorshipname}{Declaration of Authorship}%
+			\TUM@addto@extras@renew{naustrian,ngerman}{declarationofauthorshipname}{Eidesstattliche Erklärung}%
 		}%
 	}{}%
 }%
@@ -1791,21 +1717,10 @@ stylemods={mcols}%
 %% ********************************************************************************
 \makeatletter%
 \AtBeginDocument{%
-	\newcommand*{\acknowledgmentsname}{}%
 	\TUM@ifpackageloaded[setting]{babel}{% begin: babel loaded
 		\AfterEndPreamble{%
-			\addto\extrasnaustrian{%
-				\renewcommand*{\acknowledgmentsname}{Danksagung}%
-			}%
-			\addto\extrasngerman{%
-				\renewcommand*{\acknowledgmentsname}{Danksagung}%
-			}%
-			\addto\extrasamerican{%
-				\renewcommand*{\acknowledgmentsname}{Acknowledgments}%
-			}%
-			\addto\extrasenglish{%
-				\renewcommand*{\acknowledgmentsname}{Acknowledgments}%
-			}%
+			\TUM@addto@extras@renew*{american,english}{acknowledgmentsname}{Acknowledgments}%
+			\TUM@addto@extras@renew{naustrian,ngerman}{acknowledgmentsname}{Danksagung}%
 		}%
 	}{}%
 }%
@@ -1833,12 +1748,26 @@ stylemods={mcols}%
 dynnumwidth=true,% necessary if e.q. 14.10 in section
 pagenumberbox=\TUM@pagenumberbox% necessary if pagenumber > 100 (and e.q. bold-font)
 ]{tocline}{part,chapter,section,subsection,subsubsection,figure,table}%
+\TUM@ifpackageloaded[setting]{listings}{
+	\DeclareTOCStyleEntries[%
+		level:=figure,indent:=figure,numwidth:=figure,%
+		dynnumwidth=true,%
+		pagenumberbox=\TUM@pagenumberbox%
+	]{tocline}{lstlisting}
+}{}%
 \makeatother%
 %% ================================================================================
 %% ================================ Keywords ======================================
 %% ********************************************************************************
-\makeatletter%
 \ExplSyntaxOn%
+\str_new:N \l_main_language_hyp_str%
+\str_case_e:nnTF \l_main_language_str {%
+	{english} {\str_set:Nn \l_main_language_hyp_str {en}}%
+	{american} {\str_set:Nn \l_main_language_hyp_str {en}}%
+	{ngerman} {\str_set:Nn \l_main_language_hyp_str {de}}%
+	{naustrian} {\str_set:Nn \l_main_language_hyp_str {de}}%
+} {} {\str_set:Nn \l_main_language_hyp_str {en}}%
+\makeatletter%
 \clist_new:N \l_TUM@keywords_clist%
 \NewDocumentCommand{\@TUM@keywords}{m}{%
 	\clist_put_right:Nn \l_TUM@keywords_clist {#1}%
@@ -1847,19 +1776,22 @@ pagenumberbox=\TUM@pagenumberbox% necessary if pagenumber > 100 (and e.q. bold-f
 	Technische~Universit\"at~M\"unchen,TUM,%
 	Fakult\"at~f\"ur~Physik,Physik,Bachelor~Thesis%
 }%
-\AtBeginDocument{%
+%% hypersetup's before the main aux file is read!
+\AtEndPreamble{%
 	\pdfkeywords{\clist_use:Nnnn \l_TUM@keywords_clist {;} {;} {;}}%
 	\hypersetup{%
 		pdftitle={\@pdftitle},%
 		pdfsubject={\@pdfsubject},%
 		pdfauthor={\@pdfauthor},%
 		pdfkeywords={\@pdfkeywords},%
+		pdflang={\str_use:N \l_main_language_hyp_str},%
 		%pdfcreator={...},% LaTeX with hyperref
 		%pdfproducer={...},% MiKTeX pdfTeX-1.40.21
+		%pdfcontactaddress, pdfcontactcity, pdfcontactpostcode, pdfcontactemail, pdfcontacturl,... needs {hyperxmp}
 	}%
 }%
-\ExplSyntaxOff%
 \makeatother%
+\ExplSyntaxOff%
 %% ================================================================================
 %% ================================= Note columns =================================
 %% ********************************************************************************
@@ -1889,10 +1821,12 @@ pagenumberbox=\TUM@pagenumberbox% necessary if pagenumber > 100 (and e.q. bold-f
 }{}%
 \makeatother%
 \TUMRequirePackage{packages/tumtitlepage}%
+%% (Re)update babel language settings
+\makeatletter\AtBeginDocument{\AfterEndPreamble{\selectlanguage{\bbl@main@language}}}\makeatother%
 %% ================================================================================
 %% =========================== Tolerance, Penalty, etc. ===========================
 %% ********************************************************************************
-%% \tolerance = low tolerance values will cause LATEX not to tolerate uneven spacing between words
+%% \tolerance = low tolerance values will cause LaTeX not to tolerate uneven spacing between words
 \makeatletter%
 \tolerance 141% max = 10000 (default: 200, example: 1414*, je geringer, desto "schöner", aber zu gering --> no auto line/page breaks...)
 \hbadness 141% max = 10000 (default: , example: 1414*, je geringer, desto "schöner", aber zu gering --> no forced line/page breaks...)

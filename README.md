@@ -37,8 +37,8 @@ export TEXINPUTS=.:$HOME/{path...}//;$TEXINPUTS<br />
 {...}<br /><br />
 
 ### Changes in 1.0.2.nightly.001000000010008:<br />
-<br />
-Small changes and improvements.<br /><br />
+Added hypersetup [pdflang].<br />
+Some small changes/improvements.<br /><br />
 
 ### Changes in 1.0.2.nightly.001000000010003:<br />
 Implementation of {glossaries(-extra)}. Removed {imakeidx/idxlayout}. Now one can make an Index (and List of Abbreviations, -Symbols, etc.) with bib2gls (best option available).<br />

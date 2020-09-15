@@ -404,24 +404,25 @@ Chapter & \autoref{chap:Einfuehrung:Hauptklassen}	 &
 \ref{chap:Einfuehrung:Hauptklassen} &\\
 Section & \autoref{sec:Einfuehrung:Hauptklassen:Absatzauszeichnung} &
 \ref{sec:Einfuehrung:Hauptklassen:Absatzauszeichnung} &\\
-Tabelle & \autoref{tab:Tabellen:A long table} & 
+Table & \autoref{tab:Tabellen:A long table} & 
 \ref{tab:Tabellen:A long table} &\\
-Tabelle & \autoref{subtab:Tabellen:mit latex-subtable:two} & 
+Table & \autoref{subtab:Tabellen:mit latex-subtable:two} & 
 \ref{subtab:Tabellen:mit latex-subtable:two} &
 \subref{subtab:Tabellen:mit latex-subtable:two}\\
-Abbildung & \autoref{fig:Gleitumgebungen:Grafik mit subcaptionbox ohne captionsetup (Standard: komafont)} & 
+Figure & \autoref{fig:Gleitumgebungen:Grafik mit subcaptionbox ohne captionsetup (Standard: komafont)} & 
 \ref{fig:Gleitumgebungen:Grafik mit subcaptionbox ohne captionsetup (Standard: komafont)} &\\
-Abbildung & \autoref{subfig:Gleitumgebungen:mit subcaptionbox:D} & 
+Figure & \autoref{subfig:Gleitumgebungen:mit subcaptionbox:D} & 
 \ref{subfig:Gleitumgebungen:mit subcaptionbox:D} &
 \subref{subfig:Gleitumgebungen:mit subcaptionbox:D}\\
 Theorem & \autoref{theo:Theorem 1:theorem 1} & \ref{theo:Theorem 1:theorem 1}& \\
 Lemma & \autoref{lem:Theorem 1:lemma 1} & \ref{lem:Theorem 1:lemma 1}& \\
-Korollar & \autoref{cor:Theorem 1:corollary 1} & \ref{cor:Theorem 1:corollary 1}& \\
+Corollary & \autoref{cor:Theorem 1:corollary 1} & \ref{cor:Theorem 1:corollary 1}& \\
 Definition &  \autoref{def:Theorem 1:definition 1} & \ref{def:Theorem 1:definition 1}& \\
 Example &  \autoref{exam:Theorem 1:example 1} & \ref{exam:Theorem 1:example 1}& \\
 Remark & \autoref{rem:Theorem 1:remark 1} & \ref{rem:Theorem 1:remark 1}& \\
-Formel &  & \eqref{equ:Mathematik:sub-gesamt} & \eqref{subequ:Mathematik:sub-b} \\
+Equation &  & \eqref{equ:Mathematik:sub-gesamt} & \eqref{subequ:Mathematik:sub-b} \\
 Subsec.~\ref{subsec:Einfuehrung:Satzspiegelberechnung:Grundlagen:Weiterentwicklung} on page && \pageref{subsec:Einfuehrung:Satzspiegelberechnung:Grundlagen:Weiterentwicklung} &\\
+Listing & \autoref{lst:introduction:3} & \ref{lst:introduction:3} & \\
 	\end{tabular}
 \end{table}
 Nun gibt es noch \verb|\fullref|, \verb|\fulleqref| und \verb|\fullautoref| wo jeweils auch die Seite angegeben wird, z.\,B. letzer Befehl: \fullautoref{subtab:Tabellen:mit latex-subtable:two}. Vom Buch: \cite{LabenbacherTeX}, oder siehe Fußnoten: Mit ref: \ref{footnote:Tabellen:A footnote in the tableentry-firsthead}, Mit \verb|\footref| (KomaScript): \footref{footnote:Tabellen:A footnote in the tableentry-firsthead} (Bei Fußnoten kein autoref, da dies nicht unterstützt wird!). Der Style von \verb|\eqref| wird nicht beeinflusst im gegensatz zu \verb|\ref|, er ist immer \verb|\textup{...}| und \verb|\normalfont|. Würde man dies ändern wollen, d.h. so dass sich der Befehl wie \verb|\ref| verhält so müsste man in die Preamble folgendes ergänzen (Einfach von \TUMstyle{package}{amsmath} kopiert ohne \verb|\textup{...}| (zweite Zeile) und \verb|\normalfont| (dritte Zeile).):%
@@ -679,6 +680,8 @@ Mit Hilfe von \verb|\makenote| kann Text in die Randspalte geschrieben werden. I
 
 \section{Sub-(ind/todo)}%
 \label{sec:introduction:Sub-indtodo}%
+\ifdef{\idxadd}{}{\NewDocumentCommand{\idxadd}{O{}m}{\glsadd[#1]{idx.#2}}}%
+\ifdef{\fcpadd}{}{\NewDocumentCommand{\fcpadd}{O{}m}{\glsadd[#1]{fcp.#2}}}%
 \Gls{idx.people}, \gls[format=TUMindexnumberi]{idx.entry}, beast\idxadd{beast}, dog\idxadd{animal.dog}, \gls{fcp.ad}, \fcpadd[format=(TUMindexnumberi]{ba}
 \newpage\glspl{idx.people}, \gls[format=TUMindexnumberi]{idx.animal}, \gls{idx.entry}, key\idxadd[format=TUMindexnumberi]{key}, electrician\glsadd{idx.people.electrician}, 
 \newpage\gls{idx.entry}, \gls[format=(]{idx.people},\newpage{}A,\newpage{}\gls[format=)]{idx.people}, 
