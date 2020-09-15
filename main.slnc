@@ -1,0 +1,2 @@
+\slnc@note {marginpar}{71}{30171868}{Bei \LaTeX 3 steht ein wichtiger Text bzw. Bild in der Randnotiz:\\\includegraphics [width=\linewidth ]{help}\\Wir \textit {können} mit {{\TUMfont {package}\nolinkurl {scrlayer-notecolumn}}} auch Umbrüche \leavevmode {\color {red}ohne Probleme} behandeln.\par \vspace \medskipamount Skip und weiter\ldots {}.}
+\slnc@note {marginpar}{71}{30171868}{An selben Stelle noch einmal führt dazu, dass der Text nach dem vorherigen ausgegeben wird ohne Überschneidung.}
