@@ -32,49 +32,23 @@
 	\TUM@ifpackageloaded[setting]{babel}{%
 		\AfterEndPreamble{%
 			\int_compare:nNnTF {\int_use:N \l_index_count_int} > {1} {%
-				\addto\extrasamerican{%
-					\renewcommand{\indexname}{Indices}%
-				}%
-				\addto\extrasenglish{%
-					\renewcommand{\indexname}{Indices}%
-				}%
-				\addto\extrasnaustrian{%
-					\renewcommand{\indexname}{Indices}%
-				}%
-				\addto\extrasngerman{%
-					\renewcommand{\indexname}{Indices}%
-				}%
+				\TUM@addto@extras@renew{american,english,naustrian,ngerman}{indexname}{Indices}%
 			}{}%
 			\int_compare:nNnTF {\int_use:N \l_index_count_int} = {1} {%
-				\addto\extrasamerican{%
-					\renewcommand{\indexname}{Index}%
-				}%
-				\addto\extrasenglish{%
-					\renewcommand{\indexname}{Index}%
-				}%
-				\addto\extrasnaustrian{%
-					\renewcommand{\indexname}{Index}%
-				}%
-				\addto\extrasngerman{%
-					\renewcommand{\indexname}{Index}%
-				}%
+				\TUM@addto@extras@renew{american,english,naustrian,ngerman}{indexname}{Index}%
 			}{}%
 		}%
 	}{}%
 }%
 \makeatother%
 %% ========================== Definition of the TUM-IDX ===========================
-\makeatletter%
-\str_new:N \l_main_language_str%
-\str_new:N \l_main_language_short_str%
-\exp_args:NNo \str_set:Nn \l_main_language_str {\bbl@main@language}%
+\str_new:N \l_main_language_index_str%
 \str_case_e:nnTF \l_main_language_str {%
-	{english} {\str_set:Nn \l_main_language_short_str {en-US}}%
-	{american} {\str_set:Nn \l_main_language_short_str {en-US}}%
-	{ngerman} {\str_set:Nn \l_main_language_short_str {de-DE}}%
-	{naustrian} {\str_set:Nn \l_main_language_short_str {de-AT}}%
-} {} {\str_set:Nn \l_main_language_short_str {en-US}}%
-\makeatletter%
+	{english} {\str_set:Nn \l_main_language_index_str {en-US}}%
+	{american} {\str_set:Nn \l_main_language_index_str {en-US}}%
+	{ngerman} {\str_set:Nn \l_main_language_index_str {de-DE}}%
+	{naustrian} {\str_set:Nn \l_main_language_index_str {de-AT}}%
+} {} {\str_set:Nn \l_main_language_index_str {en-US}}%
 \int_new:N \l_index_count_int%
 \int_set:Nn \l_index_count_int {0}%
 \clist_new:N \l_index_clist%
@@ -85,7 +59,7 @@
 }%
 %% \TUMmakeindex
 \clist_new:N \l_index_sort_clist%
-\NewDocumentCommand{\TUMmakeindex}{oO{\l_main_language_short_str}mm}{%
+\NewDocumentCommand{\TUMmakeindex}{oO{\str_use:N \l_main_language_index_str}mm}{%
 	\int_incr:N \l_index_count_int%
 	\clist_put_right:Nn \l_index_clist {#4}%
 	\IfNoValueOrEmptyTF{#1}{%

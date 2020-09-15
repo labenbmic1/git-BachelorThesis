@@ -44,13 +44,17 @@
 }%
 \cs_new_protected:Npn \TUM_define_macro_normal_func:NNn #1#2#3 {%
 	\prop_new:c {g_#3_prop}%
-	\NewDocumentCommand{#1}{+O{\languagename}O{}m}{%
-		\tl_if_blank:nTF {##2}{%
+	\NewDocumentCommand{#1}{+oO{}m}{%
+		\IfNoValueOrEmptyTF{##2}{%
 			\@TUM@keywords{##3}%
 		}{%
 			\@TUM@keywords{##2}%
 		}%
-		\prop_gput:cfn {g_#3_prop} {##1} {##3}%
+		\IfNoValueOrEmptyTF{##1}{%
+			\prop_gput:cfn {g_#3_prop} {\str_use:N \l_main_language_str} {##3}%
+		}{%
+			\prop_gput:cfn {g_#3_prop} {##1} {##3}%
+		}%
 	}%
 	\NewDocumentCommand{#2}{}{%
 		\prop_item:cV {g_#3_prop} {\languagename}%
@@ -58,7 +62,7 @@
 }%
 \cs_new_protected:Npn \TUM_define_macro_header_func:NNn #1#2#3 {%
 	\prop_new:c {g_#3_prop}%
-	\NewDocumentCommand{#1}{+O{\languagename}m}{%
+	\NewDocumentCommand{#1}{+O{\str_use:N \l_main_language_str}m}{%
 		\prop_gput:cfn {g_#3_prop} {##1} {##2}%
 	}%
 	\NewDocumentCommand{#2}{}{%
@@ -67,7 +71,7 @@
 }%
 \cs_new_protected:Npn \TUM_define_macro_text_func:NNn #1#2#3 {%
 	\prop_new:c {g_#3_prop}%
-	\NewDocumentCommand{#1}{+O{\languagename}m}{%
+	\NewDocumentCommand{#1}{+O{\str_use:N \l_main_language_str}m}{%
 	   \@TUM@keywords{##2}%
 		\prop_gput:cfn {g_#3_prop} {##1} {##2}%
 	}%
@@ -139,8 +143,12 @@
 	}%
 }%
 \cs_new_protected:Npn \TUM_define_macro_author_text_func:NNnn #1#2#3#4 {%
-	\NewDocumentCommand{#1}{O{\languagename}O{1}m}{%
-		\prop_gput:cnn {g_#3_##1_prop} {##2} {##3}%
+	\NewDocumentCommand{#1}{oO{1}m}{%
+		\IfNoValueOrEmptyTF{##1}{%
+			\prop_gput:cnn {g_#3_ \str_use:N \l_main_language_str _prop} {##2} {##3}%
+		}{%
+			\prop_gput:cnn {g_#3_##1_prop} {##2} {##3}%
+		}%
 	}%
 	\NewDocumentCommand{#2}{m}{%
 		\usekomafont{#4}\prop_item:cn {g_#3_\use:c {languagename}_prop} {##1}%
@@ -166,7 +174,7 @@
 }%
 \cs_new_protected:Npn \TUM_define_macro_assessor_text_func:NNnn #1#2#3#4 {%
 	\prop_new:c {g_#3_prop}%
-	\NewDocumentCommand{#1}{+O{\languagename}m}{%
+	\NewDocumentCommand{#1}{+O{\str_use:N \l_main_language_str}m}{%
 		\prop_gput:cfn {g_#3_prop} {##1} {\usekomafont{#4}##2}%
 	}%
 	\NewDocumentCommand{#2}{}{%

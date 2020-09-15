@@ -8,22 +8,8 @@
 \AtBeginDocument{%
 	\TUM@ifpackageloaded[setting]{babel}{%
 		\AfterEndPreamble{%
-			\addto\extrasnaustrian{%
-				\renewcommand{\listtablename}{%
-				Tabellenverzeichnis}%
-			}%
-			\addto\extrasngerman{%
-				\renewcommand{\listtablename}{%
-				Tabellenverzeichnis}%
-			}%
-			\addto\extrasamerican{%
-				\renewcommand{\listtablename}{%
-				List of Tables}%
-			}%
-			\addto\extrasenglish{%
-				\renewcommand{\listtablename}{%
-				List of Tables}%
-			}%
+			\TUM@addto@extras@renew{american,english}{listtablename}{List of Tables}%
+			\TUM@addto@extras@renew{naustrian,ngerman}{listtablename}{Tabellenverzeichnis}%
 		}%
 	}{}%
 }%

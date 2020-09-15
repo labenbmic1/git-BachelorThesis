@@ -69,19 +69,18 @@ captions=figuresignature, captions=tableheading,% --> Position von caption relev
 % Standard Index Tool: txs:///makeindex --> txs:///bib2gls
 
 % Before \AtBeginDocument for keywords:
-\TUMheader[american]{%
+\TUMheader{%
 	Technische Universität München\\%
 	Fakultät für Physik\\%
 	(Lehrstuhl, Leiter, Arbeitsgruppe etc.)\todoMissing[caption={Missing header.}, author={Michael L.}]{Please translate this to english.}}%
-\TUMtitle[american][Detecting Thermal Phase Transitions in a Trapped Ion Quantum Computer]{Detecting Thermal Phase Transitions in a Trapped Ion Quantum Computer\thanks{\today, Wir sollten uns nicht empören, dass andere die Wahrheit vorenthalten, wenn wir sie doch selbst so oft verschleiern. (please delete this immediately :P)\todoChange[caption={Change/Delete.}, author={Michael L.}]{Please remove this immediately.}}}%
+\TUMtitle[][Detecting Thermal Phase Transitions in a Trapped Ion Quantum Computer]{Detecting Thermal Phase Transitions in a Trapped Ion Quantum Computer\thanks{\today, Wir sollten uns nicht empören, dass andere die Wahrheit vorenthalten, wenn wir sie doch selbst so oft verschleiern. (please delete this immediately :P)\todoChange[caption={Change/Delete.}, author={Michael L.}]{Please remove this immediately.}}}%
 \TUMauthor[michael.labenbacher@tum.de][]{Michael Labenbacher}% mail, 03697519, name
 \TUMauthor[john@smith.at]{John Smith}% only for test
 \TUMsupervisor[michael.knap@ph.tum.de]{Prof. Dr. Michael Knap}% mail, name
 \TUMsupervisor[alexander.schuckert@tum.de]{Alexander Schuckert}% more....
 \TUMfirstassessor[michael.knap@ph.tum.de]{Prof. Dr. Michael Knap}%
 \TUMsecondassessor{Prof. Dr. David Egger}%
-\TUMtopic[american]{Quantum Many-Body Physics (Theory)}
-\TUMtopic[naustrian]{Quantum Many-Body Physics (Theory)}
+\TUMtopic{Quantum Many-Body Physics (Theory)}
 \TUMsubmissiondate{30}{01}{2020}% \formatdate
 %% Single Index: (before \AtEndPreamble)
 \TUMmakeindex{glossaries/help-index-1}{idx}%
@@ -98,7 +97,6 @@ captions=figuresignature, captions=tableheading,% --> Position von caption relev
 %}%
 
 \begin{document}%
-	\selectlanguage{american}% (Supported languages: american, naustrian, english*, ngerman* (*pass to babel))
 	\nomatter%
 	\responsible{Michael Labenbacher}% \&{}
 	\maketitle%
@@ -108,7 +106,7 @@ captions=figuresignature, captions=tableheading,% --> Position von caption relev
 	\mainmatter%
 	%% ************************* (Start) Input the files **************************
 	%\input{chapters/LaTeX-Einfuehrung}% [debug=true, notecolumn=true, todo=true] remove
-	%\input{chapters/LaTeX-TikZ-Examples}% remove
+	%\input{chapters/LaTeX-TikZ-Examples}% remove 
 	\input{chapters/introduction}% change the following ...	
 	\input{chapters/theoBackground}%
 	\input{chapters/compMethods}%

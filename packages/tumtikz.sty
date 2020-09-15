@@ -21,28 +21,16 @@
 \AtBeginDocument{%
 	\TUM@ifpackageloaded[setting]{babel}{%
 		\AfterEndPreamble{%
-			\addto\extrasnaustrian{%
-				\pgfplotsset{%
-					x tick label style={/pgf/number format/set decimal separator={,}},%
-					y tick label style={/pgf/number format/set decimal separator={,}},%
-				}%
-			}%
-			\addto\extrasngerman{%
-				\pgfplotsset{%
-					x tick label style={/pgf/number format/set decimal separator={,}},%
-					y tick label style={/pgf/number format/set decimal separator={,}},%
-				}%
-			}%
-			\addto\extrasamerican{%
+			\TUM@addto@extras{american,english}{%
 				\pgfplotsset{%
 					x tick label style={/pgf/number format/set decimal separator=.},%
 					y tick label style={/pgf/number format/set decimal separator=.},%
 				}%
 			}%
-			\addto\extrasenglish{%
+			\TUM@addto@extras{naustrian,ngerman}{%
 				\pgfplotsset{%
-					x tick label style={/pgf/number format/set decimal separator=.},%
-					y tick label style={/pgf/number format/set decimal separator=.},%
+					x tick label style={/pgf/number format/set decimal separator={,}},%
+					y tick label style={/pgf/number format/set decimal separator={,}},%
 				}%
 			}%
 		}%
@@ -67,6 +55,7 @@
 		axis line style={-stealth},%
 		hide obscured x ticks=false, hide obscured y ticks=false%
 	},%
+	cycle list={\TUMcolor{tikz-1}\\\TUMcolor{tikz-2}\\\TUMcolor{tikz-3}\\\TUMcolor{tikz-4}\\\TUMcolor{tikz-5}\\\TUMcolor{tikz-6}\\},%
 }%
 \tikzset{>=latex}%
 \makeatletter%

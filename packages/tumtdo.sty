@@ -8,28 +8,13 @@
 \AtBeginDocument{%
 	\TUM@ifpackageloaded[setting]{babel}{%
 		\AfterEndPreamble{%
-			\addto\extrasamerican{%
-				\renewcommand*{\@todonotes@todolistname}{List of Todos}%
-				\renewcommand*{\@todonotes@SetMissingFigureUp}{Missing}%
-				\renewcommand*{\@todonotes@MissingFigureText}{Figure}%
-				\renewcommand*{\@todonotes@SetMissingFigureDown}{figure}%
-			}%
-			\addto\extrasenglish{%
-				\renewcommand*{\@todonotes@todolistname}{List of Todos}%
-				\renewcommand*{\@todonotes@SetMissingFigureUp}{Missing}%
-				\renewcommand*{\@todonotes@MissingFigureText}{Figure}%
-				\renewcommand*{\@todonotes@SetMissingFigureDown}{figure}%
-			}%
-			\addto\extrasngerman{%
-				\renewcommand*{\@todonotes@todolistname}{Todoverzeichnis}%
-				\renewcommand*{\@todonotes@SetMissingFigureUp}{Fehlende}%
-				\renewcommand*{\@todonotes@MissingFigureText}{Abbildung}%
-			}%
-			\addto\extrasnaustrian{%
-				\renewcommand*{\@todonotes@todolistname}{Todoverzeichnis}%
-				\renewcommand*{\@todonotes@SetMissingFigureUp}{Fehlende}%
-				\renewcommand*{\@todonotes@MissingFigureText}{Abbildung}%
-			}%
+			\TUM@addto@extras@renew{american,english}{@todonotes@todolistname}{List of Todos}%
+			\TUM@addto@extras@renew{american,english}{@todonotes@SetMissingFigureUp}{Missing}%
+			\TUM@addto@extras@renew{american,english}{@todonotes@MissingFigureText}{Figure}%
+			\TUM@addto@extras@renew{american,english}{@todonotes@SetMissingFigureDown}{figure}%
+			\TUM@addto@extras@renew{naustrian,ngerman}{@todonotes@todolistname}{Todoverzeichnis}%
+			\TUM@addto@extras@renew{naustrian,ngerman}{@todonotes@SetMissingFigureUp}{Fehlende}%
+			\TUM@addto@extras@renew{naustrian,ngerman}{@todonotes@MissingFigureText}{Abbildung}%
 		}%
 	}{}%
 }%

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.9.10)  14 SEP 2020 09:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.9.10)  15 SEP 2020 17:02
 entering extended mode
 **\def\tikzexternalrealjob{main}\input{main}
 (main.tex
@@ -199,10 +199,10 @@ LaTeX Info: Redefining \addtolength on input line 81.
 \calc@Ccount=\count188
 \calc@Cskip=\skip66
 )
-Package: tum-physics 2020-09-09 v1.0.2.nightly.001000000010003 A "package" made
+Package: tum-physics 2020-09-14 v1.0.2.nightly.001000000010004 A "package" made
  by Michael Labenbacher, scrbook/scrreprt, :P
 ==========================================================================
-Version: 1.0.2.nightly.001000000010003
+Version: 1.0.2.nightly.001000000010004
 000 for: -- paper=a4,11/12pt,twoside,open=right -- scrbook
 001 for: -- paper=a4,11/12pt,oneside,open=any -- scrreprt
 002 for: -- paper=a4,11/12pt,twoside,open=right -- scrartcl
@@ -239,7 +239,6 @@ LaTeX Info: Redefining \GenericError on input line 601.
 Possible optimizations: glossaries, biblatex, listings, theorems
 TODO: biblatex (ev. ieee (changes names))
 TODO: theorem (if necessary change style)
-TODO: makeidx (ev. improve pagebreak-algorithmus (splitidx -- xindy))
 TODO: listings package (Einstellungen betrachten und verwalten, z.B. Python)
 TODO: glossaries(-extra) (List ob abbreviations, if necessary use with bib2gls-
 option)
@@ -971,7 +970,7 @@ Package: longtable 2020/01/07 v4.13 Multi-page Table package (DPC)
 \c@LT@chunks=\count456
 \LT@p@ftn=\toks49
 )
-Class scrreprt Info: longtable captions redefined on input line 881.
+Class scrreprt Info: longtable captions redefined on input line 897.
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
 Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
 \multirow@colwidth=\skip125
@@ -979,7 +978,7 @@ Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
 \multirow@dima=\skip126
 \bigstrutjot=\dimen258
 ) (packages/tumcolors.sty
-Package: packages/tumcolors 2020-09-09 v1.0.2.nightly.001000000010003 The color
+Package: packages/tumcolors 2020-09-14 v1.0.2.nightly.001000000010004 The color
 -part made by Michael Labenbacher
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
@@ -2011,7 +2010,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks77
 \@floatcapt=\box111
 )
-Package scrhack Info: loading float hack on input line 993.
+Package scrhack Info: loading float hack on input line 1009.
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\float.hak
 File: float.hak 2020/07/22 v3.31 KOMA-Script scrhack part (hacking package floa
 t)
@@ -2021,7 +2020,7 @@ Package scrhack Info: undefining \float@addtolists on input line 163.
 )
 Package scrhack Info: hyperref hack deactivated because of
 (scrhack)             detection of KOMA-Script class, that doesn't
-(scrhack)             need that hack, on input line 1016.
+(scrhack)             need that hack, on input line 1032.
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
 Package: hyperref 2020-05-15 v7.00e Hypertext links for LaTeX
 
@@ -2115,13 +2114,13 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 Package: nccmath 2006/01/20 v1.3 Additional Math Commands (NCC)
 \NCC@fracrulewidth=\dimen427
 )
-Package hyperref Info: Option `pdftoolbar' set `true' on input line 1033.
-Package hyperref Info: Option `pdfmenubar' set `true' on input line 1033.
-Package hyperref Info: Option `colorlinks' set `true' on input line 1033.
-Package hyperref Info: Option `breaklinks' set `true' on input line 1033.
-Package hyperref Info: Option `linktocpage' set `true' on input line 1033.
-Package hyperref Info: Option `hypertexnames' set `true' on input line 1033.
-Package hyperref Info: Option `plainpages' set `false' on input line 1033.
+Package hyperref Info: Option `pdftoolbar' set `true' on input line 1049.
+Package hyperref Info: Option `pdfmenubar' set `true' on input line 1049.
+Package hyperref Info: Option `colorlinks' set `true' on input line 1049.
+Package hyperref Info: Option `breaklinks' set `true' on input line 1049.
+Package hyperref Info: Option `linktocpage' set `true' on input line 1049.
+Package hyperref Info: Option `hypertexnames' set `true' on input line 1049.
+Package hyperref Info: Option `plainpages' set `false' on input line 1049.
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/bookmark\bookmark.sty
 Package: bookmark 2019/12/03 v1.28 PDF bookmarks (HO)
 
@@ -2455,7 +2454,7 @@ File: tikzlibraryshapes.misc.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 pgflibraryshapes.misc.code.tex
 File: pgflibraryshapes.misc.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )) (packages/tumtikz.sty
-Package: packages/tumtikz 2020-09-09 v1.0.2.nightly.001000000010003 The tikz/pg
+Package: packages/tumtikz 2020-09-14 v1.0.2.nightly.001000000010004 The tikz/pg
 f-part made by Michael Labenbacher
 \tikZlengthwi=\skip158
 \tikZlengthwii=\skip159
@@ -2465,10 +2464,10 @@ f-part made by Michael Labenbacher
 \tikZlengthwvi=\skip163
 \tikZlengthwvii=\skip164
 ) (packages/tumlistings.sty
-Package: packages/tumlistings 2020-09-09 v1.0.2.nightly.001000000010003 The lis
+Package: packages/tumlistings 2020-09-14 v1.0.2.nightly.001000000010004 The lis
 tings-part made by Michael Labenbacher
 ) (packages/tumtcb.sty
-Package: packages/tumtcb 2020-09-09 v1.0.2.nightly.001000000010003 The tcolorbo
+Package: packages/tumtcb 2020-09-14 v1.0.2.nightly.001000000010004 The tcolorbo
 x(theorem)-part made by Michael Labenbacher
 
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcblistings.c
@@ -2518,39 +2517,41 @@ Library (tcolorbox): 'tcbxparse.code.tex' version '4.31'
 \c@tcb@cnt@postulate=\count622
 \c@tcb@cnt@example=\count623
 ) (packages/tumheader.sty
-Package: packages/tumheader 2020-09-09 v1.0.2.nightly.001000000010003 The heade
+Package: packages/tumheader 2020-09-14 v1.0.2.nightly.001000000010004 The heade
 r-part made by Michael Labenbacher
 ) (packages/tummatter.sty
-Package: packages/tummatter 2020-09-09 v1.0.2.nightly.001000000010003 The matte
+Package: packages/tummatter 2020-09-14 v1.0.2.nightly.001000000010004 The matte
 r-part made by Michael Labenbacher
-) (packages/tumnote.sty
-Package: packages/tumnote 2020-09-09 v1.0.2.nightly.001000000010003 The notecol
+)
+\scr@dte@lstlisting@maxnumwidth=\skip165
+(packages/tumnote.sty
+Package: packages/tumnote 2020-09-14 v1.0.2.nightly.001000000010004 The notecol
 umn-part made by Michael Labenbacher
 ) (packages/tumtoc.sty
-Package: packages/tumtoc 2020-09-09 v1.0.2.nightly.001000000010003 The table-of
+Package: packages/tumtoc 2020-09-14 v1.0.2.nightly.001000000010004 The table-of
 -contents-part made by Michael Labenbacher
 ) (packages/tumlof.sty
-Package: packages/tumlof 2020-09-09 v1.0.2.nightly.001000000010003 The list-of-
+Package: packages/tumlof 2020-09-14 v1.0.2.nightly.001000000010004 The list-of-
 figures-part made by Michael Labenbacher
 ) (packages/tumlot.sty
-Package: packages/tumlot 2020-09-09 v1.0.2.nightly.001000000010003 The list-of-
+Package: packages/tumlot 2020-09-14 v1.0.2.nightly.001000000010004 The list-of-
 table-part made by Michael Labenbacher
 ) (packages/tumlob.sty
-Package: packages/tumlob 2020-09-09 v1.0.2.nightly.001000000010003 The list-of-
+Package: packages/tumlob 2020-09-14 v1.0.2.nightly.001000000010004 The list-of-
 bibliography-part made by Michael Labenbacher
 ) (packages/tumlol.sty
-Package: packages/tumlol 2020-09-09 v1.0.2.nightly.001000000010003 The list-of-
+Package: packages/tumlol 2020-09-14 v1.0.2.nightly.001000000010004 The list-of-
 listings-part made by Michael Labenbacher
 ) (packages/tumidx.sty
-Package: packages/tumidx 2020-09-09 v1.0.2.nightly.001000000010003 The index-pa
+Package: packages/tumidx 2020-09-14 v1.0.2.nightly.001000000010004 The index-pa
 rt made by Michael Labenbacher
 \l_index_count_int=\count624
 \l_index_preamble_count_int=\count625
 ) (packages/tumtdo.sty
-Package: packages/tumtdo 2020-09-09 v1.0.2.nightly.001000000010003 The todonote
+Package: packages/tumtdo 2020-09-14 v1.0.2.nightly.001000000010004 The todonote
 s-part made by Michael Labenbacher
 ) (packages/tumtitlepage.sty
-Package: packages/tumtitlepage 2020-09-09 v1.0.2.nightly.001000000010003 The ti
+Package: packages/tumtitlepage 2020-09-14 v1.0.2.nightly.001000000010004 The ti
 tlepage-part made by Michael Labenbacher
 ))
 LaTeX Font Info:    Trying to load font information for T1+lmr on input line 56
@@ -2577,11 +2578,11 @@ Package typearea Info: These are the values describing the layout:
 (typearea)              on input line 56.
 
 Package glossaries-extra Warning: No file `images/tikz/Figure-9.glstex' on inpu
-t line 92.
+t line 91.
 
 
 Package glossaries-extra Warning: No file `images/tikz/Figure-9-1.glstex' on in
-put line 93.
+put line 92.
 
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
@@ -2590,27 +2591,27 @@ Package chemmacros Info: You haven't chosen a formula method so I'm assuming
 (chemmacros)             the default method `chemformula'.
 
 No file images/tikz/Figure-9.aux.
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-Package scrbase Info: activating american \contentsname on input line 100.
-Package scrbase Info: activating american \listfigurename on input line 100.
-Package scrbase Info: activating american \listtablename on input line 100.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+Package scrbase Info: activating american \contentsname on input line 99.
+Package scrbase Info: activating american \listfigurename on input line 99.
+Package scrbase Info: activating american \listtablename on input line 99.
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/lipsum\lipsum.sty
 Package: lipsum 2019/01/02 v2.2 150 paragraphs of Lorem Ipsum dummy text
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/lipsum\lipsum.ltd.tex
@@ -2667,7 +2668,7 @@ Column B -> >{\raggedleft \arraybackslash }X
 Package: seqsplit 2006/08/07 v0.1 Splitting long sequences (DNA, RNA, proteins,
  etc.) 
 ) ABD: EverySelectfont initializing macros
-LaTeX Info: Redefining \selectfont on input line 100.
+LaTeX Info: Redefining \selectfont on input line 99.
 Package scrdate Info: \dategerman not defined.
 (scrdate)             \todaysname probably cannot use \dayname@german.
 Package scrdate Info: \datengerman not defined.
@@ -2718,14 +2719,14 @@ Package scrdate Info: \dateczech not defined.
 (scrdate)             \todaysname probably cannot use \dayname@czech.
 Package scrdate Info: \dateslovak not defined.
 (scrdate)             \todaysname probably cannot use \dayname@slovak.
-LaTeX Info: Redefining \microtypecontext on input line 100.
+LaTeX Info: Redefining \microtypecontext on input line 99.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `basictext'.
-LaTeX Info: Redefining \showhyphens on input line 100.
+LaTeX Info: Redefining \showhyphens on input line 99.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -2778,8 +2779,8 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'images/tikz/Figure-9.bbl' not found.
 No file images/tikz/Figure-9.bbl.
-Package biblatex Info: Reference section=0 on input line 100.
-Package biblatex Info: Reference segment=0 on input line 100.
+Package biblatex Info: Reference section=0 on input line 99.
+Package biblatex Info: Reference segment=0 on input line 99.
 
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/translator\translator-b
 asic-dictionary-English.dict
@@ -2822,7 +2823,7 @@ s been generated with the most recent feature set (\pgfplotsset{compat=1.17}).
 
 \c@lstlisting=\count663
 
-Package chemgreek Info: Activating mapping `upgreek' on line 100.
+Package chemgreek Info: Activating mapping `upgreek' on line 99.
 
 
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/translations/dicts\tran
@@ -2867,8 +2868,8 @@ lations-basic-dictionary')
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package scrhack Info: undefining \float@addtolists on input line 100.
-Package hyperref Info: Link coloring ON on input line 100.
+Package scrhack Info: undefining \float@addtolists on input line 99.
+Package hyperref Info: Link coloring ON on input line 99.
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
@@ -2880,58 +2881,58 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count668
 )
-LaTeX Info: Redefining \ref on input line 100.
-LaTeX Info: Redefining \pageref on input line 100.
-LaTeX Info: Redefining \nameref on input line 100.
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
-00.
+LaTeX Info: Redefining \ref on input line 99.
+LaTeX Info: Redefining \pageref on input line 99.
+LaTeX Info: Redefining \nameref on input line 99.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 9
+9.
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-00.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 9
+9.
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-100.
+99.
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-100.
+99.
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 100.
+(Font)              <10.95> on input line 99.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 100.
+(Font)              <8> on input line 99.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 100.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 100
-.
+(Font)              <6> on input line 99.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 99.
+
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 100
-.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 99.
+
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 10
-0.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 99
+.
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 ) (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-eur.cfg
 File: mt-eur.cfg 2006/07/31 v1.1 microtype config. file: AMS Euler Roman (RS)
 )
 LaTeX Font Info:    Trying to load font information for OT1+lmss on input line 
-100.
+99.
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmss.fd
 File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -2940,7 +2941,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Trying to load font information for OT1+lmtt on input line 
-100.
+99.
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmtt.fd
 File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -2950,13 +2951,13 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
 Package scrlayer-notecolumn Info: Using estimated to low value for
 (scrlayer-notecolumn)             clearing note colums
-(scrlayer-notecolumn)             {marginpar} on input line 105.
+(scrlayer-notecolumn)             {marginpar} on input line 103.
 TRACE (slnc): clearnote=1, abspage=0, until page=0, process=\reserved@a , paget
 otal=0.0pt, topskip=11.0pt
 TRACE (slnc): until page=-1
 Package scrlayer-notecolumn Info: Using estimated to low value for
 (scrlayer-notecolumn)             clearing note colums
-(scrlayer-notecolumn)             {marginpar} on input line 105.
+(scrlayer-notecolumn)             {marginpar} on input line 103.
 TRACE (slnc): clearnote=2, abspage=0, until page=0, process=\reserved@a , paget
 otal=0.0pt, topskip=11.0pt
 TRACE (slnc): until page=-1
@@ -2968,55 +2969,55 @@ Package microtype Info: Character `029' is missing
 The command '\includegraphics [height=0.1\textwidth ]{TUMlogo2.pdf}' has been o
 ptimized away. Use '/tikz/external/optimize=false' to disable this.
 Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
-ine 105.
+ine 103.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
-Package marginnote Info: right page because not two side mode on input line 105
+Package marginnote Info: right page because not two side mode on input line 103
 .
-Package marginnote Info: xpos seems to be \@mn@currxpos  on input line 105.
+Package marginnote Info: xpos seems to be \@mn@currxpos  on input line 103.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <20.74> on input line 105.
+(Font)              <20.74> on input line 103.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 105.
+(Font)              <14.4> on input line 103.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 105.
+(Font)              <12> on input line 103.
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
-05.
+03.
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 105.
+(Font)              <10> on input line 103.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 105.
+(Font)              <7> on input line 103.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 105.
+(Font)              <5> on input line 103.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/lmr/m/sc/10'.
 (microtype)             Ignoring protrusion settings for this character.
-Package marginnote Info: right page because not two side mode on input line 105
+Package marginnote Info: right page because not two side mode on input line 103
 .
-Package marginnote Info: xpos seems to be \@mn@currxpos  on input line 105.
+Package marginnote Info: xpos seems to be \@mn@currxpos  on input line 103.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 Package scrlayer-notecolumn Info: Using estimated to low value for
 (scrlayer-notecolumn)             clearing note colums
-(scrlayer-notecolumn)             {marginpar} on input line 105.
+(scrlayer-notecolumn)             {marginpar} on input line 103.
 TRACE (slnc): clearnote=3, abspage=0, until page=0, process=\reserved@a , paget
 otal=522.17973pt, topskip=11.0pt
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 105.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 103.
 
 Package scrlayer-notecolumn Info: Using estimated to low value for
 (scrlayer-notecolumn)             clearing note colums
-(scrlayer-notecolumn)             {marginpar} on input line 105.
+(scrlayer-notecolumn)             {marginpar} on input line 103.
 TRACE (slnc): clearnote=4, abspage=1, until page=1, process=\reserved@a , paget
 otal=0.0pt, topskip=11.0pt
 TRACE (slnc): until page=0
@@ -3065,35 +3066,35 @@ isable this.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 )
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 107.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 105.
 
 Package marginnote Info: Using workaround for absolute page number on input lin
-e 107.
+e 105.
 Package scrlayer-notecolumn Info: Using estimated to low value for
 (scrlayer-notecolumn)             clearing note colums
-(scrlayer-notecolumn)             {marginpar} on input line 107.
+(scrlayer-notecolumn)             {marginpar} on input line 105.
 TRACE (slnc): clearnote=6, abspage=2, until page=2, process=\reserved@a , paget
 otal=0.0pt, topskip=11.0pt
 TRACE (slnc): until page=1
 Package scrlayer-notecolumn Info: Using estimated to low value for
 (scrlayer-notecolumn)             clearing note colums
-(scrlayer-notecolumn)             {marginpar} on input line 107.
+(scrlayer-notecolumn)             {marginpar} on input line 105.
 TRACE (slnc): clearnote=7, abspage=2, until page=2, process=\reserved@a , paget
 otal=0.0pt, topskip=11.0pt
 TRACE (slnc): until page=1
 Package scrlayer-notecolumn Info: Using estimated to low value for
 (scrlayer-notecolumn)             clearing note colums
-(scrlayer-notecolumn)             {marginpar} on input line 107.
+(scrlayer-notecolumn)             {marginpar} on input line 105.
 TRACE (slnc): clearnote=8, abspage=2, until page=2, process=\reserved@a , paget
 otal=0.0pt, topskip=11.0pt
 TRACE (slnc): until page=1
 Package tocbasic Info: character protrusion at toc deactivated on input line 10
-7.
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 107.
+5.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 105.
 
 Package scrlayer-notecolumn Info: Using estimated to low value for
 (scrlayer-notecolumn)             clearing note colums
-(scrlayer-notecolumn)             {marginpar} on input line 108.
+(scrlayer-notecolumn)             {marginpar} on input line 106.
 TRACE (slnc): clearnote=9, abspage=3, until page=3, process=\reserved@a , paget
 otal=0.0pt, topskip=11.0pt
 TRACE (slnc): until page=2
@@ -4170,24 +4171,32 @@ LaTeX Warning: Reference `subsec:Einfuehrung:Satzspiegelberechnung:Grundlagen:W
 eiterentwicklung' on page 54 undefined on input line 424.
 
 
-LaTeX Warning: Reference `subtab:Tabellen:mit latex-subtable:two' on page 54 un
-defined on input line 427.
+LaTeX Warning: Reference `lst:introduction:3' on page 54 undefined on input lin
+e 425.
+
+
+LaTeX Warning: Reference `lst:introduction:3' on page 54 undefined on input lin
+e 425.
 
 
 LaTeX Warning: Reference `subtab:Tabellen:mit latex-subtable:two' on page 54 un
-defined on input line 427.
+defined on input line 428.
 
 
-LaTeX Warning: Citation 'LabenbacherTeX' on page 54 undefined on input line 427
+LaTeX Warning: Reference `subtab:Tabellen:mit latex-subtable:two' on page 54 un
+defined on input line 428.
+
+
+LaTeX Warning: Citation 'LabenbacherTeX' on page 54 undefined on input line 428
 .
 
 
 LaTeX Warning: Reference `footnote:Tabellen:A footnote in the tableentry-firsth
-ead' on page 54 undefined on input line 427.
+ead' on page 54 undefined on input line 428.
 
 
 LaTeX Warning: Reference `footnote:Tabellen:A footnote in the tableentry-firsth
-ead' on page 54 undefined on input line 427.
+ead' on page 54 undefined on input line 428.
 
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
@@ -4212,23 +4221,23 @@ File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
 )
 Package scrlayer-notecolumn Info: Using estimated to low value for
 (scrlayer-notecolumn)             clearing note colums
-(scrlayer-notecolumn)             {marginpar} on input line 437.
+(scrlayer-notecolumn)             {marginpar} on input line 438.
 TRACE (slnc): clearnote=22, abspage=56, until page=56, process=\reserved@a , pa
-getotal=607.53125pt, topskip=11.0pt
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 437.
+getotal=621.13124pt, topskip=11.0pt
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 438.
 
 chapter 8.
 
 LaTeX Warning: Reference `equ:Mathematik:sub-gesamt' on page 55 undefined on in
-put line 489.
+put line 490.
 
 
 LaTeX Warning: Reference `subequ:Mathematik:sub-a' on page 55 undefined on inpu
-t line 489.
+t line 490.
 
 
 LaTeX Warning: Reference `subequ:Mathematik:sub-b' on page 55 undefined on inpu
-t line 489.
+t line 490.
 
 \ExplSyntaxOn \cs_if_free:NT \pgfsyspdfmark {\cs_set_eq:NN \pgfsyspdfmark \@gob
 blethree }\ExplSyntaxOff 
@@ -4258,44 +4267,44 @@ blethree }\ExplSyntaxOff
 \l__nicematrix_final_i_int=\count678
 \l__nicematrix_final_j_int=\count679
 \l__nicematrix_l_dim=\dimen461
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 514.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 515.
 
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 Package scrlayer-notecolumn Info: Using estimated to low value for
 (scrlayer-notecolumn)             clearing note colums
-(scrlayer-notecolumn)             {marginpar} on input line 564.
+(scrlayer-notecolumn)             {marginpar} on input line 565.
 TRACE (slnc): clearnote=23, abspage=58, until page=58, process=\reserved@a , pa
 getotal=278.6031pt, topskip=11.0pt
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 564.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 565.
 
 chapter 9.
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 587.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 588.
 
 
 LaTeX Warning: Reference `lem:Theorem 1:lemma 1' on page 58 undefined on input 
-line 599.
+line 600.
 
 Package scrlayer-notecolumn Info: Using estimated to low value for
 (scrlayer-notecolumn)             clearing note colums
-(scrlayer-notecolumn)             {marginpar} on input line 606.
+(scrlayer-notecolumn)             {marginpar} on input line 607.
 TRACE (slnc): clearnote=24, abspage=60, until page=60, process=\reserved@a , pa
 getotal=619.09422pt, topskip=11.0pt
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 606.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 607.
 
 chapter 10.
 
 LaTeX Warning: Reference `theo:Theorem 1:Mittelwertsatz' on page 59 undefined o
-n input line 611.
+n input line 612.
 
 
 LaTeX Warning: Reference `theo:Theorem 1:Mittelwertsatz' on page 59 undefined o
-n input line 611.
+n input line 612.
 
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 612.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 613.
 
 One-sided document style.
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 614.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 615.
 
 Package typearea Info: These are the values describing the layout:
 (typearea)             DIV  = 12
@@ -4313,81 +4322,72 @@ Package typearea Info: These are the values describing the layout:
 (typearea)              \topskip        = 11.0pt
 (typearea)              \footskip       = 47.6pt
 (typearea)              \baselineskip   = 13.6pt
-(typearea)              on input line 621.
+(typearea)              on input line 622.
 Package typearea Info: Using dirty hack to recalculate internal output
-(typearea)             dimensions of LaTeX on input line 621.
+(typearea)             dimensions of LaTeX on input line 622.
 Package scrlayer-notecolumn Info: Using estimated to low value for
 (scrlayer-notecolumn)             clearing note colums
-(scrlayer-notecolumn)             {marginpar} on input line 622.
+(scrlayer-notecolumn)             {marginpar} on input line 623.
 TRACE (slnc): clearnote=25, abspage=63, until page=63, process=\reserved@a , pa
 getotal=0.0pt, topskip=11.0pt
 TRACE (slnc): until page=62
 chapter 11.
 
-LaTeX Warning: Citation 'LabenbacherTeX' on page 61 undefined on input line 625
+LaTeX Warning: Citation 'LabenbacherTeX' on page 61 undefined on input line 626
 .
 
 
 Package glossaries-extra Warning: Glossary entry `idx.people' has not been defi
-ned on input line 625.
+ned on input line 626.
 
 
 Package glossaries-extra Warning: Glossary entry `idx.entry' has not been defin
-ed on input line 625.
-
-
-Package glossaries-extra Warning: Glossary entry `idx.entry.subentry' has not b
-een defined on input line 625.
-
-
-Package glossaries-extra Warning: Glossary entry `idx.entry.subentry.subsubentr
-y' has not been defined on input line 625.
-
-
-Package glossaries-extra Warning: Glossary entry `idx.animal' has not been defi
-ned on input line 625.
-
-
-Package glossaries-extra Warning: Glossary entry `idx.beast' has not been defin
 ed on input line 626.
 
 
+Package glossaries-extra Warning: Glossary entry `idx.entry.subentry' has not b
+een defined on input line 626.
+
+
+Package glossaries-extra Warning: Glossary entry `idx.entry.subentry.subsubentr
+y' has not been defined on input line 626.
+
+
+Package glossaries-extra Warning: Glossary entry `idx.animal' has not been defi
+ned on input line 626.
+
+
+Package glossaries-extra Warning: Glossary entry `idx.beast' has not been defin
+ed on input line 627.
+
+
 Package glossaries-extra Warning: Glossary entry `fcp.aa' has not been defined 
-on input line 627.
+on input line 628.
 
 
 Package glossaries-extra Warning: Glossary entry `fcp.ab' has not been defined 
-on input line 627.
+on input line 628.
 
 
 Package glossaries-extra Warning: Glossary entry `fcp.ac' has not been defined 
-on input line 627.
+on input line 628.
 
 
 Package glossaries-extra Warning: Glossary entry `fcp.ad' has not been defined 
-on input line 627.
+on input line 628.
 
 
 Package glossaries-extra Warning: Glossary entry `fcp.dd' has not been defined 
-on input line 627.
+on input line 628.
 
 
 Package glossaries-extra Warning: Glossary entry `fcp.da' has not been defined 
-on input line 627.
+on input line 628.
 
 
 Package glossaries-extra Warning: Glossary entry `idx.empty' has not been defin
-ed on input line 627.
+ed on input line 628.
 
-A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
-isable this.
-Package marginnote Info: right page because not two side mode on input line 630
-.
-Package marginnote Info: xpos seems to be \@mn@currxpos  on input line 630.
-A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
-isable this.
-A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
-isable this.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 Package marginnote Info: right page because not two side mode on input line 631
@@ -4426,18 +4426,22 @@ A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
-Package marginnote Info: right page because not two side mode on input line 664
+Package marginnote Info: right page because not two side mode on input line 635
 .
-Package marginnote Info: xpos seems to be \@mn@currxpos  on input line 664.
+Package marginnote Info: xpos seems to be \@mn@currxpos  on input line 635.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
-
-Package tum-physics Warning: Missing figure (see line 670).
-
-The command '\includegraphics []{help.png}' has been optimized away. Use '/tikz
-/external/optimize=false' to disable this.
+A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
+isable this.
+Package marginnote Info: right page because not two side mode on input line 665
+.
+Package marginnote Info: xpos seems to be \@mn@currxpos  on input line 665.
+A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
+isable this.
+A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
+isable this.
 
 Package tum-physics Warning: Missing figure (see line 671).
 
@@ -4446,238 +4450,221 @@ The command '\includegraphics []{help.png}' has been optimized away. Use '/tikz
 
 Package tum-physics Warning: Missing figure (see line 672).
 
+The command '\includegraphics []{help.png}' has been optimized away. Use '/tikz
+/external/optimize=false' to disable this.
+
+Package tum-physics Warning: Missing figure (see line 673).
+
 The command '\includegraphics [angle=90]{help.png}' has been optimized away. Us
 e '/tikz/external/optimize=false' to disable this.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
-Package marginnote Info: right page because not two side mode on input line 674
+Package marginnote Info: right page because not two side mode on input line 675
 .
-Package marginnote Info: xpos seems to be \@mn@currxpos  on input line 674.
+Package marginnote Info: xpos seems to be \@mn@currxpos  on input line 675.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
-Package marginnote Info: right page because not two side mode on input line 674
+Package marginnote Info: right page because not two side mode on input line 675
 .
-Package marginnote Info: xpos seems to be \@mn@currxpos  on input line 674.
+Package marginnote Info: xpos seems to be \@mn@currxpos  on input line 675.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 677.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 678.
 
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 677.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 678.
 
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 ) (listings/test.py)
 
 Package glossaries-extra Warning: Glossary entry `idx.people' has not been defi
-ned on input line 682.
-
-
-Package glossaries-extra Warning: Glossary entry `idx.entry' has not been defin
-ed on input line 682.
-
-
-Package glossaries-extra Warning: Glossary entry `idx.beast' has not been defin
-ed on input line 682.
-
-
-Package glossaries-extra Warning: Glossary entry `idx.animal.dog' has not been 
-defined on input line 682.
-
-
-Package glossaries-extra Warning: Glossary entry `fcp.ad' has not been defined 
-on input line 682.
-
-
-Package glossaries-extra Warning: Glossary entry `fcp.ba' has not been defined 
-on input line 682.
-
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 683.
-
-
-Package glossaries-extra Warning: Glossary entry `idx.people' has not been defi
-ned on input line 683.
-
-
-Package glossaries-extra Warning: Glossary entry `idx.animal' has not been defi
-ned on input line 683.
-
-
-Package glossaries-extra Warning: Glossary entry `idx.entry' has not been defin
-ed on input line 683.
-
-
-Package glossaries-extra Warning: Glossary entry `idx.key' has not been defined
- on input line 683.
-
-
-Package glossaries-extra Warning: Glossary entry `idx.people.electrician' has n
-ot been defined on input line 683.
-
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 684.
-
-
-Package glossaries-extra Warning: Glossary entry `idx.entry' has not been defin
-ed on input line 684.
-
-
-Package glossaries-extra Warning: Glossary entry `idx.people' has not been defi
-ned on input line 684.
-
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 684.
-
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 684.
-
-
-Package glossaries-extra Warning: Glossary entry `idx.people' has not been defi
-ned on input line 684.
-
-
-Package glossaries-extra Warning: Glossary entry `fcp.ba' has not been defined 
-on input line 685.
-
-
-Package glossaries-extra Warning: Glossary entry `fcp.empty' has not been defin
-ed on input line 685.
-
-
-Package glossaries-extra Warning: Glossary entry `idx.LaTeX' has not been defin
-ed on input line 685.
-
-
-Package glossaries-extra Warning: Glossary entry `idx.LaTeX.file' has not been 
-defined on input line 685.
-
-
-Package glossaries-extra Warning: Glossary entry `idx.LaTeX.class' has not been
- defined on input line 685.
-
-
-Package glossaries-extra Warning: Glossary entry `idx.LaTeX.package' has not be
-en defined on input line 685.
-
-
-Package glossaries-extra Warning: Glossary entry `fcp.aa' has not been defined 
-on input line 685.
-
-
-Package glossaries-extra Warning: Glossary entry `fcp.ab' has not been defined 
-on input line 685.
-
-
-Package glossaries-extra Warning: Glossary entry `fcp.ac' has not been defined 
-on input line 685.
-
-
-Package glossaries-extra Warning: Glossary entry `fcp.ad' has not been defined 
-on input line 685.
-
-
-Package glossaries-extra Warning: Glossary entry `fcp.ba' has not been defined 
-on input line 685.
-
-
-Package glossaries-extra Warning: Glossary entry `fcp.bb' has not been defined 
-on input line 685.
-
-
-Package glossaries-extra Warning: Glossary entry `fcp.bc' has not been defined 
-on input line 685.
-
-
-Package glossaries-extra Warning: Glossary entry `fcp.bd' has not been defined 
-on input line 685.
-
-
-Package glossaries-extra Warning: Glossary entry `fcp.ca' has not been defined 
-on input line 685.
-
-
-Package glossaries-extra Warning: Glossary entry `fcp.cb' has not been defined 
-on input line 685.
-
-
-Package glossaries-extra Warning: Glossary entry `fcp.cc' has not been defined 
-on input line 685.
-
-
-Package glossaries-extra Warning: Glossary entry `fcp.cd' has not been defined 
-on input line 685.
-
-
-Package glossaries-extra Warning: Glossary entry `fcp.da' has not been defined 
-on input line 685.
-
-
-Package glossaries-extra Warning: Glossary entry `fcp.db' has not been defined 
-on input line 685.
-
-
-Package glossaries-extra Warning: Glossary entry `fcp.dc' has not been defined 
-on input line 685.
-
-
-Package glossaries-extra Warning: Glossary entry `fcp.dd' has not been defined 
-on input line 685.
-
-
-Package glossaries-extra Warning: Glossary entry `idx.dump' has not been define
-d on input line 685.
-
-
-Package glossaries-extra Warning: Glossary entry `idx.cinema' has not been defi
 ned on input line 685.
 
 
-Package glossaries-extra Warning: Glossary entry `idx.control' has not been def
-ined on input line 686.
+Package glossaries-extra Warning: Glossary entry `idx.entry' has not been defin
+ed on input line 685.
 
 
-Package glossaries-extra Warning: Glossary entry `idx.entry.subentry' has not b
-een defined on input line 687.
+Package glossaries-extra Warning: Glossary entry `idx.beast' has not been defin
+ed on input line 685.
 
 
-Package glossaries-extra Warning: Glossary entry `idx.entry.subentry.subsubentr
-y' has not been defined on input line 687.
+Package glossaries-extra Warning: Glossary entry `idx.animal.dog' has not been 
+defined on input line 685.
+
+
+Package glossaries-extra Warning: Glossary entry `fcp.ad' has not been defined 
+on input line 685.
+
+
+Package glossaries-extra Warning: Glossary entry `fcp.ba' has not been defined 
+on input line 685.
+
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 686.
+
+
+Package glossaries-extra Warning: Glossary entry `idx.people' has not been defi
+ned on input line 686.
+
+
+Package glossaries-extra Warning: Glossary entry `idx.animal' has not been defi
+ned on input line 686.
+
+
+Package glossaries-extra Warning: Glossary entry `idx.entry' has not been defin
+ed on input line 686.
+
+
+Package glossaries-extra Warning: Glossary entry `idx.key' has not been defined
+ on input line 686.
+
+
+Package glossaries-extra Warning: Glossary entry `idx.people.electrician' has n
+ot been defined on input line 686.
+
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 687.
 
 
 Package glossaries-extra Warning: Glossary entry `idx.entry' has not been defin
 ed on input line 687.
 
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 689.
 
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 690.
+Package glossaries-extra Warning: Glossary entry `idx.people' has not been defi
+ned on input line 687.
 
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 690.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 687.
 
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 690.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 687.
 
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 691.
+
+Package glossaries-extra Warning: Glossary entry `idx.people' has not been defi
+ned on input line 687.
+
+
+Package glossaries-extra Warning: Glossary entry `fcp.ba' has not been defined 
+on input line 688.
+
+
+Package glossaries-extra Warning: Glossary entry `fcp.empty' has not been defin
+ed on input line 688.
+
+
+Package glossaries-extra Warning: Glossary entry `idx.LaTeX' has not been defin
+ed on input line 688.
+
+
+Package glossaries-extra Warning: Glossary entry `idx.LaTeX.file' has not been 
+defined on input line 688.
+
+
+Package glossaries-extra Warning: Glossary entry `idx.LaTeX.class' has not been
+ defined on input line 688.
+
+
+Package glossaries-extra Warning: Glossary entry `idx.LaTeX.package' has not be
+en defined on input line 688.
+
+
+Package glossaries-extra Warning: Glossary entry `fcp.aa' has not been defined 
+on input line 688.
+
+
+Package glossaries-extra Warning: Glossary entry `fcp.ab' has not been defined 
+on input line 688.
+
+
+Package glossaries-extra Warning: Glossary entry `fcp.ac' has not been defined 
+on input line 688.
+
+
+Package glossaries-extra Warning: Glossary entry `fcp.ad' has not been defined 
+on input line 688.
+
+
+Package glossaries-extra Warning: Glossary entry `fcp.ba' has not been defined 
+on input line 688.
+
+
+Package glossaries-extra Warning: Glossary entry `fcp.bb' has not been defined 
+on input line 688.
+
+
+Package glossaries-extra Warning: Glossary entry `fcp.bc' has not been defined 
+on input line 688.
+
+
+Package glossaries-extra Warning: Glossary entry `fcp.bd' has not been defined 
+on input line 688.
+
+
+Package glossaries-extra Warning: Glossary entry `fcp.ca' has not been defined 
+on input line 688.
+
+
+Package glossaries-extra Warning: Glossary entry `fcp.cb' has not been defined 
+on input line 688.
+
+
+Package glossaries-extra Warning: Glossary entry `fcp.cc' has not been defined 
+on input line 688.
+
+
+Package glossaries-extra Warning: Glossary entry `fcp.cd' has not been defined 
+on input line 688.
+
+
+Package glossaries-extra Warning: Glossary entry `fcp.da' has not been defined 
+on input line 688.
+
+
+Package glossaries-extra Warning: Glossary entry `fcp.db' has not been defined 
+on input line 688.
+
+
+Package glossaries-extra Warning: Glossary entry `fcp.dc' has not been defined 
+on input line 688.
+
+
+Package glossaries-extra Warning: Glossary entry `fcp.dd' has not been defined 
+on input line 688.
+
+
+Package glossaries-extra Warning: Glossary entry `idx.dump' has not been define
+d on input line 688.
+
+
+Package glossaries-extra Warning: Glossary entry `idx.cinema' has not been defi
+ned on input line 688.
+
+
+Package glossaries-extra Warning: Glossary entry `idx.control' has not been def
+ined on input line 689.
+
+
+Package glossaries-extra Warning: Glossary entry `idx.entry.subentry' has not b
+een defined on input line 690.
+
+
+Package glossaries-extra Warning: Glossary entry `idx.entry.subentry.subsubentr
+y' has not been defined on input line 690.
 
 
 Package glossaries-extra Warning: Glossary entry `idx.entry' has not been defin
-ed on input line 691.
+ed on input line 690.
 
 Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 692.
-
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 692.
-
-
-Package glossaries-extra Warning: Glossary entry `idx.entry' has not been defin
-ed on input line 692.
 
 Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 693.
 
 Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 693.
 
-
-Package glossaries-extra Warning: Glossary entry `idx.entry' has not been defin
-ed on input line 693.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 693.
 
 Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 694.
 
@@ -4691,11 +4678,7 @@ Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 695.
 
 
 Package glossaries-extra Warning: Glossary entry `idx.entry' has not been defin
-ed on input line 696.
-
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 696.
-
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 696.
+ed on input line 695.
 
 Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 696.
 
@@ -4703,19 +4686,45 @@ Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 696.
 
 
 Package glossaries-extra Warning: Glossary entry `idx.entry' has not been defin
-ed on input line 697.
+ed on input line 696.
 
 Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 697.
 
 
 Package glossaries-extra Warning: Glossary entry `idx.entry' has not been defin
-ed on input line 698.
+ed on input line 697.
+
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 698.
+
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 698.
+
+
+Package glossaries-extra Warning: Glossary entry `idx.entry' has not been defin
+ed on input line 699.
+
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 699.
+
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 699.
+
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 699.
+
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 699.
+
+
+Package glossaries-extra Warning: Glossary entry `idx.entry' has not been defin
+ed on input line 700.
+
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 700.
+
+
+Package glossaries-extra Warning: Glossary entry `idx.entry' has not been defin
+ed on input line 701.
 
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
-Package marginnote Info: right page because not two side mode on input line 700
+Package marginnote Info: right page because not two side mode on input line 703
 .
-Package marginnote Info: xpos seems to be \@mn@currxpos  on input line 700.
+Package marginnote Info: xpos seems to be \@mn@currxpos  on input line 703.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
@@ -4739,27 +4748,27 @@ isable this.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 
-Overfull \hbox (48.9008pt too wide) detected at line 701
+Overfull \hbox (48.9008pt too wide) detected at line 704
 [][]\OML/lmm/m/it/10.95 a[] \OT1/lmr/m/n/10.95 = \OML/lmm/m/it/10.95 b[] \OT1/l
 mr/m/n/10.95 + \OML/lmm/m/it/10.95 c[][]
  []
 
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 703.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 706.
 
 Package scrlayer-notecolumn Info: Using estimated to low value for
 (scrlayer-notecolumn)             clearing note colums
-(scrlayer-notecolumn)             {marginpar} on input line 704.
+(scrlayer-notecolumn)             {marginpar} on input line 707.
 TRACE (slnc): clearnote=26, abspage=87, until page=87, process=\reserved@a , pa
 getotal=0.0pt, topskip=11.0pt
 TRACE (slnc): until page=86
 chapter 12.
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 706.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 709.
 
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 706.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 709.
 
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 706.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 709.
 
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 706.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 709.
 
 ) (chapters/LaTeX-TikZ-Examples.tex
 Package scrlayer-notecolumn Info: Using estimated to low value for
@@ -4781,8 +4790,8 @@ A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
-\tikZlengthV=\skip165
-\tikZlengthH=\skip166
+\tikZlengthV=\skip166
+\tikZlengthH=\skip167
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
@@ -4861,95 +4870,95 @@ getotal=128.4863pt, topskip=11.0pt
 Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 1.
 chapter 18.
 )
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 117.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 115.
 
 Package scrlayer-notecolumn Info: Using estimated to low value for
 (scrlayer-notecolumn)             clearing note colums
-(scrlayer-notecolumn)             {marginpar} on input line 117.
+(scrlayer-notecolumn)             {marginpar} on input line 115.
 TRACE (slnc): clearnote=33, abspage=98, until page=98, process=\reserved@a , pa
 getotal=0.0pt, topskip=11.0pt
 TRACE (slnc): until page=97
 1: chapter
 Package scrlayer-notecolumn Info: Using estimated to low value for
 (scrlayer-notecolumn)             clearing note colums
-(scrlayer-notecolumn)             {marginpar} on input line 118.
+(scrlayer-notecolumn)             {marginpar} on input line 116.
 TRACE (slnc): clearnote=34, abspage=98, until page=98, process=\reserved@a , pa
 getotal=0.0pt, topskip=11.0pt
 TRACE (slnc): until page=97
 chapter A.
 Package scrlayer-notecolumn Info: Using estimated to low value for
 (scrlayer-notecolumn)             clearing note colums
-(scrlayer-notecolumn)             {marginpar} on input line 119.
+(scrlayer-notecolumn)             {marginpar} on input line 117.
 TRACE (slnc): clearnote=35, abspage=98, until page=98, process=\reserved@a , pa
 getotal=104.78004pt, topskip=11.0pt
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 119.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 117.
 
 chapter B.
 Package scrlayer-notecolumn Info: Using estimated to low value for
 (scrlayer-notecolumn)             clearing note colums
-(scrlayer-notecolumn)             {marginpar} on input line 121.
+(scrlayer-notecolumn)             {marginpar} on input line 119.
 TRACE (slnc): clearnote=36, abspage=99, until page=99, process=\reserved@a , pa
 getotal=104.78004pt, topskip=11.0pt
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 121.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 119.
 
 1: chapter
 Package scrlayer-notecolumn Info: Using estimated to low value for
 (scrlayer-notecolumn)             clearing note colums
-(scrlayer-notecolumn)             {marginpar} on input line 122.
+(scrlayer-notecolumn)             {marginpar} on input line 120.
 TRACE (slnc): clearnote=37, abspage=100, until page=100, process=\reserved@a , 
 pagetotal=0.0pt, topskip=11.0pt
 TRACE (slnc): until page=99
 chapter without number
 
 Package glossaries-extra Warning: No entries defined in glossary `idx' on input
- line 122.
+ line 120.
 
 
 Package glossaries-extra Warning: No entries defined in glossary `fcp' on input
- line 122.
+ line 120.
 
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 122.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 120.
 
 
-LaTeX Warning: Empty bibliography on input line 124.
+LaTeX Warning: Empty bibliography on input line 122.
 
 Package scrlayer-notecolumn Info: Using estimated to low value for
 (scrlayer-notecolumn)             clearing note colums
-(scrlayer-notecolumn)             {marginpar} on input line 124.
+(scrlayer-notecolumn)             {marginpar} on input line 122.
 TRACE (slnc): clearnote=38, abspage=101, until page=101, process=\reserved@a , 
 pagetotal=0.0pt, topskip=11.0pt
 TRACE (slnc): until page=100
 Package tocbasic Info: character protrusion at lof deactivated on input line 12
+2.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 122.
+
+Package scrlayer-notecolumn Info: Using estimated to low value for
+(scrlayer-notecolumn)             clearing note colums
+(scrlayer-notecolumn)             {marginpar} on input line 123.
+TRACE (slnc): clearnote=39, abspage=102, until page=102, process=\reserved@a , 
+pagetotal=0.0pt, topskip=11.0pt
+TRACE (slnc): until page=101
+Package tocbasic Info: character protrusion at lot deactivated on input line 12
+3.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 123.
+
+Package scrlayer-notecolumn Info: Using estimated to low value for
+(scrlayer-notecolumn)             clearing note colums
+(scrlayer-notecolumn)             {marginpar} on input line 124.
+TRACE (slnc): clearnote=40, abspage=103, until page=103, process=\reserved@a , 
+pagetotal=0.0pt, topskip=11.0pt
+TRACE (slnc): until page=102
+Package tocbasic Info: character protrusion at lol deactivated on input line 12
 4.
 Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 124.
 
 Package scrlayer-notecolumn Info: Using estimated to low value for
 (scrlayer-notecolumn)             clearing note colums
 (scrlayer-notecolumn)             {marginpar} on input line 125.
-TRACE (slnc): clearnote=39, abspage=102, until page=102, process=\reserved@a , 
-pagetotal=0.0pt, topskip=11.0pt
-TRACE (slnc): until page=101
-Package tocbasic Info: character protrusion at lot deactivated on input line 12
-5.
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 125.
-
-Package scrlayer-notecolumn Info: Using estimated to low value for
-(scrlayer-notecolumn)             clearing note colums
-(scrlayer-notecolumn)             {marginpar} on input line 126.
-TRACE (slnc): clearnote=40, abspage=103, until page=103, process=\reserved@a , 
-pagetotal=0.0pt, topskip=11.0pt
-TRACE (slnc): until page=102
-Package tocbasic Info: character protrusion at lol deactivated on input line 12
-6.
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 126.
-
-Package scrlayer-notecolumn Info: Using estimated to low value for
-(scrlayer-notecolumn)             clearing note colums
-(scrlayer-notecolumn)             {marginpar} on input line 127.
 TRACE (slnc): clearnote=41, abspage=104, until page=104, process=\reserved@a , 
 pagetotal=0.0pt, topskip=11.0pt
 TRACE (slnc): until page=103
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 127.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 125.
 
 (chapters/decOfAuthorship.tex
 Package scrlayer-notecolumn Info: Using estimated to low value for
@@ -4988,63 +4997,63 @@ isable this.
 )
 Package scrlayer-notecolumn Info: Using estimated to low value for
 (scrlayer-notecolumn)             clearing note colums
-(scrlayer-notecolumn)             {marginpar} on input line 130.
+(scrlayer-notecolumn)             {marginpar} on input line 128.
 TRACE (slnc): clearnote=44, abspage=106, until page=106, process=\reserved@a , 
 pagetotal=95.12386pt, topskip=11.0pt
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 130.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 128.
 
 Package scrlayer-notecolumn Info: Using estimated to low value for
 (scrlayer-notecolumn)             clearing note colums
-(scrlayer-notecolumn)             {marginpar} on input line 130.
+(scrlayer-notecolumn)             {marginpar} on input line 128.
 TRACE (slnc): clearnote=45, abspage=107, until page=107, process=\reserved@a , 
 pagetotal=0.0pt, topskip=11.0pt
 TRACE (slnc): until page=106
 Package scrlayer-notecolumn Info: Using estimated to low value for
 (scrlayer-notecolumn)             clearing note colums
-(scrlayer-notecolumn)             {marginpar} on input line 130.
+(scrlayer-notecolumn)             {marginpar} on input line 128.
 TRACE (slnc): clearnote=46, abspage=107, until page=107, process=\reserved@a , 
 pagetotal=0.0pt, topskip=11.0pt
 TRACE (slnc): until page=106
 chapter without number
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 130.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 128.
 
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 130.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 128.
 
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 130.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 128.
 
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 130.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 128.
 
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 130.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 128.
 
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 130.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 128.
 
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 130.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 128.
 
 
 Package longtable Warning: Column widths have changed
-(longtable)                in table B.1 on input line 130.
+(longtable)                in table B.1 on input line 128.
 
 Package scrlayer-notecolumn Info: Using estimated to low value for
 (scrlayer-notecolumn)             clearing note colums
-(scrlayer-notecolumn)             {marginpar} on input line 130.
+(scrlayer-notecolumn)             {marginpar} on input line 128.
 TRACE (slnc): clearnote=47, abspage=114, until page=114, process=\reserved@a , 
 pagetotal=404.98428pt, topskip=11.0pt
-Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 130.
+Package scrlayer-notecolumn Info: Note box `marginpar' empty on input line 128.
 
 
 Package longtable Warning: Table widths have changed. Rerun LaTeX.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 130.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 128.
 Package scrlayer-notecolumn Info: Using estimated to low value for
 (scrlayer-notecolumn)             clearing note colums
-(scrlayer-notecolumn)             {marginpar} on input line 130.
+(scrlayer-notecolumn)             {marginpar} on input line 128.
 TRACE (slnc): clearnote=48, abspage=115, until page=115, process=\reserved@a , 
 pagetotal=0.0pt, topskip=11.0pt
 TRACE (slnc): until page=114
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 130.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 128.
 Package scrlayer-notecolumn Info: MD5 of current `images/tikz/Figure-9.slnc':
-(scrlayer-notecolumn)              on input line 130.
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 130.
+(scrlayer-notecolumn)              on input line 128.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 128.
 
  *File List*
     main.tex
@@ -5058,7 +5067,7 @@ scrlfile.sty    2020/07/22 v3.31 KOMA-Script package (loading files)
 tocbasic.sty    2020/07/22 v3.31 KOMA-Script package (handling toc-files)
 scrsize11pt.clo    2020/07/22 v3.31 KOMA-Script font size class option (11pt)
 typearea.sty    2020/07/22 v3.31 KOMA-Script package (type area)
-tum-physics.sty    2020-09-09 v1.0.2.nightly.001000000010003 A "package" made b
+tum-physics.sty    2020-09-14 v1.0.2.nightly.001000000010004 A "package" made b
 y Michael Labenbacher, scrbook/scrreprt, :P
    expl3.sty    2020-08-07 L3 programming layer (loader) 
 l3backend-pdfmode.def    2020-08-07 L3 backend support: PDF mode
@@ -5406,7 +5415,7 @@ chapters/decOfAuthorship.tex
 chapters/acknowledgments.tex
  ***********
 
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 130.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 128.
 
 LaTeX Warning: There were undefined references.
 
@@ -5420,13 +5429,13 @@ Package logreq Info: Writing requests to 'images/tikz/Figure-9.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 87151 strings out of 481212
- 2002981 string characters out of 2905973
- 3752311 words of memory out of 100000000
- 100955 multiletter control sequences out of 15000+200000
+ 87182 strings out of 481212
+ 2003833 string characters out of 2905973
+ 3754924 words of memory out of 100000000
+ 100986 multiletter control sequences out of 15000+200000
  790938 words of font info for 343 fonts, out of 3000000 for 9000
  1146 hyphenation exceptions out of 8191
- 102i,24n,165p,10714b,3288s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 102i,24n,165p,10714b,3283s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/micha/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C
 :/Users/micha/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/Us
 ers/micha/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Us
@@ -5435,7 +5444,7 @@ ers/micha/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Us
 ers/micha/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Use
 rs/micha/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users
 /micha/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb>
-Output written on images/tikz/Figure-9.pdf (1 page, 100995 bytes).
+Output written on images/tikz/Figure-9.pdf (1 page, 100833 bytes).
 PDF statistics:
  74 PDF objects out of 1000 (max. 8388607)
  1 named destinations out of 1000 (max. 500000)

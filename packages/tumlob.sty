@@ -14,22 +14,8 @@
 \AtBeginDocument{%
 	\TUM@ifpackageloaded[setting]{babel}{%
 		\AfterEndPreamble{%
-			\addto\extrasnaustrian{%
-				\renewcommand{\bibname}{%
-				Literaturverzeichnis}%
-			}%
-			\addto\extrasngerman{%
-				\renewcommand{\bibname}{%
-				Literaturverzeichnis}%
-			}%
-			\addto\extrasamerican{%
-				\renewcommand{\bibname}{%
-				Bibliography}%
-			}%
-			\addto\extrasenglish{%
-				\renewcommand{\bibname}{%
-				Bibliography}%
-			}%
+			\TUM@addto@extras@renew{american,english}{bibname}{Bibliography}%
+			\TUM@addto@extras@renew{naustrian,ngerman}{bibname}{Literaturverzeichnis}%
 		}%
 	}{}%
 }%
