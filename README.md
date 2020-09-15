@@ -24,8 +24,8 @@ main_memory 	= 100000000 (*)<br />
 
 ## Compile WINDOWS: (Commandline)<br />
 cd C:\{path...}<br />
-set TEXINPUTS=.;.\images\\;.\tables\\;.\chapters\\;.\files\\;.\listings\\;.\packges\\;%TEXINPUTS%<br />
-set BIBINPUTS=.;.\references\\;.\glossaries\\;%BIBINPUTS%<br /> 
+set TEXINPUTS=.;.\images\\\\;.\tables\\\\;.\chapters\\\\;.\files\\\\;.\listings\\\\;.\packges\\\\;%TEXINPUTS%<br />
+set BIBINPUTS=.;.\references\\\\;.\glossaries\\\\;%BIBINPUTS%<br /> 
 
 pdflatex --shell-escape main.tex<br />
 biber --validate_datamodel main<br />
