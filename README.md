@@ -23,7 +23,7 @@ main_memory 	= 100000000 (*)<br />
 3. Run: initexmf --dump=pdflatex<br /><br />
 
 ## Compile WINDOWS: (Commandline)<br />
-cd C:\{path...}<br />
+cd C:\\{path...}<br />
 set TEXINPUTS=.;.\images\\\\;.\tables\\\\;.\chapters\\\\;.\files\\\\;.\listings\\\\;.\packges\\\\;%TEXINPUTS%<br />
 set BIBINPUTS=.;.\references\\\\;.\glossaries\\\\;%BIBINPUTS%<br /> 
 
