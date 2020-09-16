@@ -25,6 +25,7 @@
 \let\old@appendix\appendix%
 \renewcommand*\frontmatter{%
 	\old@frontmatter%
+	\usestandardtocs%
 	%% old:%
 	% \if@twoside\cleardoubleoddpage\else\clearpage\fi%
 	% \@mainmatterfalse\pagenumbering{roman}%
@@ -33,20 +34,31 @@
 	\storeareas\TUMStandardAreaFront%
 }%
 \renewcommand*\mainmatter{%
+	\old@mainmatter%
+	\usestandardtocs%
 	%% old:%
 	% \if@twoside\cleardoubleoddpage\else\clearpage\fi%
 	% \@mainmattertrue%
 	% \pagenumbering{arabic}%
-	\old@mainmatter%
 	\pagestyle{scrheadings}%
 	\settumheadings%
 	\storeareas\TUMStandardAreaMain%
 }%
+\newcommand*{\useappendixtocs}{%
+	\hypersetup{bookmarkstype=atoc}%
+	\renewcommand*{\ext@toc}{atoc}%
+}%
+\newcommand*{\usestandardtocs}{%
+	\hypersetup{bookmarkstype=toc}%
+	\renewcommand*{\ext@toc}{toc}%
+}%
 \renewcommand*\backmatter{%
 	\old@backmatter%
+	\usestandardtocs%
 	%% old:%
 	% \if@openright\cleardoubleoddpage\else\clearpage\fi\@mainmatterfalse%
-	\bookmarksetup{startatroot}% delete bookmark part from appendix
+	%% same TOC (appendix):
+	% \bookmarksetup{startatroot}% delete bookmark part from appendix
 	\pagestyle{scrheadings}%
 	\settumheadings%
 	\storeareas\TUMStandardAreaBack%
@@ -54,17 +66,17 @@
 \AtBeginDocument{%
 	\TUM@ifpackageloaded[setting]{babel}{%
 		\AfterEndPreamble{%
-			\addto\captionsnaustrian{%
-				\renewcommand{\appendixname}{%
-					Anhang}%
-			}%
-			\addto\captionsamerican{%
-				\renewcommand{\appendixname}{%
-					Appendix}%
-			}%
+			\TUM@addto@extras@renew{american,english}{appendixname}{Appendix}%
+			\TUM@addto@extras@renew{naustrian,ngerman}{appendixname}{Anhang}%
 		}%
 	}{}%
 }%
+\DeclareNewTOC[%
+owner=toc,%
+types=appendices,%
+listname=\appendixname%
+]{atoc}%
+\setuptoc{atoc}{totoc}%
 \def\appendix{%
 	\newpage%
 	\if@twoside%
@@ -76,8 +88,12 @@
 	\old@appendix%
 	\pagestyle{scrheadings}%
 	\settumheadings%
-	\phantomsection%
-	\addcontentsline{toc}{part}{\appendixname}%
+	%% own TOC:
+	\listofappendices%
+	\useappendixtocs%
+	%% same TOC:
+	% \phantomsection%
+	% \addcontentsline{toc}{part}{\appendixname}%
 	\storeareas\TUMStandardAreaAppendix%
 }%
 \makeatother%

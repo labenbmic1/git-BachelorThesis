@@ -85,7 +85,7 @@ captions=figuresignature, captions=tableheading,% --> Position von caption relev
 %% Single Index: (before \AtEndPreamble)
 \TUMmakeindex{glossaries/help-index-1}{idx}%
 \TUMsetindexpreamble{%
-	idx={Unterstrichene Zahlen (\texttt{idxnumber(1)}) verweisen auf die Definition, fett hervorgehobene (\texttt{idxnumber}) geben Seiten der Erklärung zum jeweiligen Stichwort wieder und normal gedruckte verweisen hingegen auf Seiten mit zusätzlichen Informationen (Numbers underlined point to the definition; numbers written in boldface refer to the pages where the corresponding entry is described; all others indicate the places where it is used.).\par\bigskip}%
+	idx={Unterstrichene Zahlen (\texttt{idxnumber(i)}) verweisen auf die Definition, fett hervorgehobene (\texttt{idxnumber}) geben Seiten der Erklärung zum jeweiligen Stichwort wieder und normal gedruckte verweisen hingegen auf Seiten mit zusätzlichen Informationen (Numbers underlined point to the definition; numbers written in boldface refer to the pages where the corresponding entry is described; all others indicate the places where it is used.).\par\bigskip}%
 }%
 %% Multiple Indices:
 %\TUMmakeindex[General Index]{glossaries/help-index-1}{idx}%
@@ -95,7 +95,6 @@ captions=figuresignature, captions=tableheading,% --> Position von caption relev
 %	idx={Der Mensch ist zur Freiheit verdammt. Den gefährlichsten Verräter von allen hat jeder Mensch in sich selbst.},%
 %	fcp={Lasst, die Ihr eintretet, alle Hoffnung fahren.\par\bigskip},%
 %}%
-
 \begin{document}%
 	\nomatter%
 	\responsible{Michael Labenbacher}% \&{}
@@ -116,7 +115,7 @@ captions=figuresignature, captions=tableheading,% --> Position von caption relev
 	\chapter{Experimental Setup Details}% (only for the purpose of testing
 	\chapter{Additional Measurement Data}% (only for the purpose of testing
 	%% ************************** (End) Input the files ***************************
-	\backmatter% not realy implementet in scrreprt, but deactivates appendix...
+	\backmatter% deactivate appendix
 	\TUMprintindex%
 	\TUMlistofbibliographies%[american][naustrian]%
 	\TUMlistoffigures%
