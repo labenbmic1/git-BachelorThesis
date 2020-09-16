@@ -125,9 +125,9 @@ type={idx}}
 \bibglsnewindex{idx.LaTeX.sty}%
 {parent={idx.LaTeX},
 name={sty},
-location={\glsnoidxdisplayloc{}{page}{hyperrm}{i}},
+location={\glsnoidxdisplayloc{}{page}{TUMindexnumberi}{i}},
 sort={sty|},
 type={idx}}
-\glsxtrfieldlistadd{idx.LaTeX.sty}{loclist}{\glsnoidxdisplayloc{}{page}{hyperrm}{i}}
+\glsxtrfieldlistadd{idx.LaTeX.sty}{loclist}{\glsnoidxdisplayloc{}{page}{TUMindexnumberi}{i}}
 
 
