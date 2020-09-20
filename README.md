@@ -1,4 +1,4 @@
-# Labenbacher Michael 1.0.2.nightly.001000000010009
+# Labenbacher Michael 1.0.2.nightly.001000000020002
 Have fun. Please report bugs to michael@labenbacher.at or m.labenbacher@tum.de. (It's not perfect I know, but it was a starting point for the Bachelor Thesis. Empty: [main.pdf](main.pdf), Example: [main-example.pdf](main-example.pdf)<br /><br />
 
 ## Compile (MiKTeX/TeXstudio):<br />
@@ -35,6 +35,10 @@ bib2gls.exe --group main<br />
 ## Compile UNIX:<br />
 export TEXINPUTS=.:$HOME/{path...}//;$TEXINPUTS<br />
 {...}<br /><br />
+
+### Changes in 1.0.2.nightly.001000000020002:<br />
+Added example for List of Abbreviations.<br />
+Small changes.<br /><br />
 
 ### Changes in 1.0.2.nightly.001000000010009:<br />
 Changed Appendix to chapter and implemented seperated TOC for Appendix.<br />
