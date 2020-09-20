@@ -1,0 +1,55 @@
+\NeedsTeXFormat{LaTeX2e}%
+\ProvidesExplPackage {packages/tumloa} {\TUMversiondate} {\TUMversion}%
+	{The list-of-abbreviations-part made by Michael Labenbacher}%
+\ProcessKeysPackageOptions{packages/tumloa}%
+\ExplSyntaxOff%
+%% ================================== LOA-names ===================================
+\makeatletter%
+\AtBeginDocument{%
+	\TUM@ifpackageloaded[setting]{babel}{%
+		\AfterEndPreamble{%
+			\TUM@addto@extras@renew{american,english}{abbreviationsname}{List of Abbreviations}%
+			\TUM@addto@extras@renew{naustrian,ngerman}{abbreviationsname}{Abkürzungsverzeichnis}%
+		}%
+	}{}%
+}%
+\makeatother%
+%% ========================== Definition of the TUM-LOA ===========================
+\AtEndPreamble{%
+	\GlsDeclareNoHyperList{abbreviations}% --> (\gls, \gls* nohyper AND \gls+ hyper)
+}%
+%% \TUMmakeabbreviations
+\ExplSyntaxOn%
+\clist_new:N \l_abbreviations_sort_clist%
+\NewDocumentCommand{\TUMmakeabbreviations}{O{\str_use:N \l_main_language_gls_str}m}{%
+	\clist_put_right:Nn \l_abbreviations_sort_clist {#1}%
+	\renewcommand{\GlsXtrDefaultResourceOptions}{sort={\clist_item:Nn \l_abbreviations_sort_clist {\clist_count:N \l_abbreviations_sort_clist}}}%
+	\GlsXtrLoadResources[%
+		src={#2},% data in #2.bib
+		% sort={en-US},% sort according to 'en-US' locale
+		match={entrytype={abbreviation}},% only select @abbreviation
+		min-loc-range=2,% (default: 3)
+		ignore-fields={description, symbol, name},% only: sort, short, long, (shortplural, longplural)
+		label-prefix={abb.},% label prefix abb.(...)
+		type={abbreviations}% put these entries in the 'abbreviations' glossary
+	]%
+}%
+\ExplSyntaxOff%
+%% \TUMprintabbreviations
+\NewDocumentCommand{\TUMprintabbreviations}{}{%
+	\setglossarysection{chapter}%
+	\newpage%
+	\begingroup%
+	\renewcommand{\glsxtrprelocation}{{\def\hfill{\hskip 2em plus 1fill\relax}\dotfill}}%
+	\renewcommand{\glstreenamefmt}[1]{\textbf{##1}}% (short, default: \textbf{#1})
+	%\renewcommand{\glstreenavigationfmt}[1]{{##1}}% (navigation, defualt: \textbf{#1})
+	%\renewcommand{\glstreegroupheaderfmt}[1]{{##1}}% (header, defualt: \textbf{#1})
+	\printunsrtglossary*[%
+		type={abbreviations},%
+		title={\abbreviationsname},%
+		style=treehypergroup% 
+	]{}%
+	\endgroup%
+	\newpage%
+}%
+\endinput%

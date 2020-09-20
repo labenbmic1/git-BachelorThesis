@@ -56,7 +56,7 @@
 % {revtex4-2}{\def\@TUM@version@hook{003}}{}%
 % {transcript}{\def\@TUM@version@hook{004}}{}%
 % {cheatsheet}{\def\@TUM@version@hook{005}}{}%
-\def\TUMversion{1.0.2.nightly.\@TUM@version@hook000000010009}%
+\def\TUMversion{1.0.2.nightly.\@TUM@version@hook000000020002}%
 \def\TUMversiondate{2020-09-16}%
 \makeatother%
 %% Information of the provided package
@@ -613,7 +613,7 @@
 	\AtBeginDocument{%
 		\TUM@ifpackageloaded[setting]{babel}{%
 			\AfterEndPreamble{%
-				\TUM@addto@extras@renew*{american,english}{printfilelistname}{Used Class, Packages and other Files}%
+				\TUM@addto@extras@renew{american,english}{printfilelistname}{Used Class, Packages and other Files}%
 				\TUM@addto@extras@renew{naustrian,ngerman}{printfilelistname}{Verwendete Klasse, Packete und weitere Files.}%
 			}%
 		}{}%
@@ -712,14 +712,12 @@ main=american%
 		}%	
 	}%
 }%
-\NewDocumentCommand{\TUM@addto@extras@renew}{smmm}{%
-	\IfBooleanTF{#1}{%
-		\@ifundefined{#3}{%
-			\expandafter\newcommand\expandafter*\csname #3\endcsname{#4}%
-		}{}%
+\NewDocumentCommand{\TUM@addto@extras@renew}{mmm}{%
+	\@ifundefined{#2}{%
+		\expandafter\newcommand\expandafter*\csname #2\endcsname{#3}%
 	}{}%
-	\TUM@addto@extras{#2}{%
-		\expandafter\renewcommand\expandafter*\csname #3\endcsname{#4}%
+	\TUM@addto@extras{#1}{%
+		\expandafter\renewcommand\expandafter*\csname #2\endcsname{#3}%
 	}%
 }%
 \ExplSyntaxOff%
@@ -1129,9 +1127,19 @@ numbered,% number the bookmarks
 record=only,%
 nomain,
 index,% 
+abbreviations,%
 nopostdot,%
 stylemods={mcols}%
 ][hyperref]{glossaries-extra}%
+\ExplSyntaxOn%
+\str_new:N \l_main_language_gls_str%
+\str_case_e:nnTF \l_main_language_str {%
+	{english} {\str_set:Nn \l_main_language_gls_str {en-US}}%
+	{american} {\str_set:Nn \l_main_language_gls_str {en-US}}%
+	{ngerman} {\str_set:Nn \l_main_language_gls_str {de-DE}}%
+	{naustrian} {\str_set:Nn \l_main_language_gls_str {de-AT}}%
+} {} {\str_set:Nn \l_main_language_gls_str {en-US}}%
+\ExplSyntaxOff%
 
 
 %% ================================================================================
@@ -1148,7 +1156,7 @@ stylemods={mcols}%
 \AtBeginDocument{%
 	\TUM@ifpackageloaded[setting]{babel}{%
 		\AfterEndPreamble{%
-			\TUM@addto@extras@renew*{american,english}{fullrefword}{on page}%
+			\TUM@addto@extras@renew{american,english}{fullrefword}{on page}%
 			\TUM@addto@extras@renew{naustrian,ngerman}{fullrefword}{auf Seite}%
 		}%
 	}{}%
@@ -1684,7 +1692,7 @@ stylemods={mcols}%
 \AtBeginDocument{%
 	\TUM@ifpackageloaded[setting]{babel}{% begin: babel loaded
 		\AfterEndPreamble{%
-			\TUM@addto@extras@renew*{american,english}{abstractname}{Abstract}%
+			\TUM@addto@extras@renew{american,english}{abstractname}{Abstract}%
 			\TUM@addto@extras@renew{naustrian,ngerman}{abstractname}{Resümee}%
 		}%
 	}{}%
@@ -1706,7 +1714,7 @@ stylemods={mcols}%
 \AtBeginDocument{%
 	\TUM@ifpackageloaded[setting]{babel}{% begin: babel loaded
 		\AfterEndPreamble{%
-			\TUM@addto@extras@renew*{american,english}{declarationofauthorshipname}{Declaration of Authorship}%
+			\TUM@addto@extras@renew{american,english}{declarationofauthorshipname}{Declaration of Authorship}%
 			\TUM@addto@extras@renew{naustrian,ngerman}{declarationofauthorshipname}{Eidesstattliche Erklärung}%
 		}%
 	}{}%
@@ -1719,7 +1727,7 @@ stylemods={mcols}%
 \AtBeginDocument{%
 	\TUM@ifpackageloaded[setting]{babel}{% begin: babel loaded
 		\AfterEndPreamble{%
-			\TUM@addto@extras@renew*{american,english}{acknowledgmentsname}{Acknowledgments}%
+			\TUM@addto@extras@renew{american,english}{acknowledgmentsname}{Acknowledgments}%
 			\TUM@addto@extras@renew{naustrian,ngerman}{acknowledgmentsname}{Danksagung}%
 		}%
 	}{}%
@@ -1801,7 +1809,7 @@ pagenumberbox=\TUM@pagenumberbox% necessary if pagenumber > 100 (and e.q. bold-f
 }{}%
 \makeatother%
 %% ================================================================================
-%% ==================== TOC/LOF/LOT/LOB/LOL/IDX/TDO/titlepage =====================
+%% ================== TOC/LOF/LOT/LOB/LOL/IDX/LOA/TDO/titlepage ===================
 %% ********************************************************************************
 \TUMRequirePackage{packages/tumtoc}%
 \TUMRequirePackage{packages/tumlof}%
@@ -1814,7 +1822,13 @@ pagenumberbox=\TUM@pagenumberbox% necessary if pagenumber > 100 (and e.q. bold-f
 	\TUMRequirePackage{packages/tumlol}%
 }{}%
 \TUM@ifpackageloaded[setting]{glossaries}{%
+	%% Global style format:
+	\GlsXtrSetDefaultNumberFormat{hyperrm}%	
+	\newcommand{\TUMindexnumber}[1]{\hyperbf{#1}}%
+	\newcommand{\TUMindexnumberi}[1]{\underline{\hyperrm{#1}}}%
+	%% Index / List of Abbreviation
 	\TUMRequirePackage{packages/tumidx}%
+	\TUMRequirePackage{packages/tumloa}%
 }{}%
 \TUM@ifpackageloaded[normal]{todonotes}{%
 	\TUMRequirePackage{packages/tumtdo}%

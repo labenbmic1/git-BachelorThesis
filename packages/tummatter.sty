@@ -93,12 +93,22 @@ listname=\appendixname%
 	\pagestyle{scrheadings}%
 	\settumheadings%
 	%% own TOC:
-	\listofappendices%
+	\TUMlistofappendices
 	\useappendixtocs%
 	%% same TOC:
 	% \phantomsection%
 	% \addcontentsline{toc}{part}{\appendixname}%
 	\storeareas\TUMStandardAreaAppendix%
 }%
+\NewDocumentCommand{\TUMlistofappendices}{}{%
+	\newpage%
+	\pagestyle{scrheadings}%
+	\listofappendices%
+	\newpage%
+}%
+\TUM@ifpackageloaded[setting]{microtype}{%
+	\pretocmd{\TUMlistofappendices}{\newpage\microtypesetup{protrusion=false}}{}{}%
+	\apptocmd{\TUMlistofappendices}{\microtypesetup{protrusion=true}\newpage}{}{}%
+}{}%
 \makeatother%
 \endinput%

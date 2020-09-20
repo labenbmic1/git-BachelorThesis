@@ -75,11 +75,8 @@
   \providecommand{\bibglssettimegrouptitle}[1]{}
 }
 
-\providecommand{\bibglssetlastgrouptitle}[2]{}
-
 \bibglssetlettergrouptitle{{L}{L}{6160384}{idx}}
 
-\bibglssetlastgrouptitle{\bibglslettergroup}{{L}{L}{6160384}{idx}}
 \ifdef\@glsnavhypertarget
 {
   \ifdef\bibglsorgnavhypertarget

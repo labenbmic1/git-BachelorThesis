@@ -9,10 +9,11 @@
 \contentsline {chapter}{\numberline {5}Conclusion and Perspective}{5}{chapter.5}%
 \contentsline {chapter}{\nonumberline Appendix}{6}{chapter*.6}%
 \contentsline {chapter}{Index}{9}{section*.7}%
-\contentsline {chapter}{\nonumberline Bibliography}{10}{chapter*.9}%
-\contentsline {chapter}{\nonumberline List of Figures}{11}{chapter*.10}%
-\contentsline {chapter}{\nonumberline List of Tables}{12}{chapter*.11}%
-\contentsline {chapter}{\nonumberline List of Listings}{13}{chapter*.12}%
-\contentsline {chapter}{List of Todos}{14}{chapter*.13}%
-\contentsline {chapter}{\nonumberline Declaration of Authorship}{15}{chapter*.14}%
-\contentsline {chapter}{\nonumberline Acknowledgments}{16}{chapter*.16}%
+\contentsline {chapter}{List of Abbreviations}{10}{section*.9}%
+\contentsline {chapter}{\nonumberline Bibliography}{11}{chapter*.11}%
+\contentsline {chapter}{\nonumberline List of Figures}{12}{chapter*.12}%
+\contentsline {chapter}{\nonumberline List of Tables}{13}{chapter*.13}%
+\contentsline {chapter}{\nonumberline List of Listings}{14}{chapter*.14}%
+\contentsline {chapter}{List of Todos}{15}{chapter*.15}%
+\contentsline {chapter}{\nonumberline Declaration of Authorship}{16}{chapter*.16}%
+\contentsline {chapter}{\nonumberline Acknowledgments}{17}{chapter*.18}%
