@@ -40,8 +40,7 @@
 \pgfplotsset{compat=newest,%
 	x tick label style={/pgf/number format/1000 sep={\;\!}},%
 	y tick label style={/pgf/number format/1000 sep={\;\!}},%
-	%% wissenschaftliche Arbeiten mit geschlossenen Diagrammen und genauer
-	%% Bildunterschrift (z. B. 4 Zeilen)
+	%% Wissenschaftliche Arbeiten mit geschlossenen Diagrammen und ausfuehrlicher Caption.
 	TUM style 1/.append style={%
 		tick style={%
 			black, w1%
@@ -55,7 +54,13 @@
 		axis line style={-stealth},%
 		hide obscured x ticks=false, hide obscured y ticks=false%
 	},%
-	cycle list={\TUMcolor{tikz-1}\\\TUMcolor{tikz-2}\\\TUMcolor{tikz-3}\\\TUMcolor{tikz-4}\\\TUMcolor{tikz-5}\\\TUMcolor{tikz-6}\\},%
+	cycle list={
+		{\TUMcolor{tikz-1}, mark=x},
+		{\TUMcolor{tikz-2}, mark=diamond},
+		{\TUMcolor{tikz-3}, mark=square},
+		{\TUMcolor{tikz-4}, mark=star},
+		{\TUMcolor{tikz-5}, mark=o},
+		{\TUMcolor{tikz-6}, mark=triangle}},%
 }%
 \tikzset{>=latex}%
 \makeatletter%

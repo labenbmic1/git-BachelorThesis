@@ -122,14 +122,14 @@ corstyle/.style={%
 	\ifdefined\postulaterefname\let\postulaterefname\relax\else\fi%
 	\TUM@ifpackageloaded[setting]{babel}{% begin: babel loaded
 		\AfterEndPreamble{%
-			\TUM@addto@extras@renew*{american,english}{proofrefname}{proof}%
-			\TUM@addto@extras@renew*{american,english}{definitionrefname}{definition}%
-			\TUM@addto@extras@renew*{american,english}{remarkrefname}{remark}%
-			\TUM@addto@extras@renew*{american,english}{theoremrefname}{theorem}%
-			\TUM@addto@extras@renew*{american,english}{lemmarefname}{lemma}%
-			\TUM@addto@extras@renew*{american,english}{corollaryrefname}{corollary}%
-			\TUM@addto@extras@renew*{american,english}{examplerefname}{example}%
-			\TUM@addto@extras@renew*{american,english}{postulaterefname}{postulate}%
+			\TUM@addto@extras@renew{american,english}{proofrefname}{proof}%
+			\TUM@addto@extras@renew{american,english}{definitionrefname}{definition}%
+			\TUM@addto@extras@renew{american,english}{remarkrefname}{remark}%
+			\TUM@addto@extras@renew{american,english}{theoremrefname}{theorem}%
+			\TUM@addto@extras@renew{american,english}{lemmarefname}{lemma}%
+			\TUM@addto@extras@renew{american,english}{corollaryrefname}{corollary}%
+			\TUM@addto@extras@renew{american,english}{examplerefname}{example}%
+			\TUM@addto@extras@renew{american,english}{postulaterefname}{postulate}%
 			\TUM@addto@extras@renew{naustrian,ngerman}{proofrefname}{Beweis}%
 			\TUM@addto@extras@renew{naustrian,ngerman}{definitionrefname}{Definition}%
 			\TUM@addto@extras@renew{naustrian,ngerman}{remarkrefname}{Bemerkung}%
@@ -138,13 +138,13 @@ corstyle/.style={%
 			\TUM@addto@extras@renew{naustrian,ngerman}{corollaryrefname}{Korollar}%
 			\TUM@addto@extras@renew{naustrian,ngerman}{examplerefname}{Beispiel}%
 			\TUM@addto@extras@renew{naustrian,ngerman}{postulaterefname}{Postulat}%
-			\TUM@addto@extras@renew*{american,english,naustrian,ngerman}{tcb@cnt@definitionautorefname}{\definitionrefname}%
-			\TUM@addto@extras@renew*{american,english,naustrian,ngerman}{tcb@cnt@remarkautorefname}{\remarkrefname}%
-			\TUM@addto@extras@renew*{american,english,naustrian,ngerman}{tcb@cnt@exampleautorefname}{\examplerefname}%
-			\TUM@addto@extras@renew*{american,english,naustrian,ngerman}{tcb@cnt@theoremautorefname}{\theoremrefname}%
-			\TUM@addto@extras@renew*{american,english,naustrian,ngerman}{tcb@cnt@lemmaautorefname}{\lemmarefname}%
-			\TUM@addto@extras@renew*{american,english,naustrian,ngerman}{tcb@cnt@corollaryautorefname}{\corollaryrefname}%
-			\TUM@addto@extras@renew*{american,english,naustrian,ngerman}{tcb@cnt@postulateautorefname}{\postulaterefname}%
+			\TUM@addto@extras@renew{american,english,naustrian,ngerman}{tcb@cnt@definitionautorefname}{\definitionrefname}%
+			\TUM@addto@extras@renew{american,english,naustrian,ngerman}{tcb@cnt@remarkautorefname}{\remarkrefname}%
+			\TUM@addto@extras@renew{american,english,naustrian,ngerman}{tcb@cnt@exampleautorefname}{\examplerefname}%
+			\TUM@addto@extras@renew{american,english,naustrian,ngerman}{tcb@cnt@theoremautorefname}{\theoremrefname}%
+			\TUM@addto@extras@renew{american,english,naustrian,ngerman}{tcb@cnt@lemmaautorefname}{\lemmarefname}%
+			\TUM@addto@extras@renew{american,english,naustrian,ngerman}{tcb@cnt@corollaryautorefname}{\corollaryrefname}%
+			\TUM@addto@extras@renew{american,english,naustrian,ngerman}{tcb@cnt@postulateautorefname}{\postulaterefname}%
 		}%
 	}{}%
 }%

@@ -14,7 +14,7 @@ pagesize=auto,% Ausgabetreiber (Standard)
 DIV=12, BCOR=0mm,% ev. 15
 toc=listof,% nolistof, listof, listofnumbered
 toc=bibliography,% nobibliography, bibliography, bibliographynumbered
-%toc=index,% noindex, index, indexnumbered (see tumidx.sty/KomaOptions)
+%toc=index,% noindex, index, indexnumbered (see tumidx.sty/glossaries(-extra).sty)
 listof=indented, toc=indented,% Style der Vereichnisse (Standard)
 headings=big,% groesse der Ueberschriften, big, normal, small
 chapterprefix=true, appendixprefix=true,%
@@ -32,11 +32,6 @@ captions=figuresignature, captions=tableheading,% --> Position von caption relev
 \pdftitle{Detecting Thermal Phase Transitions in a Trapped Ion Quantum Computer}%
 \pdfauthor{Michael Labenbacher}%
 \pdfsubject{Bachelor Thesis}%
-%   BA =    1.  twoside=false, (open=any), DIV=12, BCOR=0mm,
-%               OR: twoside=true, open=right, DIV=12, BCOR=0mm,
-%           2.  USE: toc=listof, toc=bibliography, (toc=index (see .sty))
-%               NOT: toc=listofnumbered, toc=bibliographynumbered,
-%           3.  USE: listof=indented, toc=indented,
 
 \makeatletter%
 \NewExpandableDocumentCommand{\TUMAfterCalculatingTypearea}{}{%
@@ -68,7 +63,7 @@ captions=figuresignature, captions=tableheading,% --> Position von caption relev
 % Standard Bibliographieprogramm: txs///bibtex --> txs:///biber --validate_datamodel
 % Standard Index Tool: txs:///makeindex --> txs:///bib2gls
 
-% Before \AtBeginDocument for keywords:
+% Titlepage/Keywords: (before \AtEndPreamble)
 \TUMheader{%
 	Technische Universität München\\%
 	Fakultät für Physik\\%
@@ -95,6 +90,8 @@ captions=figuresignature, captions=tableheading,% --> Position von caption relev
 %	idx={Der Mensch ist zur Freiheit verdammt. Den gefährlichsten Verräter von allen hat jeder Mensch in sich selbst.},%
 %	fcp={Lasst, die Ihr eintretet, alle Hoffnung fahren.\par\bigskip},%
 %}%
+\TUMmakeabbreviations{glossaries/help-abbreviations}%
+
 \begin{document}%
 	\nomatter%
 	\responsible{Michael Labenbacher}% \&{}
@@ -117,6 +114,7 @@ captions=figuresignature, captions=tableheading,% --> Position von caption relev
 	%% ************************** (End) Input the files ***************************
 	\backmatter% deactivate appendix
 	\TUMprintindex%
+	\TUMprintabbreviations%
 	\TUMlistofbibliographies%[american][naustrian]%
 	\TUMlistoffigures%
 	\TUMlistoftables%

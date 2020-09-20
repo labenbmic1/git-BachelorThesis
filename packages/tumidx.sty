@@ -6,23 +6,16 @@
 %% ================================== IDX-\index ==================================
 \let\index\glsadd%
 %% ================================== IDX-style ===================================
-%\renewcommand{\glsxtrpostdescription}{\dotfill}
-\renewcommand{\glsxtrprelocation}{{\def\hfill{\hskip 2em plus 1fill}\dotfill}}%
-\renewcommand{\glstreeNoDescSymbolPreLocation}{{\def\hfill{\hskip 2em plus 1fill}\dotfill}}% at least 2em dotfill
-\GlsXtrSetDefaultNumberFormat{hyperrm}%
-\newcommand{\TUMindexnumber}[1]{\hyperbf{#1}}%
-\newcommand{\TUMindexnumberi}[1]{\underline{\hyperrm{#1}}}%
-\renewcommand{\glstreenamefmt}[1]{#1}% (default: \textbf{#1})
-%\renewcommand{\glstreenavigationfmt}[1]{#1}% (defualt: \textbf{#1})
-%\renewcommand{\glstreegroupheaderfmt}[1]{#1}% (defualt: \textbf{#1})
 \newrobustcmd\cs[1]{\texttt{\char`\\#1}}%
-% If letter's centered: (only copied and added \centering AND \\*)
+% If letter's centered: (only copied and added \begingroup...\centering...\endgroup AND \\*)
 \newglossarystyle{TUMmcoltreehypergroup}{%
 	\setglossarystyle{mcoltreehypergroup}%
 	\renewcommand*{\glsgroupheading}[1]{%
+		\begingroup%
 		\par\noindent\centering%
 		\glstreegroupheaderfmt{\glsnavhypertarget{##1}{\glsgetgrouptitle{##1}}}\\*%\par% no columnbreak
 		\indexspace%
+		\endgroup%
 	}%
 }%
 %% ================================== IDX-names ===================================
@@ -42,13 +35,6 @@
 }%
 \makeatother%
 %% ========================== Definition of the TUM-IDX ===========================
-\str_new:N \l_main_language_index_str%
-\str_case_e:nnTF \l_main_language_str {%
-	{english} {\str_set:Nn \l_main_language_index_str {en-US}}%
-	{american} {\str_set:Nn \l_main_language_index_str {en-US}}%
-	{ngerman} {\str_set:Nn \l_main_language_index_str {de-DE}}%
-	{naustrian} {\str_set:Nn \l_main_language_index_str {de-AT}}%
-} {} {\str_set:Nn \l_main_language_index_str {en-US}}%
 \int_new:N \l_index_count_int%
 \int_set:Nn \l_index_count_int {0}%
 \clist_new:N \l_index_clist%
@@ -59,7 +45,7 @@
 }%
 %% \TUMmakeindex
 \clist_new:N \l_index_sort_clist%
-\NewDocumentCommand{\TUMmakeindex}{oO{\str_use:N \l_main_language_index_str}mm}{%
+\NewDocumentCommand{\TUMmakeindex}{oO{\str_use:N \l_main_language_gls_str}mm}{%
 	\int_incr:N \l_index_count_int%
 	\clist_put_right:Nn \l_index_clist {#4}%
 	\IfNoValueOrEmptyTF{#1}{%
@@ -71,7 +57,7 @@
 	\clist_put_right:Nn \l_index_sort_clist {#2}%
 	\renewcommand{\GlsXtrDefaultResourceOptions}{sort={\clist_item:Nn \l_index_sort_clist {\clist_count:N \l_index_sort_clist}}}%
 	\GlsXtrLoadResources[%
-		src={#3},% data in #2.bib
+		src={#3},% data in #3.bib
 		% sort={en-US},% sort according to 'en-US' locale
 		min-loc-range=2,% (default: 3)
 		match={entrytype={index}},% only select @index
@@ -130,6 +116,13 @@
 			}{}%
 			\msg_warning:nn {tum-physics} {index/more_preambles}%
 		}{}%
+		\begingroup%
+		%\renewcommand{\glsxtrpostdescription}{\dotfill}
+		\renewcommand{\glsxtrprelocation}{{\def\hfill{\hskip 2em plus 1fill\relax}\dotfill}}%
+		\renewcommand{\glstreeNoDescSymbolPreLocation}{{\def\hfill{\hskip 2em plus 1fill\relax}\dotfill}}% at least 2em dotfill
+		\renewcommand{\glstreenamefmt}[1]{##1}% (default: \textbf{#1})
+		%\renewcommand{\glstreenavigationfmt}[1]{#1}% (defualt: \textbf{#1})
+		%\renewcommand{\glstreegroupheaderfmt}[1]{#1}% (defualt: \textbf{#1})
 		\clist_map_inline:Nn \l_index_clist {%
 			\prop_if_in:NnTF \l_index_preamble_prop {##1} {%
 				\setglossarypreamble[##1]{\TUMgetindexpreamble{##1}}%
@@ -140,8 +133,9 @@
 				type={##1},%
 				style={TUMmcoltreehypergroup},%
 				title={\csname indexname##1\endcsname}%
-			]{}%	
+			]{}%
 		}%
+		\endgroup%
 		\newpage%
 	}{}%
 }%

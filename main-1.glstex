@@ -1,0 +1,87 @@
+\glsnoexpandfields
+\bibglstertiaryprefixlabel{tertiary.}
+\bibglsdualprefixlabel{dual.}
+\bibglsprimaryprefixlabel{abb.}
+\providecommand{\bibglsseesep}{, }
+
+\providecommand{\bibglsseealsosep}{, }
+
+\providecommand{\bibglsaliassep}{, }
+
+\ifdef\glsxtrsetgrouptitle
+{
+  \providecommand{\bibglslettergroup}[4]{#4#3}
+  \providecommand{\bibglslettergrouptitle}[4]{\unexpanded{#1}}
+  \providecommand{\bibglssetlettergrouptitle}[1]{%
+    \glsxtrsetgrouptitle{\bibglslettergroup#1}{\bibglslettergrouptitle#1}}
+  \providecommand{\bibglsunicodegroup}[4]{#4#3}
+  \providecommand{\bibglsunicodegrouptitle}[4]{\unexpanded{#1}}
+  \providecommand{\bibglssetunicodegrouptitle}[1]{%
+    \glsxtrsetgrouptitle{\bibglsunicodegroup#1}{\bibglsunicodegrouptitle#1}}
+  \providecommand{\bibglsothergroup}[3]{glssymbols}
+  \providecommand{\bibglsothergrouptitle}[3]{\protect\glssymbolsgroupname}
+  \providecommand{\bibglssetothergrouptitle}[1]{%
+    \glsxtrsetgrouptitle{\bibglsothergroup#1}{\bibglsothergrouptitle#1}}
+  \providecommand{\bibglsemptygroup}[1]{glssymbols}
+  \providecommand{\bibglsemptygrouptitle}[1]{\protect\glssymbolsgroupname}
+  \providecommand{\bibglssetemptygrouptitle}[1]{%
+    \glsxtrsetgrouptitle{\bibglsemptygroup#1}{\bibglsemptygrouptitle#1}}
+  \providecommand{\bibglsnumbergroup}[3]{glsnumbers}
+  \providecommand{\bibglsnumbergrouptitle}[3]{\protect\glsnumbersgroupname}
+  \providecommand{\bibglssetnumbergrouptitle}[1]{%
+    \glsxtrsetgrouptitle{\bibglsnumbergroup#1}{\bibglsnumbergrouptitle#1}}
+}
+{
+  \providecommand{\bibglslettergroup}[4]{#1}
+  \providecommand{\bibglsothergroup}[3]{glssymbols}
+  \providecommand{\bibglsnumbergroup}[3]{glsnumbers}
+  \providecommand{\bibglssetlettergrouptitle}[1]{}
+  \providecommand{\bibglssetothergrouptitle}[1]{}
+  \providecommand{\bibglssetnumbergrouptitle}[1]{}
+  \providecommand{\bibglssetdatetimegrouptitle}[1]{}
+  \providecommand{\bibglssetdategrouptitle}[1]{}
+  \providecommand{\bibglssettimegrouptitle}[1]{}
+}
+
+\providecommand{\bibglssetlastgrouptitle}[2]{}
+
+\bibglssetlettergrouptitle{{S}{s}{6619136}{abbreviations}}
+
+\bibglssetlastgrouptitle{\bibglslettergroup}{{S}{s}{6619136}{abbreviations}}
+\ifdef\@glsnavhypertarget
+{
+  \ifdef\bibglsorgnavhypertarget
+  {}
+  {
+    \let\bibglsorgnavhypertarget\@glsnavhypertarget
+  }
+  \renewcommand*{\@glsnavhypertarget}[3]{%
+    \ifcsdef{@gls@hypergrouplist@#1}%
+    {\@glstarget{\glsnavhyperlinkname{#1}{#2}}{#3}}%
+    {\bibglsorgnavhypertarget{#1}{#2}{#3}}%
+  }
+  \providecommand{\bibglshypergroup}{\@gls@hypergroup}
+}
+{
+  \providecommand{\bibglshypergroup}[2]{}
+}
+\providecommand*{\bibglsflattenedhomograph}[2]{#1}
+\bibglshypergroup{abbreviations}{\bibglslettergroup{S}{s}{6619136}{abbreviations}}
+
+\providecommand{\bibglsnewabbreviation}[4]{%
+  \newabbreviation[#2]{#1}{#3}{#4}%
+}
+
+\bibglsnewabbreviation{abb.shtml}%
+{longplural={(static) hypertext markup language plural},
+location={\glsnoidxdisplayloc{}{page}{hyperrm}{i}},
+sort={shtml|},
+type={abbreviations},
+first={first (s)html},
+shortplural={(s)html plural},
+group={\bibglslettergroup{S}{s}{6619136}{abbreviations}}}%
+{(s)html}%
+{(static) hypertext markup language}
+\glsxtrfieldlistadd{abb.shtml}{loclist}{\glsnoidxdisplayloc{}{page}{hyperrm}{i}}
+
+
