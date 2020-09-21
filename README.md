@@ -1,5 +1,5 @@
-# Labenbacher Michael 1.0.2.nightly.001000000020002
-Have fun. Please report bugs to michael@labenbacher.at or m.labenbacher@tum.de. (It's not perfect I know, but it was a starting point for the Bachelor Thesis. Empty: [main.pdf](main.pdf), Example: [main-example.pdf](main-example.pdf)<br /><br />
+# Labenbacher Michael 1.0.3.nightly.001000000010001
+Have fun. Please report bugs to michael@labenbacher.at or m.labenbacher@tum.de. (It's not perfect I know, but it was a starting point for the Bachelor Thesis.) Empty: [main.pdf](main.pdf), Example: [main-example.pdf](main-example.pdf)<br /><br />
 
 ## Compile (MiKTeX/TeXstudio):<br />
 1/2x pdflatex, biber, bib2gls, 2/3x pdlfatex<br /><br />
@@ -36,6 +36,10 @@ bib2gls.exe --group main<br />
 export TEXINPUTS=.:$HOME/{path...}//;$TEXINPUTS<br />
 {...}<br /><br />
 
+### Changes in 1.0.3.nightly.001000000010001:<br />
+Implemented chapter-toc ((alpha) Package {scrwfile}, Command: \TUMchaptertableofcontents).<br />
+Some small changes/improvements.<br /><br />
+
 ### Changes in 1.0.2.nightly.001000000020002:<br />
 Added example for List of Abbreviations.<br />
 Small changes.<br /><br />
@@ -64,7 +68,7 @@ Small changes and shorten compilation time.<br /><br />
 Bug with {tikz/pgf}-externalize library and {nicematrix, chemformula} fixed.<br />
 Shifted [bookmarks]-option from {hyperref} to {bookmark}.<br />
 Extended the macro \TUM@ifpackageloaded for check for multiple packages.<br />
-Added {scrlayer-notecolumn}. (Optional with [notecolumn=true], because not everybody needs this, it's a "Proof of Concept" but way better then {marginnote}.) Furthermore I have given an example to change the right/left margin from 1-1 to 2-3 (for example) with typearea.<br />
+Added (PoC) {scrlayer-notecolumn}. (Optional with [notecolumn=true], because not everybody needs this, it's a "Proof of Concept" but way better then {marginnote}.) Furthermore I have given an example to change the right/left margin from 1-1 to 2-3 (for example) with typearea.<br />
 Improved tumheader.sty, (Long headmark works now (see example), if it realy can not be avoided to shorten it...)<br />
 Small minor changes and more examples.<br /><br />
 
