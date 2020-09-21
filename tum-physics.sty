@@ -27,7 +27,7 @@
 %% ifluatex = Provides the \ifluatex switch
 \RequirePackage{ifluatex}%
 %% etoolbox = eTeX-tools for LaTeX 
-%%	(\AtEndPreamble (before main aux file read) - \begin{document} - \AtBeginDocument - \AfterEndPreamble)
+%%  (\AtEndPreamble (before main aux file read) - \begin{document} - \AtBeginDocument - \AfterEndPreamble)
 \RequirePackage{etoolbox}%
 %% xparse = A generic document command parser (LaTeX3)
 \RequirePackage{xparse}%
@@ -37,6 +37,10 @@
 %% calc = Simple arithmetic in LaTeX commands
 %% needed by authors (pdflscape)
 \RequirePackage{calc}%
+%% silence = Selective filtering of error messages and warnings
+%% for todonotes, tumctoc (scrwfile)
+\RequirePackage{silence}%
+\WarningsOff[scrwfile]%
 
 
 %% ================================================================================
@@ -56,7 +60,7 @@
 % {revtex4-2}{\def\@TUM@version@hook{003}}{}%
 % {transcript}{\def\@TUM@version@hook{004}}{}%
 % {cheatsheet}{\def\@TUM@version@hook{005}}{}%
-\def\TUMversion{1.0.2.nightly.\@TUM@version@hook000000020002}%
+\def\TUMversion{1.0.3.nightly.\@TUM@version@hook000000010001}%
 \def\TUMversiondate{2020-09-16}%
 \makeatother%
 %% Information of the provided package
@@ -546,7 +550,7 @@
 \bool_if:NTF \l_todo_key_bool {%
 	%% silcence = Selective filtering of error messages and warnings
 	%% needed for todonotes
-	\TUMRequirePackage{silence}%
+	\TUMRequirePackage*{silence}%
 	\WarningsOff[todonotes]%
 }{%
 	\TUMPassOptionsToPackage{disable}{todonotes}%
@@ -650,9 +654,9 @@
 %% ================================================================================
 \typeout{Possible optimizations: glossaries, biblatex, listings, theorems}%
 \typeout{TODO: biblatex (ev. ieee (changes names))}
-\typeout{TODO: theorem (if necessary change style)}
-\typeout{TODO: listings package (Einstellungen betrachten und verwalten, z.B. Python)}
-\typeout{TODO: glossaries(-extra) (List ob abbreviations, if necessary use with bib2gls-option)}
+\typeout{TODO: theorem (Improvements, style)}
+\typeout{TODO: listings package (Improvements, e.q. Python)}
+\typeout{TODO: glossaries(-extra) (Improvements)}
 \typeout{TODO: titelpage + header translate to englisch}
 \typeout{Problem with: etex - paracol (can not be loaded at the same time, use first)}%
 %% not loaded:  l3regex, l3docstrips, l3packages, xfp, xtemplate, titlesec,
@@ -709,7 +713,7 @@ main=american%
 	\clist_map_inline:Nn \l_TUM_addto_extras_clist {%
 		\expandafter\addto\csname extras##1\endcsname{%
 			#2%
-		}%	
+		}%  
 	}%
 }%
 \NewDocumentCommand{\TUM@addto@extras@renew}{mmm}{%
@@ -748,6 +752,7 @@ autooneside=false% Erlaube auch einseitig \automark[section]{chapter}%
 ]{scrlayer-scrpage}%
 \TUMRequirePackage{scrdate}%
 \TUMRequirePackage{scrtime}%
+\TUMRequirePackage{scrwfile}% for tumctoc.sty
 %% tocbasic = Management of tables/lists of contents (and the like)
 \makeatletter%
 \@ifundefined{KOMAClassName}{%
@@ -1809,9 +1814,10 @@ pagenumberbox=\TUM@pagenumberbox% necessary if pagenumber > 100 (and e.q. bold-f
 }{}%
 \makeatother%
 %% ================================================================================
-%% ================== TOC/LOF/LOT/LOB/LOL/IDX/LOA/TDO/titlepage ===================
+%% ================ (C)TOC/LOF/LOT/LOB/LOL/IDX/LOA/TDO/titlepage ==================
 %% ********************************************************************************
 \TUMRequirePackage{packages/tumtoc}%
+\TUMRequirePackage{packages/tumctoc}%
 \TUMRequirePackage{packages/tumlof}%
 \TUMRequirePackage{packages/tumlot}%
 \makeatletter%
@@ -1823,7 +1829,7 @@ pagenumberbox=\TUM@pagenumberbox% necessary if pagenumber > 100 (and e.q. bold-f
 }{}%
 \TUM@ifpackageloaded[setting]{glossaries}{%
 	%% Global style format:
-	\GlsXtrSetDefaultNumberFormat{hyperrm}%	
+	\GlsXtrSetDefaultNumberFormat{hyperrm}% 
 	\newcommand{\TUMindexnumber}[1]{\hyperbf{#1}}%
 	\newcommand{\TUMindexnumberi}[1]{\underline{\hyperrm{#1}}}%
 	%% Index / List of Abbreviation
