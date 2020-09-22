@@ -103,12 +103,10 @@ listname=\appendixname%
 \NewDocumentCommand{\TUMlistofappendices}{}{%
 	\newpage%
 	\pagestyle{scrheadings}%
+	\microtypesetup{protrusion=false}%
 	\listofappendices%
+	\microtypesetup{protrusion=true}%
 	\newpage%
 }%
-\TUM@ifpackageloaded[setting]{microtype}{%
-	\pretocmd{\TUMlistofappendices}{\newpage\microtypesetup{protrusion=false}}{}{}%
-	\apptocmd{\TUMlistofappendices}{\microtypesetup{protrusion=true}\newpage}{}{}%
-}{}%
 \makeatother%
 \endinput%

@@ -8,14 +8,16 @@
 %% ============================= (C)Table-of-contents =============================
 \makeatletter%
 \newif\ifusechaptertoc% Switch to tell \addtocentrydefault to not only make entries to the toc-file but also to the current chapter-toc-file
-\NewDocumentCommand{\TUMchaptertableofcontents}{O{\thechapter}}{%
+\NewDocumentCommand{\TUMchaptertableofcontents}{sO{\thechapter}}{%
 	\usechaptertoctrue% Switch on chapter-toc-entries
-	\edef\ext@subtoc{toc#1}% Extension .toc1, toc2, ...
+	\edef\ext@subtoc{toc#2}% Extension .toc1, toc2, ...
 	\DeclareNewTOC{\ext@subtoc}% Declare new toc file
 	\addsec*{\contentsname}%
 	%\value{tocdepth}=\subsectiontocdepth%
+	\microtypesetup{protrusion=false}%
 	\listoftoc*{\ext@subtoc}%
-	\bigskip\noindent\ignorespaces% Add some vertical space after the toc and do not indent the following text
+	\microtypesetup{protrusion=true}%
+	\IfBooleanTF{#1}{}{\bigskip}\noindent\ignorespaces% Add some vertical space after the toc and do not indent the following text
 }%
 \xapptocmd\addtocentrydefault{%
 	\ifusechaptertoc%
@@ -23,9 +25,5 @@
 	\fi%
 }{}{}%
 \xpretocmd\chapter{\usechaptertocfalse}{}{}% switch of chapter toc entries at start of every \chapter
-\TUM@ifpackageloaded[setting]{microtype}{%
-	\pretocmd{\TUMchaptertableofcontents}{\microtypesetup{protrusion=false}}{}{}%
-	\apptocmd{\TUMchaptertableofcontents}{\microtypesetup{protrusion=true}}{}{}%
-}{}%
 \makeatother%
 \endinput%
