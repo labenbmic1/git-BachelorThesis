@@ -31,7 +31,7 @@
 \RequirePackage{etoolbox}%
 %% xparse = A generic document command parser (LaTeX3)
 \RequirePackage{xparse}%
-%% xparse = Conditional commands in LaTeX documents
+%% ifthen = Conditional commands in LaTeX documents
 %% needed by authors (pdflscape)
 \RequirePackage{ifthen}%
 %% calc = Simple arithmetic in LaTeX commands
@@ -752,7 +752,7 @@ autooneside=false% Erlaube auch einseitig \automark[section]{chapter}%
 ]{scrlayer-scrpage}%
 \TUMRequirePackage{scrdate}%
 \TUMRequirePackage{scrtime}%
-\TUMRequirePackage{scrwfile}% for tumctoc.sty
+\TUMRequirePackage{scrwfile}% for tumctoc.sty (or ? morewrites.sty)
 %% tocbasic = Management of tables/lists of contents (and the like)
 \makeatletter%
 \@ifundefined{KOMAClassName}{%
