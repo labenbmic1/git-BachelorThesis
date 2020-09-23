@@ -20,13 +20,9 @@
 \NewDocumentCommand{\TUMlistoftables}{}{%
 	\newpage%
 	\pagestyle{scrheadings}%
+	\microtypesetup{protrusion=false}%
 	\listoftables%
+	\microtypesetup{protrusion=true}%
 	\newpage%
 }%
-\makeatletter%
-\TUM@ifpackageloaded[setting]{microtype}{%
-	\pretocmd{\TUMlistoftables}{\newpage\microtypesetup{protrusion=false}}{}{}%
-	\apptocmd{\TUMlistoftables}{\microtypesetup{protrusion=true}\newpage}{}{}%
-}{}%
-\makeatother%
 \endinput%

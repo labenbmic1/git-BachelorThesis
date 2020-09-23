@@ -1,12 +1,4 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.9.10)  21 SEP 2020 20:02
-=======
 This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.9.10)  23 SEP 2020 20:55
->>>>>>> Stashed changes
-=======
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.9.10)  23 SEP 2020 20:55
->>>>>>> Stashed changes
 entering extended mode
 **./main.tex
 (main.tex
@@ -3097,20 +3089,20 @@ Use my own \@starttoc for toc
 (chapters/introduction.tex
 chapter 1.
 \scr@dte@toc1@maxnumwidth=\skip167
-Package tocbasic Info: setting babel extension for `toc1' on input line 4.
+Package tocbasic Info: setting babel extension for `toc1' on input line 5.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 13.67995pt on input line 4.
+(Font)              scaled to size 13.67995pt on input line 5.
 Use my own \@starttoc for toc1
 (main.toc1)
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 11.39996pt on input line 12.
+(Font)              scaled to size 11.39996pt on input line 7.
 ) (chapters/theoBackground.tex [1
 
 
 ]
 chapter 2.
 \scr@dte@toc2@maxnumwidth=\skip168
-Package tocbasic Info: setting babel extension for `toc2' on input line 3.
+Package tocbasic Info: setting babel extension for `toc2' on input line 4.
 Use my own \@starttoc for toc2
 (main.toc2)) (chapters/compMethods.tex [2
 
@@ -3373,23 +3365,10 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
- 78479 strings out of 481212
- 1824165 string characters out of 2905973
- 2925813 words of memory out of 100000000
- 92374 multiletter control sequences out of 15000+200000
-=======
-=======
->>>>>>> Stashed changes
  78476 strings out of 481212
  1824493 string characters out of 2905973
  2926185 words of memory out of 100000000
  92371 multiletter control sequences out of 15000+200000
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
  674875 words of font info for 191 fonts, out of 3000000 for 9000
  1146 hyphenation exceptions out of 8191
  100i,16n,163p,10685b,2337s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -3409,7 +3388,7 @@ ppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/micha/A
 ppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/mich
 a/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Users/m
 icha/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on main.pdf (20 pages, 319985 bytes).
+Output written on main.pdf (20 pages, 319986 bytes).
 PDF statistics:
  405 PDF objects out of 1000 (max. 8388607)
  69 named destinations out of 1000 (max. 500000)

@@ -51,12 +51,10 @@
 \NewDocumentCommand{\TUMlistoftodos}{}{%
 	\newpage%
 	\pagestyle{scrheadings}%
+	\microtypesetup{protrusion=false}%
 	\listoftodos%
+	\microtypesetup{protrusion=true}%
 	\newpage%
 }%
-\TUM@ifpackageloaded[setting]{microtype}{%
-	\pretocmd{\TUMlistoftodos}{\newpage\microtypesetup{protrusion=false}}{}{}%
-	\apptocmd{\TUMlistoftodos}{\microtypesetup{protrusion=true}\newpage}{}{}%
-}{}%
 \makeatother%
 \endinput%
