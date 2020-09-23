@@ -60,8 +60,8 @@
 % {revtex4-2}{\def\@TUM@version@hook{003}}{}%
 % {transcript}{\def\@TUM@version@hook{004}}{}%
 % {cheatsheet}{\def\@TUM@version@hook{005}}{}%
-\def\TUMversion{1.0.3.nightly.\@TUM@version@hook000000010001}%
-\def\TUMversiondate{2020-09-16}%
+\def\TUMversion{1.0.3.nightly.\@TUM@version@hook000000010002}%
+\def\TUMversiondate{2020-09-23}%
 \makeatother%
 %% Information of the provided package
 %% ProvidesExplPackage{name of package}{YYYY-MM-DD}{version}{more information}
@@ -146,7 +146,7 @@
 	xkeyval={keyval},%
 	glossaries={hyperref},% (!!)
 	scrlayer-notecolumn={scrlayer-scrpage},% (!)
-	glossaries-extra={hyperref, babel, inputenc, multicol, bookmark, longtable, supertabular, amsmath, amstext, amsgen, amsbsy, amsopn, etoolbox, ifthen, xkeyval},% (!!)
+	glossaries-extra={hyperref, babel, multicol, bookmark, longtable, supertabular, amsmath, amstext, amsgen, amsbsy, amsopn, etoolbox, ifthen, xkeyval},% (!!)
 	todonotes={ifthen, xkeyval, xcolor, tikz, pgf, pgfrcs, pgfsys, pgffor, everyshi, graphicx, graphics, trig, pgfkeys, pgfmath, calc}% (!!)
 }%
 \bool_new:N \l_if_package_before_bool%
@@ -548,9 +548,6 @@
 }{}%
 \makeatother%
 \bool_if:NTF \l_todo_key_bool {%
-	%% silcence = Selective filtering of error messages and warnings
-	%% needed for todonotes
-	\TUMRequirePackage*{silence}%
 	\WarningsOff[todonotes]%
 }{%
 	\TUMPassOptionsToPackage{disable}{todonotes}%
@@ -727,9 +724,13 @@ main=american%
 \ExplSyntaxOff%
 \makeatother%
 %% inputenc = Accept different input encodings
-\TUMRequirePackage[%
-utf8%
-]{inputenc}%
+\ifluatex%
+	\TUMRequirePackage{fontspec}%
+\else%
+	\TUMRequirePackage[%
+	utf8%
+	]{inputenc}%
+\fi%
 %% ulem = (redefines \@empty, also zur Sicherheit vor Koma-Script)
 \TUMRequirePackage[%
 normalem%
@@ -768,53 +769,30 @@ T1%
 ]{fontenc}%
 %% ================== Definition, etc. of the used font's =========================
 %% --------------------------- Latin Modern font family ---------------------------
-%% lmodern = Latin Modern fotns
-\TUMRequirePackage{lmodern}%
-%% LM Roman
-\renewcommand{\rmdefault}{lmr}%
-%% LM Mono
-\renewcommand{\ttdefault}{lmtt}%
-%% LM Sans
-%\renewcommand{\sfdefault}{lmss}%
-%% ------------------------------ Bera font family ------------------------------
-%% bera = Bera fonts
-%\RequirePackage{bera}%
-%% Bera Serif
-%\RequirePackage{beraserif}% {fve}
-%% Bera Mono
-%\RequirePackage{beramono}% {fvm}
-%% Bera Sans
-%\RequirePackage{berasans}% {fvs}
-%% ----------------------------- CmBright font family -----------------------------
-%% cmbright = Computer Modern Bright fonts
-%\RequirePackage{cmbright}%
-%% CmBright Mono
-%\renewcommand{\ttdefault}{cmtl}%
-%% CmBright Sans
-%\renewcommand{\sfdefault}{cmbr}%
-%% ----------------------------- Further font families ----------------------------
-%% helvet [scaled] = Load Helvetica, scaled
-\TUMRequirePackage[%
-scaled%
-]{helvet}%
-\renewcommand{\sfdefault}{phv}%
-%\RequirePackage{courier}%
-%\renewcommand{\ttdefault}{pcr}%
-%\RequirePackage{mathptmx}%
-%\renewcommand{\rmdefault}{ptm}%
-%\RequirePackage{mathpazo}%
-%\renewcommand{\rmdefault}{pplx}% or {pplj}
-%\RequirePackage{charter}%
-%\renewcommand{\sfdefault}{bch}%
-%\RequirePackage{bookman}%
-%\renewcommand{\sfdefault}{pbk}%
-%% further fonts:   newcent {pnc}, avantgar {pag}, chancery {pzc},
-%%                  uarial {ua1}, ulgothic {ulg}, luximono {ul9}, fourier {futm}, ..
+\ifluatex%
+	\setmainfont{Latin Modern Roman}%
+	%\setmainfont{Helvetica}%
+	\defaultfontfeatures{Ligatures=TeX}%
+\else%
+	%% lmodern = Latin Modern fotns
+	\TUMRequirePackage{lmodern}%
+	%% helvet [scaled] = Load Helvetica, scaled
+	\TUMRequirePackage[%
+	scaled%
+	]{helvet}%
+\fi%
 %% ------------------------- Default fonts of the document ------------------------
+\ifluatex\else%
+	%% LM Roman
+	\renewcommand{\rmdefault}{lmr}%
+	%% LM Mono
+	\renewcommand{\ttdefault}{lmtt}%
+	%% LM Sans / Helvetica
+	%\renewcommand{\sfdefault}{lmss}%
+	\renewcommand{\sfdefault}{phv}%
+\fi%
+%% Default
 \renewcommand{\familydefault}{\rmdefault}%
-%% ---------------------------- Sans font in math mode ----------------------------
-%\RequirePackage{sansmath}%
-%\sansmath%
 %% --------------------------- + bb-font in math mode  ----------------------------
 %% dsfont = \mathds{}, for example 1 (identity matrix) (more ev. {newtxmath})
 \TUMRequirePackage{dsfont}%
@@ -994,6 +972,7 @@ procnames%
 \TUMRequirePackage{chemgreek}%
 %% chemmacros = A collection of macros to support typesetting chemistry documents
 \TUMRequirePackage{chemmacros}%
+\chemsetup{greek=upgreek}%
 %% nicematrix = Improve the typesetting of mathematical matrices with PGF
 \TUMRequirePackage{nicematrix}%
 
@@ -1072,11 +1051,11 @@ plainpages=false%       %% biblatex is possible
 	\setcounter{biburllcpenalty}{1000}%
 }{}%
 %% Ref/Autoref-names for hyperref
-\AtBeginDocument{%
+\AtBeginDocument{% begin: AtBeginDocument
 	\TUM@ifpackageloaded[setting]{babel,hyperref}{% begin: babel, hyperref loaded
 		\TUM@ifpackageloaded[setting]{listings}{% begin: listings loaded
 			\newcommand*{\lstlistingautorefname}{}%
-		}{}% end: listings not loaded
+		}{}% end/begin/end: listings /not/not loaded
 		\AfterEndPreamble{%
 			\TUM@addto@extras@renew{american,english}{tableautorefname}{table}%
 			\TUM@addto@extras@renew{american,english}{figureautorefname}{figure}%
@@ -1106,7 +1085,7 @@ plainpages=false%       %% biblatex is possible
 				\TUM@addto@extras@renew{american,english}{lstlistingautorefname}{listing}%
 				\TUM@addto@extras@renew{naustrian,ngerman}{lstlistingautorefname}{Listing}%
 			}%
-		}{}% end: listings not loaded
+		}{}% end/begin/end: listings /not/not loaded
 		\TUM@ifpackageloaded[setting]{subcaption}{% begin: subcaption loaded
 			\AfterEndPreamble{%
 				\TUM@addto@extras@renew{american,english}{subfigureautorefname}{figure}%
@@ -1114,8 +1093,8 @@ plainpages=false%       %% biblatex is possible
 				\TUM@addto@extras@renew{naustrian,ngerman}{subfigureautorefname}{Abbildung}%
 				\TUM@addto@extras@renew{naustrian,ngerman}{subtableautorefname}{Tabelle}%
 			}%
-		}{}% end: subcaption not loaded
-	}{}% end: babel, hyperref not loaded
+		}{}% end/begin/end: subcaption /not/not loaded
+	}{}% end/begin/end: babel, hyperref /not/not loaded
 }% end: AtBeginDocument
 \makeatother%
 %% bookmark = A new bookmark (outline) organization for hyperref
@@ -1136,6 +1115,7 @@ abbreviations,%
 nopostdot,%
 stylemods={mcols}%
 ][hyperref]{glossaries-extra}%
+%% language for sorting (bib2gls/glossaries-extra)
 \ExplSyntaxOn%
 \str_new:N \l_main_language_gls_str%
 \str_case_e:nnTF \l_main_language_str {%
@@ -1695,7 +1675,7 @@ stylemods={mcols}%
 %% ********************************************************************************
 \makeatletter%
 \AtBeginDocument{%
-	\TUM@ifpackageloaded[setting]{babel}{% begin: babel loaded
+	\TUM@ifpackageloaded[setting]{babel}{%
 		\AfterEndPreamble{%
 			\TUM@addto@extras@renew{american,english}{abstractname}{Abstract}%
 			\TUM@addto@extras@renew{naustrian,ngerman}{abstractname}{Resümee}%
@@ -1717,7 +1697,7 @@ stylemods={mcols}%
 %% ********************************************************************************
 \makeatletter%
 \AtBeginDocument{%
-	\TUM@ifpackageloaded[setting]{babel}{% begin: babel loaded
+	\TUM@ifpackageloaded[setting]{babel}{%
 		\AfterEndPreamble{%
 			\TUM@addto@extras@renew{american,english}{declarationofauthorshipname}{Declaration of Authorship}%
 			\TUM@addto@extras@renew{naustrian,ngerman}{declarationofauthorshipname}{Eidesstattliche Erklärung}%
@@ -1730,7 +1710,7 @@ stylemods={mcols}%
 %% ********************************************************************************
 \makeatletter%
 \AtBeginDocument{%
-	\TUM@ifpackageloaded[setting]{babel}{% begin: babel loaded
+	\TUM@ifpackageloaded[setting]{babel}{%
 		\AfterEndPreamble{%
 			\TUM@addto@extras@renew{american,english}{acknowledgmentsname}{Acknowledgments}%
 			\TUM@addto@extras@renew{naustrian,ngerman}{acknowledgmentsname}{Danksagung}%
@@ -1772,6 +1752,7 @@ pagenumberbox=\TUM@pagenumberbox% necessary if pagenumber > 100 (and e.q. bold-f
 %% ================================================================================
 %% ================================ Keywords ======================================
 %% ********************************************************************************
+%% language for pdflang (hypersetup)
 \ExplSyntaxOn%
 \str_new:N \l_main_language_hyp_str%
 \str_case_e:nnTF \l_main_language_str {%
