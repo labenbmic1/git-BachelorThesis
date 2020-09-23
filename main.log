@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.9.10)  22 SEP 2020 17:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.9.10)  23 SEP 2020 21:21
 entering extended mode
 **./main.tex
 (main.tex
@@ -232,11 +232,11 @@ LaTeX Info: Redefining \GenericWarning on input line 433.
 \sl@BankOfErrors=\toks25
 LaTeX Info: Redefining \GenericError on input line 601.
 )
-Package: tum-physics 2020-09-16 v1.0.3.nightly.001000000010001 A "package" made
+Package: tum-physics 2020-09-23 v1.0.3.nightly.001000000010002 A "package" made
  by Michael Labenbacher, scrbook/scrreprt, :P
 
 ==========================================================================
-Version: 1.0.3.nightly.001000000010001
+Version: 1.0.3.nightly.001000000010002
 000 for: -- paper=a4,11/12pt,twoside,open=right -- scrbook
 001 for: -- paper=a4,11/12pt,oneside,open=any -- scrreprt
 002 for: -- paper=a4,11/12pt,twoside,open=right -- scrartcl
@@ -1000,7 +1000,7 @@ Package: longtable 2020/01/07 v4.13 Multi-page Table package (DPC)
 \c@LT@chunks=\count453
 \LT@p@ftn=\toks49
 )
-Class scrreprt Info: longtable captions redefined on input line 900.
+Class scrreprt Info: longtable captions redefined on input line 878.
 
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
 Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
@@ -1010,7 +1010,7 @@ Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
 \bigstrutjot=\dimen258
 )
 (packages/tumcolors.sty
-Package: packages/tumcolors 2020-09-16 v1.0.3.nightly.001000000010001 The color
+Package: packages/tumcolors 2020-09-23 v1.0.3.nightly.001000000010002 The color
 -part made by Michael Labenbacher
 
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
@@ -1887,6 +1887,10 @@ File: tikzlibrarycalc.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 \l__chemmacros_iupac_break_dim=\dimen392
 \l__chemmacros_iupac_break_skip=\skip144
 )))
+
+Package chemgreek Info: Activating mapping `upgreek' on line 975.
+
+
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/nicematrix\nicematrix.s
 ty
 Package: nicematrix 2020/08/19 v5.2 Enhanced arrays with the help of PGF/TikZ
@@ -2062,7 +2066,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks77
 \@floatcapt=\box110
 )
-Package scrhack Info: loading float hack on input line 1012.
+Package scrhack Info: loading float hack on input line 991.
 
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\float.hak
 File: float.hak 2020/07/22 v3.31 KOMA-Script scrhack part (hacking package floa
@@ -2073,7 +2077,7 @@ Package scrhack Info: undefining \float@addtolists on input line 163.
 )
 Package scrhack Info: hyperref hack deactivated because of
 (scrhack)             detection of KOMA-Script class, that doesn't
-(scrhack)             need that hack, on input line 1035.
+(scrhack)             need that hack, on input line 1014.
 
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
 Package: hyperref 2020-05-15 v7.00e Hypertext links for LaTeX
@@ -2175,13 +2179,13 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 Package: nccmath 2006/01/20 v1.3 Additional Math Commands (NCC)
 \NCC@fracrulewidth=\dimen427
 )
-Package hyperref Info: Option `pdftoolbar' set `true' on input line 1052.
-Package hyperref Info: Option `pdfmenubar' set `true' on input line 1052.
-Package hyperref Info: Option `colorlinks' set `true' on input line 1052.
-Package hyperref Info: Option `breaklinks' set `true' on input line 1052.
-Package hyperref Info: Option `linktocpage' set `true' on input line 1052.
-Package hyperref Info: Option `hypertexnames' set `true' on input line 1052.
-Package hyperref Info: Option `plainpages' set `false' on input line 1052.
+Package hyperref Info: Option `pdftoolbar' set `true' on input line 1031.
+Package hyperref Info: Option `pdfmenubar' set `true' on input line 1031.
+Package hyperref Info: Option `colorlinks' set `true' on input line 1031.
+Package hyperref Info: Option `breaklinks' set `true' on input line 1031.
+Package hyperref Info: Option `linktocpage' set `true' on input line 1031.
+Package hyperref Info: Option `hypertexnames' set `true' on input line 1031.
+Package hyperref Info: Option `plainpages' set `false' on input line 1031.
 
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/bookmark\bookmark.sty
 Package: bookmark 2019/12/03 v1.28 PDF bookmarks (HO)
@@ -2526,7 +2530,7 @@ File: tikzlibraryshapes.misc.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 pgflibraryshapes.misc.code.tex
 File: pgflibraryshapes.misc.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )) (packages/tumtikz.sty
-Package: packages/tumtikz 2020-09-16 v1.0.3.nightly.001000000010001 The tikz/pg
+Package: packages/tumtikz 2020-09-23 v1.0.3.nightly.001000000010002 The tikz/pg
 f-part made by Michael Labenbacher
 \tikZlengthwi=\skip158
 \tikZlengthwii=\skip159
@@ -2537,10 +2541,10 @@ f-part made by Michael Labenbacher
 \tikZlengthwvii=\skip164
 )
 (packages/tumlistings.sty
-Package: packages/tumlistings 2020-09-16 v1.0.3.nightly.001000000010001 The lis
+Package: packages/tumlistings 2020-09-23 v1.0.3.nightly.001000000010002 The lis
 tings-part made by Michael Labenbacher
 ) (packages/tumtcb.sty
-Package: packages/tumtcb 2020-09-16 v1.0.3.nightly.001000000010001 The tcolorbo
+Package: packages/tumtcb 2020-09-23 v1.0.3.nightly.001000000010002 The tcolorbo
 x(theorem)-part made by Michael Labenbacher
 
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcblistings.c
@@ -2590,49 +2594,49 @@ Library (tcolorbox): 'tcbxparse.code.tex' version '4.31'
 \c@tcb@cnt@postulate=\count619
 \c@tcb@cnt@example=\count620
 ) (packages/tumheader.sty
-Package: packages/tumheader 2020-09-16 v1.0.3.nightly.001000000010001 The heade
+Package: packages/tumheader 2020-09-23 v1.0.3.nightly.001000000010002 The heade
 r-part made by Michael Labenbacher
 ) (packages/tummatter.sty
-Package: packages/tummatter 2020-09-16 v1.0.3.nightly.001000000010001 The matte
+Package: packages/tummatter 2020-09-23 v1.0.3.nightly.001000000010002 The matte
 r-part made by Michael Labenbacher
 Package tocbasic Info: setting babel extension for `atoc' on input line 81.
 \scr@dte@atoc@maxnumwidth=\skip165
 )
 \scr@dte@lstlisting@maxnumwidth=\skip166
  (packages/tumtoc.sty
-Package: packages/tumtoc 2020-09-16 v1.0.3.nightly.001000000010001 The table-of
+Package: packages/tumtoc 2020-09-23 v1.0.3.nightly.001000000010002 The table-of
 -contents-part made by Michael Labenbacher
 )
 (packages/tumctoc.sty
-Package: packages/tumctoc 2020-09-16 v1.0.3.nightly.001000000010001 The chapter
+Package: packages/tumctoc 2020-09-23 v1.0.3.nightly.001000000010002 The chapter
 -table-of-contents-part made by Michael Labenbacher
 ) (packages/tumlof.sty
-Package: packages/tumlof 2020-09-16 v1.0.3.nightly.001000000010001 The list-of-
+Package: packages/tumlof 2020-09-23 v1.0.3.nightly.001000000010002 The list-of-
 figures-part made by Michael Labenbacher
 ) (packages/tumlot.sty
-Package: packages/tumlot 2020-09-16 v1.0.3.nightly.001000000010001 The list-of-
+Package: packages/tumlot 2020-09-23 v1.0.3.nightly.001000000010002 The list-of-
 table-part made by Michael Labenbacher
 )
 (packages/tumlob.sty
-Package: packages/tumlob 2020-09-16 v1.0.3.nightly.001000000010001 The list-of-
+Package: packages/tumlob 2020-09-23 v1.0.3.nightly.001000000010002 The list-of-
 bibliography-part made by Michael Labenbacher
 ) (packages/tumlol.sty
-Package: packages/tumlol 2020-09-16 v1.0.3.nightly.001000000010001 The list-of-
+Package: packages/tumlol 2020-09-23 v1.0.3.nightly.001000000010002 The list-of-
 listings-part made by Michael Labenbacher
 ) (packages/tumidx.sty
-Package: packages/tumidx 2020-09-16 v1.0.3.nightly.001000000010001 The index-pa
+Package: packages/tumidx 2020-09-23 v1.0.3.nightly.001000000010002 The index-pa
 rt made by Michael Labenbacher
 \l_index_count_int=\count621
 \l_index_preamble_count_int=\count622
 )
 (packages/tumloa.sty
-Package: packages/tumloa 2020-09-16 v1.0.3.nightly.001000000010001 The list-of-
+Package: packages/tumloa 2020-09-23 v1.0.3.nightly.001000000010002 The list-of-
 abbreviations-part made by Michael Labenbacher
 ) (packages/tumtdo.sty
-Package: packages/tumtdo 2020-09-16 v1.0.3.nightly.001000000010001 The todonote
+Package: packages/tumtdo 2020-09-23 v1.0.3.nightly.001000000010002 The todonote
 s-part made by Michael Labenbacher
 ) (packages/tumtitlepage.sty
-Package: packages/tumtitlepage 2020-09-16 v1.0.3.nightly.001000000010001 The ti
+Package: packages/tumtitlepage 2020-09-23 v1.0.3.nightly.001000000010002 The ti
 tlepage-part made by Michael Labenbacher
 ))
 LaTeX Font Info:    Trying to load font information for T1+lmr on input line 51
@@ -2850,9 +2854,6 @@ Package pgfplots notification 'compat/show suggested version=true': document ha
 s been generated with the most recent feature set (\pgfplotsset{compat=1.17}).
 
 \c@lstlisting=\count629
-
-Package chemgreek Info: Activating mapping `upgreek' on line 95.
-
 
 (C:\Users\micha\AppData\Local\Programs\MiKTeX\tex/latex/translations/dicts\tran
 slations-basic-dictionary-english.trsl
@@ -3364,10 +3365,10 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 78477 strings out of 481212
- 1824101 string characters out of 2905973
- 2925801 words of memory out of 100000000
- 92372 multiletter control sequences out of 15000+200000
+ 78476 strings out of 481212
+ 1824087 string characters out of 2905973
+ 2926185 words of memory out of 100000000
+ 92371 multiletter control sequences out of 15000+200000
  674875 words of font info for 191 fonts, out of 3000000 for 9000
  1146 hyphenation exceptions out of 8191
  100i,16n,163p,10685b,2337s stack positions out of 5000i,500n,10000p,200000b,50000s
