@@ -1,33 +1,33 @@
-# Labenbacher Michael 1.0.3.nightly.001000000010001
+# Labenbacher Michael 1.0.3.nightly.001000000010002
 Have fun. Please report bugs to michael@labenbacher.at or m.labenbacher@tum.de. (It's not perfect I know, but it was a starting point for the Bachelor Thesis.) Empty: [main.pdf](main.pdf), Example: [main-example.pdf](main-example.pdf)<br /><br />
 
 ## Compile (MiKTeX/TeXstudio):<br />
-1/2x pdflatex, biber, bib2gls, 2/3x pdlfatex<br /><br />
+1/2x (pdf/lua)latex, biber, bib2gls, 2/3x (pdf/lua)latex<br /><br />
 
 Befehle:<br />
-PdfLaTeX: pdflatex.exe --shell-escape -synctex=1 -interaction=nonstopmode %.tex<br />
+PdfLaTeX: (pdf/lua)latex.exe --shell-escape -synctex=1 -interaction=nonstopmode %.tex<br />
 Biber: biber.exe %<br />
 Makeindex: bib2gls.exe --group %<br /><br />
 
 Erzeugen:<br />
-Standardcompiler: txs:///pdflatex<br />
+Standardcompiler: txs:///(pdf/lua)latex<br />
 Standard Bibliographieprogramm: txs:///biber --validate_datamodel<br />
 Standard Index Tool: txs:///bib2gls<br /><br />
 
 TeX memory for tikz-externalize (if there are to many datapoints (normally one should instead use python/matlab...)):<br />
-1. Run: initexmf --edit-config-file=pdflatex<br />
+1. Run: initexmf --edit-config-file=(pdf/lua)latex<br />
 2. Write+Save into file (* is normally sufficient to increase only this)<br />
 extra_mem_top 	= 1000000000<br />
 extra_mem_bot 	= 1000000000<br />
 main_memory 	= 100000000 (*)<br />
-3. Run: initexmf --dump=pdflatex<br /><br />
+3. Run: initexmf --dump=(pdf/lua)latex<br /><br />
 
 ## Compile WINDOWS: (Commandline)<br />
 cd C:\\{path...}<br />
 set TEXINPUTS=.;.\images\\\\;.\tables\\\\;.\chapters\\\\;.\files\\\\;.\listings\\\\;.\packges\\\\;%TEXINPUTS%<br />
 set BIBINPUTS=.;.\references\\\\;.\glossaries\\\\;%BIBINPUTS%<br /> 
 
-pdflatex --shell-escape main.tex<br />
+(pdf/lua)latex --shell-escape main.tex<br />
 biber --validate_datamodel main<br />
 bib2gls.exe --group main<br />
 {...}<br />
@@ -35,6 +35,9 @@ bib2gls.exe --group main<br />
 ## Compile UNIX:<br />
 export TEXINPUTS=.:$HOME/{path...}//;$TEXINPUTS<br />
 {...}<br /><br />
+
+### Changes in 1.0.3.nightly.001000000010002:<br />
+It's optimized for pdflatex, but one can also use lualtex now without any problems (font).<br /><br />
 
 ### Changes in 1.0.3.nightly.001000000010001:<br />
 Implemented chapter-toc ((alpha) Package {scrwfile}, Command: \TUMchaptertableofcontents).<br />
