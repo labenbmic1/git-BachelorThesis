@@ -1,0 +1,125 @@
+\documentclass[%
+fontsize=11pt,%
+twoside=false,% false, true%
+open=any,% right, any%
+paper=a4,%
+paper=portrait,% (landscape)
+titlepage=firstiscover,%
+twocolumn=false,%
+footinclude=false,%
+headinclude=false,%
+mpinclude=false,% (Teil des Randes für Notizen verwendet)
+headlines=1.25, footlines=1.25,%
+pagesize=auto,% Ausgabetreiber (Standard)
+DIV=12, BCOR=0mm,% ev. 15
+toc=listof,% nolistof, listof, listofnumbered
+toc=bibliography,% nobibliography, bibliography, bibliographynumbered
+%toc=index,% noindex, index, indexnumbered (see tumidx.sty/glossaries(-extra).sty)
+listof=indented, toc=indented,% Style der Vereichnisse (Standard)
+headings=big,% groesse der Ueberschriften, big, normal, small
+chapterprefix=true, appendixprefix=true,%
+parskip=false,% false, full, (half, never)
+numbers=autoenddot,% Punkt z.B. 1.1. (Punkt wenn einmal nicht arabisch, (no)enddot)
+% leqno (zentriert, Nummer links), fleqn (links, Nummer rechts)% -> amsmath
+captions=figuresignature, captions=tableheading,% --> Position von caption relevant!
+]{scrreprt}% KOMAScript
+%% scrbook: openright, towside=true, (part, chapter, section, subsection, etc.)
+%% scrreprt: openany, twoside=false, ((part), chapter, section, subsection, etc.)
+\usepackage[todo=true, debug=false, notecolumn=false, printlist=false]{tum-physics}%
+% [debug (bool*), todo (bool*), notecolumn (bool*), printlist** (bool*)]
+% * default = false
+% ** Same as \listfiles but prints them at the end of the document. (there can be overfull boxes here, because it prints strings in a table, ignore them.)
+\pdftitle{Detecting Thermal Phase Transitions in a Trapped Ion Quantum Computer}%
+\pdfauthor{Michael Labenbacher}%
+\pdfsubject{Bachelor Thesis}%
+
+\makeatletter%
+\NewExpandableDocumentCommand{\TUMAfterCalculatingTypearea}{}{%
+	%% HOEHE: 1-1 instead of 1-2 (standard typearea)
+	\setlength\textheight{\paperheight-2in-2\voffset-2\topmargin-2\headheight-2\headsep}%
+	\setlength\footskip{\headheight+\headsep}%
+	%% BREITE: 2-3 instead of 1-1 (standard typearea)
+	% for example with scrlayer-notecolumn in oneside-mode
+	%\if@twoside\else%
+	%\setlength\oddsidemargin{2\paperwidth/5-2\textwidth/5-1in-\hoffset}% 0.4 = 2/5 = 2/(2+3)
+	%\setlength\marginparwidth{\paperwidth-1in-\hoffset-\oddsidemargin-\textwidth-2\marginparsep}%
+	%\fi%
+}%
+\makeatother%
+\AfterCalculatingTypearea{%
+	\TUMAfterCalculatingTypearea%
+}\recalctypearea%
+
+% 1. Run: initexmf --edit-config-file=pdflatex
+% 2. Write+Save into file (* is normally sufficient to increase only this)
+% extra_mem_top 	= 1000000000
+% extra_mem_bot 	= 1000000000
+% main_memory 		= 100000000 (*)
+% 3. Run: initexmf --dump=pdflatex
+% 4. In TeXstudio/Optionen (pdflatex):
+% 1/2x (pdf/lua)latex, biber, bib2gls, 2/3x (pdf/lua)latex 
+% Biber: biber.exe %
+% Makeindex: makeindex.exe %.idx --> bib2gls.exe --group %
+% Standard Bibliographieprogramm: txs///bibtex --> txs:///biber --validate_datamodel
+% Standard Index Tool: txs:///makeindex --> txs:///bib2gls
+
+% Titlepage/Keywords: (before \AtEndPreamble)
+\TUMheader{%
+	Technische Universität München\\%
+	Fakultät für Physik\\%
+	(Lehrstuhl, Leiter, Arbeitsgruppe etc.)\todoMissing[caption={Missing header.}, author={Michael L.}]{Please translate this to english.}}%
+\TUMtitle[][Detecting Thermal Phase Transitions in a Trapped Ion Quantum Computer]{Detecting Thermal Phase Transitions in a Trapped Ion Quantum Computer\thanks{\today, Wir sollten uns nicht empören, dass andere die Wahrheit vorenthalten, wenn wir sie doch selbst so oft verschleiern. (please delete this immediately :P)\todoChange[caption={Change/Delete.}, author={Michael L.}]{Please remove this immediately.}}}%
+\TUMauthor[michael.labenbacher@tum.de][]{Michael Labenbacher}% mail, 03697519, name
+\TUMauthor[john@smith.at]{John Smith}% only for test
+\TUMsupervisor[michael.knap@ph.tum.de]{Prof. Dr. Michael Knap}% mail, name
+\TUMsupervisor[alexander.schuckert@tum.de]{Alexander Schuckert}% more....
+\TUMfirstassessor[michael.knap@ph.tum.de]{Prof. Dr. Michael Knap}%
+\TUMsecondassessor{Prof. Dr. David Egger}%
+\TUMtopic{Quantum Many-Body Physics (Theory)}
+\TUMsubmissiondate{30}{01}{2020}% \formatdate
+%% Single Index: (before \AtEndPreamble)
+\TUMmakeindex{glossaries/help-index-1}{idx}%
+\TUMsetindexpreamble{%
+	idx={Unterstrichene Zahlen (\texttt{idxnumber(i)}) verweisen auf die Definition, fett hervorgehobene (\texttt{idxnumber}) geben Seiten der Erklärung zum jeweiligen Stichwort wieder und normal gedruckte verweisen hingegen auf Seiten mit zusätzlichen Informationen (Numbers underlined point to the definition; numbers written in boldface refer to the pages where the corresponding entry is described; all others indicate the places where it is used.).\par\bigskip}%
+}%
+%% Multiple Indices:
+%\TUMmakeindex[General Index]{glossaries/help-index-1}{idx}%
+%\TUMmakeindex[Index of Files, Classes and Packages]{glossaries/help-index-2}{fcp}%
+%\TUMsetindexpreamble{%
+%	main={Die unerfahrenen Freunde sind gefährlich. Klugheit ist besser, selbst in einem Feind.\par\bigskip},%
+%	idx={Der Mensch ist zur Freiheit verdammt. Den gefährlichsten Verräter von allen hat jeder Mensch in sich selbst.},%
+%	fcp={Lasst, die Ihr eintretet, alle Hoffnung fahren.\par\bigskip},%
+%}%
+\TUMmakeabbreviations{glossaries/help-abbreviations}%
+
+\begin{document}%
+	\nomatter%
+	\responsible{Michael Labenbacher}% \&{}
+	\maketitle%
+	\frontmatter%
+	\input{chapters/abstract}%
+	\TUMtableofcontents%
+	\mainmatter%
+	%% ************************* (Start) Input the files **************************
+	%\input{chapters/LaTeX-Einfuehrung}% [debug=true, notecolumn=true, todo=true] remove
+	%\input{chapters/LaTeX-TikZ-Examples}% remove 
+	\input{chapters/introduction}% change the following ...	
+	\input{chapters/theoBackground}%
+	\input{chapters/compMethods}%
+	\input{chapters/evaluation}%
+	\input{chapters/conclusionAndPerspective}%
+	\appendix% activate only if there is an appendix
+	\chapter{Experimental Setup Details}% (only for the purpose of testing
+	\chapter{Additional Measurement Data}% (only for the purpose of testing
+	%% ************************** (End) Input the files ***************************
+	\backmatter% deactivate appendix
+	\TUMlistofbibliographies%[american][naustrian]%
+	\TUMprintindex%
+	\TUMprintabbreviations%
+	\TUMlistoffigures%
+	\TUMlistoftables%
+	\TUMlistoflistings%
+	\TUMlistoftodos%
+	\input{chapters/decOfAuthorship}%
+	\input{chapters/acknowledgments}%
+\end{document}%
