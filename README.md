@@ -5,7 +5,7 @@ Have fun. Please report bugs to michael@labenbacher.at or m.labenbacher@tum.de. 
 1/2x (pdf/lua)latex, biber, bib2gls, 2/3x (pdf/lua)latex<br /><br />
 
 Befehle:<br />
-PdfLaTeX: (pdf/lua)latex.exe --shell-escape -synctex=1 -interaction=nonstopmode %.tex<br />
+(Pdf/Lua)LaTeX: (pdf/lua)latex.exe --shell-escape -synctex=1 -interaction=nonstopmode %.tex<br />
 Biber: biber.exe %<br />
 Makeindex: bib2gls.exe --group %<br /><br />
 
