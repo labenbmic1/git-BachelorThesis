@@ -764,9 +764,11 @@ autooneside=false% Erlaube auch einseitig \automark[section]{chapter}%
 \makeatother%
 
 %% fontenc (Standard - 2020, "not a package anymore")
-\TUMRequirePackage[%
-T1%
-]{fontenc}%
+\ifluatex\else%
+	\TUMRequirePackage[%
+	T1%
+	]{fontenc}%
+\fi%
 %% ================== Definition, etc. of the used font's =========================
 %% --------------------------- Latin Modern font family ---------------------------
 \ifluatex%
