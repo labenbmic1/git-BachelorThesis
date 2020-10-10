@@ -112,3 +112,10 @@
 \@writefile{toc1}{\addvspace {10\p@ }}
 \@writefile{toc2}{\addvspace {10\p@ }}
 \@writefile{tdo}{\contentsline {todo}{\color@fb@x {}{TUMcolorVII}{}{TUMcolorVII!25}{\leavevmode {\color {TUMcolorVII!25}o}}\ Missing acknowledgments.}{17}{section*.21}\protected@file@percent }
+\@writefile{toc}{\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file }
+\@writefile{toc2}{\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file }
+\@writefile{toc2}{\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file }
+\@writefile{atoc}{\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file }
+\@writefile{lof}{\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file }
+\@writefile{lot}{\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file }
+\@writefile{lol}{\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file }

@@ -42,9 +42,9 @@
 \NewDocumentCommand{\TUMtableofcontents}{}{%
 	\newpage%
 	\pagestyle{scrheadings}%
-	\microtypesetup{protrusion=false}%
+	\ifdefmacro{\microtypesetup}{\microtypesetup{protrusion=false}}{}%
 	\tableofcontents%
-	\microtypesetup{protrusion=true}%
+	\ifdefmacro{\microtypesetup}{\microtypesetup{protrusion=true}}{}%
 	\newpage%
 }%
 \endinput%
