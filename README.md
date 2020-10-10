@@ -37,10 +37,10 @@ export TEXINPUTS=.:$HOME/{path...}//;$TEXINPUTS<br />
 {...}<br /><br />
 
 ### Changes in 1.0.3.nightly.001000000010003:<br />
-Some small improvements.<br /><br />
+Some small improvements and updated command-names.<br /><br />
 
 ### Changes in 1.0.3.nightly.001000000010002:<br />
-It's optimized for pdflatex, but one can also use lualtex now without any problems (font).<br /><br />
+It's optimized for pdflatex, but one can also use lualatex now without any problems (font).<br /><br />
 
 ### Changes in 1.0.3.nightly.001000000010001:<br />
 Implemented chapter-toc ((alpha) Package {scrwfile}, Command: \TUMchaptertableofcontents).<br />
