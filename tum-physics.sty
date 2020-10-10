@@ -60,7 +60,7 @@
 % {revtex4-2}{\def\@TUM@version@hook{003}}{}%
 % {transcript}{\def\@TUM@version@hook{004}}{}%
 % {cheatsheet}{\def\@TUM@version@hook{005}}{}%
-\def\TUMversion{1.0.3.nightly.\@TUM@version@hook000000010002}%
+\def\TUMversion{1.0.3.nightly.\@TUM@version@hook000000010003}%
 \def\TUMversiondate{2020-09-23}%
 \makeatother%
 %% Information of the provided package
@@ -147,7 +147,7 @@
 	glossaries={hyperref},% (!!)
 	scrlayer-notecolumn={scrlayer-scrpage},% (!)
 	glossaries-extra={hyperref, babel, multicol, bookmark, longtable, supertabular, amsmath, amstext, amsgen, amsbsy, amsopn, etoolbox, ifthen, xkeyval},% (!!)
-	todonotes={ifthen, xkeyval, xcolor, tikz, pgf, pgfrcs, pgfsys, pgffor, everyshi, graphicx, graphics, trig, pgfkeys, pgfmath, calc}% (!!)
+	todonotes={ifthen, xkeyval, xcolor, tikz, pgf, pgfrcs, pgfsys, pgffor, graphicx, graphics, trig, pgfkeys, pgfmath, calc}% (!!)
 }%
 \bool_new:N \l_if_package_before_bool%
 \prop_new:N \l_package_before_prop%
@@ -698,9 +698,11 @@ showonlyrefs%
 naustrian,%
 main=american%
 ]{babel}%
+%% (Re)update babel language settings
+\makeatletter\AfterAtEndOfPackage{tum-physics}{\AtEndPreamble{\AtBeginDocument{\AfterEndPreamble{\selectlanguage{\bbl@main@language}}}}}\makeatother%
+%% Get main-language:
 \ExplSyntaxOn%
 \makeatletter%
-%% Get main-language:
 \str_new:N \l_main_language_str%
 \exp_args:NNo \str_set:Nn \l_main_language_str {\bbl@main@language}%
 %% \addto\extras{...} for multiple languages
@@ -1824,8 +1826,6 @@ pagenumberbox=\TUM@pagenumberbox% necessary if pagenumber > 100 (and e.q. bold-f
 }{}%
 \makeatother%
 \TUMRequirePackage{packages/tumtitlepage}%
-%% (Re)update babel language settings
-\makeatletter\AtBeginDocument{\AfterEndPreamble{\selectlanguage{\bbl@main@language}}}\makeatother%
 %% ================================================================================
 %% =========================== Tolerance, Penalty, etc. ===========================
 %% ********************************************************************************

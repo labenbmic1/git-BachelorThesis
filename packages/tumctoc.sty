@@ -14,9 +14,9 @@
 	\DeclareNewTOC{\ext@subtoc}% Declare new toc file
 	\addsec*{\contentsname}%
 	%\value{tocdepth}=\subsectiontocdepth%
-	\microtypesetup{protrusion=false}%
+	\ifdefmacro{\microtypesetup}{\microtypesetup{protrusion=false}}{}%
 	\listoftoc*{\ext@subtoc}%
-	\microtypesetup{protrusion=true}%
+	\ifdefmacro{\microtypesetup}{\microtypesetup{protrusion=true}}{}%
 	\IfBooleanTF{#1}{}{\bigskip}\noindent\ignorespaces% Add some vertical space after the toc and do not indent the following text
 }%
 \xapptocmd\addtocentrydefault{%

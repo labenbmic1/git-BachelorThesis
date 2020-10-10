@@ -51,9 +51,9 @@
 \NewDocumentCommand{\TUMlistoftodos}{}{%
 	\newpage%
 	\pagestyle{scrheadings}%
-	\microtypesetup{protrusion=false}%
+	\ifdefmacro{\microtypesetup}{\microtypesetup{protrusion=false}}{}%
 	\listoftodos%
-	\microtypesetup{protrusion=true}%
+	\ifdefmacro{\microtypesetup}{\microtypesetup{protrusion=true}}{}%
 	\newpage%
 }%
 \makeatother%

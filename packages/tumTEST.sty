@@ -1,0 +1,10 @@
+\makeatletter%
+\AtBeginDocument{%
+	\TUM@ifpackageloaded[setting]{babel}{%
+		\AfterEndPreamble{%
+			\TUM@addto@extras@renew{american,english}{lstlistlistingname}{List of Listings}%
+			\TUM@addto@extras@renew{naustrian,ngerman}{lstlistlistingname}{Listingverzeichnis}%
+		}%
+	}{}%
+}%
+\makeatother%

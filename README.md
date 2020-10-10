@@ -1,5 +1,5 @@
-# Labenbacher Michael 1.0.3.nightly.001000000010002
-Have fun. Please report bugs to michael@labenbacher.at or m.labenbacher@tum.de. (It's not perfect I know, but it was a starting point for the Bachelor Thesis.) Empty: [main.pdf](main.pdf), Example: [main-example.pdf](main-example.pdf)<br /><br />
+# Labenbacher Michael 1.0.3.nightly.001000000010003
+Have fun. Please report bugs to michael@labenbacher.at or m.labenbacher@tum.de. Empty: [main.pdf](main.pdf). Example: [main-example.pdf](main-example.pdf). Packages should be up to date (at least: see main-example.pdf (listfiles)).<br /><br />
 
 ## Compile (MiKTeX/TeXstudio):<br />
 1/2x (pdf/lua)latex, biber, bib2gls, 2/3x (pdf/lua)latex<br /><br />
@@ -35,6 +35,9 @@ bib2gls.exe --group main<br />
 ## Compile UNIX:<br />
 export TEXINPUTS=.:$HOME/{path...}//;$TEXINPUTS<br />
 {...}<br /><br />
+
+### Changes in 1.0.3.nightly.001000000010003:<br />
+Some small improvements.<br /><br />
 
 ### Changes in 1.0.3.nightly.001000000010002:<br />
 It's optimized for pdflatex, but one can also use lualtex now without any problems (font).<br /><br />

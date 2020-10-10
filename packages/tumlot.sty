@@ -20,9 +20,9 @@
 \NewDocumentCommand{\TUMlistoftables}{}{%
 	\newpage%
 	\pagestyle{scrheadings}%
-	\microtypesetup{protrusion=false}%
+	\ifdefmacro{\microtypesetup}{\microtypesetup{protrusion=false}}{}%
 	\listoftables%
-	\microtypesetup{protrusion=true}%
+	\ifdefmacro{\microtypesetup}{\microtypesetup{protrusion=true}}{}%
 	\newpage%
 }%
 \endinput%

@@ -18,9 +18,9 @@
 \NewDocumentCommand{\TUMlistoflistings}{}{%
 	\newpage%
 	\pagestyle{scrheadings}%
-	\microtypesetup{protrusion=false}%
+	\ifdefmacro{\microtypesetup}{\microtypesetup{protrusion=false}}{}%
 	\lstlistoflistings%
-	\microtypesetup{protrusion=true}%
+	\ifdefmacro{\microtypesetup}{\microtypesetup{protrusion=true}}{}%
 	\newpage%
 }%
 \endinput%

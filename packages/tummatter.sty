@@ -85,7 +85,7 @@ listname=\appendixname%
 	\newpage%
 	\if@twoside%
 		\cleardoubleoddpage%
-		\clearscrheadfoot%
+		\clearpairofpagestyles%
 	\else%
 		\clearpage%
 	\fi%
@@ -103,9 +103,9 @@ listname=\appendixname%
 \NewDocumentCommand{\TUMlistofappendices}{}{%
 	\newpage%
 	\pagestyle{scrheadings}%
-	\microtypesetup{protrusion=false}%
+	\ifdefmacro{\microtypesetup}{\microtypesetup{protrusion=false}}{}%
 	\listofappendices%
-	\microtypesetup{protrusion=true}%
+	\ifdefmacro{\microtypesetup}{\microtypesetup{protrusion=true}}{}%
 	\newpage%
 }%
 \makeatother%
